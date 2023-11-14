@@ -1,12 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha</title>  <!-- Recuperar Senha -->
+    <title>Recuperar Senha</title> <!--Recuperar Senha-->
     <link rel="stylesheet" href="../src/css/gabriel.css">
 </head>
+
 <body>
-    
+    <div id="container">
+        <div id="topo">
+
+
+            <img id="logo" src="../src/media/images/Senac_logo.jpg" alt="imagem não encontrada" />
+
+            <div class="botao">
+                Inicio
+
+            </div>
+
+            <a href="https://www.senac.br/">
+
+                <button class="botao">
+                    Senac
+
+                </button>
+            </a>
+
+            <a href="chefs.html">
+                <button class="botao">
+                    Chefs
+
+                </button>
+            </a>
+
+            <a href="sobre.html">
+                <button class="botao">
+                    Sobre
+
+                </button>
+            </a>
+
+            <a href="login.html">
+                <button class="botao">
+                    Login
+
+                </button>
+            </a>
+
+            <div id="contatos">
+                <a href="https://www.facebook.com/SenacBrasil" target="_blank">
+                    <div class="contato">
+                        <img id="face" src="../src/media/images/facebook.png" alt="">
+
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/senacbrasil/" target="_blank">
+                    <div class="contato">
+                        <img id="instagram" src="../src/media/images/instagram.png" alt="">
+
+                    </div>
+                </a>
+                <a href="https://twitter.com/SenacBrasil" target="_blank">
+                    <div class="contato">
+                        <img id="twitter" src="../src/media/images/twitter.png" alt="">
+
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F2655383" target="_blank">
+                    <div class="contato">
+                        <img id="linkedin" src="../src/media/images/linkedin.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/user/SenacNacional" target="_blank">
+                    <div class="contato">
+                        <img id="youtube" src="../src/media/images/youtube.png" alt="">
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!--Formulário de recuperar senha-->
+        <div class="row">
+            <form class="row-item" action="">
+                <img id="logoPrincipal" src="../src/media/images/Senac_logo.jpg" alt="Logo do Senac" />
+                <div class="input-group">
+                    <label class="label" for="newPassword">Nova senha <span class="red">*</span></label>
+                    <div class="password-field">
+                      <input class="caixaTexto" id="newPassword" type="password">
+                      <img src="../src/media/images/icon-eye-close.svg" class="toggle-password-visibility" alt="Toggle Password Visibility" />
+                      <img src="../src/media/images/icon-eye-open.svg" class="toggle-password-visibility hidden" alt="Toggle Password Visibility" />
+                    </div>
+                    <label class="label" for="confirmPassword">Confirme a nova senha <span class="red">*</span></label>
+                    <div class="password-field">
+                      <input class="caixaTexto" id="confirmPassword" type="password">
+                      <img src="../src/media/images/icon-eye-close.svg" class="toggle-password-visibility" alt="Toggle Password Visibility" />
+                      <img src="../src/media/images/icon-eye-open.svg" class="toggle-password-visibility hidden" alt="Toggle Password Visibility" />
+                    </div>
+                  </div>
+                <input id="botao" type="submit" value="Salvar">
+            </form>
+        </div>
+
+    </div>
+
+    <!--Experimental-->
+    <footer class="footer">
+        <img src="../src/media/images/senac_logo_branco.png" alt="Senac">
+        <span class="copyright">© Todos os Direitos Reservados - 2017.</span>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
 </body>
+
 </html>
