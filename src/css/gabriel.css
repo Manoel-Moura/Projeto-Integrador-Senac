@@ -62,8 +62,6 @@ a {
 }
 
 
-
-
 .row {
     padding-top: 5mm;
     padding-bottom: 5mm;
@@ -78,62 +76,6 @@ a {
     background: url(../media/images/backgroud-login.jpg);
     background-size: 100%;
 }
-
-#logoPrincipal {
-    height: 17mm;
-    width: 30mm;
-    margin-bottom: 5mm;
-    align-self: flex-start; /* Alinha a imagem ao topo */
-}
-
-.row {
-    padding-top: 5mm;
-    padding-bottom: 5mm;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #01468a;
-    width: 100%;
-    min-height: 100vh;
-    background: url(../media/images/backgroud-login.jpg);
-    background-size: 100%;
-}
-
-#logoPrincipal {
-    height: 17mm;
-    width: 30mm;
-    margin-bottom: 5mm;
-    align-self: flex-start; /* Alinha a imagem ao topo */
-    margin-left: auto; /* Centraliza a imagem horizontalmente */
-    margin-right: auto;
-}
-
-.row {
-    padding-top: 5mm;
-    padding-bottom: 5mm;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #01468a;
-    width: 100%;
-    min-height: 100vh;
-    background: url(../media/images/backgroud-login.jpg);
-    background-size: 100%;
-}
-
-#logoPrincipal {
-    height: 17mm;
-    width: 30mm;
-    margin-top: 20px;
-    align-self: flex-start; 
-    margin-left: auto; 
-    margin-right: auto;
-}
-
 
 .row-item {
     width: 100mm;
@@ -142,12 +84,22 @@ a {
     border-radius: 5mm;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha os itens à esquerda */
-    justify-content: space-between; /* Distribui o espaço igualmente entre os itens */
+    align-items: flex-start; 
+    justify-content: space-between; 
     -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
-    padding: 0 20px; /* Adiciona um padding horizontal */
+    padding: 0 20px; 
 }
+
+#logoPrincipal {
+    height: 17mm;
+    width: 30mm;
+    margin-bottom: 5mm;
+    align-self: flex-start; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
 
 .input-group {
     display: flex;
@@ -159,7 +111,7 @@ a {
 }
 
 .label {
-    align-self: flex-start; /* Alinha o rótulo à esquerda */
+    align-self: flex-start; 
 }
 
 .red {
@@ -184,7 +136,7 @@ a {
   
   .toggle-password-visibility {
     position: absolute;
-    right: 10px; /* Ajuste este valor conforme necessário */
+    right: 10px; 
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -204,13 +156,12 @@ a {
     border-radius: 17px;
     background-color: #FCCB81;
     color: #000000;
-    align-self: flex-end; /* Alinha o botão à direita */
+    align-self: flex-end; 
 }
 
 #botao:hover{
     background-color: #F9A94A;
 }
-
 
 
 #contatos {
