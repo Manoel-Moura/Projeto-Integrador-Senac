@@ -1,0 +1,233 @@
+/*
+    Azul, laranja e branco
+    #fac17e, #ef8a01, #01468a, #fefefe
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+#topo {
+  display: flex;
+  justify-items: center;
+
+  justify-content: flex-start;
+  width: 100%;
+  height: 30mm;
+  background-color: #ffffff;
+  align-items: center;
+  border-bottom: 4px solid #f78b1f;
+}
+
+.row {
+  padding-top: 5mm;
+  padding-bottom: 5mm;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #01468a;
+  width: 100%;
+  min-height: 100vh;
+
+  /* image 15 */
+  background: url(../media/images/backgroud-login.jpg);
+  background-size: 100%;
+}
+
+.row-item {
+  width: 100mm;
+  height: 130mm;
+  background-color: #ffffff;
+  border-radius: 5mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+}
+
+#footer {
+  width: 100%;
+  height: 30mm;
+  background-color: #01468a;
+}
+
+h1 {
+  color: aliceblue;
+}
+
+#logo {
+  margin-right: 40px;
+  margin-left: 5%;
+  width: 110px;
+  height: 60px;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 100px;
+  background-color: #ffffff;
+  border-radius: 2mm;
+  color: #01468a;
+  font-size: 16pt;
+  border: #ffffff;
+}
+
+.botao:hover {
+  transform: scale(1.1);
+  background-color: #01468a;
+  color: #ffffff;
+}
+
+.caixaTexto {
+  border-radius: 8px;
+  padding-left: 5mm;
+  height: 8mm;
+  width: 60mm;
+  background-color: rgba(255, 255, 255, 0.37);
+  font-weight: 500;
+}
+
+.label {
+  display: flex;
+  align-self: flex-start;
+  margin-left: 17mm;
+  margin-bottom: 1mm;
+  margin-top: 1mm;
+  color: #01468a;
+  font-size: 12pt;
+}
+
+a {
+  text-decoration: none;
+}
+
+#botao {
+  border-radius: 8px;
+  margin-top: 8mm;
+  height: 8mm;
+  width: 20mm;
+  background-color: #ffffff;
+}
+
+#logoPrincipal {
+  height: 17mm;
+  width: 30mm;
+  display: flex;
+  margin-bottom: 5mm;
+  margin-top: 5mm;
+}
+
+.tex {
+  color: #000000;
+}
+
+#login {
+  color: orange;
+  margin-left: 2mm;
+  margin-right: 2mm;
+}
+
+#tex1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 5mm;
+  align-self: start;
+  margin-left: 17mm;
+}
+
+#icon {
+  height: 5mm;
+  width: 5mm;
+  margin-right: 2mm;
+}
+
+.textoCadastro {
+  color: #01468a;
+  display: flex;
+  justify-content: center;
+  margin-top: 2mm;
+  text-decoration: underline;
+}
+
+#tex2 {
+  margin-top: 8mm;
+}
+
+#contatos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: 5mm;
+  margin-left: 105mm;
+}
+
+.contato {
+  margin-right: 2mm;
+  background-color: #a7a8aa;
+  height: 8mm;
+  width: 8mm;
+  border-radius: 2mm;
+  margin-bottom: 2mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contato:hover {
+    background-color: #01468a;
+    transition: all .3s ease-in-out;
+  }
+  
+
+#face{
+    height: 5mm;
+    width: 3.5mm;
+    filter: invert(1);
+
+}
+
+#youtube{
+    height: 4.5mm;
+    width: 4.5mm;
+    filter: invert(1);
+}
+
+#instagram{
+    height: 4.5mm;
+    width: 4.5mm;
+    filter: invert(1);
+}
+
+#twitter{
+    height: 3.5mm;
+    width: 3.5mm;
+    filter: invert(1);
+}
+#linkedin{
+    height: 4mm;
+    width: 4mm;
+    filter: invert(1);
+}
