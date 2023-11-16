@@ -90,12 +90,12 @@ for(let i=0; i<tam_contato; i++) {
 };
 
 
-let logo_e_botoes = document.createElement('div')
-logo_e_botoes.setAttribute('class','divLogo')
-logo_e_botoes.append(a_logo)
-logo_e_botoes.append(div_botoes)
+// let logo_e_botoes = document.createElement('div')
+// logo_e_botoes.setAttribute('class','divLogo')
+topBar.append(a_logo)
+topBar.append(div_botoes)
 
-topBar.append(logo_e_botoes)
+
 topBar.append(contatos)
 fragment.append(topBar);
 container.append(topBar)
