@@ -23,18 +23,6 @@ body {
   height: 100%;
 }
 
-#topo {
-  display: flex;
-  justify-items: center;
-
-  justify-content: space-between;
-  width: 100%;
-  height: 30mm;
-  background-color: #ffffff;
-  align-items: center;
-  border-bottom: 4px solid #f78b1f;
-}
-
 .row {
   padding-top: 5mm;
   padding-bottom: 5mm;
@@ -75,26 +63,12 @@ h1 {
   color: aliceblue;
 }
 
-#logo {
-  
-  margin-right: 40px;
-  width: 110px;
-  height: 60px;
-}
-
-#divLogo{
-  display: flex;
-  align-items: center;
-  align-items: center;
-  margin-left: 80px;
-}
-
 .botao {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 45px;
-  width: 100px;
+  width: 90px;
   background-color: #ffffff;
   border-radius: 2mm;
   color: #01468a;
@@ -184,7 +158,7 @@ a {
   margin-top: 8mm;
 }
 
-#contatos {
+.contatos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -205,49 +179,69 @@ a {
 
 .contato:hover {
   background-color: #01468a;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-
-#face {
+.face {
   height: 5mm;
   width: 3.5mm;
   filter: invert(1);
-
 }
 
-#youtube {
+.youtube {
   height: 4.5mm;
   width: 4.5mm;
   filter: invert(1);
 }
 
-#instagram {
+.instagram {
   height: 4.5mm;
   width: 4.5mm;
   filter: invert(1);
 }
 
-#twitter {
+.twitter {
   height: 3.5mm;
   width: 3.5mm;
   filter: invert(1);
 }
 
-#linkedin {
+.linkedin {
   height: 4mm;
   width: 4mm;
   filter: invert(1);
 }
 
-#menubutton {
+.menubutton {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
-#topbar{
+.topo {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  align-items: center;
+  border-bottom: 4px solid #f78b1f;
+}
+.logo {
+  width: 100px;
+  height: 65px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.logoBotoes {
+  margin-left: 5mm;
+}
+
+.divLogo {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
