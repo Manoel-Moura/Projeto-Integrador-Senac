@@ -13,6 +13,9 @@ divLogo.setAttribute('class','divLogo')
 
 
 
+
+
+
 //============================================================
 let a_logo = document.createElement(`a`)
 a_logo.setAttribute('class', 'logo')
@@ -25,131 +28,68 @@ img_logo.setAttribute('class', 'logo')
 a_logo.append(img_logo)
 
 
+//================================================================================================
+let botoes_menu = ["O Senac","Início", "Chefes", "Sobre", "Login"]
+const paginas_menu = ["https://www.senac.br/", "../index.html", "Chefes.html", "Sobre.html", "Login.html"]
 
-//=============================================================
+let tam = botoes_menu.length
 
-let a_inicio = document.createElement('a');
-a_inicio.setAttribute('href','../pages/camila.html')
-
-let b_inicio = document.createElement('button');
-b_inicio.append('Inicio')
-b_inicio.setAttribute('class','botao')
-//==============================================================
-let a_senac = document.createElement('a');
-a_senac.setAttribute('href','https://www.senac.br/')
-
-let b_senac = document.createElement('button');
-b_senac.append('Senac')
-b_senac.setAttribute('class','botao')
-//==============================================================
-
-let a_chef = document.createElement('a');
-a_chef.setAttribute('href','../pages/thalita.html')
-
-let b_chef = document.createElement('button');
-b_chef.append('Chefs')
-b_chef.setAttribute('class','botao')
-//==============================================================
-let a_sobre = document.createElement('a');
-a_sobre.setAttribute('href','../pages/gabriel.html')
-
-let b_sobre = document.createElement('button');
-b_sobre.append('Sobre')
-b_sobre.setAttribute('class','botao')
-//==============================================================
-let a_login = document.createElement('a');
-a_login.setAttribute('href','https://www.senac.br/')
-
-let b_login = document.createElement('button');
-b_login.append('Login')
-b_login.setAttribute('class','botao')
-//==============================================================
-
-let div_botoes = document.createElement('div');
+let div_botoes = document.createElement('div'); // Div para receber os botoes 
 
 div_botoes.setAttribute('class','menubutton')
 
-a_inicio.append(b_inicio)
-a_senac.append(b_senac)
-a_chef.append(b_chef)
-a_login.append(b_login)
-a_sobre.append(b_sobre)
+for(let i=0; i<tam; i++) {
 
-div_botoes.append(a_inicio)
-div_botoes.append(a_senac)
-div_botoes.append(a_chef)
-div_botoes.append(a_sobre)
-div_botoes.append(a_login)
-//===================================================================
+    let pagina = `${paginas_menu[i]}`
+
+    let botao = document.createElement(`a`)
+    botao.setAttribute('href', pagina)
+
+    let button = document.createElement(`button`)
+    button.append(botoes_menu[i])
+    button.setAttribute('class', 'botao')
+    
+    botao.append(button)
+    div_botoes.append(botao)
+};
+//================================================================================================
+
+let img_contato = ['../src/media/images/facebook.png','../src/media/images/instagram.png', '../src/media/images/twitter.png', "../src/media/images/linkedin.svg","../src/media/images/youtube.png"]
+let class_css = ['face','instagram', 'twitter', 'linkedin','youtube']
+const link_contato = ["https://www.facebook.com/SenacBrasil", "https://www.instagram.com/senacbrasil/", "https://twitter.com/SenacBrasil", "https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F2655383", 'https://www.youtube.com/user/SenacNacional']
+
 
 let contatos = document.createElement('div')
 contatos.setAttribute('class', 'contatos')
 
-let a_face = document.createElement('a')
-a_face.setAttribute('class','contato')
-a_face.setAttribute('target','_blank')
-a_face.setAttribute('href','https://www.facebook.com/SenacBrasil' )
+let tam_contato = img_contato.length
 
-let img_face = document.createElement('img')
-img_face.setAttribute('class', 'face')
-img_face.setAttribute('src','../src/media/images/facebook.png')
+for(let i=0; i<tam_contato; i++) {
 
-//----------------------------------------------------------------------
+    let cla = `${class_css[i]}`
 
-let a_insta = document.createElement('a')
-a_insta.setAttribute('class','contato')
-a_insta.setAttribute('target','_blank')
-a_insta.setAttribute('href','https://www.instagram.com/senacbrasil/' )
+    //
+    let link_social = `${link_contato[i]}`
+    let img_rede = `${img_contato[i]}`
 
-let img_insta = document.createElement('img')
-img_insta.setAttribute('class', 'instagram')
-img_insta.setAttribute('src','../src/media/images/instagram.png')
-//----------------------------------------------------------------------
+    let rede = document.createElement(`a`);
+    rede.setAttribute('href', link_social)
+    rede.setAttribute('target','_blank')
 
-let a_twitter = document.createElement('a')
-a_twitter.setAttribute('class','contato')
-a_twitter.setAttribute('target','_blank')
-a_twitter.setAttribute('href','https://twitter.com/SenacBrasil' )
+    let btn_rede = document.createElement(`button`);
+    btn_rede.setAttribute("class", "btn-social");
 
-let img_twitter = document.createElement('img')
-img_twitter.setAttribute('class', 'twitter')
-img_twitter.setAttribute('src','../src/media/images/twitter.png')
-
-//----------------------------------------------------------------------
-
-let a_linkedin = document.createElement('a')
-a_linkedin.setAttribute('class','contato')
-a_linkedin.setAttribute('target','_blank')
-a_linkedin.setAttribute('href','https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F2655383' )
-
-let img_linkedin = document.createElement('img')
-img_linkedin.setAttribute('class', 'linkedin')
-img_linkedin.setAttribute('src','../src/media/images/linkedin.svg')
-//----------------------------------------------------------------------
-
-let a_youtube = document.createElement('a')
-a_youtube.setAttribute('class','contato')
-a_youtube.setAttribute('target','_blank')
-a_youtube.setAttribute('href','https://www.youtube.com/user/SenacNacional' )
-
-let img_youtube = document.createElement('img')
-img_youtube.setAttribute('class', 'youtube')
-img_youtube.setAttribute('src','../src/media/images/youtube.png')
+    let img_social = document.createElement(`img`);
+    img_social.setAttribute("class", cla);
+    img_social.setAttribute('src', img_rede)
+  
+    btn_rede.append(img_social)
+    rede.append(btn_rede)
+    contatos.append(rede)
+   
+};
 
 
-
-a_face.append(img_face)
-a_insta.append(img_insta)
-a_twitter.append(img_twitter)
-a_linkedin.append(img_linkedin)
-a_youtube.append(img_youtube)
-
-contatos.append(a_face)
-contatos.append(a_insta)
-contatos.append(a_twitter)
-contatos.append(a_linkedin)
-contatos.append(a_youtube)
-//=========================================================================
 let logo_e_botoes = document.createElement('div')
 logo_e_botoes.setAttribute('class','divLogo')
 logo_e_botoes.append(a_logo)
