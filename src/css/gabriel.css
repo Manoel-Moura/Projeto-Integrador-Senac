@@ -17,57 +17,15 @@ body {
     height: 100%;
 }
 
-#topo {
-    display: flex;
-    justify-items: center;
 
-    justify-content: flex-start;
-    width: 100%;
-    height: 30mm;
-    background-color: #ffffff;
-    align-items: center;
-    border-bottom: 4px solid #f78b1f;
-}
+/* Parte referente ao formulário de recuperar senha */
 
-#logo {
-    margin-right: 40px;
-    margin-left: 5%;
-    width: 110px;
-    height: 60px;
-}
-
-a {
-    text-decoration: none; 
-}
-
-.botao {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 100px;
-    background-color: #ffffff;
-    border-radius: 2mm;
-    color: #01468a;
-    font-size: 16pt;
-    border: #ffffff;
- 
-}
-
-
-.botao:hover {
-    transform: scale(1.1);
-    background-color: #01468a;
-    color: #ffffff;
-}
-
-
+/* Centralização do formulário no centro da página; 
+   Background da página                             */
 .row {
     padding-top: 5mm;
     padding-bottom: 5mm;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-color: #01468a;
@@ -77,6 +35,7 @@ a {
     background-size: 100%;
 }
 
+/* Organização e fundo do formulário */
 .row-item {
     width: 100mm;
     height: 130mm;
@@ -84,41 +43,40 @@ a {
     border-radius: 5mm;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    justify-content: space-between; 
+    justify-content: space-between;
     -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
-    padding: 0 20px; 
+    padding: 0 20px;
 }
 
+/* Imagem do Senac no formulário */
 #logoPrincipal {
     height: 17mm;
     width: 30mm;
-    margin-bottom: 5mm;
-    align-self: flex-start; 
-    margin-left: auto; 
+    margin-bottom: -6mm;
+    margin-top: 10mm;
+    align-self: flex-start;
+    margin-left: auto;
     margin-right: auto;
 }
 
-
+/* Organização: Imagem, caixas de texto e nomes*/
 .input-group {
     display: flex;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
-.label {
-    align-self: flex-start; 
-}
 
+/* Asterisco */
 .red {
     color: red;
 }
 
-
+/* Caixa de texto da senha */
 .caixaTexto {
     padding-left: 5mm;
     width: 264px;
@@ -130,112 +88,88 @@ a {
     font-weight: 500;
 }
 
+/* Posicionamento dos icones (eye-open, eye-closed) 
+   dentro da caixa de texto                         */
 .password-field {
     position: relative;
-  }
-  
-  .toggle-password-visibility {
+}
+
+/* Posição do icones a direita da caixa de texto */
+.toggle-password-visibility {
     position: absolute;
-    right: 10px; 
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
+}
 
-#botao {
+/* Esconder o icone de senha (eye-close) */
+.hidden {
+    display: none;
+}
+
+
+/* Botão salvar */
+#botaoR {
     padding: 10px;
     height: 51px;
     width: 100px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     border: none;
     border-radius: 17px;
     background-color: #FCCB81;
     color: #000000;
-    align-self: flex-end; 
+    align-self: flex-end;
 }
 
-#botao:hover{
+/* Hover do botão salvar */
+#botaoR:hover {
     background-color: #F9A94A;
 }
 
 
-#contatos {
-    display: flex;
-    margin-right: 5mm;
-    margin-left: 105mm;
-}
-
-.contato {
-    margin-right: 2mm;
-    background-color: #a7a8aa;
-    height: 8mm;
-    width: 8mm;
-    border-radius: 2mm;
-    margin-bottom: 2mm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contato:hover {
-    background-color: #01468a;
-    transition: all .3s ease-in-out;
-}
-
-
-#face {
-    height: 5mm;
-    width: 3.5mm;
-    filter: invert(1);
-
-}
-
-#youtube {
-    height: 4.5mm;
-    width: 4.5mm;
-    filter: invert(1);
-}
-
-#instagram {
-    height: 4.5mm;
-    width: 4.5mm;
-    filter: invert(1);
-}
-
-#twitter {
-    height: 3.5mm;
-    width: 3.5mm;
-    filter: invert(1);
-}
-
-#linkedin {
-    height: 4mm;
-    width: 4mm;
-    filter: invert(1);
-}
-
-/*Experimental*/
+/*---------------------------------------------------------------------------*/
+/* Rodapé: Experimental
+   Cuidado, nivel de experimentação com nivel acima de 8000
+*/
 .footer {
     height: 115px;
     background-color: #003466;
     display: flex;
     justify-content: space-around;
+    justify-items: center;
     align-items: center;
-    border-top: 4px solid #f7941d;
+    border-top: 4px solid #f78b1f;
     gap: 30px;
 }
 
 footer img {
-    width: 100px;
+    width: 21px;
 }
 
 footer .copyright {
     align-self: center;
     color: white;
     font-size: 14px;
+}
+
+#logosenac{
+    width: 100px;
+    height: 59px;
+}
+#contatosF {
+    display: flex;
+    flex-direction: row;
+    margin-right: 30mm;
+    background-color: #fff;
+    height: 8mm;
+    width: 8mm;
+    border-radius: 2mm;
+    margin-bottom: 2mm;
+}
+
+
+.contatoF:hover {
+    background-color: #004587;
+    transition: all 0.3s ease-in-out;
 }
