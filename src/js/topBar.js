@@ -1,4 +1,4 @@
-let container = document.getElementById("topo");
+let container = document.getElementById("topo"); // Pega a div com id "topo" de cada pagina HTML para montar a TopBar
 
 let fragment = document.createDocumentFragment();
 
@@ -12,11 +12,8 @@ let divLogo = document.createElement('div');
 divLogo.setAttribute('class','divLogo')
 
 
-
-
-
-
 //============================================================
+        // Criadno a imagem do topo com o Link para a pagina do Senac
 let a_logo = document.createElement(`a`)
 a_logo.setAttribute('class', 'logo')
 a_logo.setAttribute('href','https://www.senac.br/')
@@ -29,6 +26,7 @@ a_logo.append(img_logo)
 
 
 //================================================================================================
+        // Criando uma div com todos os botões do Menu já configurados 
 let botoes_menu = ["O Senac","Início", "Chefes", "Sobre", "Login"]
 const paginas_menu = ["https://www.senac.br/", "../index.html", "Chefes.html", "Sobre.html", "Login.html"]
 
@@ -53,7 +51,7 @@ for(let i=0; i<tam; i++) {
     div_botoes.append(botao)
 };
 //================================================================================================
-
+                    // Criando uma div com todos dos contatos do Senac configurados
 let img_contato = ['../src/media/images/facebook.png','../src/media/images/instagram.png', '../src/media/images/twitter.png', "../src/media/images/linkedin.svg","../src/media/images/youtube.png"]
 let class_css = ['face','instagram', 'twitter', 'linkedin','youtube']
 const link_contato = ["https://www.facebook.com/SenacBrasil", "https://www.instagram.com/senacbrasil/", "https://twitter.com/SenacBrasil", "https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F2655383", 'https://www.youtube.com/user/SenacNacional']
@@ -92,19 +90,24 @@ for(let i=0; i<tam_contato; i++) {
 
 // let logo_e_botoes = document.createElement('div')
 // logo_e_botoes.setAttribute('class','divLogo')
-topBar.append(a_logo)
-topBar.append(div_botoes)
+
+topBar.append(a_logo) // Adiciona a logo a TopBar
+topBar.append(div_botoes) // Adiciona a div com os botões do menu a TopBar
 
 
-topBar.append(contatos)
+topBar.append(contatos) // Adiciona a div com os botões de contato a TopBar
 fragment.append(topBar);
-container.append(topBar)
+container.append(topBar) // Adiciona o topo da pagina ao HTML
 
 //========================================================================================================
-let rodape = document.getElementById("rodape");
+//                      Configurando o Rodapé da pagina
 
-let fragment_rodape = document.createDocumentFragment();
+let bottom_bar = document.getElementById("bottom-bar")
+let barra_bottom = document.createDocumentFragment();
 
 let rodape_div = document.createElement('div');
 
-navBar.setAttribute('class','rodape');
+rodape_div.setAttribute('class','rodape');
+
+barra_bottom.append(rodape_div)
+bottom_bar.append(barra_bottom)
