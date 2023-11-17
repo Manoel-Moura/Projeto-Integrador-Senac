@@ -10,23 +10,7 @@
     flex-wrap: wrap;
     margin-right: 5mm;
   }
-.contato {
-    margin-right: 2mm;
-    background-color: #a7a8aa;
-    height: 8mm;
-    width: 8mm;
-    border-radius: 2mm;
-    margin-bottom: 2mm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .contato:hover {
-    background-color: #01468a;
-    transition: all 0.3s ease-in-out;
-  }
-  
+ 
   .face {
     height: 5mm;
     width: 3.5mm;
@@ -98,9 +82,7 @@
     border-radius: 6px;
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     border: none;
-  
     background-color: #a7a8aa;
-  
     width: 32px;
     height: 32px;
     display: flex;
@@ -109,6 +91,10 @@
     align-items: center;
     margin-left: 10px;
   }
+  .btn-social:hover {
+    background-color: #01468a;
+    transition: all 0.3s ease-in-out;
+  } 
 
   #botao {
     border-radius: 8px;
@@ -142,9 +128,12 @@
   }
   /* ==================================================================================== */
 
-  .navBar{
-    height: 50px;
-    width: 50px;
+  .rodape{
+    height: 115px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1080px;
+    margin: 0px auto;
     background-color: #01468a;
-
   }

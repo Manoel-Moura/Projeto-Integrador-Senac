@@ -37,7 +37,9 @@ body {
 
   /* image 15 */
   background: url(../media/images/backgroud-login.jpg);
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .row-item {

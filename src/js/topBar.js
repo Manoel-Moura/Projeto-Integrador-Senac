@@ -99,3 +99,12 @@ topBar.append(div_botoes)
 topBar.append(contatos)
 fragment.append(topBar);
 container.append(topBar)
+
+//========================================================================================================
+let rodape = document.getElementById("rodape");
+
+let fragment_rodape = document.createDocumentFragment();
+
+let rodape_div = document.createElement('div');
+
+navBar.setAttribute('class','rodape');
