@@ -1,161 +1,220 @@
 /* CSS do Topbar */
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-
 .contatos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-right: 5mm;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: 5mm;
+}
+
+.face {
+  height: 5mm;
+  width: 3.5mm;
+  filter: invert(1);
+}
+
+.youtube {
+  height: 4.5mm;
+  width: 4.5mm;
+  filter: invert(1);
+}
+
+.instagram {
+  height: 4.5mm;
+  width: 4.5mm;
+  filter: invert(1);
+}
+
+.twitter {
+  height: 3.5mm;
+  width: 3.5mm;
+  filter: invert(1);
+}
+
+.linkedin {
+  height: 4mm;
+  width: 4mm;
+  filter: invert(1);
+}
+
+.menubutton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.topo {
+  display: flex;
+  justify-items: center;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 100px;
+  background-color: #ffffff;
+  align-items: center;
+  border-bottom: 4px solid #f78b1f;
+}
+.logo {
+  width: 100px;
+  height: 65px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.logoBotoes {
+  margin-left: 5mm;
+}
+
+.divLogo {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-social {
+  flex-wrap: wrap;
+  /* margin: 10px; */
+  border-radius: 6px;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+  border: none;
+  background-color: #a7a8aa;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.btn-social:hover {
+  background-color: #01468a;
+  transition: all 0.3s ease-in-out;
+}
+
+#botao {
+  border-radius: 8px;
+  margin-top: 8mm;
+  height: 8mm;
+  width: 20mm;
+  background-color: #ffffff;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 90px;
+  background-color: #ffffff;
+  border-radius: 2mm;
+  color: #01468a;
+  font-size: 16pt;
+  border: #ffffff;
+}
+
+.botao:hover {
+  transform: scale(1.1);
+  background-color: #01468a;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+/* ==================================================================================== */
+
+.rodape {
+  height: 115px;
+  display: flex;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  border-top: 4px solid #f78b1f;
+  width: 100%;
+  margin: 0px auto;
+  background-image: linear-gradient(to top, #003466, #004384);
+  color: #fff;
+  position: sticky;
+  bottom: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f78b1f;
+  flex-direction: column;
+}
+
+.rodape-centralizado{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-img {
  
-  .face {
-    height: 5mm;
-    width: 3.5mm;
-    filter: invert(1);
-  }
-  
-  .youtube {
-    height: 4.5mm;
-    width: 4.5mm;
-    filter: invert(1);
-  }
-  
-  .instagram {
-    height: 4.5mm;
-    width: 4.5mm;
-    filter: invert(1);
-  }
-  
-  .twitter {
-    height: 3.5mm;
-    width: 3.5mm;
-    filter: invert(1);
-  }
-  
-  .linkedin {
-    height: 4mm;
-    width: 4mm;
-    filter: invert(1);
-  }
-  
-  .menubutton {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  
-  .topo {
-    display: flex;
-    justify-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100px;
-    background-color: #ffffff;
-    align-items: center;
-    border-bottom: 4px solid #f78b1f;
-  }
-  .logo {
-    width: 100px;
-    height: 65px;
-    margin-right: 5%;
-    margin-left: 5%;
-  }
-  
-  .logoBotoes {
-    margin-left: 5mm;
-  }
-  
-  .divLogo {
-    width: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .btn-social {
-    flex-wrap: wrap;
-    /* margin: 10px; */
-    border-radius: 6px;
-    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
-    border: none;
-    background-color: #a7a8aa;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-  }
-  .btn-social:hover {
-    background-color: #01468a;
-    transition: all 0.3s ease-in-out;
-  } 
+}
+.lab-rodape{
+  color: #fff;
+  font-size: 14pt;
+}
 
-  #botao {
-    border-radius: 8px;
-    margin-top: 8mm;
-    height: 8mm;
-    width: 20mm;
-    background-color: #ffffff;
-  }
+.logo-branca {
+  width: 100px
+}
 
-  .botao {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 90px;
-    background-color: #ffffff;
-    border-radius: 2mm;
-    color: #01468a;
-    font-size: 16pt;
-    border: #ffffff;
-  }
+.face-rodape {
+  height: 5mm;
+  width: 3.5mm;
+
+}
+
+.youtube-rodape {
+  height: 4.5mm;
+  width: 4.5mm;
+}
+
+.instagram-rodape {
+  height: 4.5mm;
+  width: 4.5mm;
+}
+
+.twitter-rodape {
+  height: 3.5mm;
+  width: 3.5mm;
   
-  .botao:hover {
-    transform: scale(1.1);
-    background-color: #01468a;
-    color: #ffffff;
-  }
+}
 
-  a {
-    text-decoration: none;
-  }
-  /* ==================================================================================== */
+.linkedin-rodape {
+  height: 4mm;
+  width: 4mm;
+}
 
-  .rodape{
-    height: 115px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 4px solid #f78b1f;
-    width: 100%;
-    margin: 0px auto;
-    background-image: linear-gradient(to top, #003466, #004384);
-    color: #fff;
-    margin-top: 5mm;
-  }
-
-  .container{
-    display: flex;
-    width: 100%;
-    height: 100%;
-   
-    background-color: #f78b1f;
-    flex-direction: column;
-  }
-
-  .div-img{
-
-  }
-
-  .logo-branca{
-
-  }
+.btn-social-rodape {
+  flex-wrap: wrap;
+  /* margin: 10px; */
+  border-radius: 6px;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+  border: none;
+  background-color: #ffffff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.btn-social-rodape:hover {
+  background-color: #f78b1f;
+  transition: all 0.3s ease-in-out;
+}

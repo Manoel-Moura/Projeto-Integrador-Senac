@@ -1,175 +1,172 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    font-size: 16pt;
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
 }
 
 html,
 body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #ffffff;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
 }
 
 #container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 
 /* Parte referente ao formulário de recuperar senha */
 
 /* Centralização do formulário no centro da página; 
    Background da página                             */
 .row {
-    padding-top: 5mm;
-    padding-bottom: 5mm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #01468a;
-    width: 100%;
-    min-height: 100vh;
-    background: url(../media/images/backgroud-login.jpg);
-    background-size: 100%;
+  padding-top: 5mm;
+  padding-bottom: 5mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01468a;
+  width: 100%;
+  min-height: 100vh;
+  background: url(../media/images/background-recuperar-senha.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Organização e fundo do formulário */
 .row-item {
-    width: 100mm;
-    height: 130mm;
-    background-color: #ffffff;
-    border-radius: 5mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
-    padding: 0 20px;
+  width: 100mm;
+  height: 130mm;
+  background-color: #ffffff;
+  border-radius: 5mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+  padding: 0 20px;
 }
 
 /* Imagem do Senac no formulário */
 #logoPrincipal {
-    height: 17mm;
-    width: 30mm;
-    margin-bottom: -6mm;
-    margin-top: 10mm;
-    align-self: flex-start;
-    margin-left: auto;
-    margin-right: auto;
+  height: 17mm;
+  width: 30mm;
+  margin-bottom: -6mm;
+  margin-top: 10mm;
+  align-self: flex-start;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Organização: Imagem, caixas de texto e nomes*/
 .input-group {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
-
 
 /* Asterisco */
 .red {
-    color: red;
+  color: red;
 }
 
 /* Caixa de texto da senha */
 .caixaTexto {
-    padding-left: 5mm;
-    width: 264px;
-    height: 47px;
-    border-radius: 5px;
-    border: 1px solid #000;
-    background: #FFF;
-    flex-shrink: 0;
-    font-weight: 500;
+  padding-left: 5mm;
+  width: 264px;
+  height: 47px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: #fff;
+  flex-shrink: 0;
+  font-weight: 500;
 }
 
 /* Posicionamento dos icones (eye-open, eye-closed) 
    dentro da caixa de texto                         */
 .password-field {
-    position: relative;
+  position: relative;
 }
 
 /* Posição do icones a direita da caixa de texto */
 .toggle-password-visibility {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 /* Esconder o icone de senha (eye-close) */
 .hidden {
-    display: none;
+  display: none;
 }
-
 
 /* Botão salvar */
 #botaoR {
-    padding: 10px;
-    height: 51px;
-    width: 100px;
-    margin-bottom: 50px;
-    border: none;
-    border-radius: 17px;
-    background-color: #FCCB81;
-    color: #000000;
-    align-self: flex-end;
+  padding: 10px;
+  height: 51px;
+  width: 100px;
+  margin-bottom: 50px;
+  border: none;
+  border-radius: 17px;
+  background-color: #fccb81;
+  color: #000000;
+  align-self: flex-end;
 }
 
 /* Hover do botão salvar */
 #botaoR:hover {
-    background-color: #F9A94A;
+  background-color: #f9a94a;
 }
-
 
 /*---------------------------------------------------------------------------*/
 /* Rodapé: Experimental
    Cuidado, nivel de experimentação com nivel acima de 8000
 */
 .footer {
-    height: 115px;
-    background-color: #003466;
-    display: flex;
-    justify-content: space-around;
-    justify-items: center;
-    align-items: center;
-    border-top: 4px solid #f78b1f;
-    gap: 30px;
+  height: 115px;
+  background-color: #003466;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  border-top: 4px solid #f78b1f;
+  gap: 30px;
 }
 
 footer img {
-    width: 21px;
+  width: 21px;
 }
 
 footer .copyright {
-    align-self: center;
-    color: white;
-    font-size: 14px;
+  align-self: center;
+  color: white;
+  font-size: 14px;
 }
 
-#logosenac{
-    width: 100px;
-    height: 59px;
+#logosenac {
+  width: 100px;
+  height: 59px;
 }
 #contatosF {
-    display: flex;
-    flex-direction: row;
-    margin-right: 30mm;
-    background-color: #fff;
-    height: 8mm;
-    width: 8mm;
-    border-radius: 2mm;
-    margin-bottom: 2mm;
+  display: flex;
+  flex-direction: row;
+  margin-right: 30mm;
+  background-color: #fff;
+  height: 8mm;
+  width: 8mm;
+  border-radius: 2mm;
+  margin-bottom: 2mm;
 }
 
-
 .contatoF:hover {
-    background-color: #004587;
-    transition: all 0.3s ease-in-out;
+  background-color: #004587;
+  transition: all 0.3s ease-in-out;
 }
