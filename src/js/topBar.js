@@ -109,5 +109,16 @@ let rodape_div = document.createElement('div');
 
 rodape_div.setAttribute('class','rodape');
 
+let div_img = document.createElement('div')
+div_img.setAttribute('class', 'div-img')
+
+let logo_branca = document.createElement('img')
+logo_branca.setAttribute('class', 'logo-branca')
+logo_branca.setAttribute('src','../src/media/images/senac_logo_branco.png')
+
+div_img.append(logo_branca)
+
+barra_bottom.append(div_img)
+
 barra_bottom.append(rodape_div)
 bottom_bar.append(barra_bottom)

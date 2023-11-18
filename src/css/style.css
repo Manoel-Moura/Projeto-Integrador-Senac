@@ -5,13 +5,7 @@
   padding: 0;
 }
 
-#container{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: space-between;
-  flex-direction: column;
-}
+
 .contatos {
     display: flex;
     flex-direction: row;
@@ -141,8 +135,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    width: 1080px;
+    border-top: 4px solid #f78b1f;
+    width: 100%;
     margin: 0px auto;
-    background-color: #01468a;
+    background-image: linear-gradient(to top, #003466, #004384);
+    color: #fff;
+    margin-top: 5mm;
+  }
+
+  .container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+   
+    background-color: #f78b1f;
+    flex-direction: column;
+  }
+
+  .div-img{
+
+  }
+
+  .logo-branca{
+
   }
