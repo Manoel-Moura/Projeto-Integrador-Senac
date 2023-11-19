@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+
+ 
+}
+
 .contatos {
   display: flex;
   flex-direction: row;
@@ -132,9 +140,9 @@ a {
 .rodape {
   height: 115px;
   display: flex;
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 4px solid #f78b1f;
   width: 100%;
   margin: 0px auto;
@@ -152,7 +160,7 @@ a {
   flex-direction: column;
 }
 
-.rodape-centralizado{
+.rodape-centralizado {
   width: 80%;
   height: 100%;
   display: flex;
@@ -161,21 +169,19 @@ a {
 }
 
 .div-img {
- 
 }
-.lab-rodape{
+.lab-rodape {
   color: #fff;
   font-size: 14pt;
 }
 
 .logo-branca {
-  width: 100px
+  width: 100px;
 }
 
 .face-rodape {
   height: 5mm;
   width: 3.5mm;
-
 }
 
 .youtube-rodape {
@@ -191,7 +197,6 @@ a {
 .twitter-rodape {
   height: 3.5mm;
   width: 3.5mm;
-  
 }
 
 .linkedin-rodape {
@@ -218,3 +223,86 @@ a {
   background-color: #f78b1f;
   transition: all 0.3s ease-in-out;
 }
+
+/* ========================================================================= */
+
+.card {
+  width: 260px;
+  height: 350px;
+  border: 1px solid #333;
+  border-radius: 5mm;
+  margin: 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /* transform: scale(0.8); Reduzindo o tamanho em 20% */
+  flex-shrink: 0; /* Impede a deformação dos itens */
+}
+
+.div_img {
+  width: calc(100% - 4mm);
+  height: calc(60% - 4mm);
+  margin: 2mm;
+  border-radius: 3mm;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.div_img:hover {
+  transform: scale(1.05);
+}
+
+.chef-avatar {
+  position: relative;
+  width: 30%;
+  height: 25%;
+  border-radius: 45px;
+  margin-top: calc(-60px + 2mm);
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+.btn-receita {
+  padding: 2mm;
+  font-size: 16pt;
+  background-color: #f78b1f;
+  border-radius: 3mm;
+  color: white;
+  font-weight: 700;
+  margin-top: 3mm;
+}
+
+.lb-chef {
+  font-size: 11pt;
+  font-style: italic;
+}
+
+.lb-avaliacao {
+  font-size: 11pt;
+  font-weight: 700;
+  margin-top: 1mm;
+  margin-bottom: 3mm;
+}
+
+#rowCard {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: auto;
+  
+}
+::-webkit-scrollbar{
+  background-color: #ffffff;
+  width: 5px;
+  
+}
+::-webkit-scrollbar-thumb{
+  background-color: #968e8e5b;
+  border-radius: 5px;
+  
+}
+
