@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Receitas </title> <!-- Adicionar Receitas e Editar Receitas -->
+  <link rel="stylesheet" href="../src/css/testeComponentes.css">
+  <link rel="stylesheet" href="../src/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="topo">
+
+    </div>
+
+    <!--Esses são os codigos referentes aos botões das páginas de adicionar receita e editar receita-->
+    <!--O mesmo possui muitos bugs não corrigidos, que serão corrigidos em breve-->
+    <div class="row">
+      <div class="fileiras">
+        <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
+        <div class="fileira">
+          <div class="item">
+            <input type="radio" id="aperitivos" name="receita">
+            <label for="aperitivos"></label>
+            <p>Aperitivos</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="sopas" name="receita">
+            <label for="sopas"></label>
+            <p>Sopas</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="acompanhamentos" name="receita">
+            <label for="acompanhamentos"></label>
+            <p>Acompanhamentos</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="pratos" name="receita">
+            <label for="pratos"></label>
+            <p>Pratos principais</p>
+          </div>
+        </div>
+
+        <div class="fileira">
+
+          <div class="item">
+            <input type="radio" id="paes" name="receita">
+            <label for="paes"></label>
+            <p>Pães e produtos de panificação</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="chocolate" name="receita">
+            <label for="chocolate"></label>
+            <p>Salada e molhos para saladas.</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="molhos" name="receita">
+            <label for="molhos"></label>
+            <p>Molhos e condimentos</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="sobremesas" name="receita">
+            <label for="sobremesas"></label>
+            <p>Sobremesas</p>
+          </div>
+        </div>
+
+        <div class="fileira">
+          <div class="item">
+            <input type="radio" id="lanches" name="receita">
+            <label for="lanches"></label>
+            <p>Lanches</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="bebidas" name="receita">
+            <label for="bebidas"></label>
+            <p>Bebidas</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="cafe" name="receita">
+            <label for="cafe"></label>
+            <p>Café da manhã</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="almoco" name="receita">
+            <label for="almoco"></label>
+            <p>Almoço</p>
+          </div>
+          <div class="item">
+            <input type="radio" id="outros" name="receita">
+            <label for="outros"></label>
+            <p>Outros</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div id="bottom-bar"></div>
+  </div>
+
+  <script src="../src/js/topBar.js"></script>
+</body>
+
+</html>
