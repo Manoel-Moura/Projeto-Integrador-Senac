@@ -4,24 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar Receitas </title> <!-- Adicionar Receitas e Editar Receitas -->
+  <title>Adicionar Receitas</title>
   <link rel="stylesheet" href="../src/css/testeComponentes.css">
   <link rel="stylesheet" href="../src/css/style.css">
-
 </head>
 
 <body>
-
   <div class="container">
-    <div id="topo">
 
-    </div>
+    <!--div do topo da página-->
+    <div id="topo"> </div>
 
-    <!--Esses são os codigos referentes aos botões das páginas de adicionar receita e editar receita-->
-    <!--O mesmo possui muitos bugs não corrigidos, que serão corrigidos em breve-->
+    <!--Continuação do componente, nada terminado ainda...-->
     <div class="row">
-      <div class="fileiras">
-        <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
+      <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
+      <div class="colunas">
+
+        <!--Primeira fileira-->
         <div class="fileira">
           <div class="item">
             <input type="radio" id="aperitivos" name="receita">
@@ -45,8 +44,8 @@
           </div>
         </div>
 
+        <!--Segunda fileira-->
         <div class="fileira">
-
           <div class="item">
             <input type="radio" id="paes" name="receita">
             <label for="paes"></label>
@@ -69,6 +68,7 @@
           </div>
         </div>
 
+        <!--Terceira fileira-->
         <div class="fileira">
           <div class="item">
             <input type="radio" id="lanches" name="receita">
@@ -98,10 +98,11 @@
         </div>
       </div>
     </div>
-
-
   </div>
-  <div id="bottom-bar"></div>
+
+  <!--Rodapé-->
+  <div id="bottom-bar">
+
   </div>
 
   <script src="../src/js/topBar.js"></script>

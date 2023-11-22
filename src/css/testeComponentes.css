@@ -1,68 +1,91 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    font-size: 16pt;
-  }
-  
-  html,
-  body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #ffffff;
-  }
-  
-  #container {
-    width: 100%;
-    height: 100%;
-  }
-
-
-  /*Abaixo se encontra as divs referentes aos botões do componente que venho criando*/
-  /*Depois comentarei com mais clareza cada parte*/
-  .row {
-    padding-top: 5mm;
-    padding-bottom: 5mm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    width: 100%;
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
 }
-.descricao {
-  color: #01468a; 
-  display:flex;
-  align-self:flex-start;
-  align-content:flex-start
 
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
 }
-.fileiras {
+
+.container {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Aqui é defino a tela do meio, local onde inclui o componente e o alinhei no meio */
+.row {
   display: flex;
-  justify-content:center;
-  
+  padding: 5mm;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 }
 
+/* Texto que fica em cima do componente de tipos*/
+.descricao {
+  color: #01468a;
+  align-self: flex-start;
+  padding-bottom: 10mm;
+}
+
+/* Div relacionada a todas as 3 colunas */
+.colunas {
+  display: flex;
+}
+
+/* Div relacionada as fileiras em si dos tipos*/
 .fileira {
-    display: flex;
-    flex-direction: column;
-    padding: 6mm;
-    justify-content: space-around;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2mm;
 }
+
+/* Div relacionada aos quadrados onde o usuario vai selecionar */
 .item {
-    display: flex;
-    align-items: center;
+  box-sizing: border-box;
+  width: 55%;
+  display: flex;
+  align-items: center;
 }
+
+/* Div relacionada aos quadrados onde o usuario vai selecionar;
+   Fazer sumir o icone de bolinha de escolher (check)*                */
 .item input[type="radio"] {
-    display: none;
+  display: none;
 }
+
+/* Div relacionada a descrição ao lado dos quadrados, ou seja, o tipo de refeição 
+   que o usuario vai escolher                                                       */
 .item label {
-    background-color: gray;
-    padding: 10px;
-    border: none;
-    margin-right: 10px;
+  background-color: gray;
+  padding: 10px;
+  border: none;
+  margin-right: 10px;
 }
+
+/* Div para mudar a cor do quadrado quando selecionado */
 .item input[type="radio"]:checked + label {
-    background-color: rgb(0, 102, 255);
+  background-color: rgb(0, 102, 255);
+}
+
+
+/* Relacionado a tentativa de responsividade para telas menores
+   a partir do que vi na aula anterior no dia 21/11/2023       */
+@media (max-width: 768px) {
+  .row {
+    padding: 2mm; 
+  }
+
+  .fileira {
+    flex-direction: column; 
+    align-items: flex-start; 
+
+  }
 }
