@@ -1,22 +1,20 @@
 // =============================================================================
 
-function Toggle(){
-  let div_btns = document.getElementById("menubutton")
-  let bnt_social = document.getElementById("contatos")
-  let img_barra_pesquisa = document.getElementById("img-barra-pesquisa")
+function Toggle() {
+  let div_btns = document.getElementById("menubutton");
+  let bnt_social = document.getElementById("contatos");
+  let img_barra_pesquisa = document.getElementById("containerResponsivo");
 
-  if(div_btns.style.display === "none"){
-      div_btns.style.display = "flex"
-      bnt_social.style.display = "flex"
-      img_barra_pesquisa.style.marginTop = "75mm";
-
-  }else{
-      div_btns.style.display = "none"
-      bnt_social.style.display = "none"
-      img_barra_pesquisa.style.marginTop = "0mm";
+  if (div_btns.style.display === "none") {
+    div_btns.style.display = "flex";
+    bnt_social.style.display = "flex";
+    img_barra_pesquisa.style.marginTop = "75mm";
+  } else {
+    div_btns.style.display = "none";
+    bnt_social.style.display = "none";
+    img_barra_pesquisa.style.marginTop = "0mm";
   }
 }
-
 
 // Obtendo a referência do elemento com o ID "topo" no HTML
 let container = document.getElementById("topo");
@@ -45,9 +43,9 @@ imgLogo.classList.add("logo");
 aLogo.appendChild(imgLogo);
 divLogo.appendChild(aLogo);
 
-let buttonMenu = document.createElement('button');
-buttonMenu.setAttribute('id', 'bt-menu-response');
-buttonMenu.addEventListener('click', () => {
+let buttonMenu = document.createElement("button");
+buttonMenu.setAttribute("id", "bt-menu-response");
+buttonMenu.addEventListener("click", () => {
   console.log("opa");
   Toggle();
 });
@@ -137,9 +135,6 @@ fragment.appendChild(topBar);
 // Adicionando o fragmento de documento à div com o ID "topo" no HTML
 container.appendChild(fragment);
 
-
-fragment_menu_mobile.append(menu)
-menu_mobile.append(fragment_menu_mobile)
-
-
-
+fragment_menu_mobile.append(menu);
+menu_mobile.append(fragment_menu_mobile);
+s
