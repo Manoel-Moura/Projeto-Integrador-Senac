@@ -3,17 +3,18 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
 }
 
 html,
 body {
   width: 100%;
   min-height: 100vh;
-
- 
 }
 
-.contatos {
+#contatos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -45,7 +46,7 @@ body {
   width: 4mm;
 }
 
-.menubutton {
+#menubutton {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -61,7 +62,10 @@ body {
   background-color: #ffffff;
   align-items: center;
   border-bottom: 4px solid #f78b1f;
+  -webkit-box-shadow: 0px 8px 15px -11px #000000;
+  box-shadow: 0px 8px 15px -11px #000000;
 }
+
 .logo {
   width: 100px;
   height: 65px;
@@ -76,8 +80,7 @@ body {
 .divLogo {
   width: auto;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .btn-social {
@@ -95,6 +98,7 @@ body {
   align-items: center;
   margin-left: 10px;
 }
+
 .btn-social:hover {
   background-color: #01468a;
   transition: all 0.3s ease-in-out;
@@ -130,6 +134,70 @@ body {
 a {
   text-decoration: none;
 }
+
+#bt-menu-response {
+  width: 50px;
+  height: 50px;
+  background: url(../media/icons/icon-menu.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  margin-right: 5mm;
+  display: none;
+}
+
+/* ================================================================================ */
+
+@media only screen and (max-width: 600px) {
+  .divLogo {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  .topo {
+    justify-content: space-between;
+    height: 90px;
+    border-bottom: none;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #bt-menu-response {
+    display: flex;
+  }
+
+  #menubutton {
+    background-color: #ffffff;
+    width: 100%;
+    position: absolute;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    display: none;
+  }
+
+  .botao:hover {
+    transform: scale(1);
+    background-color: #ffffff;
+    color: #01468a;
+  }
+
+  #contatos {
+    display: none;
+    margin-top: 250px;
+  }
+
+  .btn-social {
+    background-color: #004a8d;
+    width: 35.08px;
+    height: 35.08px;
+  }
+}
+
 /* ==================================================================================== */
 
 .rodape {
@@ -222,20 +290,22 @@ a {
 /* ========================================================================= */
 
 .card {
-  width: 460px;
-  height: 550px;
+  width: 210px;
+  height: 300px;
   /* border: 1px solid #333; */
   border: none;
   border-radius: 5mm;
-  margin: 2mm;
+  margin: 3mm;
+  margin-left: 4mm;
+  margin-right: 4mm;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   /* transform: scale(0.8); Reduzindo o tamanho em 20% */
   flex-shrink: 0; /* Impede a deformação dos itens */
-  -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65); 
-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
 }
 
 .div_img {
@@ -246,8 +316,8 @@ box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65); 
-  box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
   border: none;
 }
 .div_img:hover {
@@ -256,8 +326,8 @@ box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
 
 .chef-avatar {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 95px;
   border-radius: 45px;
   margin-top: calc(-60px + 2mm);
   background-size: cover;
@@ -266,21 +336,32 @@ box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
 }
 
 .btn-receita {
-  padding: 2mm;
-  font-size: 16pt;
+  padding: 10px; /* Alterei para px para garantir uma unidade fixa */
+  font-size: 14pt;
+  max-width: 75%;
   background-color: #f78b1f;
   border-radius: 3mm;
   color: white;
   font-weight: 700;
-  margin-top: 3mm;
+  margin-top: 5px;
   border: none;
-  -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65); 
-  box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Adicionado para cortar conteúdo que ultrapassa o tamanho máximo */
+  text-overflow: ellipsis; /* Adicionado para exibir reticências (...) quando o texto ultrapassa o tamanho máximo */
+  white-space: nowrap; /* Adicionado para garantir que o texto não quebre em várias linhas */
 }
 
 .lb-chef {
   font-size: 11pt;
+  max-width: 80%;
   font-style: italic;
+  margin-top: 1mm;
+  overflow: hidden; /* Adicionado para cortar conteúdo que ultrapassa o tamanho máximo */
+  text-overflow: ellipsis; /* Adicionado para exibir reticências (...) quando o texto ultrapassa o tamanho máximo */
+  white-space: nowrap; /* Adicionado para garantir que o texto não quebre em várias linhas */
 }
 
 .lb-avaliacao {
@@ -297,16 +378,12 @@ box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
   flex-direction: row;
   align-items: center;
   overflow: auto;
-  
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   background-color: #ffffff;
   width: 5px;
-  
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #968e8e5b;
   border-radius: 5px;
-  
 }
-

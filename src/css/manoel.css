@@ -20,7 +20,7 @@ body {
 
 #container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .row {
@@ -65,8 +65,6 @@ h1 {
   color: aliceblue;
 }
 
-
-
 .caixaTexto {
   border-radius: 8px;
   padding-left: 5mm;
@@ -85,8 +83,6 @@ h1 {
   color: #01468a;
   font-size: 12pt;
 }
-
-
 
 #logoPrincipal {
   height: 17mm;
@@ -132,6 +128,3 @@ h1 {
 #tex2 {
   margin-top: 8mm;
 }
-
-
-

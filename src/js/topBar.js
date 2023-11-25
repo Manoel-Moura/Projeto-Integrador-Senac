@@ -1,7 +1,21 @@
+// =============================================================================
 
+function Toggle(){
+  let div_btns = document.getElementById("menubutton")
+  let bnt_social = document.getElementById("contatos")
+  let img_barra_pesquisa = document.getElementById("img-barra-pesquisa")
 
-//======================================================================================
+  if(div_btns.style.display === "none"){
+      div_btns.style.display = "flex"
+      bnt_social.style.display = "flex"
+      img_barra_pesquisa.style.marginTop = "75mm";
 
+  }else{
+      div_btns.style.display = "none"
+      bnt_social.style.display = "none"
+      img_barra_pesquisa.style.marginTop = "0mm";
+  }
+}
 
 
 // Obtendo a referência do elemento com o ID "topo" no HTML
@@ -12,28 +26,38 @@ let fragment = document.createDocumentFragment();
 
 // Criando o elemento <div> para a TopBar
 let topBar = document.createElement("div");
-topBar.setAttribute("class", "topo");
+topBar.classList.add("topo");
 
 // Criando a div para a logo
 let divLogo = document.createElement("div");
-divLogo.setAttribute("class", "divLogo");
+divLogo.classList.add("divLogo");
 
 //============================================================
 // Criando a imagem do topo com o Link para a página do Senac
-let a_logo = document.createElement("a");
-a_logo.setAttribute("class", "logo");
-a_logo.setAttribute("href", "https://www.senac.br/");
+let aLogo = document.createElement("a");
+aLogo.classList.add("logo");
+aLogo.setAttribute("href", "https://www.senac.br/");
 
-let img_logo = document.createElement("img");
-img_logo.setAttribute("src", "../src/media/images/senac_logo.svg.png");
-img_logo.setAttribute("class", "logo");
+let imgLogo = document.createElement("img");
+imgLogo.setAttribute("src", "../src/media/images/Senac_logo.jpg");
+imgLogo.classList.add("logo");
 
-a_logo.append(img_logo);
+aLogo.appendChild(imgLogo);
+divLogo.appendChild(aLogo);
+
+let buttonMenu = document.createElement('button');
+buttonMenu.setAttribute('id', 'bt-menu-response');
+buttonMenu.addEventListener('click', () => {
+  console.log("opa");
+  Toggle();
+});
+
+divLogo.appendChild(buttonMenu);
 
 //================================================================================================
 // Criando uma div com todos os botões do Menu já configurados
-let botoes_menu = ["O Senac", "Início", "Chefes", "Sobre", "Login"];
-const paginas_menu = [
+let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre", "Login"];
+let paginasMenu = [
   "https://www.senac.br/",
   "../pages/camila.html",
   "Chefes.html",
@@ -41,37 +65,34 @@ const paginas_menu = [
   "../pages/manoel.html",
 ];
 
-let tam = botoes_menu.length;
+let divBotoes = document.createElement("div");
+divBotoes.setAttribute("id", "menubutton");
 
-let div_botoes = document.createElement("div"); // Div para receber os botões
-
-div_botoes.setAttribute("class", "menubutton");
-
-for (let i = 0; i < tam; i++) {
-  let pagina = `${paginas_menu[i]}`;
+for (let i = 0; i < botoesMenu.length; i++) {
+  let pagina = paginasMenu[i];
 
   let botao = document.createElement("a");
   botao.setAttribute("href", pagina);
-  // botao.setAttribute("target", "_blank");
 
   let button = document.createElement("button");
-  button.append(botoes_menu[i]);
+  button.textContent = botoesMenu[i];
   button.setAttribute("class", "botao");
 
-  botao.append(button);
-  div_botoes.append(botao);
+  botao.appendChild(button);
+  divBotoes.appendChild(botao);
 }
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
-let img_contato = [
+let imgContato = [
   "../src/media/icons/facebook-.svg",
   "../src/media/icons/instagram.svg",
   "../src/media/icons/twitter-alt.svg",
   "../src/media/icons/linkedin.svg",
   "../src/media/icons/youtube.svg",
 ];
-let class_css = ["face", "instagram", "twitter", "linkedin", "youtube"];
-const link_contato = [
+
+let classCss = ["face", "instagram", "twitter", "linkedin", "youtube"];
+let linkContato = [
   "https://www.facebook.com/SenacBrasil",
   "https://www.instagram.com/senacbrasil/",
   "https://twitter.com/SenacBrasil",
@@ -79,266 +100,46 @@ const link_contato = [
   "https://www.youtube.com/user/SenacNacional",
 ];
 
-// Criando a div para os contatos
-let contatos = document.createElement("div");
-contatos.setAttribute("class", "contatos");
+const contatos = document.createElement("div");
+contatos.setAttribute("id", "contatos");
 
-let tam_contato = img_contato.length;
+for (let i = 0; i < imgContato.length; i++) {
+  const classe = classCss[i];
 
-for (let i = 0; i < tam_contato; i++) {
-  let cla = `${class_css[i]}`;
-
-  let link_social = `${link_contato[i]}`;
-  let img_rede = `${img_contato[i]}`;
+  let linkSocial = linkContato[i];
+  let imgRede = imgContato[i];
 
   let rede = document.createElement("a");
-  rede.setAttribute("href", link_social);
+  rede.setAttribute("href", linkSocial);
   rede.setAttribute("target", "_blank");
 
-  let btn_rede = document.createElement("button");
-  btn_rede.setAttribute("class", "btn-social");
+  let btnRede = document.createElement("button");
+  btnRede.setAttribute("class", "btn-social");
 
-  let img_social = document.createElement("img");
-  img_social.setAttribute("class", cla);
-  img_social.setAttribute("src", img_rede);
+  let imgSocial = document.createElement("img");
+  imgSocial.setAttribute("class", classe);
+  imgSocial.setAttribute("src", imgRede);
 
-  btn_rede.append(img_social);
-  rede.append(btn_rede);
-  contatos.append(rede);
+  btnRede.appendChild(imgSocial);
+  rede.appendChild(btnRede);
+  contatos.appendChild(rede);
 }
 
 // Adicionando a logo à TopBar
-topBar.append(a_logo);
+topBar.appendChild(divLogo);
 // Adicionando os botões do menu à TopBar
-topBar.append(div_botoes);
+topBar.appendChild(divBotoes);
 // Adicionando os contatos à TopBar
-topBar.append(contatos);
+topBar.appendChild(contatos);
 
 // Adicionando a TopBar ao fragmento de documento
-fragment.append(topBar);
+fragment.appendChild(topBar);
 // Adicionando o fragmento de documento à div com o ID "topo" no HTML
-container.append(fragment);
-
-//========================================================================================================
-// Configurando o Rodapé da página
-
-// Obtendo a referência do elemento com o ID "bottom-bar" no HTML
-let bottom_bar = document.getElementById("bottom-bar");
-
-// Criando um fragmento de documento para otimizar a manipulação do HTML
-let barra_bottom = document.createDocumentFragment();
-
-// Criando um elemento <div> para centralizar o rodapé
-let div_rodape_centralizado = document.createElement("div");
-div_rodape_centralizado.setAttribute("class", "rodape-centralizado");
-
-// Criando um elemento <div> para representar o rodapé
-let rodape_div = document.createElement("div");
-rodape_div.setAttribute("class", "rodape"); // Adicionando a classe 'rodape' ao elemento <div>
-
-// Criando um elemento <div> para conter a imagem do logo
-let div_img = document.createElement("div");
-div_img.setAttribute("class", "div-img"); // Adicionando a classe 'div-img' ao elemento <div>
-
-// Criando um elemento <img> para a imagem do logo branco
-let logo_branca = document.createElement("img");
-logo_branca.setAttribute("class", "logo-branca"); // Adicionando a classe 'logo-branca' à imagem
-logo_branca.setAttribute("src", "../src/media/images/senac_logo_branco.png"); // Configurando o atributo 'src' com o caminho da imagem
-
-// Adicionando a imagem do logo à div de imagem
-div_img.append(logo_branca);
-
-// Adicionando a div de imagem e a div do rodapé ao fragmento de documento
-div_rodape_centralizado.append(div_img);
-
-// Criando um elemento <label> para receber o texto no meio do rodapé
-let lab_rodape = document.createElement("label");
-lab_rodape.textContent = "© Todos os Direitos Reservados - 2017."; // Adicionando o texto a label
-lab_rodape.setAttribute("class", "lab-rodape"); // Adicionando a classe 'lab-rodape' ao elemento <rodape>
-
-div_rodape_centralizado.append(lab_rodape);
-
-//================================================================================================
-// Criando uma div com todos os contatos do Senac configurados
-let img_contato_rodape = [
-  "../src/media/icons/facebook-blue.svg",
-  "../src/media/icons/instagram-blue.svg",
-  "../src/media/icons/twitter-alt-blue.svg",
-  "../src/media/icons/linkedin-blue.svg",
-  "../src/media/icons/youtube-blue.svg",
-];
-let class_css_rodape = ["face", "instagram", "twitter", "linkedin", "youtube"];
-const link_contato_rodape = [
-  "https://www.facebook.com/SenacBrasil",
-  "https://www.instagram.com/senacbrasil/",
-  "https://twitter.com/SenacBrasil",
-  "https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F2655383",
-  "https://www.youtube.com/user/SenacNacional",
-];
-
-// Criando a div para os contatos do rodapé
-let contatos_rodape = document.createElement("div");
-contatos_rodape.setAttribute("class", "contatos");
-
-// Obtendo o tamanho do array de imagens de contato do rodapé
-let tam_contato_rodape = img_contato_rodape.length;
-
-// Iterando sobre os contatos do rodapé
-for (let i = 0; i < tam_contato_rodape; i++) {
-  // Obtendo a classe CSS correspondente ao contato do rodapé atual
-  let cla = `${class_css_rodape[i]}`;
-
-  // Obtendo o link e a imagem do contato do rodapé atual
-  let link_social = `${link_contato_rodape[i]}`;
-  let img_rede = `${img_contato_rodape[i]}`;
-
-  // Criando um elemento <a> para o link social do rodapé
-  let rede = document.createElement(`a`);
-  rede.setAttribute("href", link_social);
-  rede.setAttribute("target", "_blank");
-
-  // Criando um botão dentro do link social do rodapé
-  let btn_rede = document.createElement(`button`);
-  btn_rede.setAttribute("class", "btn-social-rodape");
-
-  // Criando a imagem social do rodapé
-  let img_social = document.createElement(`img`);
-  img_social.setAttribute("class", cla);
-  img_social.setAttribute("src", img_rede);
-
-  // Adicionando a imagem ao botão do rodapé
-  btn_rede.append(img_social);
-
-  // Adicionando o botão ao link do rodapé
-  rede.append(btn_rede);
-
-  // Adicionando o link à div de contatos do rodapé
-  contatos_rodape.append(rede);
-
-  // Adicionando a div de contatos do rodapé à div centralizada do rodapé
-  div_rodape_centralizado.append(contatos_rodape);
-}
-
-// Adicionando a div centralizada do rodapé à div do rodapé
-rodape_div.append(div_rodape_centralizado);
-
-// Adicionando a div do rodapé ao fragmento de documento
-barra_bottom.append(rodape_div);
-
-// Adicionando o fragmento de documento ao elemento com ID "bottom-bar" no HTML
-bottom_bar.append(barra_bottom);
-//============================================================================================
-for(let i=0; i < 20; i++){
-
-  let add_card = document.getElementById("rowCard");
+container.appendChild(fragment);
 
 
-let fragment_card = document.createDocumentFragment();
+fragment_menu_mobile.append(menu)
+menu_mobile.append(fragment_menu_mobile)
 
-let card = document.createElement('div');
-
-card.setAttribute('class','card');
-
-let div_img2 = document.createElement('div');
-
-div_img2.setAttribute('class','div_img');
-div_img2.style.backgroundImage = "url('../src/media/images/fejoada.jpg')"
-
-
-
-card.append(div_img2);
-
-let div_chef = document.createElement('div')
-div_chef.setAttribute('class', 'chef-avatar')
-div_chef.style.backgroundImage = "url('../src/media/images/chef.jpg')"
-
-card.append(div_chef);
-
-let bnt_receita = document.createElement('button')
-bnt_receita.setAttribute('class','btn-receita')
-bnt_receita.textContent = "Nome da Receita"
-
-card.append(bnt_receita)
-
-let lb_chef = document.createElement('label')
-lb_chef.setAttribute('class','lb-chef')
-lb_chef.textContent = "Manoel Moura"
-
-card.append(lb_chef)
-
-let lb_avaliacao = document.createElement('label')
-lb_avaliacao.setAttribute('class', 'lb-avaliacao')
-lb_avaliacao.textContent = '❤ 1.511'
-
-card.append(lb_avaliacao)
-
-
-fragment_card .append(card);
-
-add_card.append(card)
-}
-//============================================================================================
-
-let listaCategorias = document.getElementById("lista-categorias");
-
-let fragmentCategorias = document.createDocumentFragment();
-
-nomeCategoria = "Teste"
-
-function novaCategoria(nomeCategoria) {
-
-  let categoria = document.createElement('button')
-  categoria.setAttribute('id','categoria')
-
-  categoria.append(nomeCategoria)
-  
-  fragmentCategorias.append(categoria)
-
-  listaCategorias.append(fragmentCategorias)
-  
-}
-
-for (let i = 0; i < 20;i++){
-  novaCategoria(nomeCategoria);
-}
-
-// const slider = document.querySelector('#lista-categorias')
-// const bt_categoria = document.querySelector('#categoria')
-
-// let isPressed = false;
-
-// let cursorX;
-
-// slider.addEventListener("mousedown", (e) => {
-//     isPressed = true;
-//     cursorX = e.offsetX - bt_categoria.offsetLeft;
-//     slider.style.cursor = "grabbing";
-//   });
-  
-//   slider.addEventListener("mouseup", () => {
-//     slider.style.cursor = "grab";
-//   });
-  
-//   window.addEventListener("mouseup", () => {
-//     isPressed = false;
-//   });
-  
-//   slider.addEventListener("mousemove", (e) => {
-//     if (!isPressed) return;
-//     e.preventDefault();
-//     bt_categoria.style.left = `${e.offsetX - cursorX}px`;
-//     boundSlides();
-//   });
-
-//   function boundSlides() {
-//     const containerRect = slider.getBoundingClientRect();
-//     const cardsRect = bt_categoria.getBoundingClientRect();
-//   console.log(cardsRect)
-//     if (parseInt(bt_categoria.style.left) > 0) {
-//       bt_categoria.style.left = 0;
-//     } else if (cardsRect.right < containerRect.right) {
-//       bt_categoria.style.left = `-${cardsRect.width - containerRect.width}px`;
-//     }
-//   }
 
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Cliente</title>
+    <link rel="stylesheet" href="../src/css/cadastroCliente.css">
+    <link rel="stylesheet" href="../src/css/style.css">
+</head>
+
+<body>
+    <div id="topo"> </div>
+
+    <div id="colum">
+        <div id="cardCadastro">
+
+            <h1>Crie seu cadastro</h1>
+
+            <label class="label" for="username"> Nome <p>*</p> </label>
+            <input class="caixaTexto" id="username" type="text">
+
+            <label class="label" for="email"> Email <p>*</p> </label>
+            <input class="caixaTexto" type="text">
+
+            <label class="label" for="password"> Senha <p>*</p> </label>
+            <input class="caixaTexto" id="password" type="password">
+
+            <label class="label" for="password"> Confirme a senha <p>*</p> </label>
+            <input class="caixaTexto" id="password" type="password">
+
+            <label class="label" for="password"> CPF <p>*</p> </label>
+            <input class="caixaTexto" type="text" name="cpf" \ pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" \
+                title="Digite um CPF no formato: xxx.xxx.xxx-xx">
+
+            <label class="label" for="password"> Data <p>*</p> </label>
+            <input id="data" type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
+                max="2030-12-31">
+
+            <button id="bt-cadastro"> Cadraste-se</button>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="bottom-bar"></div>
+</body>
+<script src="../src/js/topBar.js"></script>
+<script src="../src/js/rodape.js"></script>
+
+</html>

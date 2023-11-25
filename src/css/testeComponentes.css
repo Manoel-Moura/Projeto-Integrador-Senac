@@ -5,7 +5,8 @@
   font-size: 16pt;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   min-height: 100vh;
   background-color: #ffffff;
@@ -22,7 +23,7 @@ html, body {
   padding: 5mm;
   width: 100%;
   min-height: 100vh;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
@@ -37,8 +38,8 @@ html, body {
 
 /* Div relacionada as colunas */
 .colunas {
-padding-left: 15%;
-padding-right: 15%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 /* Div relacionada as fileiras em si*/
@@ -77,4 +78,3 @@ padding-right: 15%;
 .item input[type="radio"]:checked + label {
   background-color: rgb(0, 102, 255);
 }
-
