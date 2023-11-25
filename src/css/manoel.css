@@ -80,8 +80,8 @@ h1 {
   display: flex;
   align-self: flex-start;
   margin-left: 17mm;
-  margin-bottom: 1mm;
-  margin-top: 1mm;
+  margin-bottom: 2mm;
+  margin-top: 3mm;
   color: #01468a;
   font-size: 12pt;
 }
@@ -93,7 +93,7 @@ h1 {
   width: 30mm;
   display: flex;
   margin-bottom: 5mm;
-  margin-top: 5mm;
+  margin-top: 8mm;
 }
 
 .tex {

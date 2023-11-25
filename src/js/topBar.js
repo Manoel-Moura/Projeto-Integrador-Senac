@@ -64,11 +64,11 @@ for (let i = 0; i < tam; i++) {
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
 let img_contato = [
-  "../src/media/images/facebook.png",
-  "../src/media/images/instagram.png",
-  "../src/media/images/twitter.png",
-  "../src/media/images/linkedin.svg",
-  "../src/media/images/youtube.png",
+  "../src/media/icons/facebook-.svg",
+  "../src/media/icons/instagram.svg",
+  "../src/media/icons/twitter-alt.svg",
+  "../src/media/icons/linkedin.svg",
+  "../src/media/icons/youtube.svg",
 ];
 let class_css = ["face", "instagram", "twitter", "linkedin", "youtube"];
 const link_contato = [
@@ -161,13 +161,13 @@ div_rodape_centralizado.append(lab_rodape);
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
 let img_contato_rodape = [
-  "../src/media/images/facebook.png",
-  "../src/media/images/instagram.png",
-  "../src/media/images/twitter.png",
-  "../src/media/images/linkedin.svg",
-  "../src/media/images/youtube.png",
+  "../src/media/icons/facebook-blue.svg",
+  "../src/media/icons/instagram-blue.svg",
+  "../src/media/icons/twitter-alt-blue.svg",
+  "../src/media/icons/linkedin-blue.svg",
+  "../src/media/icons/youtube-blue.svg",
 ];
-let class_css_rodape = ["face-rodape", "instagram-rodape", "twitter-rodape", "linkedin-rodape", "youtube-rodape"];
+let class_css_rodape = ["face", "instagram", "twitter", "linkedin", "youtube"];
 const link_contato_rodape = [
   "https://www.facebook.com/SenacBrasil",
   "https://www.instagram.com/senacbrasil/",
@@ -277,4 +277,68 @@ fragment_card .append(card);
 
 add_card.append(card)
 }
+//============================================================================================
+
+let listaCategorias = document.getElementById("lista-categorias");
+
+let fragmentCategorias = document.createDocumentFragment();
+
+nomeCategoria = "Teste"
+
+function novaCategoria(nomeCategoria) {
+
+  let categoria = document.createElement('button')
+  categoria.setAttribute('id','categoria')
+
+  categoria.append(nomeCategoria)
+  
+  fragmentCategorias.append(categoria)
+
+  listaCategorias.append(fragmentCategorias)
+  
+}
+
+for (let i = 0; i < 20;i++){
+  novaCategoria(nomeCategoria);
+}
+
+// const slider = document.querySelector('#lista-categorias')
+// const bt_categoria = document.querySelector('#categoria')
+
+// let isPressed = false;
+
+// let cursorX;
+
+// slider.addEventListener("mousedown", (e) => {
+//     isPressed = true;
+//     cursorX = e.offsetX - bt_categoria.offsetLeft;
+//     slider.style.cursor = "grabbing";
+//   });
+  
+//   slider.addEventListener("mouseup", () => {
+//     slider.style.cursor = "grab";
+//   });
+  
+//   window.addEventListener("mouseup", () => {
+//     isPressed = false;
+//   });
+  
+//   slider.addEventListener("mousemove", (e) => {
+//     if (!isPressed) return;
+//     e.preventDefault();
+//     bt_categoria.style.left = `${e.offsetX - cursorX}px`;
+//     boundSlides();
+//   });
+
+//   function boundSlides() {
+//     const containerRect = slider.getBoundingClientRect();
+//     const cardsRect = bt_categoria.getBoundingClientRect();
+//   console.log(cardsRect)
+//     if (parseInt(bt_categoria.style.left) > 0) {
+//       bt_categoria.style.left = 0;
+//     } else if (cardsRect.right < containerRect.right) {
+//       bt_categoria.style.left = `-${cardsRect.width - containerRect.width}px`;
+//     }
+//   }
+
 

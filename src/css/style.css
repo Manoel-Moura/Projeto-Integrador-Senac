@@ -21,33 +21,28 @@ body {
 }
 
 .face {
-  height: 5mm;
-  width: 3.5mm;
-  filter: invert(1);
+  height: 7mm;
+  width: 7mm;
 }
 
 .youtube {
   height: 4.5mm;
   width: 4.5mm;
-  filter: invert(1);
 }
 
 .instagram {
   height: 4.5mm;
   width: 4.5mm;
-  filter: invert(1);
 }
 
 .twitter {
   height: 3.5mm;
   width: 3.5mm;
-  filter: invert(1);
 }
 
 .linkedin {
   height: 4mm;
   width: 4mm;
-  filter: invert(1);
 }
 
 .menubutton {
@@ -179,7 +174,7 @@ a {
   width: 100px;
 }
 
-.face-rodape {
+/* .face-rodape {
   height: 5mm;
   width: 3.5mm;
 }
@@ -202,7 +197,7 @@ a {
 .linkedin-rodape {
   height: 4mm;
   width: 4mm;
-}
+} */
 
 .btn-social-rodape {
   flex-wrap: wrap;

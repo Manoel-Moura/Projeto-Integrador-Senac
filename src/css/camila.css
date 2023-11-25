@@ -7,8 +7,10 @@
 
 #container {
   width: 100%;
-  position: relative; /* A posição do container deve ser relativa */
-  min-height: 100vh; /* Especificar a altura do container em vh*/
+  position: relative;
+  /* A posição do container deve ser relativa */
+  min-height: 100vh;
+  /* Especificar a altura do container em vh*/
 }
 
 #img-barra-pesquisa {
@@ -24,8 +26,8 @@
 }
 
 #barra-pesquisa {
-  border-top-left-radius: 10mm;
-  border-bottom-left-radius: 10mm;
+  border-top-right-radius: 10mm;
+  border-bottom-right-radius: 10mm;
   padding-left: 5mm;
   padding-right: 5mm;
   height: 15mm;
@@ -35,8 +37,8 @@
   border-color: transparent;
   color: white;
   font-weight: 700;
-  -webkit-box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); 
-box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65);
+  /* -webkit-box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); 
+box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 }
 
 #barra-busca {
@@ -47,23 +49,30 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65);
   justify-content: center;
   align-items: center;
   border-color: transparent;
-  
 }
 
 #bnt-pesquisa {
   height: 16mm;
   width: 6%;
-  border-top-right-radius: 10mm;
-  border-bottom-right-radius: 10mm;
+  border-bottom-left-radius: 10mm;
+  border-top-left-radius: 10mm;
   border-color: transparent;
   background-color: rgba(255, 255, 255, 0.527);
-  background-image: url(../media/images/lupa-png.png);
-  background-size: 70px;
+  background-image: url(../media/icons/lupa.svg);
+  background-size: 25px;
   background-position: center;
   background-repeat: no-repeat;
   border-left: none;
-  -webkit-box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65); 
-box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65);
+  /* -webkit-box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65); 
+box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65); */
+}
+
+/*  */
+#barraBusca {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #rowSobre {
@@ -85,14 +94,14 @@ box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65);
   flex-direction: row;
   display: flex;
   justify-content: space-between;
-  -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65); 
-  box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.65);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.65);
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.65);
 }
 
 #logoText {
   width: 60%;
   height: 100%;
-display: flex;
+  display: flex;
   border-radius: 25px;
   flex-direction: column;
   background-color: #01468a;
@@ -114,7 +123,33 @@ display: flex;
   margin-bottom: 10mm;
 }
 
-#mulherSobre{
+#mulherSobre {
   width: 40%;
   border-bottom-right-radius: 25px;
+}
+
+#lista-categorias{
+  width: 100%;
+  height: 150px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: scroll;
+}
+
+#categoria{
+  padding: 2mm;
+  padding-left: 4mm;
+  padding-right: 4mm;
+  margin-left: 3mm;
+  margin-right: 3mm;
+  color: #555555;
+  background-color: white;
+  font-size: 14pt;
+  border-radius: 3mm;
+  border: none;
+   -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.65);
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.65);
 }
