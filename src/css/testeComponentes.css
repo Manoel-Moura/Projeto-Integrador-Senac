@@ -17,7 +17,7 @@ body {
   min-height: 100%;
 }
 
-/* Aqui é defino a tela do meio, local onde inclui o componente e o alinhei no meio */
+/* Aqui é defino a tela do meio e onde alinhei os componentes no meio */
 .row {
   display: flex;
   padding: 5mm;
@@ -26,8 +26,81 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #faf6f6;
 }
+
+/* Divs abaixo relacionadas ao formulário inicial onde terá os dados básicos da receita */
+
+/* Titulo */
+.titulo_editar_receita {
+  color: #01468a;
+  margin-bottom: 10mm;
+}
+
+/* Referente ao fundo do formulário inicial */
+.form_inicial {
+  display: flex;
+  flex-direction: column;
+  width: 203mm;
+  height: 167mm;
+  padding: 20px;
+  border-radius: 15px;
+  flex-shrink: 0;
+  border-top: 3mm;
+  background: #fff;
+  box-shadow: 0px 0px 17px 3px rgba(0, 0, 0, 0.10);
+  margin-bottom: 20px;
+}
+
+/* As duas itemForm a baixo são referentes a forma que eu tentei posicionar as caixas e nomes */
+.itemForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.itemForm label {
+  margin-right: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Referente a caixa de porções. O estilo delas */
+.itemForm input[type="number"] {
+  flex-grow: 0;
+  flex-basis: 30px;
+  padding: 16px;
+  border-radius: 10px;
+  margin-right: 70mm;
+  border: 1px solid #676767;
+  background-color: #676767;
+  background: rgba(242, 242, 242, 0.76);
+  font-size: 16px;
+}
+
+/* Referente ao restante das caixas. O estilo delas. */
+.itemForm input[type="text"],
+.itemForm textarea {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #676767;
+  background-color: #676767;
+  background: rgba(242, 242, 242, 0.76);
+  font-size: 16px;
+}
+
+/* Referente a caixa de descrição, onde tentei limitar uma funcionalidade que tentei implementar de resize,
+   onde o usuário poderia aumentar e diminuir o tamanho da caixa. Ainda não está pronto */
+.itemForm textarea {
+  resize: vertical;
+  max-height: 184px;
+}
+
+
+
+/* Divs abaixo referentes a seleção de categorias da receita, ou seja, o tipo*/
 
 /* Texto que fica em cima do componente de tipos*/
 .descricao {
@@ -75,6 +148,79 @@ body {
 }
 
 /* Div para mudar a cor do quadrado quando selecionado */
-.item input[type="radio"]:checked + label {
+.item input[type="radio"]:checked+label {
   background-color: rgb(0, 102, 255);
+}
+
+
+
+/* Divs abaixo relacionado aos campos de colocar os ingredientes */
+
+/* Alerta vermelho!!! */
+/* Gambiarras avista nos título! */
+.titulo_ingredientes {
+  color: #01468a;
+  margin-top: 10mm;
+  margin-right: 210mm;
+  margin-bottom: 10mm;
+}
+
+/* Relacionado ao campo onde o usuário vai escrever os ingredientes */
+#ingredientesInput {
+  background-color: #c0c0c0;
+  border-radius: 3mm;
+  width: 762px;
+  height: 200px;
+  overflow: auto;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+
+/* Divs abaixo relacionado aos campos de colocar o modo de preparo */
+
+/* A mesma gambiarra lá de cima no título */
+.titulo_modo_preparo {
+  color: #01468a;
+  margin-top: 10mm;
+  margin-right: 198mm;
+  margin-bottom: 10mm;
+}
+
+/* Relacionado ao campo onde o usuário vai escrever o modo de preparo */
+#modoPreparoInput {
+  background-color: #c0c0c0;
+  border-radius: 3mm;
+  width: 762px;
+  height: 200px;
+  overflow: auto;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+
+/* Divs abaixo relacionado aos dois botões de salvar e cancelar */
+.botoes_salvar_cancelar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10mm;
+  width: 200px;
+
+}
+
+/* Botão salvar */
+#salvar {
+  background-color: #01468a;
+  color: white;
+}
+
+/* Botão cancelar */
+#cancelar {
+  background-color: white;
+  color: #01468a;
+  border: 2px solid #01468a;
 }

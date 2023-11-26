@@ -12,11 +12,46 @@
 <body>
   <div class="container">
 
-    <!--div do topo da página-->
+    <!--Div do topo da página-->
     <div id="topo"> </div>
     <div id="containerResponsivo">
-      <!--Componente referente a página de adicionar receitas-->
+
+      <!--Atenção!!!-->
+      <!--Tudo em fase experimental. Nada pronto ainda.-->
+
+      <!--Componentes referente a página de adicionar receitas e editar receitas-->
       <div class="row">
+
+        <!--Titulo do formulário inicial-->
+        <div class="titulo_editar_receita">
+          Editar Receita
+        </div>
+        <!--Formulário inicial onde se pede os dados básicos da receita-->
+        <div class="form_inicial">
+          <div class="itemForm">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo">
+          </div>
+          <!--Tentativa de implementar um rezise pelo usuário usando textarea-->
+          <div class="itemForm">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+          </div>
+          <div class="itemForm">
+            <label for="porcoes">Número de Porções:</label>
+            <input type="number" id="porcoes" name="porcoes">
+          </div>
+          <div class="itemForm">
+            <label for="preparacao">Tempo de Preparação:</label>
+            <input type="text" id="preparacao" name="preparacao">
+          </div>
+          <div class="itemForm">
+            <label for="cozimento">Tempo de Cozimento:</label>
+            <input type="text" id="cozimento" name="cozimento">
+          </div>
+        </div>
+
+        <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
         <div class="colunas">
           <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
           <div class="fileira">
@@ -76,8 +111,8 @@
               <p>Café da manhã</p>
             </div>
             <div class="item">
-              <input type="radio" id="test" name="receita">
-              <label for="test"></label>
+              <input type="radio" id="lanchesn" name="receita">
+              <label for="lanchesn"></label>
               <p>Lanches noturnos</p>
             </div>
             <div class="item">
@@ -86,8 +121,8 @@
               <p>Almoço</p>
             </div>
             <div class="item">
-              <input type="radio" id="test" name="receita">
-              <label for="test"></label>
+              <input type="radio" id="jantar" name="receita">
+              <label for="jantar"></label>
               <p>Jantar</p>
             </div>
             <div class="item">
@@ -97,16 +132,43 @@
             </div>
           </div>
         </div>
+
+
+        <!--Campo Ingredientes-->
+        <!--Houve tambem tentativas de implementação de um rezise feito pelo usuário-->
+        <!--Mas que depois eu desisti, é claro kkk. Irei remover isso futuramente e deixar normal.-->
+        <div class="titulo_ingredientes">
+          Ingredientes
+        </div>
+        <div class="ingredientes">
+          <textarea id="ingredientesInput"
+            placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+        </div>
+
+        <!--Campo Modo de Preparo-->
+        <div class="titulo_modo_preparo">
+          Modo de Preparo
+        </div>
+        <div class="modo_preparo">
+          <textarea id="modoPreparoInput"
+            placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+        </div>
+
+        <!--Botões de Salvar e Cancelar-->
+        <div class="botoes_salvar_cancelar">
+          <button class="botao" id="salvar">Salvar</button>
+          <button class="botao" id="cancelar">Cancelar</button>
+        </div>
       </div>
-    </div>
-  </div>
-  <!--Rodapé-->
-  <div id="bottom-bar">
 
-  </div>
 
-  <script src="../src/js/topBar.js"></script>
-  <script src="../src/js/rodape.js"></script>
+      <!--Rodapé-->
+      <div id="bottom-bar">
+
+      </div>
+
+      <script src="../src/js/topBar.js"></script>
+      <script src="../src/js/rodape.js"></script>
 </body>
 
 </html>
