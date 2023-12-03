@@ -13,26 +13,22 @@
   <div class="container">
 
     <!--Div do topo da página-->
-    <div id="topo"> </div>
+    <div id="topo"></div>
+
     <div id="containerResponsivo">
 
-      <!--Atenção!!!-->
-      <!--Tudo em fase experimental. Nada pronto ainda.-->
-
       <!--Componentes referente a página de adicionar receitas e editar receitas-->
-      <div class="row">
+      <section class="row">
 
         <!--Titulo do formulário inicial-->
-        <div class="titulo_editar_receita">
-          Editar Receita
-        </div>
+        <h1 class="titulo_editar_receita">Editar Receita</h1>
+
         <!--Formulário inicial onde se pede os dados básicos da receita-->
-        <div class="form_inicial">
+        <form class="form_inicial">
           <div class="itemForm">
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo">
           </div>
-          <!--Tentativa de implementar um rezise pelo usuário usando textarea-->
           <div class="itemForm">
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"></textarea>
@@ -49,7 +45,7 @@
             <label for="cozimento">Tempo de Cozimento:</label>
             <input type="text" id="cozimento" name="cozimento">
           </div>
-        </div>
+        </form>
 
         <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
         <div class="colunas">
@@ -133,25 +129,26 @@
           </div>
         </div>
 
-
         <!--Campo Ingredientes-->
-        <!--Houve tambem tentativas de implementação de um rezise feito pelo usuário-->
-        <!--Mas que depois eu desisti, é claro kkk. Irei remover isso futuramente e deixar normal.-->
-        <div class="titulo_ingredientes">
-          Ingredientes
-        </div>
-        <div class="ingredientes">
-          <textarea id="ingredientesInput"
-            placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+        <div class="form-section">
+          <div class="titulo_ingredientes">
+            Ingredientes
+          </div>
+          <div class="ingredientes">
+            <textarea id="ingredientesInput"
+              placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+          </div>
         </div>
 
         <!--Campo Modo de Preparo-->
-        <div class="titulo_modo_preparo">
-          Modo de Preparo
-        </div>
-        <div class="modo_preparo">
-          <textarea id="modoPreparoInput"
-            placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+        <div class="form-section">
+          <div class="titulo_modo_preparo">
+            Modo de Preparo
+          </div>
+          <div class="modo_preparo">
+            <textarea id="modoPreparoInput"
+              placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+          </div>
         </div>
 
         <!--Botões de Salvar e Cancelar-->
@@ -159,13 +156,10 @@
           <button class="botao" id="salvar">Salvar</button>
           <button class="botao" id="cancelar">Cancelar</button>
         </div>
-      </div>
-
+      </section>
 
       <!--Rodapé-->
-      <div id="bottom-bar">
-
-      </div>
+      <footer id="bottom-bar"></footer>
 
       <script src="../src/js/topBar.js"></script>
       <script src="../src/js/rodape.js"></script>
