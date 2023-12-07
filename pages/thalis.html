@@ -10,10 +10,190 @@
 </head>
 
 <body>
-    <div id="container">
+    <header>
+   <div class="header">   
+   < div id= "topo"> 
 
-     < div class= "container">
-    </div>
+ <h1 class = "logo">
+ <a href = " ../index.html"><img width" " src = " " alt = " " ></a>
+<h1>
+<div class = "menu">
+<a href="../index.html">
+<button class= "btn-menu"> início </button>
+</a>
+<a href = " https://www.senac.br/" target="_blank">
+<button class= "btn-menu"> Senac </button>
+</a>
+<a href = " ../pages/chefs/.html">
+< button class= " btn-menu"> Chef </button>
+</a>
+<a href = "#">
+<button class = "btn-menu"> Sobre </button>
+</a>
+<a href = "../pages/login.html"> 
+<button class = "btn-menu"> Login </button>
+</a>
+    </div><!--menu-->
+<div class = "social>
+<a href="https://www.facebook.com/SenacBrasil" target"_blank>
+<button class= "btn-social"><img width:          "15px" img src= "../media/images/facebook.png" alt=""></button>
+</a>
+
+<a href= "https://www.instagram.com/SenacBrasil" target"_blank>
+<button class="btn-social"><img width:"15px" img src= "../media/images/Instagram.png" alt=""></button>
+</a>
+<a href="https://Twitter.com/SenacBrasil"target"_black>
+<button class= "btn-social"><img witdh:"15px" img src= "../media/images/x-twitter.png" alt=""></button>
+</a>
+
+<a href= "https://www.linkedin.com/company/2655383" target"_blank>
+<button class="btn-social"><img width:"15px" img src= "../media/images/linkedin.png" alt=""></button>
+</a>
+
+<a href= "https://www.youtube.com/user/SenacNacional" target"_blank>
+<button class="btn-social"><img width:"15px" img src= "../media/images/Youtube.png" alt=""></button>
+</a>
+
+<a class= "menu-mobile mobile-view"></a>
+
+</div><!--social-->
+</div><!--topo-->
+
+<form style= "margin:0px" id="dtform"  method="post" action="Diary.aspx?pa=mrece.&recipeid=0&action=save">
+
+<div class="breakout">
+<div style="margin: 10px;>
+<h3 style="margin: 0;>Criar receita</h3>
+<Tablet class="generic">
+
+<colgroup>
+<col width="150">
+<col width="*">
+</colgroup>
+
+<tbody>
+
+<tr valign="top>">
+<td>
+
+<b>
+
+      Título:
+<span class="rec"> *</span>
+
+</b>
+
+</td>
+
+<td>
+<input onchange="SPS();"name="title" id="title" value style= "widht:99%">
+<span class="smallText" greyText></span>
+<hr>
+</td>
+</tr>
+
+<tr valign="top>">
+<td>
+
+<b>
+
+      Descrição:
+
+<span class= "rec"> *</span>
+
+</b>
+
+</td>
+
+<td>
+<textarea onchange="SPS();"name="description" id="description" value style= "widht:99%" rows="2"></textarea>
+<span class="smallText" greyText></span>
+<hr>
+</td>
+</tr>
+
+<tr valign="top>">
+<td>
+
+<b>
+ Números de porções:
+<span class="rec"> *</span>
+
+</b>
+
+</td>
+
+<td>
+<input onchange="SPS();"name="portions" id="portions" value="1" style="widht:32px">
+<span class="smallText" greyText>
+   (Introduza o Número de porções desta receita)
+</span>
+
+<hr>
+
+</td>
+
+</tr>
+
+<tr valign="top>">
+
+</td>
+
+<b>
+
+ Tempo de preparo:
+<span class="rec"> *</span>
+
+</b>
+
+</td>
+
+<td>
+<input onchange="SPS();"name="preptime" id="preptime" value="0" style="widht:30px">
+<span class="smallText" greyText>
+   (Introduza o tempo necessário para a receita)
+</span>
+
+<hr>
+
+</td>
+
+</tr>
+
+<tr valign="top>">
+<td>
+
+<b>
+tempo de cozimento :
+<span class="rec"> *</span>
+
+</b>
+
+</td>
+
+<td>
+<input onchange="SPS();"name="cooktime" id="cooktime" value="0" style="widht:32px">
+<span class="smallText" greyText>
+   (Introduza o tempo de cozimento)
+</span>
+
+<hr>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+<input type="hidden" name="sharing" id="sharing" value>
+
+</div>
+</div>
+
+<div style="width:100%; display:table">
+
+<h3 style=margin: 0px; font-family:helvetica,Arial; font-size:120%;text-transform:none;padding:3px;color:red">
+(Refeições diárias tipo : p.ex.: almoço , janta , sobremesa e bebidas)
+
 
 </body>
 <script src="../src/js/teste.js"></script>
