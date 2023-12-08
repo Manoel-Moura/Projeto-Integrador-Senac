@@ -1,10 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    font-size: 16pt;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
 }
 
-#coluna{
+#coluna {
   width: 100%;
   min-height: 100vh;
   background-color: #faf6f6;
@@ -26,11 +26,12 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+
 }
 
-#info-pessoais{
+#info-pessoais {
   width: 80%;
+  max-width: 1000px;
   min-height: 40vh;
   padding: 2em;
   border-radius: 15px;
@@ -40,8 +41,9 @@ body {
   margin-top: 1em;
 }
 
-#info-contato{
+#info-contato {
   width: 80%;
+  max-width: 1000px;
   min-height: 40vh;
   padding: 2em;
   border-radius: 15px;
@@ -51,27 +53,41 @@ body {
   margin-top: 1em;
 }
 
-.informacoes{
-  border-bottom: 2px solid black;
+.informacoes {
+  border-bottom: 2px solid #5c5d5e;
   display: flex;
   justify-content: space-between;
-  background-color: aqua;
-}
-#campoDados{
-
+  padding: 5px;
+  margin: 10px;
 }
 
-#dados{
-border: none;
-width: 60%;
+.campoDados {
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-weight: 500;
+  width: 250px;
 }
 
-#dados:focus{
+
+.inf-usuario {
+  border: none;
+  width: 60%;
+  height: 20pt;
+  flex-grow: 1;
+}
+
+.inf-usuario:focus {
   outline: none;
 }
 
-#icon{
-width: 10px;
-height: 10px;
-background-color: red;
+#ft-perfil {
+  color: #7a7b7d;
+  flex-grow: 1;
+
+}
+
+#icon {
+  width: 18pt;
+  height: 18pt;
+
 }
