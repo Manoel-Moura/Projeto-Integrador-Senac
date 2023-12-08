@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title> <!--Recuperar Senha-->
+    <link rel="stylesheet" href="../src/css/gabriel.css">
+    <link rel="stylesheet" href="../src/css/style.css">
+</head>
+
+<body>
+    <div id="container">
+
+        <!--div do topo da página-->
+        <div id="topo"> </div>
+
+        <div id="containerResponsivo">
+            <!--Formulário de recuperar senha-->
+            <div class="row">
+                <form class="row-item" action="">
+                    <img id="logoPrincipal" src="../src/media/images/Senac_logo.jpg" alt="Logo do Senac" />
+                    <div class="input-group">
+                        <label class="label" for="newPassword">Nova senha <span class="red">*</span></label>
+                        <div class="password-field">
+                            <input class="caixaTexto" id="newPassword" type="password">
+                            <img src="../src/media/images/icon-eye-close.svg" class="toggle-password-visibility"
+                                alt="Toggle Password Visibility" onclick="mostrarSenha('newPassword', this)" />
+                            <img src="../src/media/images/icon-eye-open.svg" class="toggle-password-visibility hidden"
+                                alt="Toggle Password Visibility" onclick="mostrarSenha('newPassword', this)" />
+                        </div>
+                        <label class="label" for="confirmPassword">Confirme a nova senha <span
+                                class="red">*</span></label>
+                        <div class="password-field">
+                            <input class="caixaTexto" id="confirmPassword" type="password">
+                            <img src="../src/media/images/icon-eye-close.svg" class="toggle-password-visibility"
+                                alt="Toggle Password Visibility" onclick="mostrarSenha('confirmPassword', this)" />
+                            <img src="../src/media/images/icon-eye-open.svg" class="toggle-password-visibility hidden"
+                                alt="Toggle Password Visibility" onclick="mostrarSenha('confirmPassword', this)" />
+                        </div>
+                    </div>
+                    <input id="botaoR" type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+        <div id="bottom-bar"></div>
+    </div>
+    <script src="../src/js/passwordToggle.js"></script>
+    <script src="../src/js/topBar.js"></script>
+    <script src="../src/js/rodape.js"></script>
+</body>
+
+</html>

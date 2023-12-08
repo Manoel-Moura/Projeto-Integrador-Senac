@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#object {
+  margin: 100px;
+  width: 150px;
+  height: 50px;
+  border-radius: 3mm;
+  background-color: rgb(183, 35, 35);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15pt;
+  position: relative;
+}
+
+#object:hover {
+  animation: ir-para-direita 2s infinite;
+}
+
+@keyframes ir-para-direita {
+  from {
+  }
+  to {
+    background-color: blue;
+  }
+}
+
+.top {
+  width: calc(100% - 4mm);
+  height: calc(50% - 4mm);
+  margin: 2mm;
+  background-color: #bbb;
+  border-radius: 3mm;
+}
+
+.bottom {
+  width: calc(100% - 4mm);
+  height: calc(50% - 4mm);
+  margin: 2mm;
+  margin-top: 2mm;
+  background-color: #bbb;
+  border-radius: 3mm;
+}
+
+.card {
+  width: 300px;
+  height: 425px;
+  border: 1px solid #333;
+  border-radius: 5mm;
+  margin: 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.div_img {
+  width: calc(100% - 4mm);
+  height: calc(60% - 4mm);
+  margin: 2mm;
+  border-radius: 3mm;
+  background-size: cover;
+  background-position: center;
+}
+
+.chef-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  margin-top: calc(-60px + 2mm);
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgb(219, 51, 51);
+}
+
+.btn-receita {
+  padding: 2mm;
+  font-size: 16pt;
+  background-color: #f78b1f;
+  border-radius: 3mm;
+  color: white;
+  font-weight: 700;
+  margin-top: 3mm;
+}
+
+.lb-chef {
+  margin: 2mm;
+}
+
+.lb-avaliacao {
+  font-weight: 700;
+}
