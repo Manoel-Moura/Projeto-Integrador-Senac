@@ -89,6 +89,7 @@ body {
   font-size: 1em;
 }
 
+
 /* Relacionado a caixa de texto "Descrição" */
 .itemForm textarea {
   resize: none;
@@ -233,5 +234,20 @@ body {
 @media screen and (max-width: 600px) {
   .titulo_modo_preparo {
     margin-right: 99mm;
+  }
+}
+
+@media (max-width: 600px) {
+  .form_inicial {
+    padding: 1em;
+  }
+
+  .itemForm {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .itemForm label {
+    margin-right: 0;
   }
 }
