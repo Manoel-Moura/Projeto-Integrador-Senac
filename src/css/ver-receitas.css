@@ -1,0 +1,192 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+#container{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+#topo{
+    width: 100%;
+    height: 100px;
+    margin: 10px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 5px solid #ff8000;
+}
+
+.logo{
+    margin: 15px;
+}
+
+a{
+    text-decoration: none;
+}
+
+html,body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.btn-menu{
+    width: 90px;
+    height: 30px;
+    border: 1px solid #00537c00;
+    border-radius: 3mm;
+    font-family: Sanchez;
+    font-size: 16px;
+    color: #004587;
+    background: none;
+    top: 25%;
+    position: relative;
+    line-height: 25px;
+}
+
+.btn-menu:hover{
+    width: 90px;
+    height: 30px;
+    color: #ffffff;
+    background-color: #004587;
+    background-size: 5mm;
+    font-size: 16;
+}
+
+.social{
+    display: flex;
+    margin-top: 25px;
+    justify-content: flex-end;
+    grid-column-gap: 5px;
+}
+
+.btn-social{
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #00537c00;
+    border-radius: 1mm;
+    background-color: #676767;
+}
+
+.btn-social:hover{
+    color: #ffffff;
+    background-color: #004587;
+    background-size: 10mm;
+}
+
+#receita{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#comida{
+    font-size: 35pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    margin-top: 40px;
+}
+
+#butereceita{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-receita{
+    height: 40px;
+    width: 200px;
+    margin: 10mm;
+    border: none;
+
+    color: white;
+    background-color: #ff8000;
+    border-radius: 25px;
+    font-size: larger;
+}
+
+#btn-receita:hover{
+    background-color: #ce1f00;
+}
+
+#frango{
+    height: 500px;
+    width: 650px;
+    border: 2px solid #ff8000;
+}
+
+#raspinha{
+    display: flex;
+    flex-direction: row;
+}
+
+#ingredientes{
+    padding-top: 10px;
+    height: 50px;
+    width: 600px;
+    background-color: #e9e9e9;
+    margin-left: 50px;
+}
+
+#txtingredientes{
+    font-size: 17pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 20px;
+    color: #000000;
+}
+
+#rosquinha{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+#preparo{
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    border: 4px solid #ff8000;
+    margin-top: 50px;
+    padding-top: 7px;
+}
+
+#preparo #tt{
+    margin-bottom: 50px;
+}
+
+#txt{
+    font-size: 17pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* margin: 20px; */
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tt{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: -40px;
+    margin-left: 20px;
+}
+
+/* RODAPÉ */
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 115px;
+    color: white;
+}
