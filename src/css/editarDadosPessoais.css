@@ -44,7 +44,7 @@ body {
 #info-contato {
   width: 80%;
   max-width: 1000px;
-  min-height: 40vh;
+  min-height: 30vh;
   padding: 2em;
   border-radius: 15px;
   background: #fff;
@@ -59,6 +59,26 @@ body {
   justify-content: space-between;
   padding: 5px;
   margin: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+#foto-usuario{
+  width: 90px;
+  height: 90px;
+  background: url(../media/images/dipper.jpg);
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: end;
+}
+
+
+#icon-camera{
+  width: 50%;
+  height: 50%;
 }
 
 .campoDados {
@@ -66,6 +86,11 @@ body {
   flex-shrink: 0;
   font-weight: 500;
   width: 250px;
+}
+.icon-label{
+display: flex;
+align-items: center;
+flex-grow: 1;
 }
 
 
