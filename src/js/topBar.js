@@ -59,7 +59,7 @@ let paginasMenu = [
   "https://www.senac.br/",
   "../pages/camila.html",
   "Chefes.html",
-  "../pages/gabriel.html",
+  "../pages/sobre.html",
   "../pages/manoel.html",
 ];
 
