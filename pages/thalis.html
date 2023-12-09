@@ -2,544 +2,217 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Receitas</title> <!-- Registrar Receitas -->
-    <link rel="stylesheet" href="../src/css/thalis.css">
-    <link rel="stylesheet" href="../src/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Receitas</title> <!-- Registrar Receitas -->
+  <link rel="stylesheet" href="../src/css/thalis.css">
+  <link rel="stylesheet" href="../src/css/style.css">
 </head>
 
 <body>
-    <header>
-   <div class="header">   
-   < div id= "topo"> 
-
- <h1 class = "logo">
- <a href = " ../index.html"><img width" " src = " " alt = " " ></a>
-<h1>
-<div class = "menu">
-<a href="../index.html">
-<button class= "btn-menu"> início </button>
-</a>
-<a href = " https://www.senac.br/" target="_blank">
-<button class= "btn-menu"> Senac </button>
-</a>
-<a href = " ../pages/chefs/.html">
-< button class= " btn-menu"> Chef </button>
-</a>
-<a href = "#">
-<button class = "btn-menu"> Sobre </button>
-</a>
-<a href = "../pages/login.html"> 
-<button class = "btn-menu"> Login </button>
-</a>
-    </div><!--menu-->
-<div class = "social>
-<a href="https://www.facebook.com/SenacBrasil" target"_blank>
-<button class= "btn-social"><img width:          "15px" img src= "../media/images/facebook.png" alt=""></button>
-</a>
-
-<a href= "https://www.instagram.com/SenacBrasil" target"_blank>
-<button class="btn-social"><img width:"15px" img src= "../media/images/Instagram.png" alt=""></button>
-</a>
-<a href="https://Twitter.com/SenacBrasil"target"_black>
-<button class= "btn-social"><img witdh:"15px" img src= "../media/images/x-twitter.png" alt=""></button>
-</a>
-
-<a href= "https://www.linkedin.com/company/2655383" target"_blank>
-<button class="btn-social"><img width:"15px" img src= "../media/images/linkedin.png" alt=""></button>
-</a>
-
-<a href= "https://www.youtube.com/user/SenacNacional" target"_blank>
-<button class="btn-social"><img width:"15px" img src= "../media/images/Youtube.png" alt=""></button>
-</a>
-
-<a class= "menu-mobile mobile-view"></a>
-
-</div><!--social-->
-</div><!--topo-->
-
-<form style= "margin:0px" id="dtform"  method="post" action="Diary.aspx?pa=mrece.&recipeid=0&action=save">
-
-<div class="breakout">
-<div style="margin: 10px;>
-<h3 style="margin: 0;>Criar receita</h3>
-<Tablet class="generic">
-
-<colgroup>
-<col width="150">
-<col width="*">
-</colgroup>
-
-<tbody>
-
-<tr valign="top>">
-<td>
-
-<b>
-
-      Título:
-<span class="rec"> *</span>
-
-</b>
-
-</td>
-
-<td>
-<input onchange="SPS();"name="title" id="title" value style= "widht:99%">
-<span class="smallText" greyText></span>
-<hr>
-</td>
-</tr>
-
-<tr valign="top>">
-<td>
-
-<b>
-
-      Descrição:
-
-<span class= "rec"> *</span>
-
-</b>
-
-</td>
-
-<td>
-<textarea onchange="SPS();"name="description" id="description" value style= "widht:99%" rows="2"></textarea>
-<span class="smallText" greyText></span>
-<hr>
-</td>
-</tr>
-
-<tr valign="top>">
-<td>
-
-<b>
- Números de porções:
-<span class="rec"> *</span>
-
-</b>
-
-</td>
-
-<td>
-<input onchange="SPS();"name="portions" id="portions" value="1" style="widht:32px">
-<span class="smallText" greyText>
-   (Introduza o Número de porções desta receita)
-</span>
-
-<hr>
-
-</td>
-
-</tr>
-
-<tr valign="top>">
-
-</td>
-
-<b>
-
- Tempo de preparo:
-<span class="rec"> *</span>
-
-</b>
-
-</td>
-
-<td>
-<input onchange="SPS();"name="preptime" id="preptime" value="0" style="widht:30px">
-<span class="smallText" greyText>
-   (Introduza o tempo necessário para a receita)
-</span>
-
-<hr>
-
-</td>
-
-</tr>
-
-<tr valign="top>">
-<td>
-
-<b>
-tempo de cozimento :
-<span class="rec"> *</span>
-
-</b>
-
-</td>
-
-<td>
-<input onchange="SPS();"name="cooktime" id="cooktime" value="0" style="widht:32px">
-<span class="smallText" greyText>
-   (Introduza o tempo de cozimento)
-</span>
-
-<hr>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<input type="hidden" name="sharing" id="sharing" value>
-
-</div>
-</div>
-
-<div style="width:100%; display:table">
-
-<h3 style=margin: 0px; font-family:helvetica,Arial; font-size:120%;text-transform:none;padding:3px;color:red">
-(Refeições diárias tipo : p.ex.: almoço , janta , sobremesa e bebidas)
-</h3>
-</hr>
-<div style= "margin: 10px;">
-<table class= " generic">
-
-<tbody>
-
-<tr>
-
-<td>
-
-
-
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"1_type" id:"1_type" value:"1">
- Aperitivo 1
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"2_type" id:"2_type" value:"2">
-
-Aperitivo 2
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"3_type" id:"3_type" value:"3">
-
-  Aperitivo 3
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"4_type" id:"4_type" value:"4">
- 
- Aperitivo 4
-
-</div>
-
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"5_type" id:"5_type" value:"5">
-    
-    Aperitivo 5
-
-</div>
-
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"6_type" id:"6_type" value:"6">
-
-  Aperitivo 6
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"7_type" id:"7_type" value:"7">
-
-  Aperitivo 7
-
-</div>
-
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"8_type" id:"8_type" value:"8">
-  
-   Aperitivo 8
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"9_type" id:"9_type" value:"9">
-
-       Aperitivo 9
-
-</div>
-
-<div style:"float:left;width:190px;">
-<input onchange:"SPS();" type:"ckeckbox" name:"10_type" id:"10_type" value:"10">
-
-  Aperitivo 10
-
-</div>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</form>
-
-<table class="generic">
-</tbody>
-</tr>
-
-<td class="BorderBottom">
-
-<table class="generic">
-</tbody>
-</tr>
-
-<td class="greytitle" rowspan:"1" valign:"middle" widht:"*" style:"font-weight:bold;font-size:123%;padding:4px;">
-
-<td class="grey"> style:"padding-right:3px" title="Gorduras">
-  Gord
-<span class="smallText">(g)</span>
-
-</td>
-
-<td class="grey"> style:"padding-right:3px" title="Carboidratos">
-  Carb
-<span class="smallText">(g)</span>
-
-</td>
-
-<td class="grey"> style:"padding-right:3px" title="Proteínas">
-  Prot
-<span class="smallText">(g)</span>
-
-</td>
-
-<td class="grey"> style:"padding-right:3px" title="Calorias">
-  Cal
-<span class="smallText">(g)</span>
-
- </td>
- </tr>
-
-<tr>
-
-<td class="greyback2" title:"Gorduras: -g;">-</td>
-
-<tr>
-
-<td class="greyback2" title:"Proteínas: -g;">-</td>
-
-<tr>
-
-<td class="greyback2" title:"Carboidratos: -g;">-</td>
-
-<tr>
-
-<td class="greyback2" title:"Calorias: -Kcal;">-</td>
-
-<td width="10px&quot;"></td>
-
-</tr>
-
-</tbody>
-
-</table>
-</td>
-</tr>
-
-<tr class="row">
-
-<td>
-
-<div id:"addItem" style:padding:"5px;">
-
-<a href="#" onclick="_do_item_add();return false;"><img src="#" style="vertical-align:middle;">
-<b>adicionar ingredientes</b>
-</a>
-</div>
-
-<div id="searchItem" style="backgroundcolor=#FCF3E5;display:none;padding:5px;padding-bottom:0px;">
-
-
-<a href="#" onclick="cancel_search();return false;"><img src="#" style="vertical-align:middle;">
-
-<b>adicionar ingredientes</b>
-
-</a>
-
-<div style="margin:40px;margin-bottom:0px;margin-top:10px;display:table;font-size:92%;">
-
-<form style="margin:0">
-<div style="float:left">
-
-<b>adicionar ingredientes</b>
-
-<input type="text" id="searchItemExp" style="widht:220px;vertical-align:middle;height:14px;>
-
-</div>
-
-<div style="button grey this" href="#"onclick="do_search();return false; style="margin-left:5px>
-
-<span class="left"></span>
-<span class="middle style="padding:0px 5px">procurar</span>
-<span class="right"> </span>
-
-</a>
-
-<div style="button grey this" href="#"onclick="cancel_search();return false; style="margin-left:5px>
-
-<span class="left"></span>
-<span class="middle style="padding:0px 5px">Cancelar</span>
-<span class="right"> </span>
-</a>
-
-</div>
-<div style="clear:both;margin-bottom:10px"> </div>
-
-</form>
-
-</div>
-</div>
-
-<form id="ingredientForm" method:"post" style:"margin:0;top:0;" action="#">
-<div id="SearchItemResults" class style="background-color:FDF7E8;display:none;">
-
-  Procurando....
-
-</div>
-
-</form>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<div>
-<h3 style="margin:0;padding:2px;font-family:helvetica , arial;font-size:123%;text-transform:none;color:#444444">instruções</h3>
-<hr>
-<div style="margin:10px;">
-<table class="generic" widht:"100%">
-<tbody>
-<tr>
-
-<td class="label" style:"widht:150px">
- 1° passo:
-
-</td>
-
-<td width="500">
-
-<textarea rows="3" onchange="SPS();" name="step1" id="step1" style="widht:500px"></textarea>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td class="label" style:"widht:150px">
- 2° passo:
-
-</td>
-
-<td width="500">
-
-<textarea rows="3" onchange="SPS();" name="step2" id="step2" style="widht:500px"></textarea>
-
-</td>
-
-</tr>
-
-<tr>
-
-
-
-<td class="label" style:"widht:150px">
- 3° passo:
-
-</td>
-
-<td width="500">
-
-<textarea rows="3" onchange="SPS();" name="step3" id="step3" style="widht:500px"></textarea>
-
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-<div class="footer">
-<h1 class="logo-radape>
-<a href="#"><img width="100" src="" alt=""></a>
-
-</h1>
-
-<span class="copyrigth"> Todos os direitos reservados - 2016.</span>
-
-<div class="Social-Rodape">
-
-<a href="https://www.facebook.com/SenacBrasil" target="_blank">
-<button class="btn-social-rodape"><img width:"20px" img src="#" alt="#"></button>
-
-</a>
-
-
-
-
-<a href="https://www.instgram.com/SenacBrasil" target="_blank">
-<button class="btn-social-rodape"><img width:"20px" img src="#" alt="#"></button>
-
-</a>
-
-
-
-
-<a href="https://Twitter.com/SenacBrasil" target="_blank">
-<button class="btn-social-rodape"><img width:"20px" img src="#" alt="#"></button>
-
-</a>
-
-
-
-<a href="https://www.linkedin.com/company/2655383" target="_blank">
-<button class="btn-social-rodape"><img width:"20px" img src="#" alt="#"></button>
-
-</a>
-
-
-
-
-<a href="https://www.Youtube.com/user/SenacNacional" target="_blank">
-<button class="btn-social-rodape"><img width:"20px" img src="#" alt="#"></button>
-
-</a>
-
-</div><!--social-rodape-->
-</div><!--footer-->
-
-
+  <header>
+    <div class="header">
+      <div id="topo">
+
+        <h1 class="logo">
+          <a href=" ../thalis.html">
+            <img width="100" src = " senac_logo.svg.png" alt="senac_logo">
+          </a>
+          <h1>
+            <div class="menu">
+              <a href="../index.html">
+                <button class="btn-menu"> início </button>
+              </a>
+              <a href=" https://www.senac.br/" target="_blank">
+                <button class="btn-menu"> Senac </button>
+              </a>
+              <a href=" ../pages/chefs/.html">
+                <button class=" btn-menu"> Chef </button>
+              </a>
+              <a href="#">
+                <button class="btn-menu"> Sobre </button>
+              </a>
+              <a href="../pages/login.html">
+                <button class="btn-menu"> Login </button>
+              </a>
+            </div><!--menu-->
+            <div class="social">
+              <a href="https://www.facebook.com/SenacBrasil" target="_blank>
+
+                <button class="btn-social"><img src="../media/images/facebook.png" alt=""></button>
+              </a>
+
+              <a href="https://www.instagram.com/SenacBrasil" target="_blank>
+                <button class="btn-social"><img src="../media/images/Instagram.png" alt=""></button>
+              </a>
+              <a href="https://Twitter.com/SenacBrasil" target="_black>
+                <button class="btn-social"><img src="../media/images/x-twitter.png" alt=""></button>
+              </a>
+
+              <a href="https://www.linkedin.com/company/2655383" target="_blank>
+                <button class="btn-social"><img src="../media/images/linkedin.png" alt=""></button>
+              </a>
+
+              <a href="https://www.youtube.com/user/SenacNacional" target="_blank>
+                <button class="btn-social"><img src="../media/images/Youtube.png" alt=""></button>
+              </a>
+
+              <a class="menu-mobile mobile-view"></a>
+
+            </div><!--social-->
+      </div><!--topo-->
+       
+      <table class="generic">
+        </tbody>
+        </tr>
+        <form class="form_inicial">
+          <div class="itemForm">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo">
+          </div>
+          <div class="itemForm">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+          </div>
+          <div class="itemForm">
+            <label for="porcoes">Número de Porções:</label>
+            <input type="number" id="porcoes" name="porcoes">
+          </div>
+          <div class="itemForm">
+            <label for="preparacao">modo de Preparação:</label>
+            <input type="text" id="preparacao" name="preparacao">
+          </div>
+          <div class="itemForm">
+            <label for="cozimento">Tempo de Cozimento:</label>
+            <input type="text" id="cozimento" name="cozimento">
+          </div>
+        </form>
+
+        <!--Referente a receita, ou seja, o tipo-->
+        <div class="colunas">
+          <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
+          <div class="fileira">
+            <div class="item">
+              <input type="radio" id="aperitivos" name="receita">
+              <label for="aperitivos"></label>
+              <p>Aperitivos</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="sopas" name="receita">
+              <label for="sopas"></label>
+              <p>Sopas</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="acompanhamentos" name="receita">
+              <label for="acompanhamentos"></label>
+              <p>Acompanhamentos</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="pratos" name="receita">
+              <label for="pratos"></label>
+              <p>Pratos principais</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="paes" name="receita">
+              <label for="paes"></label>
+              <p>Panificados, cuscuz e tapioca</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="chocolate" name="receita">
+              <label for="chocolate"></label>
+              <p>Salada e molhos para saladas.</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="molhos" name="receita">
+              <label for="molhos"></label>
+              <p>Molhos e condimentos</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="sobremesas" name="receita">
+              <label for="sobremesas"></label>
+              <p>Sobremesas(doces,salgados)</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="lanches" name="receita">
+              <label for="lanches"></label>
+              <p>Lanches</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="bebidas" name="receita">
+              <label for="bebidas"></label>
+              <p>Bebidas quentes</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="cafe" name="receita">
+              <label for="cafe"></label>
+              <p>Café da manhã</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="lanchesn" name="receita">
+              <label for="lanchesn"></label>
+              <p>Lanches rapidos</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="almoco" name="receita">
+              <label for="almoco"></label>
+              <p>Almoço</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="jantar" name="receita">
+              <label for="jantar"></label>
+              <p>Jantar</p>
+            </div>
+            <div class="item">
+              <input type="radio" id="outros" name="receita">
+              <label for="outros"></label>
+              <p>sucos</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Campo Ingredientes-->
+        <div class="form-section">
+          <div class="titulo_ingredientes">
+            Ingredientes
+          </div>
+          <div class="ingredientes">
+            <textarea id="ingredientesInput"
+              placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+          </div>
+        </div>
+
+        <!--Campo Modo de Preparo-->
+        <div class="form-section">
+          <div class="titulo_modo_preparo">
+            tempo de Preparo
+          </div>
+          <div class="tempo_preparo">
+            <textarea id="modoPreparoInput"
+              placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+          </div>
+
+          fotos e videos feitos
+        </div>
+        <div class="fotos_dos_ingredientes">
+          <textarea id="fotosingredientesInput"
+            placeholder="Introduzir imagens do preparo da receita"></textarea>
+        </div>
+      </div>
+
+
+
+        </div>
+        </div>
+
+        <!--Botões de Salvar e Cancelar receitas-->
+        <div class="botoes_salvar_cancelar_receitas">
+          <button class="botao" id="salvar">Salvar</button>
+          <button class="botao" id="cancelar">Cancelar</button>
+        </div>
+      </section>
+
+<!--Rodapé-->
+<footer id="bottom-bar"></footer>
 
 </body>
 <script src="../src/js/teste.js"></script>
