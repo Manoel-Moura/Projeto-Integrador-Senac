@@ -1,110 +1,236 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
 }
 
 html,
 body {
   width: 100%;
   min-height: 100vh;
+  background-color: #ffffff;
+}
+.header {
+  width: 100%;
+  min-height: 100%;
 }
 
-#container {
+/* Relacionado a forma com que organizei todos os itens */
+.row {
+  display: flex;
+  padding: 7em;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-#object {
-  margin: 100px;
-  width: 150px;
-  height: 50px;
-  border-radius: 3mm;
-  background-color: rgb(183, 35, 35);
-  color: white;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 15pt;
-  position: relative;
+  justify-content: flex-start;
+  background-color: #faf6f6; 
 }
 
-#object:hover {
-  animation: ir-para-direita 2s infinite;
+
+/* Abaixo temos o css das divs relacionado ao formulário inicial */
+
+/* Título do formulário */
+.titulo_editar_receita {
+  color: #01468a;
+  margin-bottom: 1em;
 }
 
-@keyframes ir-para-direita {
-  from {
-  }
-  to {
-    background-color: blue;
-  }
-}
-
-.top {
-  width: calc(100% - 4mm);
-  height: calc(50% - 4mm);
-  margin: 2mm;
-  background-color: #bbb;
-  border-radius: 3mm;
-}
-
-.bottom {
-  width: calc(100% - 4mm);
-  height: calc(50% - 4mm);
-  margin: 2mm;
-  margin-top: 2mm;
-  background-color: #bbb;
-  border-radius: 3mm;
-}
-
-.card {
-  width: 300px;
-  height: 425px;
-  border: 1px solid #333;
-  border-radius: 5mm;
-  margin: 2mm;
+/* Relacionado a forma de organização do fundo do formulário */
+.form_inicial {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  width: 100%;
+  padding: 2em;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 0px 17px 3px rgba(0, 0, 0, 0.10);
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+/* Relacionado a forma com que as descrições e caixas estão organizadas */
+.itemForm {
+  display: flex;
+  margin-bottom: 2.6em;
+  margin-left: 2em;
+}
+
+/* Relacionado as descrições das caixas de texto ao lado */
+.itemForm label {
+  margin-right: 5em;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* Relacionado as caixas de texto onde o usuário vai digitar */
+.itemForm input[type="text"],
+.itemForm textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #676767;
+  background-color: #676767;
+  background: rgba(242, 242, 242, 0.76);
+  font-size: 1em;
+}
+
+/* Relacionado as caixas de texto onde o usuário vai digitar o número de porções */
+.itemForm input[type="number"],
+.itemForm textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #676767;
+  background-color: #676767;
+  background: rgba(242, 242, 242, 0.76);
+  font-size: 1em;
+}
+
+/* Relacionado a caixa de texto "Descrição" */
+.itemForm textarea {
+  resize: none;
+  max-height: 184px;
+}
+
+
+/* Abaixo temos o css das divs relacionado a seleção de categorias da receita */
+
+
+/* Título do componente de categorias*/
+.descricao {
+  color: #01468a;
+  align-self: flex-start;
+  padding-bottom: 1em;
+}
+
+/* Relacionado a forma com que as fileiras estão organizadas */
+.fileira {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2mm;
+  justify-content: space-around;
+}
+
+/* Relacionado as caixas de seleção da categoria */
+.item {
+  width: 33%;
+  min-width: 300px;
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
 }
 
-.div_img {
-  width: calc(100% - 4mm);
-  height: calc(60% - 4mm);
-  margin: 2mm;
-  border-radius: 3mm;
-  background-size: cover;
-  background-position: center;
+/* Relacionado aos quadrados onde o usuario vai selecionar;
+   Fazer sumir o icone de bolinha de escolher (check)*                */
+.item input[type="radio"] {
+  display: none;
 }
 
-.chef-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 45px;
-  margin-top: calc(-60px + 2mm);
-  background-size: cover;
-  background-position: center;
-  border: 2px solid rgb(219, 51, 51);
+/* Relacionado a descrição ao lado dos quadrados, ou seja, o tipo de refeição 
+   que o usuario vai escolher                                                       */
+.item label {
+  background-color: gray;
+  padding: 10px;
+  border: none;
+  margin-right: 10px;
 }
 
-.btn-receita {
-  padding: 2mm;
-  font-size: 16pt;
-  background-color: #f78b1f;
+/* Relacionado a mudar cor do quadrado quando selecionado */
+.item input[type="radio"]:checked+label {
+  background-color: rgb(0, 102, 255);
+}
+
+
+/* Abaixo temos o css das divs relacionado ao modo de preparo e aos ingredientes */
+
+/* Relacionado a forma de divisão das duas caixas de texto */
+.form-section {
+  width: 100%;
+}
+
+/* Relacionado ao título */
+.titulo_ingredientes,
+.titulo_modo_preparo {
+  color: #01468a;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Relacionado a caixas de texto de modo de preparo e aos ingredientes */
+#ingredientesInput,
+#modoPreparoInput {
+  background-color: #c0c0c0;
   border-radius: 3mm;
+  width: 100%;
+  height: 200px;
+  overflow: auto;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+/* Relacionado aos botões de salvar e cancelar a receita ( ou edição ) */
+.botoes_salvar_cancelar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+/* Relacionado ao botão salvar */
+#salvar {
+  background-color: #01468a;
+  margin-right: 2em;
   color: white;
-  font-weight: 700;
-  margin-top: 3mm;
 }
 
-.lb-chef {
-  margin: 2mm;
+/* Relacionado ao botão cancelar */
+#cancelar {
+  background-color: white;
+  color: #01468a;
+  border: 2px solid #01468a;
 }
 
-.lb-avaliacao {
-  font-weight: 700;
+
+/* Abaixo relacionado aos media queries para responsividade em dispositivos com menor resolução */
+
+/* Media queries */
+@media screen and (max-width: 600px) {
+  .row {
+    padding: 0.5em;
+  }
+
+  .form_inicial {
+    width: 90%;
+  }
+
+  .itemForm label {
+    margin-right: 15px;
+  }
+
+  .itemForm input[type="number"] {
+    margin-right: 35mm;
+  }
+
+  .titulo_ingredientes,
+  .titulo_modo_preparo {
+    margin-right: 105mm;
+  }
+
+  .colunas {
+    padding-left: 7.5%;
+    padding-right: 6%;
+  }
+
+  .item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .titulo_modo_preparo {
+    margin-right: 99mm;
+  }
 }
