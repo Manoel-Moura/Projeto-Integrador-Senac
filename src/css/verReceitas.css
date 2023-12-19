@@ -1,0 +1,151 @@
+/* https://www.receiteria.com.br/receita/tender-ao-molho-de-laranja/ */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(
+    100vh - 115px - 100px
+  ); /* Largura da pagina menos o tamanho do topo e do rodapé*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.destaque-receita {
+  width: 80%;
+  max-height: 350px; 
+  background-color: rgb(252, 252, 255);
+  display: flex;
+  flex-direction: row-reverse;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+#descricao-receita {
+  width: 50%;
+/* border: 1px black solid; */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  
+}
+
+/* Ajustando para imagem ou vídeo: */
+#img-receita,
+#video-receita {
+  width: 50%;
+  max-height: 350px; /* Garantindo que o elemento ocupe toda a altura disponível */
+  object-fit: cover; /* Ajustando imagem ou vídeo dentro do espaço disponível */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#nome-prato {
+  color: rgb(0, 0, 0);
+  font-family: europa-boldregular, sans-serif;
+  font-weight: 700;
+  font-size: 30pt;
+  flex-wrap: wrap;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-height: 150px;
+  overflow: scroll;
+  align-items: center;
+  text-align: center;
+}
+
+#logo-receita {
+  width: 140px;
+  height: 80px;
+  background: url(../media/images/senac_logo.svg.png);
+  background-position: center;
+  background-size: contain; /* Ajuste para preservar proporção */
+  background-repeat: no-repeat;
+  border: none;
+}
+
+#lista-descricao {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 80px;
+  /* background-color: rgb(233, 190, 190); */
+  justify-content: space-around;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 10PX;
+}
+
+#valor-itens {
+  color: rgb(68, 66, 66);
+  margin-bottom: 4px;
+}
+
+#label-itens {
+  color: rgb(68, 66, 66);
+  font-size: 12pt;
+  display: flex;
+}
+
+#colum {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* border: 1px solid black; */
+  padding: 5px;
+}
+
+#label-autor{
+    color: black;
+    font-style: italic;
+    font-size: 12pt;
+}
+
+#descricao{
+    margin: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+  
+}
+
+#descricao-chef{
+    padding: 15px;
+    margin: 20px;
+    max-width: 80%;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+    box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+   
+}
