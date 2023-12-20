@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar Receitas</title>
+  <title>Editar Receitas</title>
   <link rel="stylesheet" href="../src/css/testeComponentes.css">
   <link rel="stylesheet" href="../src/css/style.css">
 </head>
@@ -151,18 +151,61 @@
           </div>
         </div>
 
+        <!--Adicionar foto e vídeo da receita-->
+        <div class="recipe-media-form">
+          <!--Adicionar foto-->
+          <div class="form-item">
+            <div class="titulo_adicionar-foto">
+              Adicionar Foto
+            </div>
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="mainPhotoImage" src="../src/media/icons/photo_icon.svg" alt="Ícone de foto">
+              </div>
+              <input type="file" id="mainPhoto" name="mainPhoto" onchange="loadImage('mainPhoto', 'mainPhotoImage')"
+                style="display: none;" />
+              <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
+            </div>
+            <p class="item-description">Tamanho máx.: 5MB</p>
+            <button id="mainPhotoButton" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
+          </div>
+          <!--Adicionar vídeo-->
+          <div class="form-item">
+            <div class="titulo_adicionar-video">
+              Adicionar Vídeo
+            </div>
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="recipeVideoImage" src="../src/media/icons/video_icon.svg" alt="Ícone de vídeo">
+              </div>
+              <div id="videoContainer" style="width: 100%; height: 500px; position: relative;"></div>
+
+              <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
+
+              <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
+            </div>
+            <p class="item-description">Apenas vídeos do Youtube</p>
+            <button id="recipeVideoButton" onclick="loadVideo()">Carregar Vídeo</button>
+            <button id="cancelVideoButton" onclick="cancelVideo()" style="display: none;">Cancelar Vídeo</button>
+          </div>
+        </div>
+
         <!--Botões de Salvar e Cancelar-->
         <div class="botoes_salvar_cancelar">
           <button class="botao" id="salvar">Salvar</button>
           <button class="botao" id="cancelar">Cancelar</button>
         </div>
       </section>
+    </div>
+  </div>
+  </section>
 
-      <!--Rodapé-->
-      <footer id="bottom-bar"></footer>
+  <!--Rodapé-->
+  <footer id="bottom-bar"></footer>
 
-      <script src="../src/js/topBar.js"></script>
-      <script src="../src/js/rodape.js"></script>
+  <script src="../src/js/recipeMedia.js"></script>
+  <script src="../src/js/topBar.js"></script>
+  <script src="../src/js/rodape.js"></script>
 </body>
 
 </html>

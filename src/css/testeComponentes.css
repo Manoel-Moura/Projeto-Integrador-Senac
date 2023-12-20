@@ -196,6 +196,98 @@ body {
 }
 
 
+/* Abaixo está relacionado aos componentes de adicionar foto e vídeo */
+
+/* Título do componente de adicionar foto*/
+.titulo_adicionar-foto{
+  color: #01468a;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Relacionado a aréa onde a imagem e icones ficam para mostrar ao usuário a imagem */
+.media-upload-area {
+  width: 24em;
+  height: 20em;
+  border: 1px solid #01468a;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3mm;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative; 
+  overflow: hidden; 
+}
+
+/* Abaixo está relacionado a forma com que a imagem é preenchida na div */
+.media-upload-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .media-upload-area img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 601px) {
+  .media-upload-area img {
+    width: 50%;
+    height: 50%;
+    background-size: cover;
+  }
+}
+
+/* Relacionado ao icone dentro das divs */
+.media-icon img {
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+}
+
+/*Forma com que está organizado os dois campos de adicionar foto e vídeo */
+.recipe-media-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Afastamento dos dois campos */
+.form-item {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
+/* Título do componente de adicionar vídeo*/
+.titulo_adicionar-video{
+  color: #01468a;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Relacionado ao tamanho do campo da url em adicionar vídeo */
+.media-upload-area input[type="url"] {
+  width: 95%;
+  box-sizing: border-box;
+}
+
+/* Relacionado a borda do campo da url em adicionar vídeo */
+#recipeVideo{
+  border-radius: 10px;
+  border: 1px solid #676767;
+}
+
+/*Para ser usado no javascript do componente de adicionar vídeo */
+.no-border {
+  border: none !important;
+}
+
+
 /* Abaixo relacionado aos media queries para responsividade em dispositivos com menor resolução */
 
 /* Media queries */

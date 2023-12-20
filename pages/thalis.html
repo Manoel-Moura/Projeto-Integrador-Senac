@@ -4,67 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrar Receitas</title> <!-- Registrar Receitas -->
-  <link rel="stylesheet" href="../src/css/thalis.css">
+  <title>Adicionar Receitas</title>
+  <link rel="stylesheet" href="../src/css/testeComponentes.css">
   <link rel="stylesheet" href="../src/css/style.css">
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <div id="topo">
+  <div class="container">
 
-        <h1 class="logo">
-          <a href=" ../thalis.html">
-            <img width="100" src = " senac_logo.svg.png" alt="senac_logo">
-          </a>
-          <h1>
-            <div class="menu">
-              <a href="../index.html">
-                <button class="btn-menu"> início </button>
-              </a>
-              <a href=" https://www.senac.br/" target="_blank">
-                <button class="btn-menu"> Senac </button>
-              </a>
-              <a href=" ../pages/chefs/.html">
-                <button class=" btn-menu"> Chef </button>
-              </a>
-              <a href="#">
-                <button class="btn-menu"> Sobre </button>
-              </a>
-              <a href="../pages/login.html">
-                <button class="btn-menu"> Login </button>
-              </a>
-            </div><!--menu-->
-            <div class="social">
-              <a href="https://www.facebook.com/SenacBrasil" target="_blank>
+    <!--Div do topo da página-->
+    <div id="topo"></div>
 
-                <button class="btn-social"><img src="../media/images/facebook.png" alt=""></button>
-              </a>
+    <div id="containerResponsivo">
 
-              <a href="https://www.instagram.com/SenacBrasil" target="_blank>
-                <button class="btn-social"><img src="../media/images/Instagram.png" alt=""></button>
-              </a>
-              <a href="https://Twitter.com/SenacBrasil" target="_black>
-                <button class="btn-social"><img src="../media/images/x-twitter.png" alt=""></button>
-              </a>
+      <!--Componentes referente a página de adicionar receitas e editar receitas-->
+      <section class="row">
 
-              <a href="https://www.linkedin.com/company/2655383" target="_blank>
-                <button class="btn-social"><img src="../media/images/linkedin.png" alt=""></button>
-              </a>
+        <!--Titulo do formulário inicial-->
+        <h1 class="titulo_editar_receita">Adicionar Receita</h1>
 
-              <a href="https://www.youtube.com/user/SenacNacional" target="_blank>
-                <button class="btn-social"><img src="../media/images/Youtube.png" alt=""></button>
-              </a>
-
-              <a class="menu-mobile mobile-view"></a>
-
-            </div><!--social-->
-      </div><!--topo-->
-       
-      <table class="generic">
-        </tbody>
-        </tr>
+        <!--Formulário inicial onde se pede os dados básicos da receita-->
         <form class="form_inicial">
           <div class="itemForm">
             <label for="titulo">Título:</label>
@@ -79,7 +38,7 @@
             <input type="number" id="porcoes" name="porcoes">
           </div>
           <div class="itemForm">
-            <label for="preparacao">modo de Preparação:</label>
+            <label for="preparacao">Tempo de Preparação:</label>
             <input type="text" id="preparacao" name="preparacao">
           </div>
           <div class="itemForm">
@@ -88,7 +47,7 @@
           </div>
         </form>
 
-        <!--Referente a receita, ou seja, o tipo-->
+        <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
         <div class="colunas">
           <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
           <div class="fileira">
@@ -115,7 +74,7 @@
             <div class="item">
               <input type="radio" id="paes" name="receita">
               <label for="paes"></label>
-              <p>Panificados, cuscuz e tapioca</p>
+              <p>Pães e produtos de panificação</p>
             </div>
             <div class="item">
               <input type="radio" id="chocolate" name="receita">
@@ -130,7 +89,7 @@
             <div class="item">
               <input type="radio" id="sobremesas" name="receita">
               <label for="sobremesas"></label>
-              <p>Sobremesas(doces,salgados)</p>
+              <p>Sobremesas</p>
             </div>
             <div class="item">
               <input type="radio" id="lanches" name="receita">
@@ -140,7 +99,7 @@
             <div class="item">
               <input type="radio" id="bebidas" name="receita">
               <label for="bebidas"></label>
-              <p>Bebidas quentes</p>
+              <p>Bebidas</p>
             </div>
             <div class="item">
               <input type="radio" id="cafe" name="receita">
@@ -150,7 +109,7 @@
             <div class="item">
               <input type="radio" id="lanchesn" name="receita">
               <label for="lanchesn"></label>
-              <p>Lanches rapidos</p>
+              <p>Lanches noturnos</p>
             </div>
             <div class="item">
               <input type="radio" id="almoco" name="receita">
@@ -165,7 +124,7 @@
             <div class="item">
               <input type="radio" id="outros" name="receita">
               <label for="outros"></label>
-              <p>sucos</p>
+              <p>Outros</p>
             </div>
           </div>
         </div>
@@ -184,38 +143,69 @@
         <!--Campo Modo de Preparo-->
         <div class="form-section">
           <div class="titulo_modo_preparo">
-            tempo de Preparo
+            Modo de Preparo
           </div>
-          <div class="tempo_preparo">
+          <div class="modo_preparo">
             <textarea id="modoPreparoInput"
               placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
           </div>
-
-          fotos e videos feitos
-        </div>
-        <div class="fotos_dos_ingredientes">
-          <textarea id="fotosingredientesInput"
-            placeholder="Introduzir imagens do preparo da receita"></textarea>
-        </div>
-      </div>
-
-
-
-        </div>
         </div>
 
-        <!--Botões de Salvar e Cancelar receitas-->
-        <div class="botoes_salvar_cancelar_receitas">
+        <!--Adicionar foto e vídeo da receita-->
+        <div class="recipe-media-form">
+          <!--Adicionar foto-->
+          <div class="form-item">
+            <div class="titulo_adicionar-foto">
+              Adicionar Foto
+            </div>
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="mainPhotoImage" src="../src/media/icons/photo_icon.svg" alt="Ícone de foto">
+              </div>
+              <input type="file" id="mainPhoto" name="mainPhoto" onchange="loadImage('mainPhoto', 'mainPhotoImage')"
+                style="display: none;" />
+              <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
+            </div>
+            <p class="item-description">Tamanho máx.: 5MB</p>
+            <button id="mainPhotoButton" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
+          </div>
+          <!--Adicionar vídeo-->
+          <div class="form-item">
+            <div class="titulo_adicionar-video">
+              Adicionar Vídeo
+            </div>
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="recipeVideoImage" src="../src/media/icons/video_icon.svg" alt="Ícone de vídeo">
+              </div>
+              <div id="videoContainer" style="width: 100%; height: 500px; position: relative;"></div>
+
+              <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
+
+              <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
+            </div>
+            <p class="item-description">Apenas vídeos do Youtube</p>
+            <button id="recipeVideoButton" onclick="loadVideo()">Carregar Vídeo</button>
+            <button id="cancelVideoButton" onclick="cancelVideo()" style="display: none;">Cancelar Vídeo</button>
+          </div>
+        </div>
+
+        <!--Botões de Salvar e Cancelar-->
+        <div class="botoes_salvar_cancelar">
           <button class="botao" id="salvar">Salvar</button>
           <button class="botao" id="cancelar">Cancelar</button>
         </div>
       </section>
+    </div>
+  </div>
+  </section>
 
-<!--Rodapé-->
-<footer id="bottom-bar"></footer>
+  <!--Rodapé-->
+  <footer id="bottom-bar"></footer>
 
+  <script src="../src/js/recipeMedia.js"></script>
+  <script src="../src/js/topBar.js"></script>
+  <script src="../src/js/rodape.js"></script>
 </body>
-<script src="../src/js/teste.js"></script>
-<script src="../src/js/rodape.js"></script>
 
 </html>
