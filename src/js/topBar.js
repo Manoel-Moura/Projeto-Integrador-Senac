@@ -58,7 +58,7 @@ let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre", "Login"];
 let paginasMenu = [
   "https://www.senac.br/",
   "../pages/camila.html",
-  "Chefes.html",
+  "../pages/editarReceita.html",
   "../pages/sobre.html",
   "../pages/manoel.html",
 ];
