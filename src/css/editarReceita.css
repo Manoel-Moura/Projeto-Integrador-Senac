@@ -20,13 +20,13 @@ body {
 /* Relacionado a forma com que organizei todos os itens */
 .row {
   display: flex;
-  padding: 7em;
+  padding: 5vw;
   width: 100%;
   min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #faf6f6; 
+  background-color: #faf6f6;
 }
 
 
@@ -43,6 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 800px;
   padding: 2em;
   border-radius: 15px;
   background: #fff;
@@ -54,13 +55,15 @@ body {
 /* Relacionado a forma com que as descrições e caixas estão organizadas */
 .itemForm {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 2.6em;
   margin-left: 2em;
 }
 
+
 /* Relacionado as descrições das caixas de texto ao lado */
 .itemForm label {
-  margin-right: 5em;
+  width: 200px;
   font-weight: bold;
   font-size: 1em;
 }
@@ -96,9 +99,11 @@ body {
   max-height: 184px;
 }
 
-
 /* Abaixo temos o css das divs relacionado a seleção de categorias da receita */
 
+.colunas {
+  max-width: 800px;
+}
 
 /* Título do componente de categorias*/
 .descricao {
@@ -111,14 +116,13 @@ body {
 .fileira {
   display: flex;
   flex-wrap: wrap;
-  padding: 2mm;
+  padding: 2%;
   justify-content: space-around;
 }
 
 /* Relacionado as caixas de seleção da categoria */
 .item {
   width: 33%;
-  min-width: 300px;
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -150,6 +154,7 @@ body {
 /* Relacionado a forma de divisão das duas caixas de texto */
 .form-section {
   width: 100%;
+  max-width: 800px;
 }
 
 /* Relacionado ao título */
@@ -174,32 +179,11 @@ body {
   resize: none;
 }
 
-/* Relacionado aos botões de salvar e cancelar a receita ( ou edição ) */
-.botoes_salvar_cancelar {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3em;
-}
-
-/* Relacionado ao botão salvar */
-#salvar {
-  background-color: #01468a;
-  margin-right: 2em;
-  color: white;
-}
-
-/* Relacionado ao botão cancelar */
-#cancelar {
-  background-color: white;
-  color: #01468a;
-  border: 2px solid #01468a;
-}
-
 
 /* Abaixo está relacionado aos componentes de adicionar foto e vídeo */
 
 /* Título do componente de adicionar foto*/
-.titulo_adicionar-foto{
+.titulo_adicionar-foto {
   color: #01468a;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -207,41 +191,24 @@ body {
 
 /* Relacionado a aréa onde a imagem e icones ficam para mostrar ao usuário a imagem */
 .media-upload-area {
-  width: 24em;
-  height: 20em;
   border: 1px solid #01468a;
   display: flex;
   flex-direction: column;
   border-radius: 3mm;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  position: relative; 
-  overflow: hidden; 
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Abaixo está relacionado a forma com que a imagem é preenchida na div */
 .media-upload-area img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
-@media (max-width: 600px) {
-  .media-upload-area img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-  }
-}
-
-@media (min-width: 601px) {
-  .media-upload-area img {
-    width: 50%;
-    height: 50%;
-    background-size: cover;
-  }
-}
 
 /* Relacionado ao icone dentro das divs */
 .media-icon img {
@@ -253,18 +220,20 @@ body {
 /*Forma com que está organizado os dois campos de adicionar foto e vídeo */
 .recipe-media-form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 /* Afastamento dos dois campos */
 .form-item {
   flex: 1;
-  margin-right: 10px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: calc(50% - 1rem);
 }
 
-
 /* Título do componente de adicionar vídeo*/
-.titulo_adicionar-video{
+.titulo_adicionar-video {
   color: #01468a;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -277,7 +246,7 @@ body {
 }
 
 /* Relacionado a borda do campo da url em adicionar vídeo */
-#recipeVideo{
+#recipeVideo {
   border-radius: 10px;
   border: 1px solid #676767;
 }
@@ -287,10 +256,96 @@ body {
   border: none !important;
 }
 
+/*Em relação ao container de vídeo*/
+#videoContainer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+/*Descrição dos containers de carregar foto e vídeo*/
+.item-description {
+  font-weight: bold;
+  padding-bottom: 3mm;
+}
+
+/*Container dos botões de carregar foto e vídeo*/
+#buttonContainer {
+  display: flex;
+  gap: 1mm;
+  flex: 1 1 auto;
+}
+
+/*Relacionado aos botões de carregar foto e vídeo*/
+#mainPhotoButton,
+#recipeVideoButton,
+#cancelVideoButton {
+  max-width: 101px;
+  height: 53px;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  border-radius: 2mm;
+  color: white;
+  flex: 1 1 auto;
+  text-align: center;
+  border: none;
+}
+
+#mainPhotoButton {
+  background-color: #4A90E2;
+}
+
+#recipeVideoButton {
+  background-color: #4A90E2;
+}
+
+#cancelVideoButton {
+  background-color: #FF6B6B;
+}
+
+#mainPhotoButton:hover,
+#recipeVideoButton:hover,
+#cancelVideoButton:hover {
+  transform: scale(1.1);
+}
+
+
+/* Relacionado aos botões de salvar e cancelar a receita ( ou edição ) */
+.botoes_salvar_cancelar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+/* Relacionado ao botão salvar */
+#salvar {
+  background-color: #01468a;
+  margin-right: 2em;
+  width: 101px;
+  height: 53px;
+  margin-bottom: 1em;
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+
+/* Relacionado ao botão cancelar */
+#cancelar {
+  background-color: white;
+  color: #01468a;
+  width: 101px;
+  height: 53px;
+  border: 2px solid #01468a;
+  flex: 1;
+  text-align: center;
+}
+
 
 /* Abaixo relacionado aos media queries para responsividade em dispositivos com menor resolução */
 
 /* Media queries */
+
 @media screen and (max-width: 600px) {
   .row {
     padding: 0.5em;
@@ -319,7 +374,7 @@ body {
   }
 
   .item {
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -340,6 +395,53 @@ body {
   }
 
   .itemForm label {
+    margin-right: 0;
+  }
+}
+
+
+@media screen and (min-width: 18em) {
+  .media-upload-area {
+    width: 18em;
+    height: 16em;
+  }
+}
+
+@media screen and (max-width: 17.99em) {
+  .media-upload-area {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 900px) {
+  .form-item {
+    width: calc(50% - 1rem);
+    margin-right: 0.5rem;
+  }
+}
+
+
+@media (max-width: 900px) and (min-width: 600px) {
+  .form-item {
+    width: calc(100% - 1rem);
+    margin-right: 0;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .form-item {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #salvar,
+  #cancelar {
+    width: 100%;
     margin-right: 0;
   }
 }

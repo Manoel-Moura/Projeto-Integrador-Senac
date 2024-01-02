@@ -1,14 +1,63 @@
-//Função para carregar a imagem
+// Função para verificar o tamanho do arquivo
+function checkFileSize(file) {
+  var size = file.size / 1024 / 1024; // tamanho em MB
+  if (size > 5) {
+    alert('O arquivo excede o limite de 5MB. Por favor, carregue uma imagem menor.');
+    return false;
+  }
+  return true;
+}
+
+// Função para criar uma nova imagem
+function createNewImage(src) {
+  var newImage = document.createElement('img');
+  newImage.src = src;
+  newImage.style.width = '100%';
+  newImage.style.height = '100%';
+  return newImage;
+}
+
+// Função para inicializar o cropper
+function initializeCropper(image) {
+  return new Cropper(image, {
+    viewMode: 1,
+    dragMode: 'move',
+    autoCropArea: 1,
+    restore: false,
+    modal: false,
+    guides: false,
+    highlight: false,
+    cropBoxMovable: true,
+    cropBoxResizable: true,
+    toggleDragModeOnDblclick: false,
+    zoomOnTouch: true,
+    zoomOnWheel: true,
+    crop: function (event) {
+      console.log(event.detail.x);
+      console.log(event.detail.y);
+      console.log(event.detail.width);
+      console.log(event.detail.height);
+      console.log(event.detail.rotate);
+      console.log(event.detail.scaleX);
+      console.log(event.detail.scaleY);
+    }
+  });
+}
+
+// Função para carregar a imagem
 function loadImage(inputId, imageId) {
   var input = document.getElementById(inputId);
   var image = document.getElementById(imageId);
   var icon = document.querySelector('.media-icon');
   var mediaUploadArea = document.querySelector('.media-upload-area');
 
+
+  if (window.cropper) {
+    window.cropper.destroy();
+  }
+
   if (input.files && input.files[0]) {
-    var size = input.files[0].size / 1024 / 1024; // size in MB
-    if (size > 5) {
-      alert('O arquivo excede o limite de 5MB. Por favor, carregue uma imagem menor.');
+    if (!checkFileSize(input.files[0])) {
       return;
     }
 
@@ -19,12 +68,12 @@ function loadImage(inputId, imageId) {
         mediaUploadArea.removeChild(existingImage);
       }
 
-      var newImage = document.createElement('img');
-      newImage.src = e.target.result;
-      newImage.style.width = '100%';
-      newImage.style.height = '100%';
+      var newImage = createNewImage(e.target.result);
       mediaUploadArea.appendChild(newImage);
       icon.style.display = 'none';
+
+
+      window.cropper = initializeCropper(newImage);
     }
     reader.readAsDataURL(input.files[0]);
   } else if (input.value) {
@@ -33,21 +82,20 @@ function loadImage(inputId, imageId) {
       mediaUploadArea.removeChild(existingImage);
     }
 
-    var newImage = document.createElement('img');
-    newImage.src = input.value;
-    newImage.style.width = '100%';
-    newImage.style.height = '100%';
+    var newImage = createNewImage(input.value);
     mediaUploadArea.appendChild(newImage);
     icon.style.display = 'none';
+
+
+    window.cropper = initializeCropper(newImage);
   }
 }
-
 
 //Mensagem de erro caso o campo de url esteja vazio.
 document.addEventListener('DOMContentLoaded', function () {
   var loadButton = document.getElementById('recipeVideoButton');
   var videoContainer = document.getElementById('videoContainer');
-  var input = document.getElementById('recipeVideo'); // Obter o campo de URL
+  var input = document.getElementById('recipeVideo');
 
   videoContainer.style.display = 'none';
 
@@ -75,7 +123,12 @@ function loadVideo() {
   newIframe.src = 'https://www.youtube.com/embed/' + getYouTubeID(input.value);
   newIframe.style.width = '100%';
   newIframe.style.height = '100%';
-  videoContainer.innerHTML = '';
+
+  // Limpar o container de vídeo
+  while (videoContainer.firstChild) {
+    videoContainer.removeChild(videoContainer.firstChild);
+  }
+
   videoContainer.appendChild(newIframe);
 
   videoImage.style.display = 'none';
@@ -84,7 +137,6 @@ function loadVideo() {
 
   videoContainer.style.display = 'block';
   document.querySelector('.form-item:nth-child(2) > .media-upload-area').classList.add('no-border');
-
 }
 
 
@@ -119,3 +171,34 @@ function cancelVideo() {
 
 }
 
+//Vai ficar aqui apenas temporariamente
+// Cria uma matriz com os nomes das categorias
+var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
+
+// Obtenha a div onde os itens serão adicionados
+var fileira = document.querySelector(".fileira");
+
+// Use um loop para criar cada item
+for (var i = 0; i < categorias.length; i++) {
+  // Crie os elementos
+  var item = document.createElement("div");
+  var input = document.createElement("input");
+  var label = document.createElement("label");
+  var p = document.createElement("p");
+
+  // Defina as propriedades dos elementos
+  item.className = "item";
+  input.type = "radio";
+  input.id = categorias[i].toLowerCase().replace(/ /g, "");
+  input.name = "receita";
+  label.htmlFor = input.id;
+  p.textContent = categorias[i];
+
+  // Adicione os elementos à div do item
+  item.appendChild(input);
+  item.appendChild(label);
+  item.appendChild(p);
+
+  // Adicione o item à div da fileira
+  fileira.appendChild(item);
+}
