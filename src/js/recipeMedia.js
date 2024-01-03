@@ -51,7 +51,6 @@ function loadImage(inputId, imageId) {
   var icon = document.querySelector('.media-icon');
   var mediaUploadArea = document.querySelector('.media-upload-area');
 
-
   if (window.cropper) {
     window.cropper.destroy();
   }
@@ -72,10 +71,15 @@ function loadImage(inputId, imageId) {
       mediaUploadArea.appendChild(newImage);
       icon.style.display = 'none';
 
-
       window.cropper = initializeCropper(newImage);
+
+      // Mostrar o botão "Salvar" quando a imagem é carregada
+      document.getElementById('saveEditButton').style.display = 'block';
     }
     reader.readAsDataURL(input.files[0]);
+
+    // Redefinir o valor do campo de arquivo para permitir que a mesma imagem seja recarregada
+    input.value = null;
   } else if (input.value) {
     var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
     if (existingImage) {
@@ -86,8 +90,34 @@ function loadImage(inputId, imageId) {
     mediaUploadArea.appendChild(newImage);
     icon.style.display = 'none';
 
-
     window.cropper = initializeCropper(newImage);
+
+    document.getElementById('saveEditButton').style.display = 'block';
+  }
+}
+
+// Função para salvar a edição
+function saveEdit() {
+  if (window.cropper) {
+
+    window.cropper.getCroppedCanvas().toBlob(function(blob) {
+     
+      var url = URL.createObjectURL(blob);
+
+      var newImage = createNewImage(url);
+      
+      var mediaUploadArea = document.querySelector('.media-upload-area');
+      var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
+      if (existingImage) {
+        mediaUploadArea.removeChild(existingImage);
+      }
+
+      // Adicionar a nova imagem à área de upload de mídia
+      mediaUploadArea.appendChild(newImage);
+
+      window.cropper.destroy();
+      window.cropper = null;
+    });
   }
 }
 
@@ -171,7 +201,7 @@ function cancelVideo() {
 
 }
 
-//Vai ficar aqui apenas temporariamente
+
 // Cria uma matriz com os nomes das categorias
 var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
 

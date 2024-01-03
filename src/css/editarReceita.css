@@ -279,7 +279,8 @@ body {
 /*Relacionado aos botões de carregar foto e vídeo*/
 #mainPhotoButton,
 #recipeVideoButton,
-#cancelVideoButton {
+#cancelVideoButton,
+#saveEditButton {
   max-width: 101px;
   height: 53px;
   margin-right: 2em;
@@ -289,6 +290,10 @@ body {
   flex: 1 1 auto;
   text-align: center;
   border: none;
+}
+
+#saveEditButton{
+  background-color: #f78b1f;
 }
 
 #mainPhotoButton {
@@ -305,7 +310,8 @@ body {
 
 #mainPhotoButton:hover,
 #recipeVideoButton:hover,
-#cancelVideoButton:hover {
+#cancelVideoButton:hover,
+#saveEditButton:hover {
   transform: scale(1.1);
 }
 

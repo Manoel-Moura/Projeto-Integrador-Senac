@@ -95,7 +95,12 @@
             <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
           </div>
           <p class="item-description">Tamanho máx.: 5MB</p>
-          <button id="mainPhotoButton" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
+          <div id="buttonContainer">
+            <button id="mainPhotoButton" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
+            <button id="saveEditButton" onclick="saveEdit()" style="display: none;">Salvar</button>
+
+          </div>
+          
         </div>
 
         <!--Adicionar vídeo-->
