@@ -1,7 +1,7 @@
 const receitas = [
   {
     nome: "Ovo frito ",
-    descricao: "Muito boa sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh i sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh i iuuih byhvgyigiogihovby ",
+    descricao: "O ovo frito é um prato simples, mas que pode ser uma obra-prima culinária. Para fazer um ovo frito perfeito, é preciso atenção aos detalhes e um pouco de prática. ",
     autor: 'Manoel Moura',
     numero_porcoes: 2,
     rendimento: 1,
@@ -9,12 +9,18 @@ const receitas = [
     tempo_cozimento: 2,
     calorias: 750,
     ingredientes: ['ovo','sal','salcinha','folha de alface'],
-    modo_preparo: ['ovo','sal','salcinha','folha de alface'],
+    modo_preparo: [
+      "Aqueça o óleo ou a manteiga em uma frigideira antiaderente em fogo médio.",
+      "Quebre o ovo na frigideira e tempere com sal e pimenta a gosto.",
+      "Deixe cozinhar por cerca de 2 minutos, ou até a clara começar a firmar.",
+      "Tampe a frigideira e deixe cozinhar por mais 1 minuto, ou até a gema ficar na consistência desejada.",
+      "Sirva em seguida."
+  ],
     url: {
-      tipo: 'video',
-      src: "https://www.youtube.com/embed/LF_kxpSKXdM?si=xrOZuz1hZaZGVFuD"
-      // tipo: "imagem",
-      // src: "https://folhago.com.br/blogs/receitas-faceis/wp-content/uploads/2021/03/ovo-frito.jpeg",
+      // tipo: 'video',
+      // src: "https://www.youtube.com/embed/LF_kxpSKXdM?si=xrOZuz1hZaZGVFuD"
+      tipo: "imagem",
+      src: "https://folhago.com.br/blogs/receitas-faceis/wp-content/uploads/2021/03/ovo-frito.jpeg",
     },
   },
 ];
