@@ -137,4 +137,3 @@ container.appendChild(fragment);
 
 fragment_menu_mobile.append(menu);
 menu_mobile.append(fragment_menu_mobile);
-s

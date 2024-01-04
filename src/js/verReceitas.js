@@ -1,6 +1,6 @@
 const receitas = [
   {
-    nome: "Ovo frito fsdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh iuuih byhvgyigiogihovbyu gyi vgyibo gyti gytiu gyi gyi hb gyi gyi",
+    nome: "Ovo frito ",
     descricao: "Muito boa sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh i sdfagdfg gdfgdsfg hdfgsh gfh fgh fghf dghfg hfghfghfg hfghddfghdfg fghrtybnruntiy urikj uh i iuuih byhvgyigiogihovby ",
     autor: 'Manoel Moura',
     numero_porcoes: 2,
@@ -11,10 +11,10 @@ const receitas = [
     ingredientes: ['ovo','sal','salcinha','folha de alface'],
     modo_preparo: ['ovo','sal','salcinha','folha de alface'],
     url: {
-      // tipo: 'video',
-      // src: "https://www.youtube.com/embed/LF_kxpSKXdM?si=xrOZuz1hZaZGVFuD"
-      tipo: "imagem",
-      src: "https://folhago.com.br/blogs/receitas-faceis/wp-content/uploads/2021/03/ovo-frito.jpeg",
+      tipo: 'video',
+      src: "https://www.youtube.com/embed/LF_kxpSKXdM?si=xrOZuz1hZaZGVFuD"
+      // tipo: "imagem",
+      // src: "https://folhago.com.br/blogs/receitas-faceis/wp-content/uploads/2021/03/ovo-frito.jpeg",
     },
   },
 ];

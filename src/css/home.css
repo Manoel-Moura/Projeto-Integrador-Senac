@@ -130,13 +130,13 @@ box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65); */
 
 #lista-categorias {
   width: 100%;
-  height: 150px;
+  height: 110px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  position: relative;
-  overflow: scroll;
+  flex-direction: row;
+  overflow-x: auto;
 }
 
 #categoria {
