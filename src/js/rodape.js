@@ -269,7 +269,7 @@ class Card {
 
 }
 
-
+document.addEventListener("DOMContentLoaded", function () {
 let cont = 1;
 cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
   const addCard = document.getElementById("rowCard"); 
@@ -280,7 +280,7 @@ cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
   addCard.append(fragment_card);
  
 });
-
+});
 
   // if(cardReceita.favorite && cont <= 5){
     const receitaDestaque = document.getElementById("receitaDestaque");
