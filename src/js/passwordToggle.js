@@ -38,15 +38,25 @@ function mostrarRequisitos(inputId) {
     infoBalloon.id = 'infoBalloon';
     document.body.appendChild(infoBalloon);
   }
-  infoBalloon.innerHTML = '<ul id="password-requisitos" style="list-style-type: none;">' +
-    '<li id="length">Pelo menos 8 caracteres</li>' +
-    '<li id="lowercase">Pelo menos 1 letra minúscula</li>' +
-    '<li id="uppercase">Pelo menos 1 letra maiúscula</li>' +
-    '<li id="number">Pelo menos 1 número</li>' +
-    '<li id="symbol">Pelo menos 1 símbolo</li>' +
-    '<li id="match">As senhas correspondem</li>' +
-    '</ul>';
-  
+
+  while (infoBalloon.firstChild) {
+    infoBalloon.removeChild(infoBalloon.firstChild);
+  }
+
+  var ul = document.createElement('ul');
+  ul.id = 'password-requisitos';
+  ul.style.listStyleType = 'none';
+
+  // Adiciona os itens da lista
+  ul.appendChild(criarRequisitoElemento('length', 'Pelo menos 8 caracteres', 'red'));
+  ul.appendChild(criarRequisitoElemento('lowercase', 'Pelo menos 1 letra minúscula', 'red'));
+  ul.appendChild(criarRequisitoElemento('uppercase', 'Pelo menos 1 letra maiúscula', 'red'));
+  ul.appendChild(criarRequisitoElemento('number', 'Pelo menos 1 número', 'red'));
+  ul.appendChild(criarRequisitoElemento('symbol', 'Pelo menos 1 símbolo', 'red'));
+  ul.appendChild(criarRequisitoElemento('match', 'As senhas correspondem', 'red'));
+
+  infoBalloon.appendChild(ul);
+
   var rowItem = document.querySelector('.row-item');
   var rect = rowItem.getBoundingClientRect();
   infoBalloon.style.position = 'absolute';
@@ -54,14 +64,30 @@ function mostrarRequisitos(inputId) {
   infoBalloon.style.color = 'white';
   infoBalloon.style.padding = '10px';
   infoBalloon.style.borderRadius = '5px';
-  infoBalloon.style.bottom = (window.innerHeight - rect.top) + 'px'; 
-  
+  infoBalloon.style.bottom = (window.innerHeight - rect.top) + 'px';
 
   var infoBalloonRect = infoBalloon.getBoundingClientRect();
   infoBalloon.style.left = (rect.left + rect.width / 2 - infoBalloonRect.width / 2) + 'px';
-  
-  validarRequisitos(); 
+
+  validarRequisitos();
 }
+
+// Função auxiliar para criar os elementos dos requisitos
+function criarRequisitoElemento(id, texto, cor) {
+  var li = document.createElement('li');
+  li.id = id;
+  li.textContent = texto;
+  li.style.color = cor;
+  return li;
+}
+
+window.addEventListener('load', function() {
+  mostrarRequisitos();
+});
+
+// Adicionar event listeners para validar requisitos quando a senha é digitada
+document.getElementById('novaSenha').addEventListener('keyup', validarRequisitos);
+document.getElementById('confirmarSenha').addEventListener('keyup', validarRequisitos);
 
 function validarRequisitos() {
   setTimeout(function() {
@@ -100,6 +126,3 @@ function validarRequisitos() {
     }
   }, 0);
 }
-
-document.getElementById('novaSenha').addEventListener('keyup', validarRequisitos);
-document.getElementById('confirmarSenha').addEventListener('keyup', validarRequisitos);
