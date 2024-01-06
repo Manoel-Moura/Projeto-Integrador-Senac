@@ -1,6 +1,6 @@
 const receitas = [
   {
-    nome: "Ovo frito ",
+    nome: "Ovo frito",
     descricao: "O ovo frito é um prato simples, mas que pode ser uma obra-prima culinária. Para fazer um ovo frito perfeito, é preciso atenção aos detalhes e um pouco de prática. ",
     autor: 'Manoel Moura',
     numero_porcoes: 2,
@@ -18,7 +18,7 @@ const receitas = [
   ],
     url: {
       // tipo: 'video',
-      // src: "https://www.youtube.com/embed/LF_kxpSKXdM?si=xrOZuz1hZaZGVFuD"
+      // src: "https://www.youtube.com/embed/69GdvCwsM0A?si=C8qJFIzUk8hFUW_M"
       tipo: "imagem",
       src: "https://folhago.com.br/blogs/receitas-faceis/wp-content/uploads/2021/03/ovo-frito.jpeg",
     },

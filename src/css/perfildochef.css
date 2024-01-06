@@ -52,3 +52,11 @@
   flex-direction: column;
   
 }
+
+#receita-destaque{
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 10px;
+  background-color: red;
+  margin-top: 10px;
+}
