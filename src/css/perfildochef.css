@@ -53,10 +53,13 @@
   
 }
 
-#receita-destaque{
+#receitaDestaque{
   padding: 5px;
   padding-left: 15px;
   padding-right: 10px;
   background-color: red;
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

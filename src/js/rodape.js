@@ -107,6 +107,28 @@ barra_bottom.append(rodape_div);
 // Adicionando o fragmento de documento ao elemento com ID "bottom-bar" no HTML
 bottom_bar.append(barra_bottom);
 //============================================================================================
+
+let listaCategorias = document.getElementById("lista-categorias");
+
+let fragmentCategorias = document.createDocumentFragment();
+
+nomeCategoria = "Teste";
+
+function novaCategoria(nomeCategoria) {
+  let categoria = document.createElement("button");
+  categoria.setAttribute("id", "categoria");
+
+  categoria.append(nomeCategoria);
+
+  fragmentCategorias.append(categoria);
+
+  listaCategorias.append(fragmentCategorias);
+}
+
+for (let i = 0; i < 20; i++) {
+  novaCategoria(nomeCategoria);
+}
+
 const cards = [
   {
     chef: "Manoel Moura",
@@ -114,6 +136,7 @@ const cards = [
     curtidas: 1.511,
     fotoChef: "../src/media/images/chef.jpg",
     fotoReceita: "../src/media/images/fejoada.jpg",
+    favorite: true,
   },
   {
     chef: "Paula Martins",
@@ -123,6 +146,7 @@ const cards = [
       "https://claudia.abril.com.br/wp-content/uploads/2022/12/receber-ABRE-da-materia.jpg?quality=85&strip=info",
     fotoReceita:
       "https://d2qcpt1idvpipw.cloudfront.net/recipes/2020/10/bolo-de-chocolate-recheado.jpg",
+      favorite: false,
   },
   {
     chef: "João Silva",
@@ -132,6 +156,7 @@ const cards = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtRBoj24__MWojvhRoyWyRgGIlLi73ruLSvkMWOrbTt95rGQYCJok2_dX_rstYP758Z78&usqp=CAU",
     fotoReceita:
       "https://blog.praticabr.com/wp-content/uploads/2023/06/margherita-1024x682.jpg",
+      favorite: true,
   },
   {
     chef: "Mariana Souza",
@@ -141,6 +166,7 @@ const cards = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjupo0yUuH2-4JV11_B8CZOs65II_FdcAHww&usqp=CAU",
     fotoReceita:
       "https://static.itdg.com.br/images/360-240/ec2a5e38702c60bf1ace0b5f1c8e9415/shutterstock-739787011.jpg",
+      favorite: true,
   },
   {
     chef: "Pedro Santos",
@@ -150,6 +176,7 @@ const cards = [
       "https://www.rbsdirect.com.br/imagesrc/35582396.jpg?w=1024&h=768&a=c",
     fotoReceita:
       "https://www.sabornamesa.com.br/media/k2/items/cache/0f18514092300971a1d9467fe5706101_XL.jpg",
+      favorite: false,
   },
   {
     chef: "Ana Paula",
@@ -158,6 +185,7 @@ const cards = [
     fotoChef: "https://ciadosfrios.com.br/wp-content/uploads/2022/07/leka2.jpg",
     fotoReceita:
       "https://cdn.casaeculinaria.com/wp-content/uploads/2023/05/17151208/Paella.webp",
+      favorite: true,
   },
   {
     chef: "José Carlos",
@@ -167,7 +195,9 @@ const cards = [
       "https://blog.zanottirefrigeracao.com.br/wp-content/uploads/2018/08/chef-cozinha-profissional.jpg",
     fotoReceita:
       "https://www.receiteria.com.br/wp-content/uploads/receitas-de-carpaccio-de-salmao-4-730x449.jpg",
-  },
+      favorite: true,
+    }
+  ,
   {
     chef: "Clara Almeida",
     receita: "Torta de limão",
@@ -176,7 +206,8 @@ const cards = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiPjqfDEeFNaumUEQqwhToEv4mdM5_ZHcA4g&usqp=CAU",
     fotoReceita:
       "https://guiadacozinha.com.br/wp-content/uploads/2018/04/torta-de-limao-facil.jpg",
-  },
+      favorite: false,
+    },
   {
     chef: "Luís Oliveira",
     receita: "Brigadeiro",
@@ -185,7 +216,8 @@ const cards = [
       "https://viagemegastronomia.cnnbrasil.com.br/wp-content/uploads/sites/5/2018/07/pp.jpg",
     fotoReceita:
       "https://assets.delirec.com/images%2FhaztW3Xphpg6dAWjzLKIgW3ndc62%2Frecipe%2F45cdc669-bb94-4c24-bf6e-277f74447edd-Brigadeiro-Gourmet-gallery-0",
-  },
+      favorite: true,
+    },
 ];
 
 class Card {
@@ -234,37 +266,36 @@ class Card {
 
     return card;
   }
+
 }
 
+
+let cont = 1;
 cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
   const addCard = document.getElementById("rowCard"); 
-  const fragment = document.createDocumentFragment(); 
-  const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita); // Using `new` to create an instance
-  fragment.append(newCard.createCard());
-
-  addCard.append(fragment);
+  const fragment_card = document.createDocumentFragment(); 
+  const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
+  const card = newCard.createCard();
+  fragment_card.append(card);
+  addCard.append(fragment_card);
+ 
 });
+
+
+  // if(cardReceita.favorite && cont <= 5){
+    const receitaDestaque = document.getElementById("receitaDestaque");
+    const fragmentDestaque = document.createDocumentFragment();
+    const newCard2 = new Card("Manoel", "Ovo frito", 2, "../src/media/images/chef.jpg", "../src/media/images/fejoada.jpg");
+
+    fragmentDestaque.append(newCard2.createCard());
+    receitaDestaque.append(fragmentDestaque);
+  //   cont++
+  // }
 
 //============================================================================================
 
-let listaCategorias = document.getElementById("lista-categorias");
 
-let fragmentCategorias = document.createDocumentFragment();
 
-nomeCategoria = "Teste";
 
-function novaCategoria(nomeCategoria) {
-  let categoria = document.createElement("button");
-  categoria.setAttribute("id", "categoria");
 
-  categoria.append(nomeCategoria);
-
-  fragmentCategorias.append(categoria);
-
-  listaCategorias.append(fragmentCategorias);
-}
-
-for (let i = 0; i < 20; i++) {
-  novaCategoria(nomeCategoria);
-}
 //===========================================
