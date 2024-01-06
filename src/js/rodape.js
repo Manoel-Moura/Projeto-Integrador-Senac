@@ -279,18 +279,41 @@ cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
   fragment_card.append(card);
   addCard.append(fragment_card);
  
+  
 });
 });
 
-  // if(cardReceita.favorite && cont <= 5){
-    const receitaDestaque = document.getElementById("receitaDestaque");
-    const fragmentDestaque = document.createDocumentFragment();
-    const newCard2 = new Card("Manoel", "Ovo frito", 2, "../src/media/images/chef.jpg", "../src/media/images/fejoada.jpg");
+document.addEventListener("DOMContentLoaded", function () {
+  let cont = 1;
+  cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
+    if(cardReceita.favorite && cont <= 5 && cardReceita.chef != "Manoel Moura"){
+      const receitaDestaque = document.getElementById("receitaDestaque");
+      const fragmentDestaque = document.createDocumentFragment();
+      const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
+      const card = newCard.createCard();
+      fragmentDestaque.append(card);
+      receitaDestaque.append(fragmentDestaque);
+      cont++;
+    }
+  
+  });
+  });
 
-    fragmentDestaque.append(newCard2.createCard());
-    receitaDestaque.append(fragmentDestaque);
-  //   cont++
-  // }
+  document.addEventListener("DOMContentLoaded", function () {
+    cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
+      const addCard = document.getElementById("rowCardChef"); 
+      if(cardReceita.chef != "Manoel Moura"){
+        const fragment_card = document.createDocumentFragment(); 
+        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
+        const card = newCard.createCard();
+        fragment_card.append(card);
+        addCard.append(fragment_card);
+       
+        
+      }
+      
+    });
+    });
 
 //============================================================================================
 

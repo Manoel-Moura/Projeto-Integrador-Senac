@@ -53,13 +53,108 @@
   
 }
 
+#cont{
+  height: auto;
+  width: auto;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f78b1f;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
 #receitaDestaque{
-  padding: 5px;
   padding-left: 15px;
   padding-right: 10px;
-  background-color: red;
-  margin-top: 10px;
+  min-width: calc(210px *5);
+  background-color: #f78b1f;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  justify-content: center;
+}
+
+#lb-recomendacao{
+  padding-left: 20px;
+  width: auto;
+  height: auto;
+  background-color: #f78b1f;
+  min-width: calc(210px *5);
+  /* border-top-right-radius: 60px;
+  border-top-left-radius: 60px; */
+  color: white;
+  font-size: 20pt;
+  font-weight: 700;
+  
+}
+
+#rowCardChef {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding: 40px;
+  padding-top: 0px;
+}
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #968e8e5b;
+  border-radius: 5px;
+}
+
+#cont2{
+  height: auto;
+  max-width: 70%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #FAF6F6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+#lb-receitasChef{
+  padding-left: 20px;
+  width: auto;
+  height: auto;
+  min-width: calc(210px *5);
+  /* border-top-right-radius: 60px;
+  border-top-left-radius: 60px; */
+  color: rgb(0, 0, 0);
+  font-size: 20pt;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.list-style{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+ 
+}
+
+#cont3{
+  max-width: 79%;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
 }
