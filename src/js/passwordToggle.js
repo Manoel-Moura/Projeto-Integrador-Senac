@@ -1,27 +1,24 @@
-// Função para mostrar a senha
-function mostrarSenha(inputId, imgElement) {
-  var inputPass1 = document.getElementById('novaSenha');
-  var inputPass2 = document.getElementById('confirmarSenha');
-  var imgElement1 = document.querySelector('#novaSenha ~ .toggle-password-visibility');
-  var imgElement2 = document.querySelector('#confirmarSenha ~ .toggle-password-visibility');
-  var siblingImgElement1 = imgElement1.nextElementSibling || imgElement1.previousElementSibling;
-  var siblingImgElement2 = imgElement2.nextElementSibling || imgElement2.previousElementSibling;
+// Função para alternar a visibilidade da senha
+function alternarVisibilidadeSenha(inputId, imgElementId) {
+  var inputPass = document.getElementById(inputId);
+  var imgElement = document.querySelector(imgElementId + ' ~ .alternar-visibilidade-senha');
+  var siblingImgElement = imgElement.nextElementSibling || imgElement.previousElementSibling;
 
-  if (inputPass1.type === "password") {
-    inputPass1.setAttribute("type", "text");
-    inputPass2.setAttribute("type", "text");
-    imgElement1.style.display = "none";
-    imgElement2.style.display = "none";
-    siblingImgElement1.style.display = "block";
-    siblingImgElement2.style.display = "block";
+  if (inputPass.type === "password") {
+    inputPass.setAttribute("type", "text");
+    imgElement.classList.add('hidden');
+    siblingImgElement.classList.remove('hidden');
   } else {
-    inputPass1.setAttribute("type", "password");
-    inputPass2.setAttribute("type", "password");
-    imgElement1.style.display = "none";
-    imgElement2.style.display = "none";
-    siblingImgElement1.style.display = "block";
-    siblingImgElement2.style.display = "block";
+    inputPass.setAttribute("type", "password");
+    imgElement.classList.add('hidden');
+    siblingImgElement.classList.remove('hidden');
   }
+}
+
+// Função que mostra e esconde a senha
+function mostrarSenha() {
+  alternarVisibilidadeSenha('novaSenha', '#novaSenha');
+  alternarVisibilidadeSenha('confirmarSenha', '#confirmarSenha');
 }
 
 // Função para validar a senha
@@ -32,18 +29,25 @@ function validarSenha(senha) {
 
 // Função para mostrar os requisitos da senha
 function mostrarRequisitos(inputId) {
-  var infoBalloon = document.getElementById('infoBalloon');
-  if (!infoBalloon) {
-    infoBalloon = document.createElement('div');
-    infoBalloon.id = 'infoBalloon';
-    document.body.appendChild(infoBalloon);
-  }
+  const infoBalloon = document.getElementById('infoBalloon') || criarInfoBalloon();
+  const ul = criarListaRequisitos();
+  infoBalloon.appendChild(ul);
+  posicionarInfoBalloon(infoBalloon);
+  esconderInfoBalloon(infoBalloon);
+  adicionarEventosSenha(infoBalloon);
+}
 
-  while (infoBalloon.firstChild) {
-    infoBalloon.removeChild(infoBalloon.firstChild);
-  }
+// Função para criar o balão de requisitos
+function criarInfoBalloon() {
+  const infoBalloon = document.createElement('div');
+  infoBalloon.id = 'infoBalloon';
+  document.body.appendChild(infoBalloon);
+  return infoBalloon;
+}
 
-  var ul = document.createElement('ul');
+//Função para criar os requisitos que vão aparecer no balão
+function criarListaRequisitos() {
+  const ul = document.createElement('ul');
   ul.id = 'password-requisitos';
   ul.style.listStyleType = 'none';
 
@@ -55,10 +59,14 @@ function mostrarRequisitos(inputId) {
   ul.appendChild(criarRequisitoElemento('symbol', 'Pelo menos 1 símbolo', 'red'));
   ul.appendChild(criarRequisitoElemento('match', 'As senhas correspondem', 'red'));
 
-  infoBalloon.appendChild(ul);
+  return ul;
+}
 
-  var rowItem = document.querySelector('.row-item');
-  var rect = rowItem.getBoundingClientRect();
+
+// Função para posicionar o balão acima da row-item
+function posicionarInfoBalloon(infoBalloon) {
+  const rowItem = document.querySelector('.row-item');
+  const rect = rowItem.getBoundingClientRect();
   infoBalloon.style.position = 'absolute';
   infoBalloon.style.backgroundColor = '#333';
   infoBalloon.style.color = 'white';
@@ -66,11 +74,42 @@ function mostrarRequisitos(inputId) {
   infoBalloon.style.borderRadius = '5px';
   infoBalloon.style.bottom = (window.innerHeight - rect.top) + 'px';
 
-  var infoBalloonRect = infoBalloon.getBoundingClientRect();
+  const infoBalloonRect = infoBalloon.getBoundingClientRect();
   infoBalloon.style.left = (rect.left + rect.width / 2 - infoBalloonRect.width / 2) + 'px';
-
-  validarRequisitos();
 }
+
+
+//Função para esconder o balão
+function esconderInfoBalloon(infoBalloon) {
+  infoBalloon.style.display = 'none';
+}
+
+// Função para adicionar evento onde o balão vai aparecer e sumir
+function adicionarEventosSenha(infoBalloon) {
+  const novaSenha = document.getElementById('novaSenha');
+  const confirmarSenha = document.getElementById('confirmarSenha');
+  if (novaSenha && confirmarSenha) {
+    novaSenha.addEventListener('focus', function() {
+      infoBalloon.style.display = 'block';
+    });
+    confirmarSenha.addEventListener('focus', function() {
+      infoBalloon.style.display = 'block';
+    });
+
+    // Esconde o balão quando o usuário desfoca dos campos de senha
+    novaSenha.addEventListener('blur', function() {
+      infoBalloon.style.display = 'none';
+    });
+    confirmarSenha.addEventListener('blur', function() {
+      infoBalloon.style.display = 'none';
+    });
+
+    // Atualiza os requisitos quando o valor dos campos de senha muda
+    novaSenha.addEventListener('input', validarRequisitos);
+    confirmarSenha.addEventListener('input', validarRequisitos);
+  }
+}
+
 
 // Função auxiliar para criar os elementos dos requisitos
 function criarRequisitoElemento(id, texto, cor) {
@@ -81,16 +120,38 @@ function criarRequisitoElemento(id, texto, cor) {
   return li;
 }
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   mostrarRequisitos();
 });
 
-// Adicionar event listeners para validar requisitos quando a senha é digitada
-document.getElementById('novaSenha').addEventListener('keyup', validarRequisitos);
-document.getElementById('confirmarSenha').addEventListener('keyup', validarRequisitos);
 
+// Evento de verificações
+document.getElementById('botaoSalvar').addEventListener('click', function (event) {
+  const novaSenha = document.getElementById('novaSenha');
+  const confirmarSenha = document.getElementById('confirmarSenha');
+
+  // Verifique se ambos os campos de senha não estão vazios
+  if (novaSenha.value === '' || confirmarSenha.value === '') {
+    alert('Por favor, preencha ambos os campos de senha antes de salvar.');
+    event.preventDefault();  // Impede a submissão do formulário
+  }
+
+  // Verifique se a senha atende a todos os requisitos
+  const requisitos = document.getElementById('password-requisitos');
+  const todosOsRequisitosAtendidos = Array.from(requisitos.children).every(function (requisito) {
+    return requisito.classList.contains('green');
+  });
+
+  if (!todosOsRequisitosAtendidos) {
+    alert('Sua senha não atende a todos os requisitos. Por favor, verifique os requisitos e tente novamente.');
+    event.preventDefault();  // Impede a submissão do formulário
+  }
+});
+
+
+// Função de validar os requisitos
 function validarRequisitos() {
-  setTimeout(function() {
+  setTimeout(function () {
     var requisitos = document.getElementById('password-requisitos');
     var novaSenha = document.getElementById('novaSenha');
     var confirmarSenha = document.getElementById('confirmarSenha');

@@ -1,5 +1,95 @@
+// Função para criar o formulário
+function criarFormulario(titulo) {
+  // Seleciona o formulário existente
+  var formExistente = document.querySelector(".form_inicial");
+
+  // Cria o novo formulário
+  var form = document.createElement("form");
+  form.className = "form_inicial";
+  form.onsubmit = function(e) {
+    e.preventDefault();
+    var inputs = form.querySelectorAll('input, textarea');
+    for (var i = 0; i < inputs.length; i++) {
+      if (!inputs[i].value) {
+        alert('Por favor, preencha todos os campos antes de enviar.');
+        return false;
+      }
+    }
+    alert('Formulário enviado com sucesso!');
+    return true;
+  };
+
+  // Define os campos do formulário
+  var campos = ["titulo", "descricao", "porcoes", "preparacao", "cozimento"];
+  var labels = ["Título:", "Descrição:", "Número de Porções:", "Tempo de Preparação:", "Tempo de Cozimento:"];
+  
+  for (var i = 0; i < campos.length; i++) {
+    var div = document.createElement("div");
+    div.className = "itemForm";
+
+    var label = document.createElement("label");
+    label.htmlFor = campos[i];
+    label.textContent = labels[i];
+
+    var input;
+    if (campos[i] === "descricao") {
+      input = document.createElement("textarea");
+    } else if (campos[i] === "porcoes") {
+      input = document.createElement("input");
+      input.type = "number";
+    } else {
+      input = document.createElement("input");
+      input.type = "text";
+    }
+    input.id = campos[i];
+    input.name = campos[i];
+
+    div.appendChild(label);
+    div.appendChild(input);
+    form.appendChild(div);
+  }
+
+  formExistente.parentNode.replaceChild(form, formExistente);
+}
+
+
+// Chama a função para criar o formulário
+criarFormulario();
+
+
+// Cria uma matriz com os nomes das categorias
+var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
+
+// Obtenha a div onde os itens serão adicionados
+var fileira = document.querySelector(".fileira");
+
+// Use um loop para criar cada item
+for (var i = 0; i < categorias.length; i++) {
+  // Crie os elementos
+  var item = document.createElement("div");
+  var input = document.createElement("input");
+  var label = document.createElement("label");
+  var p = document.createElement("p");
+
+  // Defina as propriedades dos elementos
+  item.className = "item";
+  input.type = "radio";
+  input.id = categorias[i].toLowerCase().replace(/ /g, "");
+  input.name = "receita";
+  label.htmlFor = input.id;
+  p.textContent = categorias[i];
+
+  // Adicione os elementos à div do item
+  item.appendChild(input);
+  item.appendChild(label);
+  item.appendChild(p);
+
+  // Adicione o item à div da fileira
+  fileira.appendChild(item);
+}
+
 // Função para verificar o tamanho do arquivo
-function checkFileSize(file) {
+function checarTamanhoArquivo(file) {
   var size = file.size / 1024 / 1024; // tamanho em MB
   if (size > 5) {
     alert('O arquivo excede o limite de 5MB. Por favor, carregue uma imagem menor.');
@@ -9,7 +99,7 @@ function checkFileSize(file) {
 }
 
 // Função para criar uma nova imagem
-function createNewImage(src) {
+function criarNovaImagem(src) {
   var newImage = document.createElement('img');
   newImage.src = src;
   newImage.style.width = '100%';
@@ -18,7 +108,7 @@ function createNewImage(src) {
 }
 
 // Função para inicializar o cropper
-function initializeCropper(image) {
+function inicializarCropper(image) {
   return new Cropper(image, {
     viewMode: 1,
     dragMode: 'move',
@@ -45,7 +135,7 @@ function initializeCropper(image) {
 }
 
 // Função para carregar a imagem
-function loadImage(inputId, imageId) {
+function carregarImagem(inputId, imageId) {
   var input = document.getElementById(inputId);
   var image = document.getElementById(imageId);
   var icon = document.querySelector('.media-icon');
@@ -56,7 +146,7 @@ function loadImage(inputId, imageId) {
   }
 
   if (input.files && input.files[0]) {
-    if (!checkFileSize(input.files[0])) {
+    if (!checarTamanhoArquivo(input.files[0])) {
       return;
     }
 
@@ -67,14 +157,14 @@ function loadImage(inputId, imageId) {
         mediaUploadArea.removeChild(existingImage);
       }
 
-      var newImage = createNewImage(e.target.result);
+      var newImage = criarNovaImagem(e.target.result);
       mediaUploadArea.appendChild(newImage);
       icon.style.display = 'none';
 
-      window.cropper = initializeCropper(newImage);
+      window.cropper = inicializarCropper(newImage);
 
       // Mostrar o botão "Salvar" quando a imagem é carregada
-      document.getElementById('saveEditButton').style.display = 'block';
+      document.getElementById('botaoSalvarEdicao').style.display = 'block';
     }
     reader.readAsDataURL(input.files[0]);
 
@@ -86,25 +176,25 @@ function loadImage(inputId, imageId) {
       mediaUploadArea.removeChild(existingImage);
     }
 
-    var newImage = createNewImage(input.value);
+    var newImage = criarNovaImagem(input.value);
     mediaUploadArea.appendChild(newImage);
     icon.style.display = 'none';
 
     window.cropper = initializeCropper(newImage);
 
-    document.getElementById('saveEditButton').style.display = 'block';
+    document.getElementById('botaoSalvarEdicao').style.display = 'block';
   }
 }
 
 // Função para salvar a edição
-function saveEdit() {
+function salvarEdicao() {
   if (window.cropper) {
 
     window.cropper.getCroppedCanvas().toBlob(function(blob) {
      
       var url = URL.createObjectURL(blob);
 
-      var newImage = createNewImage(url);
+      var newImage = criarNovaImagem(url);
       
       var mediaUploadArea = document.querySelector('.media-upload-area');
       var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
@@ -123,7 +213,7 @@ function saveEdit() {
 
 //Mensagem de erro caso o campo de url esteja vazio.
 document.addEventListener('DOMContentLoaded', function () {
-  var loadButton = document.getElementById('recipeVideoButton');
+  var loadButton = document.getElementById('botaoCarregarVideo');
   var videoContainer = document.getElementById('videoContainer');
   var input = document.getElementById('recipeVideo');
 
@@ -142,11 +232,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Função para carregar o vídeo
-function loadVideo() {
+function carregarVideo() {
   var input = document.getElementById('recipeVideo');
   var videoContainer = document.getElementById('videoContainer');
   var videoImage = document.getElementById('recipeVideoImage');
-  var cancelButton = document.getElementById('cancelVideoButton');
+  var cancelButton = document.getElementById('botaoCancelarVideo');
 
   //Apenas vídeos do youtube por enquanto
   var newIframe = document.createElement('iframe');
@@ -181,11 +271,11 @@ function getYouTubeID(url) {
 }
 
 // Função para cancelar o vídeo e por outro no lugar
-function cancelVideo() {
+function cancelarVideo() {
   var input = document.getElementById('recipeVideo');
   var videoContainer = document.getElementById('videoContainer');
   var videoImage = document.getElementById('recipeVideoImage');
-  var cancelButton = document.getElementById('cancelVideoButton');
+  var cancelButton = document.getElementById('botaoCancelarVideo');
 
   var existingIframe = videoContainer.querySelector('iframe');
   if (existingIframe) {
@@ -201,34 +291,3 @@ function cancelVideo() {
 
 }
 
-
-// Cria uma matriz com os nomes das categorias
-var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
-
-// Obtenha a div onde os itens serão adicionados
-var fileira = document.querySelector(".fileira");
-
-// Use um loop para criar cada item
-for (var i = 0; i < categorias.length; i++) {
-  // Crie os elementos
-  var item = document.createElement("div");
-  var input = document.createElement("input");
-  var label = document.createElement("label");
-  var p = document.createElement("p");
-
-  // Defina as propriedades dos elementos
-  item.className = "item";
-  input.type = "radio";
-  input.id = categorias[i].toLowerCase().replace(/ /g, "");
-  input.name = "receita";
-  label.htmlFor = input.id;
-  p.textContent = categorias[i];
-
-  // Adicione os elementos à div do item
-  item.appendChild(input);
-  item.appendChild(label);
-  item.appendChild(p);
-
-  // Adicione o item à div da fileira
-  fileira.appendChild(item);
-}

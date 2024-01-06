@@ -94,7 +94,7 @@ body {
 }
 
 /* Posição do icones a direita da caixa de texto */
-.toggle-password-visibility {
+.alternar-visibilidade-senha {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -108,7 +108,7 @@ body {
 }
 
 /* Botão salvar */
-#botaoS {
+#botaoSalvar {
   padding: 10px;
   height: 51px;
   width: 100px;
@@ -121,7 +121,7 @@ body {
 }
 
 /* Hover do botão salvar */
-#botaoS:hover {
+#botaoSalvar:hover {
   background-color: #f9a94a;
 }
 
