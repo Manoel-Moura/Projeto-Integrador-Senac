@@ -26,26 +26,7 @@
 
       <!--Formulário inicial onde se pede os dados básicos da receita-->
       <form class="form_inicial">
-        <div class="itemForm">
-          <label for="titulo">Título:</label>
-          <input type="text" id="titulo" name="titulo">
-        </div>
-        <div class="itemForm">
-          <label for="descricao">Descrição:</label>
-          <textarea id="descricao" name="descricao"></textarea>
-        </div>
-        <div class="itemForm">
-          <label for="porcoes">Número de Porções:</label>
-          <input type="number" id="porcoes" name="porcoes">
-        </div>
-        <div class="itemForm">
-          <label for="preparacao">Tempo de Preparação:</label>
-          <input type="text" id="preparacao" name="preparacao">
-        </div>
-        <div class="itemForm">
-          <label for="cozimento">Tempo de Cozimento:</label>
-          <input type="text" id="cozimento" name="cozimento">
-        </div>
+
       </form>
 
       <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
@@ -90,12 +71,18 @@
             <div class="media-icon">
               <img id="mainPhotoImage" src="../src/media/icons/photo_icon.svg" alt="Ícone de foto">
             </div>
-            <input type="file" id="mainPhoto" name="mainPhoto" onchange="loadImage('mainPhoto', 'mainPhotoImage')"
+            <input type="file" id="mainPhoto" name="mainPhoto" onchange="carregarImagem('mainPhoto', 'mainPhotoImage')"
               style="display: none;" />
             <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
           </div>
           <p class="item-description">Tamanho máx.: 5MB</p>
-          <button id="mainPhotoButton" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
+          <div id="buttonContainer">
+            <button id="botaoCarregarImagem" onclick="document.getElementById('mainPhoto').click()">Carregar
+              Imagem</button>
+            <button id="botaoSalvarEdicao" onclick="salvarEdicao()" style="display: none;">Salvar</button>
+
+          </div>
+
         </div>
 
         <!--Adicionar vídeo-->
@@ -113,8 +100,8 @@
           </div>
           <p class="item-description">Apenas vídeos do Youtube</p>
           <div id="buttonContainer">
-            <button id="recipeVideoButton" onclick="loadVideo()">Carregar Vídeo</button>
-            <button id="cancelVideoButton" onclick="cancelVideo()" style="display: none;">Cancelar Vídeo</button>
+            <button id="botaoCarregarVideo" onclick="carregarVideo()">Carregar Vídeo</button>
+            <button id="botaoCancelarVideo" onclick="cancelarVideo()" style="display: none;">Cancelar Vídeo</button>
           </div>
 
         </div>
@@ -122,13 +109,12 @@
 
       <!--Botões de Salvar e Cancelar-->
       <div class="botoes_salvar_cancelar">
-        <button class="botao" id="salvar">Salvar</button>
-        <button class="botao" id="cancelar">Cancelar</button>
+        <button class="botao" type="submit" id="salvar">Salvar</button>
+        <button class="botao" type="submit" id="cancelar">Cancelar</button>
       </div>
     </section>
   </div>
   </div>
-
 
   <!--Rodapé-->
   <footer id="bottom-bar"></footer>

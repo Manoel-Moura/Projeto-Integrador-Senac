@@ -277,10 +277,10 @@ body {
 }
 
 /*Relacionado aos botões de carregar foto e vídeo*/
-#mainPhotoButton,
-#recipeVideoButton,
-#cancelVideoButton,
-#saveEditButton {
+#botaoCarregarImagem,
+#botaoCarregarVideo,
+#botaoCancelarVideo,
+#botaoSalvarEdicao {
   max-width: 101px;
   height: 53px;
   margin-right: 2em;
@@ -292,26 +292,26 @@ body {
   border: none;
 }
 
-#saveEditButton{
+#botaoSalvarEdicao{
   background-color: #f78b1f;
 }
 
-#mainPhotoButton {
+#botaoCarregarImagem {
   background-color: #4A90E2;
 }
 
-#recipeVideoButton {
+#botaoCarregarVideo {
   background-color: #4A90E2;
 }
 
-#cancelVideoButton {
+#botaoCancelarVideo {
   background-color: #FF6B6B;
 }
 
-#mainPhotoButton:hover,
-#recipeVideoButton:hover,
-#cancelVideoButton:hover,
-#saveEditButton:hover {
+#botaoCarregarImagem:hover,
+#botaoCarregarVideo:hover,
+#botaoCancelarVideo:hover,
+#botaoSalvarEdicao:hover {
   transform: scale(1.1);
 }
 
