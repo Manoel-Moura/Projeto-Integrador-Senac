@@ -125,6 +125,22 @@ h1 {
   text-decoration: underline;
 }
 
+.textoCadastro:hover{
+  transform: scale(1.1);
+}
+
 #tex2 {
   margin-top: 8mm;
+}
+
+#bt-login {
+  border-radius: 8px;
+  margin-top: 8mm;
+  height: 8mm;
+  width: 20mm;
+  background-color: #ffffff;
+}
+
+#bt-login:hover{
+  transform: scale(1.1);
 }

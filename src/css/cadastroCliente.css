@@ -84,6 +84,10 @@ body {
   margin-right: 5mm;
 }
 
+#bt-cadastro:hover{
+  transform: scale(1.1);
+}
+
 h1 {
   color: #01468a;
   margin-top: 10mm;

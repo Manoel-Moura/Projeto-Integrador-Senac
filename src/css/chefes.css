@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16pt;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  min-height: 100%;
+}
+
+#containerResponsivo {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+
+/* Aréa de pesquisa  */
+
+/* Imagem de fundo da aréa de fundo */
+#img-barra-pesquisa {
+  min-height: 250px;
+  width: 100%;
+  border-bottom: 4px solid #f78b1f;
+  background-image: url(../media/images/Chef-barra-pesquisa.jpg);
+  background-size: cover;
+  background-position: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Abaixo relacionados a barra de pesquisa */
+#barra-pesquisa {
+  border-top-right-radius: 10mm;
+  border-bottom-right-radius: 10mm;
+  padding-left: 5mm;
+  padding-right: 5mm;
+  height: 15mm;
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.527);
+  font-weight: 500;
+  border-color: transparent;
+  color: white;
+  font-weight: 700;
+  /* -webkit-box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); 
+box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
+}
+
+#barra-busca {
+  height: 100%;
+  width: 100%;
+  color: #7e898f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: transparent;
+}
+
+#bnt-pesquisa {
+  height: 15mm;
+  width: 6%;
+  border-bottom-left-radius: 10mm;
+  border-top-left-radius: 10mm;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.527);
+  background-image: url(../media/icons/lupa.svg);
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-left: none;
+}
+
+#barraBusca {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Relacionado ao título de TOP 3, Trending e Ranking */
+.titulo {
+  display: flex;
+  margin-top: 5mm;
+  justify-content: center;
+  font-size: 55px;
+  color: #01468a;
+}
+
+
+/* Abaixo relacionado ao card dos top 3 */
+
+#top-3-container {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding: 40px;
+}
+
+.card-ranking {
+  position: relative;
+  width: 210px;
+  height: 300px;
+  border: none;
+  border-radius: 5mm;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  flex-shrink: 0;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+}
+
+.chef-avatar-ranking {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+.medalha {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 79px;
+  z-index: 1;
+}
+
+
+.chef-avatar-ranking {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+.lb-chef-ranking {
+  font-size: 11pt;
+  max-width: 80%;
+  font-style: italic;
+  margin-top: 1mm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lb-avaliacao-ranking {
+  font-size: 11pt;
+  font-weight: 700;
+  margin-top: 1mm;
+  margin-bottom: 3mm;
+}
+
+.linha-divisoria {
+  display: flex;
+  width: 100%;
+  height: 3px;
+  background-color: #01468a;
+  margin-bottom: 5mm;
+}
+
+/* Abaixo relacionado ao trending topics do site xD */
+#trending-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-trending {
+  position: relative;
+  width: 155px;
+  height: 181px;
+  border: none;
+  border-radius: 5mm;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.card-trending:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chef-avatar-trending {
+  position: relative;
+  width: 106px;
+  height: 111px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+.lb-chef-trending {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.lb-posicoes-subiu {
+  padding: 2px 16px;
+  font-size: 16px;
+  color: green;
+}
+
+.lb-ranking-trending {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.linha-ranking {
+  display: flex;
+  justify-content: space-between;
+}
+
+.linha-divisoria-ranking {
+  display: flex;
+  width: 100%;
+  height: 3px;
+  background-color: #01468a;
+  margin-bottom: 5mm;
+}
+
+
+.lb-ranking {
+  font-size: 1.5em;
+  color: gray;
+  font-weight: bold;
+}
+
+.lb-ranking.primeiro-ranking {
+  color: gold;
+}
+
+.lb-ranking.segundo-ranking {
+  color: #d7d7d7;
+}
+
+.lb-ranking.terceiro-ranking {
+  color: #cd7f32;
+}
+
+
+#btnMostrarOpcoes {
+  width: 106px;
+  height: 57px;
+  border: none;
+  margin-bottom: 3mm;
+  border-radius: 3mm;
+  border-bottom: #baf5e1;
+  ;
+  background-color: #01468a;
+  color: #ffffff;
+}
+
+#btnMostrarOpcoes:hover{
+  transform: scale(1.1);
+}
+
+#btnTop10 {
+  width: 106px;
+  height: 57px;
+  margin-bottom: 30mm;
+  border: none;
+  border-radius: 3mm;
+  background-color: gold;
+  color: #feffff;
+}
+
+#btnTop10:hover{
+  transform: scale(1.1);
+}
+
+#btnTop100 {
+  width: 106px;
+  height: 57px;
+  margin-bottom: 30mm;
+  border: none;
+  border-radius: 3mm;
+  background-color: #d7d7d7;
+  color: #feffff;
+}
+
+#btnTop100:hover{
+  transform: scale(1.1);
+}
+
+#btnTop1000 {
+  width: 106px;
+  margin-bottom: 30mm;
+  height: 57px;
+  border: none;
+  border-radius: 3mm;
+  background-color: #cd7f32;
+  color: #feffff;
+}
+
+#btnTop1000:hover{
+  transform: scale(1.1);
+}

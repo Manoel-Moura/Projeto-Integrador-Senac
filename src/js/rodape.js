@@ -110,6 +110,7 @@ bottom_bar.append(barra_bottom);
 
 let listaCategorias = document.getElementById("lista-categorias");
 
+if (listaCategorias){
 let fragmentCategorias = document.createDocumentFragment();
 
 nomeCategoria = "Teste";
@@ -127,6 +128,7 @@ function novaCategoria(nomeCategoria) {
 
 for (let i = 0; i < 20; i++) {
   novaCategoria(nomeCategoria);
+}
 }
 
 const cards = [
@@ -228,7 +230,7 @@ class Card {
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
   }
-
+  
   createCard() { 
     let card = document.createElement("div");
 
@@ -268,6 +270,7 @@ class Card {
   }
 
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
 let cont = 1;
@@ -314,6 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
     });
     });
+
 
 //============================================================================================
 

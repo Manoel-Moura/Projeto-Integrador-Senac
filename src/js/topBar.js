@@ -58,9 +58,9 @@ let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre", "Login"];
 let paginasMenu = [
   "https://www.senac.br/",
   "../pages/home.html",
-  "../pages/editarReceita.html",
+  "../pages/chefes.html",
   "../pages/sobre.html",
-  "../pages/manoel.html",
+  "../pages/login.html",
 ];
 
 let divBotoes = document.createElement("div");

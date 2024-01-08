@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Culinaria Senac</title> <!-- Login -->
-    <link rel="stylesheet" href="../src/css/manoel.css">
+    <link rel="stylesheet" href="../src/css/login.css">
     <link rel="stylesheet" href="../src/css/style.css">
 </head>
 
@@ -31,17 +30,19 @@
                     </div>
 
                     <label class="label" for="username"> Usuário </label>
-                    <input class="caixaTexto" id="username" type="text">
-
+                    <input class="caixaTexto" id="username" type="text" required>
+                    
                     <label class="label" for="password"> Senha: </label>
+                    <input class="caixaTexto" id="password" type="password" required>
+                    
+                    <input id="bt-login" type="submit" value="Entrar">
 
-                    <input class="caixaTexto" id="password" type="password">
-
-                    <input id="botao" type="submit" value="Entrar">
 
                     <div id="tex2">
-                        <a href="../pages/gabriel.html">
+                        <a href="../pages/recuperarSenha.html">
                             <h3 class="textoCadastro">Esqueci minha senha</h3>
+                        </a>
+                        <a href="../pages/cadastroCliente.html">
                             <h3 class="textoCadastro">Não possuo cadastro ainda</h3>
                         </a>
 
@@ -55,9 +56,9 @@
         <div id="bottom-bar"></div>
     </div>
 
+    <script src="../src/js/verificarLogin.js"></script>
+    <script src="../src/js/topBar.js"></script>
+    <script src="../src/js/rodape.js"></script>
 </body>
-
-<script src="../src/js/topBar.js"></script>
-<script src="../src/js/rodape.js"></script>
 
 </html>
