@@ -1,7 +1,6 @@
-// Função para alternar a visibilidade da senha
 function alternarVisibilidadeSenha(inputId, imgElementId) {
   var inputPass = document.getElementById(inputId);
-  var imgElement = document.querySelector(imgElementId + ' ~ .alternar-visibilidade-senha');
+  var imgElement = document.getElementById(imgElementId);
   var siblingImgElement = imgElement.nextElementSibling || imgElement.previousElementSibling;
 
   if (inputPass.type === "password") {
@@ -15,19 +14,31 @@ function alternarVisibilidadeSenha(inputId, imgElementId) {
   }
 }
 
-// Função que mostra e esconde a senha
-function mostrarSenha() {
-  alternarVisibilidadeSenha('novaSenha', '#novaSenha');
-  alternarVisibilidadeSenha('confirmarSenha', '#confirmarSenha');
+function mostrarSenhaCadastro(inputId, imgElementId){
+  alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
-// Função para validar a senha
+function mostrarSenhaCadastroConfirmar(inputId, imgElementId){
+  alternarVisibilidadeSenha(inputId, imgElementId);
+}
+
+function mostrarSenha(inputId, imgElementId){
+  alternarVisibilidadeSenha(inputId, imgElementId);
+}
+
+function mostrarSenhaConfirmar(inputId, imgElementId){
+  alternarVisibilidadeSenha(inputId, imgElementId);
+}
+
+function mostrarSenhaLogin(inputId, imgElementId){
+  alternarVisibilidadeSenha(inputId, imgElementId);
+}
+
 function validarSenha(senha) {
   var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return regex.test(senha);
 }
 
-// Função para mostrar os requisitos da senha
 function mostrarRequisitos(inputId) {
   const infoBalloon = document.getElementById('infoBalloon') || criarInfoBalloon();
   const ul = criarListaRequisitos();
@@ -79,7 +90,6 @@ function posicionarInfoBalloon(infoBalloon) {
 }
 
 
-//Função para esconder o balão
 function esconderInfoBalloon(infoBalloon) {
   infoBalloon.style.display = 'none';
 }
@@ -124,8 +134,57 @@ window.addEventListener('load', function () {
   mostrarRequisitos();
 });
 
+// Função de validar os requisitos
+function validarRequisitos() {
+  setTimeout(function () {
+    var requisitos = document.getElementById('password-requisitos');
+    var novaSenha = document.getElementById('novaSenha');
+    var confirmarSenha = document.getElementById('confirmarSenha');
+    if (novaSenha.value.length >= 8 || confirmarSenha.value.length >= 8) {
+      requisitos.querySelector('#length').classList.add('green');
+      requisitos.querySelector('#length').style.color = 'green';
+    } else {
+      requisitos.querySelector('#length').classList.remove('green');
+      requisitos.querySelector('#length').style.color = 'red';
+    }
+    if (/[a-z]/.test(novaSenha.value) || /[a-z]/.test(confirmarSenha.value)) {
+      requisitos.querySelector('#lowercase').classList.add('green');
+      requisitos.querySelector('#lowercase').style.color = "green";
+    } else {
+      requisitos.querySelector('#lowercase').classList.remove('green');
+      requisitos.querySelector('#lowercase').style.color = "red";
+    }
+    if (/[A-Z]/.test(novaSenha.value) || /[A-Z]/.test(confirmarSenha.value)) {
+      requisitos.querySelector('#uppercase').classList.add('green');
+      requisitos.querySelector('#uppercase').style.color = 'green';
+    } else {
+      requisitos.querySelector('#uppercase').classList.remove('green');
+      requisitos.querySelector('#uppercase').style.color = 'red';
+    }
+    if (/\d/.test(novaSenha.value) || /\d/.test(confirmarSenha.value)) {
+      requisitos.querySelector('#number').classList.add('green');
+      requisitos.querySelector('#number').style.color = 'green';
+    } else {
+      requisitos.querySelector('#number').classList.remove('green');
+      requisitos.querySelector('#number').style.color = 'red';
+    }
+    if (/[\W]/.test(novaSenha.value) || /[\W]/.test(confirmarSenha.value)) {
+      requisitos.querySelector('#symbol').classList.add('green');
+      requisitos.querySelector('#symbol').style.color = 'green';
+    } else {
+      requisitos.querySelector('#symbol').classList.remove('green');
+      requisitos.querySelector('#symbol').style.color = 'red';
+    }
+    if (novaSenha.value === confirmarSenha.value && novaSenha.value !== '') {
+      requisitos.querySelector('#match').classList.add('green');
+      requisitos.querySelector('#match').style.color = 'green';
+    } else {
+      requisitos.querySelector('#match').classList.remove('green');
+      requisitos.querySelector('#match').style.color = 'red';
+    }
+  }, 0);
+}
 
-// Evento de verificações
 document.getElementById('botaoSalvar').addEventListener('click', function (event) {
   const novaSenha = document.getElementById('novaSenha');
   const confirmarSenha = document.getElementById('confirmarSenha');
@@ -133,7 +192,7 @@ document.getElementById('botaoSalvar').addEventListener('click', function (event
   // Verifique se ambos os campos de senha não estão vazios
   if (novaSenha.value === '' || confirmarSenha.value === '') {
     alert('Por favor, preencha ambos os campos de senha antes de salvar.');
-    event.preventDefault();  // Impede a submissão do formulário
+    event.preventDefault();  
   }
 
   // Verifique se a senha atende a todos os requisitos
@@ -144,46 +203,6 @@ document.getElementById('botaoSalvar').addEventListener('click', function (event
 
   if (!todosOsRequisitosAtendidos) {
     alert('Sua senha não atende a todos os requisitos. Por favor, verifique os requisitos e tente novamente.');
-    event.preventDefault();  // Impede a submissão do formulário
+    event.preventDefault(); 
   }
 });
-
-
-// Função de validar os requisitos
-function validarRequisitos() {
-  setTimeout(function () {
-    var requisitos = document.getElementById('password-requisitos');
-    var novaSenha = document.getElementById('novaSenha');
-    var confirmarSenha = document.getElementById('confirmarSenha');
-    if (novaSenha.value.length >= 8) {
-      requisitos.querySelector('#length').style.color = 'green';
-    } else {
-      requisitos.querySelector('#length').style.color = 'red';
-    }
-    if (/[a-z]/.test(novaSenha.value)) {
-      requisitos.querySelector('#lowercase').style.color = 'green';
-    } else {
-      requisitos.querySelector('#lowercase').style.color = 'red';
-    }
-    if (/[A-Z]/.test(novaSenha.value)) {
-      requisitos.querySelector('#uppercase').style.color = 'green';
-    } else {
-      requisitos.querySelector('#uppercase').style.color = 'red';
-    }
-    if (/\d/.test(novaSenha.value)) {
-      requisitos.querySelector('#number').style.color = 'green';
-    } else {
-      requisitos.querySelector('#number').style.color = 'red';
-    }
-    if (/[\W]/.test(novaSenha.value)) {
-      requisitos.querySelector('#symbol').style.color = 'green';
-    } else {
-      requisitos.querySelector('#symbol').style.color = 'red';
-    }
-    if (novaSenha.value === confirmarSenha.value) {
-      requisitos.querySelector('#match').style.color = 'green';
-    } else {
-      requisitos.querySelector('#match').style.color = 'red';
-    }
-  }, 0);
-}

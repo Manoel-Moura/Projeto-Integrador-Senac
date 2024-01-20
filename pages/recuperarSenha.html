@@ -21,22 +21,28 @@
                 <form class="row-item" action="">
                     <img id="logoPrincipal" src="../src/media/images/Senac_logo.jpg" alt="Logo do Senac" />
                     <div class="input-group">
+
                         <label class="label" for="novaSenha">Nova senha <span class="red">*</span></label>
                         <div class="campo-senha">
                             <input class="caixaTexto" id="novaSenha" type="password">
-                            <img src="../src/media/images/icon-eye-close.svg" class="alternar-visibilidade-senha"
-                                alt="Alternar Visibilidade da Senha" onclick="mostrarSenha('novaSenha', this)" />
-                            <img src="../src/media/images/icon-eye-open.svg" class="alternar-visibilidade-senha hidden"
-                                alt="Alternar Visibilidade da Senha" onclick="mostrarSenha('novaSenha', this)" />
+                            <img id="eye-close-novaSenha" src="../src/media/images/icon-eye-close.svg"
+                                class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenha('novaSenha','eye-close-novaSenha')" />
+                            <img id="eye-open-novaSenha" src="../src/media/images/icon-eye-open.svg"
+                                class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenha('novaSenha','eye-open-novaSenha')" />
                         </div>
+
                         <label class="label" for="confirmarSenha">Confirme a nova senha <span
                                 class="red">*</span></label>
                         <div class="campo-senha">
                             <input class="caixaTexto" id="confirmarSenha" type="password">
-                            <img src="../src/media/images/icon-eye-close.svg" class="alternar-visibilidade-senha"
-                                alt="Alternar Visibilidade da Senha" onclick="mostrarSenha('confirmarSenha', this)" />
-                            <img src="../src/media/images/icon-eye-open.svg" class="alternar-visibilidade-senha hidden"
-                                alt="Alternar Visibilidade da Senha" onclick="mostrarSenha('confirmarSenha', this)" />
+                            <img id="eye-close-confirmarSenha" src="../src/media/images/icon-eye-close.svg"
+                                class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenhaConfirmar('confirmarSenha','eye-close-confirmarSenha')" />
+                            <img id="eye-open-confirmarSenha" src="../src/media/images/icon-eye-open.svg"
+                                class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenhaConfirmar('confirmarSenha','eye-open-confirmarSenha')" />
                         </div>
                     </div>
                     <input id="botaoSalvar" type="submit" value="Salvar">

@@ -130,7 +130,7 @@ body {
 
 /* Relacionado aos quadrados onde o usuario vai selecionar;
    Fazer sumir o icone de bolinha de escolher (check)*                */
-.item input[type="radio"] {
+.item input[type="checkbox"] {
   display: none;
 }
 
@@ -142,9 +142,9 @@ body {
   border: none;
   margin-right: 10px;
 }
-
+  
 /* Relacionado a mudar cor do quadrado quando selecionado */
-.item input[type="radio"]:checked+label {
+.item input[type="checkbox"]:checked+label {
   background-color: rgb(0, 102, 255);
 }
 
@@ -292,7 +292,7 @@ body {
   border: none;
 }
 
-#botaoSalvarEdicao{
+#botaoSalvarEdicao {
   background-color: #f78b1f;
 }
 

@@ -55,6 +55,22 @@ body {
   font-weight: 500;
 }
 
+.campo-senha {
+  position: relative;
+}
+
+.alternar-visibilidade-senha {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 #data {
   height: 8mm;
   width: 30mm;
@@ -84,7 +100,7 @@ body {
   margin-right: 5mm;
 }
 
-#bt-cadastro:hover{
+#bt-cadastro:hover {
   transform: scale(1.1);
 }
 

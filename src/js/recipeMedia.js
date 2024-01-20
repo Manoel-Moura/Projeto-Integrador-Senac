@@ -44,6 +44,10 @@ function criarFormulario(titulo) {
     input.id = campos[i];
     input.name = campos[i];
 
+    if (campos[i] === "preparacao" || campos[i] === "cozimento") {
+      input.placeholder = "Especifique em minutos";
+    }
+
     div.appendChild(label);
     div.appendChild(input);
     form.appendChild(div);
@@ -51,7 +55,6 @@ function criarFormulario(titulo) {
 
   formExistente.parentNode.replaceChild(form, formExistente);
 }
-
 
 // Chama a função para criar o formulário
 criarFormulario();
@@ -73,7 +76,7 @@ for (var i = 0; i < categorias.length; i++) {
 
   // Defina as propriedades dos elementos
   item.className = "item";
-  input.type = "radio";
+  input.type = "checkbox"; // Alterado de "radio" para "checkbox"
   input.id = categorias[i].toLowerCase().replace(/ /g, "");
   input.name = "receita";
   label.htmlFor = input.id;
@@ -87,6 +90,7 @@ for (var i = 0; i < categorias.length; i++) {
   // Adicione o item à div da fileira
   fileira.appendChild(item);
 }
+
 
 // Função para verificar o tamanho do arquivo
 function checarTamanhoArquivo(file) {

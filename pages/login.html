@@ -31,12 +31,18 @@
 
                     <label class="label" for="username"> Usuário </label>
                     <input class="caixaTexto" id="username" type="text" required>
-                    
-                    <label class="label" for="password"> Senha: </label>
-                    <input class="caixaTexto" id="password" type="password" required>
-                    
-                    <input id="bt-login" type="submit" value="Entrar">
 
+                    <label class="label" for="password"> Senha: </label>
+                    <div class="campo-senha">
+                        <input class="caixaTexto" id="password" type="password" required>
+                        <img id="eye-close" src="../src/media/images/icon-eye-close.svg"
+                            class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
+                            onclick="mostrarSenhaLogin('password','eye-close')" />
+                        <img id="eye-open" src="../src/media/images/icon-eye-open.svg"
+                            class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
+                            onclick="mostrarSenhaLogin('password','eye-open')" />
+                    </div>
+                    <input id="bt-login" type="submit" value="Entrar">
 
                     <div id="tex2">
                         <a href="../pages/recuperarSenha.html">
@@ -56,6 +62,7 @@
         <div id="bottom-bar"></div>
     </div>
 
+    <script src="../src/js/passwordToggle.js"></script>
     <script src="../src/js/verificarLogin.js"></script>
     <script src="../src/js/topBar.js"></script>
     <script src="../src/js/rodape.js"></script>
