@@ -15,8 +15,8 @@ function verificarSenha(senha) {
 }
 
 // Verificar se a senha e a confirmação de senha são iguais
-function verificarConfirmacaoSenha(confirmacaoSenha) {
-    var senha = document.getElementById('password').value;
+function verificarConfirmacao(confirmacaoSenha) {
+    var senha = document.getElementById('senhaCadastro').value;
     return senha === confirmacaoSenha;
 }
 
@@ -34,9 +34,9 @@ function verificarData(data) {
 
 // Função para validar o formulário
 function validarFormulario() {
-    var campos = ['username', 'email', 'password', 'confirmPassword', 'cpf', 'data'];
+    var campos = ['username', 'email', 'senhaCadastro', 'confirmarSenhaCadastro', 'cpf', 'data'];
     var mensagens = ['Por favor, preencha todos os campos obrigatórios.', 'Por favor, insira um email válido.', 'A senha deve ter pelo menos 8 caracteres.', 'As senhas não coincidem.', 'Por favor, insira um CPF válido.', 'Por favor, insira uma data válida.'];
-    var validacoes = [verificarPreenchido, verificarEmail, verificarSenha, verificarConfirmacaoSenha, verificarCPF, verificarData];
+    var validacoes = [verificarPreenchido, verificarEmail, verificarSenha, verificarConfirmacao, verificarCPF, verificarData];
 
     for (var i = 0; i < campos.length; i++) {
         var campo = document.getElementById(campos[i]).value;

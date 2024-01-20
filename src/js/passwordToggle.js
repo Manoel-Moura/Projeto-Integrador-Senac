@@ -77,17 +77,21 @@ function criarListaRequisitos() {
 // Função para posicionar o balão acima da row-item
 function posicionarInfoBalloon(infoBalloon) {
   const rowItem = document.querySelector('.row-item');
-  const rect = rowItem.getBoundingClientRect();
-  infoBalloon.style.position = 'absolute';
-  infoBalloon.style.backgroundColor = '#333';
-  infoBalloon.style.color = 'white';
-  infoBalloon.style.padding = '10px';
-  infoBalloon.style.borderRadius = '5px';
-  infoBalloon.style.bottom = (window.innerHeight - rect.top) + 'px';
+  
+  if (rowItem) {
+    const rect = rowItem.getBoundingClientRect();
+    infoBalloon.style.position = 'absolute';
+    infoBalloon.style.backgroundColor = '#333';
+    infoBalloon.style.color = 'white';
+    infoBalloon.style.padding = '10px';
+    infoBalloon.style.borderRadius = '5px';
+    infoBalloon.style.bottom = (window.innerHeight - rect.top) + 'px';
 
-  const infoBalloonRect = infoBalloon.getBoundingClientRect();
-  infoBalloon.style.left = (rect.left + rect.width / 2 - infoBalloonRect.width / 2) + 'px';
+    const infoBalloonRect = infoBalloon.getBoundingClientRect();
+    infoBalloon.style.left = (rect.left + rect.width / 2 - infoBalloonRect.width / 2) + 'px';
+  }
 }
+
 
 
 function esconderInfoBalloon(infoBalloon) {
