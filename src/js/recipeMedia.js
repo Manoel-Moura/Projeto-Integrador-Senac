@@ -1,9 +1,6 @@
-// Função para criar o formulário
 function criarFormulario(titulo) {
-  // Seleciona o formulário existente
   var formExistente = document.querySelector(".form_inicial");
 
-  // Cria o novo formulário
   var form = document.createElement("form");
   form.className = "form_inicial";
   form.onsubmit = function(e) {
@@ -56,38 +53,32 @@ function criarFormulario(titulo) {
   formExistente.parentNode.replaceChild(form, formExistente);
 }
 
-// Chama a função para criar o formulário
+
 criarFormulario();
 
 
-// Cria uma matriz com os nomes das categorias
 var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
 
-// Obtenha a div onde os itens serão adicionados
 var fileira = document.querySelector(".fileira");
 
-// Use um loop para criar cada item
 for (var i = 0; i < categorias.length; i++) {
-  // Crie os elementos
+
   var item = document.createElement("div");
   var input = document.createElement("input");
   var label = document.createElement("label");
   var p = document.createElement("p");
 
-  // Defina as propriedades dos elementos
   item.className = "item";
-  input.type = "checkbox"; // Alterado de "radio" para "checkbox"
+  input.type = "checkbox"; 
   input.id = categorias[i].toLowerCase().replace(/ /g, "");
   input.name = "receita";
   label.htmlFor = input.id;
   p.textContent = categorias[i];
 
-  // Adicione os elementos à div do item
   item.appendChild(input);
   item.appendChild(label);
   item.appendChild(p);
 
-  // Adicione o item à div da fileira
   fileira.appendChild(item);
 }
 

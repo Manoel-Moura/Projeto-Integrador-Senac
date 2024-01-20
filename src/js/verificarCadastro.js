@@ -9,9 +9,9 @@ function verificarEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-// Verificar se a senha tem pelo menos 6 caracteres
+// Verificar se a senha tem pelo menos 8 caracteres
 function verificarSenha(senha) {
-    return senha.length >= 6;
+    return senha.length >= 8;
 }
 
 // Verificar se a senha e a confirmação de senha são iguais
@@ -35,7 +35,7 @@ function verificarData(data) {
 // Função para validar o formulário
 function validarFormulario() {
     var campos = ['username', 'email', 'password', 'confirmPassword', 'cpf', 'data'];
-    var mensagens = ['Por favor, preencha todos os campos obrigatórios.', 'Por favor, insira um email válido.', 'A senha deve ter pelo menos 6 caracteres.', 'As senhas não coincidem.', 'Por favor, insira um CPF válido.', 'Por favor, insira uma data válida.'];
+    var mensagens = ['Por favor, preencha todos os campos obrigatórios.', 'Por favor, insira um email válido.', 'A senha deve ter pelo menos 8 caracteres.', 'As senhas não coincidem.', 'Por favor, insira um CPF válido.', 'Por favor, insira uma data válida.'];
     var validacoes = [verificarPreenchido, verificarEmail, verificarSenha, verificarConfirmacaoSenha, verificarCPF, verificarData];
 
     for (var i = 0; i < campos.length; i++) {
