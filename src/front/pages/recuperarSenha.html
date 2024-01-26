@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title> <!--Recuperar Senha-->
+    <link rel="stylesheet" href="../css/recuperarSenha.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div id="container">
+
+        <!--div do topo da página-->
+        <div id="topo"> </div>
+
+        <div id="containerResponsivo">
+            <!--Formulário de recuperar senha-->
+            <div class="row">
+                <form class="row-item" action="">
+                    <img id="logoPrincipal" src="../assets/media/images/Senac_logo.jpg" alt="Logo do Senac" />
+                    <div class="input-group">
+
+                        <label class="label" for="novaSenha">Nova senha <span class="red">*</span></label>
+                        <div class="campo-senha">
+                            <input class="caixaTexto" id="novaSenha" type="password">
+                            <img id="eye-close-novaSenha" src="../assets/media/images/icon-eye-close.svg"
+                                class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenha('novaSenha','eye-close-novaSenha')" />
+                            <img id="eye-open-novaSenha" src="../assets/media/images/icon-eye-open.svg"
+                                class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenha('novaSenha','eye-open-novaSenha')" />
+                        </div>
+
+                        <label class="label" for="confirmarSenha">Confirme a nova senha <span
+                                class="red">*</span></label>
+                        <div class="campo-senha">
+                            <input class="caixaTexto" id="confirmarSenha" type="password">
+                            <img id="eye-close-confirmarSenha" src="../assets/media/images/icon-eye-close.svg"
+                                class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenhaConfirmar('confirmarSenha','eye-close-confirmarSenha')" />
+                            <img id="eye-open-confirmarSenha" src="../assets/media/images/icon-eye-open.svg"
+                                class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
+                                onclick="mostrarSenhaConfirmar('confirmarSenha','eye-open-confirmarSenha')" />
+                        </div>
+                    </div>
+                    <input id="botaoSalvar" type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+        <div id="bottom-bar"></div>
+    </div>
+    <script src="../js/passwordToggle.js"></script>
+    <script src="../components/topBar.js"></script>
+    <script src="../components/rodape.js"></script>
+</body>
+
+</html>

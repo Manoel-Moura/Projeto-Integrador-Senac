@@ -22,7 +22,7 @@ div_img.setAttribute("class", "div-img"); // Adicionando a classe 'div-img' ao e
 // Criando um elemento <img> para a imagem do logo branco
 let logo_branca = document.createElement("img");
 logo_branca.setAttribute("class", "logo-branca"); // Adicionando a classe 'logo-branca' à imagem
-logo_branca.setAttribute("src", "../src/media/images/senac_logo_branco.png"); // Configurando o atributo 'src' com o caminho da imagem
+logo_branca.setAttribute("src", "../assets/media/images/senac_logo_branco.png"); // Configurando o atributo 'src' com o caminho da imagem
 
 // Adicionando a imagem do logo à div de imagem
 div_img.append(logo_branca);
@@ -40,11 +40,11 @@ div_rodape_centralizado.append(lab_rodape);
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
 let img_contato_rodape = [
-  "../src/media/icons/facebook-blue.svg",
-  "../src/media/icons/instagram-blue.svg",
-  "../src/media/icons/twitter-alt-blue.svg",
-  "../src/media/icons/linkedin-blue.svg",
-  "../src/media/icons/youtube-blue.svg",
+  "../assets/media//icons/facebook-blue.svg",
+  "../assets/media/icons/instagram-blue.svg",
+  "../assets/media/icons/twitter-alt-blue.svg",
+  "../assets/media/icons/linkedin-blue.svg",
+  "../assets/media/icons/youtube-blue.svg",
 ];
 let class_css_rodape = ["face", "instagram", "twitter", "linkedin", "youtube"];
 let link_contato_rodape = [
@@ -136,8 +136,8 @@ const cards = [
     chef: "Manoel Moura",
     receita: "Nome da Receita muito grande",
     curtidas: 1.511,
-    fotoChef: "../src/media/images/chef.jpg",
-    fotoReceita: "../src/media/images/fejoada.jpg",
+    fotoChef: "../assets/media/images/chef.jpg",
+    fotoReceita: "../assets/media/images/fejoada.jpg",
     favorite: true,
   },
   {

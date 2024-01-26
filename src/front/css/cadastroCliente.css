@@ -12,7 +12,7 @@ body {
 #colum {
   width: 100%;
   min-height: 100vh;
-  background: url(../media/images/background-cadastro-cliente.png);
+  background: url(../assets/media/images/background-cadastro-cliente.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

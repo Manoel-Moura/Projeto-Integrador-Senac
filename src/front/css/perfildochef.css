@@ -12,7 +12,7 @@
 #capa-perfil-chef {
   height: 300px;
   width: 100%;
-  background-image: url(../media/images/perfilchef.png);
+  background-image: url(../assets/media/images/perfilchef.png);
   background-size: cover;
   background-position: top;
   display: flex;

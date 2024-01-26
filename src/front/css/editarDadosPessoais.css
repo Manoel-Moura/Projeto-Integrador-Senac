@@ -67,7 +67,7 @@ body {
 #foto-usuario{
   width: 90px;
   height: 90px;
-  background: url(../media/images/dipper.jpg);
+  background: url(../assets/media/images/dipper.jpg);
   border-radius: 50%;
   background-position: center;
   background-size: cover;

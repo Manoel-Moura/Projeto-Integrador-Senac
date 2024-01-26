@@ -37,7 +37,7 @@ aLogo.classList.add("logo");
 aLogo.setAttribute("href", "https://www.senac.br/");
 
 let imgLogo = document.createElement("img");
-imgLogo.setAttribute("src", "../src/media/images/Senac_logo.jpg");
+imgLogo.setAttribute("src", "../assets/media/images/Senac_logo.jpg");
 imgLogo.classList.add("logo");
 
 aLogo.appendChild(imgLogo);
@@ -82,11 +82,11 @@ for (let i = 0; i < botoesMenu.length; i++) {
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
 let imgContato = [
-  "../src/media/icons/facebook-.svg",
-  "../src/media/icons/instagram.svg",
-  "../src/media/icons/twitter-alt.svg",
-  "../src/media/icons/linkedin.svg",
-  "../src/media/icons/youtube.svg",
+  "../assets/media/icons/facebook-.svg",
+  "../assets/media/icons/instagram.svg",
+  "../assets/media/icons/twitter-alt.svg",
+  "../assets/media/icons/linkedin.svg",
+  "../assets/media/icons/youtube.svg",
 ];
 
 let classCss = ["face", "instagram", "twitter", "linkedin", "youtube"];

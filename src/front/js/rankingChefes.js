@@ -55,7 +55,7 @@ const cardsRanking = [
   {
     chef: "Manoel Moura",
     curtidas: 1511,
-    fotoChef: "../src/media/images/chef.jpg",
+    fotoChef: "../assets/media/images/chef.jpg",
   },
   {
     chef: "Paula Martins",
@@ -123,11 +123,11 @@ cardsRanking.sort((a, b) => b.curtidas - a.curtidas);
 // Atribui as medalhas com base na classificação
 for (let i = 0; i < cardsRanking.length; i++) {
   if (i === 0) {
-    cardsRanking[i].medalha = "../src/media/images/medalha-de-ouro.png"; //Créditos pela imagem: FreePik
+    cardsRanking[i].medalha = "../assets/media/images/medalha-de-ouro.png"; //Créditos pela imagem: FreePik
   } else if (i === 1) {
-    cardsRanking[i].medalha = "../src/media/images/medalha-de-prata.png"; //Créditos pela imagem: FreePik
+    cardsRanking[i].medalha = "../assets/media/images/medalha-de-prata.png"; //Créditos pela imagem: FreePik
   } else if (i === 2) {
-    cardsRanking[i].medalha = "../src/media/images/medalha-de-bronze.png"; //Créditos pela imagem: FreePik
+    cardsRanking[i].medalha = "../assets/media/images/medalha-de-bronze.png"; //Créditos pela imagem: FreePik
   }
 }
 
