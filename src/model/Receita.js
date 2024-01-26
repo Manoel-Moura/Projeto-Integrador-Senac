@@ -6,25 +6,25 @@ import User from "../model/User";
 const ReceitaShema = new Schema({
     Titulo: {
         type: String,
-        require: true,
+        // require: true,
     },
     nomeDoChef:  {
         type: String,
-        require: true,
+        // require: true,
     },
     ingredientes:  {
         type: [String],
-        min:2,
+        // min:2,
     },
     modoPreparo:  {
         type: String,
-        require: true,
+        // require: true,
     },
     imagem: String,
     video: String,
     tempo:  {
         type: Number,
-        require: true,
+        // require: true,
     },
     categorias:{
         type: [String],
