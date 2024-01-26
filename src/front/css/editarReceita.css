@@ -320,7 +320,7 @@ body {
 .botoes_salvar_cancelar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 3em;
 }
 
@@ -329,6 +329,7 @@ body {
   background-color: #01468a;
   margin-right: 2em;
   width: 101px;
+  max-width: 101px;
   height: 53px;
   margin-bottom: 1em;
   color: white;
@@ -341,6 +342,7 @@ body {
   background-color: white;
   color: #01468a;
   width: 101px;
+  max-width: 101px;
   height: 53px;
   border: 2px solid #01468a;
   flex: 1;

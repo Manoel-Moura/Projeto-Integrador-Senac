@@ -40,11 +40,30 @@ function validarFormulario() {
 }
 
 
-// Função para quando eu for fazer o código para salvar as informações no banco de dados
 function salvarReceita() {
   if (validarFormulario()) {
 
-    alert('Receita Salva!');
+    var dadosDoFormulario = new FormData(document.getElementById('formulario_add_receita'));
+
+    var imagem = document.querySelector('.media-upload-area img:not(.media-icon img)');
+    if (imagem) {
+      dadosDoFormulario.append('imagem', imagem.files[0]);
+    }
+
+    var linkDoYouTube = document.getElementById('recipeVideo').value;
+    if (linkDoYouTube) {
+      dadosDoFormulario.append('linkDoYouTube', linkDoYouTube);
+    }
+
+    fetch('/cadastroReceita', {
+      method: 'POST',
+      body: dadosDoFormulario
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => {
+      console.error('Erro:', error);
+    });
   }
 }
 

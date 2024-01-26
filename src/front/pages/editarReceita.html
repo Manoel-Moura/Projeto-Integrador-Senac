@@ -23,94 +23,97 @@
       <!--Titulo do formulário inicial-->
       <h1 class="titulo_editar_receita">Editar Receita</h1>
 
-      <!--Formulário inicial onde se pede os dados básicos da receita-->
-      <form class="form_inicial">
-       
-      </form>
+      <form id="formulario_add_receita">
+        <!--Formulário inicial onde se pede os dados básicos da receita-->
+        <div class="form_inicial">
 
-      <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
-      <div class="colunas">
-        <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
-        <div class="fileira">
-          
         </div>
-      </div>
 
+        <!--Referente a seleção de categorias da receita, ou seja, o tipo-->
+        <div class="colunas">
+          <p class="descricao">Tipos de refeição (p. ex.: refeições principais, sobremesas, bebidas):</p>
+          <div class="fileira">
 
-      <!--Campo Ingredientes-->
-      <div class="form-section">
-        <div class="titulo_ingredientes">
-          Ingredientes
-        </div>
-        <div class="ingredientes">
-          <textarea id="ingredientesInput"
-            placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
-        </div>
-      </div>
-
-      <!--Campo Modo de Preparo-->
-      <div class="form-section">
-        <div class="titulo_modo_preparo">
-          Modo de Preparo
-        </div>
-        <div class="modo_preparo">
-          <textarea id="modoPreparoInput"
-            placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
-        </div>
-      </div>
-
-      <!--Adicionar foto e vídeo da receita-->
-      <div class="recipe-media-form">
-        <!--Adicionar Foto-->
-        <div class="form-item">
-          <div class="titulo_adicionar-foto">
-            Adicionar Foto
           </div>
-          <div class="media-upload-area">
-            <div class="media-icon">
-              <img id="mainPhotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
+        </div>
+
+
+        <!--Campo Ingredientes-->
+        <div class="form-section">
+          <div class="titulo_ingredientes">
+            Ingredientes
+          </div>
+          <div class="ingredientes">
+            <textarea id="ingredientesInput"
+              placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+          </div>
+        </div>
+
+        <!--Campo Modo de Preparo-->
+        <div class="form-section">
+          <div class="titulo_modo_preparo">
+            Modo de Preparo
+          </div>
+          <div class="modo_preparo">
+            <textarea id="modoPreparoInput"
+              placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+          </div>
+        </div>
+
+        <!--Adicionar foto e vídeo da receita-->
+        <div class="recipe-media-form">
+          <!--Adicionar Foto-->
+          <div class="form-item">
+            <div class="titulo_adicionar-foto">
+              Adicionar Foto
             </div>
-            <input type="file" id="mainPhoto" name="mainPhoto" onchange="carregarImagem('mainPhoto', 'mainPhotoImage')"
-              style="display: none;" />
-            <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
-          </div>
-          <p class="item-description">Tamanho máx.: 5MB</p>
-          <div id="buttonContainer">
-            <button id="botaoCarregarImagem" onclick="document.getElementById('mainPhoto').click()">Carregar Imagem</button>
-            <button id="botaoSalvarEdicao" onclick="salvarEdicao()" style="display: none;">Salvar</button>
-
-          </div>
-          
-        </div>
-
-        <!--Adicionar vídeo-->
-        <div class="form-item">
-          <div class="titulo_adicionar-video">
-            Adicionar Vídeo
-          </div>
-          <div class="media-upload-area">
-            <div class="media-icon">
-              <img id="recipeVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="mainPhotoImage" src="../src/media/icons/photo_icon.svg" alt="Ícone de foto">
+              </div>
+              <input type="file" id="mainPhoto" name="mainPhoto"
+                onchange="carregarImagem('mainPhoto', 'mainPhotoImage')" style="display: none;" />
+              <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
             </div>
-            <div id="videoContainer"></div>
-            <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
-            <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
-          </div>
-          <p class="item-description">Apenas vídeos do Youtube</p>
-          <div id="buttonContainer">
-            <button id="botaoCarregarVideo" onclick="carregarVideo()">Carregar Vídeo</button>
-            <button id="botaoCancelarVideo" onclick="cancelarVideo()" style="display: none;">Cancelar Vídeo</button>
+            <p class="item-description">Tamanho máx.: 5MB</p>
+            <div id="buttonContainer">
+              <button id="botaoCarregarImagem" onclick="document.getElementById('mainPhoto').click()">Carregar
+                Imagem</button>
+              <button id="botaoSalvarEdicao" onclick="salvarEdicao()" style="display: none;">Salvar</button>
+
+            </div>
+
           </div>
 
+          <!--Adicionar vídeo-->
+          <div class="form-item">
+            <div class="titulo_adicionar-video">
+              Adicionar Vídeo
+            </div>
+            <div class="media-upload-area">
+              <div class="media-icon">
+                <img id="recipeVideoImage" src="../src/media/icons/video_icon.svg" alt="Ícone de vídeo">
+              </div>
+              <div id="videoContainer"></div>
+              <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
+              <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
+            </div>
+            <p class="item-description">Apenas vídeos do Youtube</p>
+            <div id="buttonContainer">
+              <button id="botaoCarregarVideo" onclick="carregarVideo()">Carregar Vídeo</button>
+              <button id="botaoCancelarVideo" onclick="cancelarVideo()" style="display: none;">Cancelar Vídeo</button>
+            </div>
+
+          </div>
         </div>
-      </div>
 
-      <!--Botões de Salvar e Cancelar-->
-      <div class="botoes_salvar_cancelar">
-        <button class="botao" type="submit" id="salvar">Salvar</button>
-        <button class="botao" type="submit" id="cancelar">Cancelar</button>
-      </div>
+        <!--Botões de Salvar e Cancelar-->
+        <div class="botoes_salvar_cancelar">
+          <button class="botao" type="submit" id="salvar">Salvar</button>
+          <button class="botao" type="submit" id="cancelar">Cancelar</button>
+        </div>
     </section>
+    </form>
   </div>
   </div>
 
