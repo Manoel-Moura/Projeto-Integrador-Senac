@@ -159,3 +159,49 @@
   flex-wrap: wrap;
   overflow: scroll;
 }
+
+#addRecipe{
+  display: flex;
+  height: 115px;
+  width: 62%;
+  max-width: 1198px;
+  border-radius: 3mm;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-one{
+  display: flex;
+  border-radius: 3mm;
+  border: 1px solid #ff9800c2;
+  margin-left: 22px;
+  height: 98px;
+  width: 243px;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.adicionarNovaReceita{
+  height: 66px;
+  width: 118px;
+  border: none;
+  border-radius: 17px;
+  background-color: transparent;
+  color: #00366A;
+  align-self: flex-end;
+}
+
+.addRecipe{
+  width: 90px;
+  height: 80px;
+}
+
+.box-one:hover{
+  transform: scale(1.1);
+}

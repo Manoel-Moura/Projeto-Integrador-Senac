@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar Receitas</title>
-  <link rel="stylesheet" href="../src/css/editarReceita.css">
-  <link rel="stylesheet" href="../src/css/style.css">
+  <title>Adicionar Receitas</title> <!--Gabriel-->
+  <link rel="stylesheet" href="../css/editarReceita.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
 </head>
 
@@ -17,12 +17,12 @@
     <div id="topo"></div>
 
 
-
     <!--Componentes referente a página de adicionar receitas e editar receitas-->
     <section class="row">
 
       <!--Titulo do formulário inicial-->
       <h1 class="titulo_editar_receita">Adicionar Receita</h1>
+
       <form id="formulario_add_receita">
         <!--Formulário inicial onde se pede os dados básicos da receita-->
         <div class="form_inicial">
@@ -69,7 +69,7 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="mainPhotoImage" src="../src/media/icons/photo_icon.svg" alt="Ícone de foto">
+                <img id="mainPhotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
               </div>
               <input type="file" id="mainPhoto" name="mainPhoto"
                 onchange="carregarImagem('mainPhoto', 'mainPhotoImage')" style="display: none;" />
@@ -92,7 +92,7 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="recipeVideoImage" src="../src/media/icons/video_icon.svg" alt="Ícone de vídeo">
+                <img id="recipeVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
               </div>
               <div id="videoContainer"></div>
               <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
@@ -117,14 +117,15 @@
   </div>
   </div>
 
+
   <!--Rodapé-->
   <footer id="bottom-bar"></footer>
-
-  <script src="../src/js/verificarAddReceitas.js"></script>
+  
+  <script src="../js/verificarAddReceitas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-  <script src="../src/js/recipeMedia.js"></script>
-  <script src="../src/js/topBar.js"></script>
-  <script src="../src/js/rodape.js"></script>
+  <script src="../js/recipeMedia.js"></script>
+  <script src="../components/topBar.js"></script>
+  <script src="../components/rodape.js"></script>
 </body>
 
 </html>

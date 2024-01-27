@@ -67,6 +67,7 @@ function salvarReceita() {
   }
 }
 
+
 // Adicionar o evento de clique ao botão "Salvar"
 document.getElementById('salvar').addEventListener('click', function (e) {
   e.preventDefault();

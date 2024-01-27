@@ -1,7 +1,7 @@
 function criarFormulario(titulo) {
   var formExistente = document.querySelector(".form_inicial");
 
-  var form = document.createElement("form");
+  var form = document.createElement("div");
   form.className = "form_inicial";
   form.onsubmit = function(e) {
     e.preventDefault();
@@ -159,7 +159,9 @@ function carregarImagem(inputId, imageId) {
       window.cropper = inicializarCropper(newImage);
 
       // Mostrar o botão "Salvar" quando a imagem é carregada
+      
       document.getElementById('botaoSalvarEdicao').style.display = 'block';
+
     }
     reader.readAsDataURL(input.files[0]);
 
@@ -206,6 +208,23 @@ function salvarEdicao() {
   }
 }
 
+//Pro botão de carregar imagem
+document.addEventListener('DOMContentLoaded', function () {
+  var loadButton = document.getElementById('botaoCarregarImagem');
+  loadButton.addEventListener('click', function () {
+    event.preventDefault();
+  });
+});
+
+
+//Pro botão de salvar imagem
+document.addEventListener('DOMContentLoaded', function () {
+  var loadButton = document.getElementById('botaoSalvarEdicao');
+  loadButton.addEventListener('click', function () {
+    event.preventDefault();
+  });
+});
+
 //Mensagem de erro caso o campo de url esteja vazio.
 document.addEventListener('DOMContentLoaded', function () {
   var loadButton = document.getElementById('botaoCarregarVideo');
@@ -220,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Por favor, insira uma URL de vídeo antes de tentar carregar.');
       return;
     }
-
+    event.preventDefault();
     videoContainer.style.display = 'block';
   });
 });
