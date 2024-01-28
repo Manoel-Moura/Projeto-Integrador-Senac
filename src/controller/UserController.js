@@ -1,56 +1,125 @@
 import User from "../model/User";
+import bcrypt from 'bcryptjs';
 
-class crudUser{
-    async store(req,res){ // Post
-        const {nome,foto} = req.body
-        let userCadastra = await User.findOne({nome})
-        if(!userCadastra){
-            userCadastra = await User.create({nome,foto})
-        }
-       return res.json(userCadastra)
-    }
 
-    async edit(req, res) {
-       
-          // Extract user ID from request parameters (more reliable than headers)
-          const { id } = req.headers;
-      
-          // Validando requisitos
-          if (!id || !req.body.nome || !req.body.foto) {
-            return res.status(400).json({ error: 'ID, nome, e foto são requisitos' });
-          }
-      
-          const user = await User.findById(id);
-      
-          user.nome = req.body.nome;
-          user.foto = req.body.foto;
-      
-          // Salvando mudanças do usuario no BD
-          await user.save();
-      
-          return res.json(user);
-       
+class crudUser {
+
+  
+  async store(req, res) {
+
+    const senhaCadastroCriptografada = bcrypt.hashSync(req.body.senhaCadastro, 8);
+    const confirmarSenhaCadastroCriptografada = bcrypt.hashSync(req.body.confirmarSenhaCadastro, 8);
+
+    try {
+      const {
+        username,
+        email,
+        senhaCadastro,
+        confirmarSenhaCadastro,
+        cpf,
+        data,
+        foto
+      } = req.body;
+
+      let usernameExists = await User.findOne({ username });
+      if (usernameExists) {
+        return res.status(400).send('Um usuário com este nome de usuário já existe');
       }
 
-    async show(req,res){ // GET
-        let users = await User.find()
-        return res.json(users)
-
-    }
-
-    async delete(req, res) {
-          const { id } = req.headers;
-          
-    
-          if (!id) {
-            return res.json({ error: 'ID é requisitos' });
-          }
-          
-          const deletedUser = await User.findByIdAndDelete(id);
-          return res.json({ message: 'Usuario deletado com sucesso!' });
-    
+      let emailExists = await User.findOne({ email });
+      if (emailExists) {
+        return res.status(400).send('Um usuário com este email já existe');
       }
 
+      let cpfExists = await User.findOne({ cpf });
+      if (cpfExists) {
+        return res.status(400).send('Um usuário com este CPF já existe');
+      }
+
+      let userCadastra = await User.create({
+        username,
+        email,
+        senhaCadastro: senhaCadastroCriptografada,
+        confirmarSenhaCadastro: confirmarSenhaCadastroCriptografada,
+        cpf,
+        data,
+        foto
+      });
+      
+
+      return res.json(userCadastra);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Ocorreu um erro ao tentar criar o usuário');
+    }
+  }
+
+
+
+  async edit(req, res) {
+
+    // Extract user ID from request parameters (more reliable than headers)
+    const { id } = req.headers;
+
+
+
+    const user = await User.findById(id);
+
+    user.username = req.body.username;
+    user.foto = req.body.foto;
+
+    // Salvando mudanças do usuario no BD
+    await user.save();
+
+    return res.json(user);
+
+  }
+
+  async show(req, res) { // GET
+    let users = await User.find()
+    return res.json(users)
+
+  }
+
+  async delete(req, res) {
+    const { id } = req.headers;
+
+
+    if (!id) {
+      return res.json({ error: 'ID é requisitos' });
+    }
+
+    const deletedUser = await User.findByIdAndDelete(id);
+    return res.json({ message: 'Usuario deletado com sucesso!' });
+
+  }
+
+  async login(req, res) {
+    const { username, password } = req.body;
+
+    let user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).json({ error: 'Usuário não encontrado' });
+    }
+
+    const passwordIsValid = bcrypt.compareSync(password, user.senhaCadastro);
+    if (!passwordIsValid) {
+      return res.status(401).json({ error: 'Senha incorreta' });
+    }
+
+    req.session.userId = user._id;
+    return res.json(user);
+  }
+
+  //Para ver se o usuario está logado
+  async checkLogin(req, res) {
+    if (req.session && req.session.userId) {
+      res.json({ loggedIn: true });
+    } else {
+      res.json({ loggedIn: false });
+    }
+  }
+  
 }
 
 export default new crudUser()

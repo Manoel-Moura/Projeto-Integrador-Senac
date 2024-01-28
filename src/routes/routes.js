@@ -17,10 +17,14 @@ routes.put('/cadastroReceita', cadastroReceita.update);
 
 
 //Rotas dos Usuarios
-routes.post('/cadastroUSer', crudUser.store);
-routes.get('/cadastroUSer', crudUser.show);
-routes.put('/cadastroUSer', crudUser.edit);
-routes.delete('/cadastroUSer', crudUser.delete);
+routes.post('/cadastroUser', crudUser.store);
+routes.get('/cadastroUser', crudUser.show);
+routes.put('/cadastroUser', crudUser.edit);
+routes.delete('/cadastroUser', crudUser.delete);
+
+//Rota de login
+routes.post('/login', crudUser.login);
+routes.get('/check-login', crudUser.checkLogin);
 
 
 

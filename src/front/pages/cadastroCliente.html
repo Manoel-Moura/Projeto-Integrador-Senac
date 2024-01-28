@@ -19,15 +19,15 @@
                 <h1>Crie seu cadastro</h1>
 
                 <label class="label" for="username"> Nome <p>*</p> </label>
-                <input class="caixaTexto" id="username" type="text" required>
+                <input class="caixaTexto" id="username" type="text" name="username" required>
 
                 <label class="label" for="email"> Email <p>*</p> </label>
-                <input class="caixaTexto" id="email" type="text" required>
+                <input class="caixaTexto" id="email" type="text" name="email" required>
 
 
                 <label class="label" for="senhaCadastro"> Senha <p>*</p> </label>
                 <div class="campo-senha">
-                    <input class="caixaTexto" id="senhaCadastro" type="password" required>
+                    <input class="caixaTexto" id="senhaCadastro" type="password" name="senhaCadastro" required>
                     <img id="eye-close-senhaCadastro" src="../assets/media/images/icon-eye-close.svg"
                         class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
                         onclick="mostrarSenhaCadastro('senhaCadastro','eye-close-senhaCadastro')" />
@@ -38,7 +38,7 @@
                 
                 <label class="label" for="confirmarSenhaCadastro"> Confirme a senha <p>*</p> </label>
                 <div class="campo-senha">
-                    <input class="caixaTexto" id="confirmarSenhaCadastro" type="password" required>
+                    <input class="caixaTexto" id="confirmarSenhaCadastro" type="password" name="confirmarSenhaCadastro">
                     <img id="eye-close-confirmarSenhaCadastro" src="../assets/media/images/icon-eye-close.svg"
                         class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
                         onclick="mostrarSenhaCadastroConfirmar('confirmarSenhaCadastro','eye-close-confirmarSenhaCadastro')" />
@@ -52,7 +52,7 @@
                     title="Digite um CPF no formato: xxx.xxx.xxx-xx" required>
 
                 <label class="label" for="data"> Data <p>*</p> </label>
-                <input id="data" type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
+                <input id="data" type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
                     max="2030-12-31" required>
 
 

@@ -54,31 +54,61 @@ divLogo.appendChild(buttonMenu);
 
 //================================================================================================
 // Criando uma div com todos os botões do Menu já configurados
-let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre", "Login"];
+let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre"];
 let paginasMenu = [
   "https://www.senac.br/",
   "../pages/home.html",
   "../pages/chefes.html",
   "../pages/sobre.html",
-  "../pages/login.html",
 ];
 
 let divBotoes = document.createElement("div");
 divBotoes.setAttribute("id", "menubutton");
 
-for (let i = 0; i < botoesMenu.length; i++) {
-  let pagina = paginasMenu[i];
+// Remove o botão de login caso o usuario esteja logado e altera para o de dashboard.
+fetch('/check-login')
+  .then(response => response.json())
+  .then(data => {
+    for (let i = 0; i < botoesMenu.length; i++) {
+      let pagina = paginasMenu[i];
 
-  let botao = document.createElement("a");
-  botao.setAttribute("href", pagina);
+      let botao = document.createElement("a");
+      botao.setAttribute("href", pagina);
 
-  let button = document.createElement("button");
-  button.textContent = botoesMenu[i];
-  button.setAttribute("class", "botao");
+      let button = document.createElement("button");
+      button.textContent = botoesMenu[i];
+      button.setAttribute("class", "botao");
 
-  botao.appendChild(button);
-  divBotoes.appendChild(botao);
-}
+      botao.appendChild(button);
+      divBotoes.appendChild(botao);
+    }
+
+    if (data.loggedIn) {
+      let dashboardButton = document.createElement("a");
+      dashboardButton.setAttribute("href", "./dashboard.html");
+
+      let dashboardBtn = document.createElement("button");
+      dashboardBtn.textContent = "Dashboard";
+      dashboardBtn.setAttribute("class", "botao");
+
+      dashboardButton.appendChild(dashboardBtn);
+      divBotoes.appendChild(dashboardButton);
+    } else {
+      let loginButton = document.createElement("a");
+      loginButton.setAttribute("href", "../pages/login.html");
+
+      let loginBtn = document.createElement("button");
+      loginBtn.textContent = "Login";
+      loginBtn.setAttribute("class", "botao");
+
+      loginButton.appendChild(loginBtn);
+      divBotoes.appendChild(loginButton);
+    }
+  })
+  .catch(error => {
+    console.error('Erro ao checar o status de login:', error);
+  });
+
 //================================================================================================
 // Criando uma div com todos os contatos do Senac configurados
 let imgContato = [

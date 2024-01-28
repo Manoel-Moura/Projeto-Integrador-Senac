@@ -31,7 +31,6 @@ function verificarData(data) {
     var re = /^\d{4}-\d{2}-\d{2}$/;
     return re.test(data) && !isNaN(Date.parse(data));
 }
-
 // Função para validar o formulário
 function validarFormulario() {
     var campos = ['username', 'email', 'senhaCadastro', 'confirmarSenhaCadastro', 'cpf', 'data'];
@@ -46,12 +45,48 @@ function validarFormulario() {
         }
     }
 
+    enviarDadosFormulario();
     return true;
 }
 
-// Para evitar que seja enviado sem concluir os requisitos
-document.getElementById('bt-cadastro').addEventListener('click', function(event) {
-    if (!validarFormulario()) {
-        event.preventDefault();  
-    }
+// Função para enviar os dados do formulário para o servidor usando fetch
+function enviarDadosFormulario() {
+    var url = '/cadastroUser';
+    var formulario = document.getElementById('cardCadastro');
+
+    var data = {
+        username: formulario.elements.username.value,
+        email: formulario.elements.email.value,
+        senhaCadastro: formulario.elements.senhaCadastro.value,
+        confirmarSenhaCadastro: formulario.elements.confirmarSenhaCadastro.value,
+        cpf: formulario.elements.cpf.value,
+        data: formulario.elements.data.value
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na resposta do servidor');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Conta cadastrada com sucesso!');
+        window.location.href = './login.html'; 
+    })
+    .catch(error => {
+        console.error('Erro ao enviar requisição:', error);
+        alert('Ocorreu um erro ao tentar criar a conta');
+    });
+}
+
+document.getElementById('cardCadastro').addEventListener('submit', function (event) {
+    event.preventDefault(); 
+    validarFormulario();
 });

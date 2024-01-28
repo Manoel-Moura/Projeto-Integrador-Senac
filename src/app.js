@@ -1,19 +1,29 @@
 const express = require('express');
 const routes = require('./routes/routes.js');
 import mongoose from 'mongoose';
+import session from 'express-session';
 
-class App{
-    constructor(){
-        mongoose.connect('mongodb+srv://Senac:pp4OVozu11KkCWTq@projeto-senac.atkatyd.mongodb.net/?retryWrites=true&w=majority');
+class App {
+    constructor() {
+        mongoose.connect('mongodb+srv://senacProjeto:senacProjeto@playersony.gmakrpl.mongodb.net/?retryWrites=true&w=majority');
         this.server = express();
         this.middlewares();
         this.routes();
     };
-    middlewares(){
+    middlewares() {
+        this.server.use(express.static(__dirname + '/front'));
         this.server.use(express.json());
+        this.server.use(session({
+            secret: '2032030230203023023dlsldsmaklepqwkl123=-1231-=23', //Nada seguro isso kkkk
+            resave: false,
+            saveUninitialized: true,
+            cookie: { secure: false }
+        }));
+        this.server.use(express.urlencoded({ extended: true }));
     };
-    routes(){
+    routes() {
         this.server.use(routes);
     };
 };
+
 module.exports = new App().server;
