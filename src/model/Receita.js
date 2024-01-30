@@ -1,40 +1,53 @@
 // Modelo do Banco de dados
 
-import { Schema,model } from "mongoose";
+import { Schema, model } from "mongoose";
 import User from "../model/User";
 
 const ReceitaShema = new Schema({
-    Titulo: {
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: User
+    },
+    titulo: {
         type: String,
-        // require: true,
+        // required: true,
     },
-    nomeDoChef:  {
+    descricao: {
         type: String,
-        // require: true,
+        // required: true,
     },
-    ingredientes:  {
-        type: [String],
-        // min:2,
-    },
-    modoPreparo:  {
-        type: String,
-        // require: true,
-    },
-    imagem: String,
-    video: String,
-    tempo:  {
+    porcoes: {
         type: Number,
-        // require: true,
+        // required: true,
     },
-    categorias:{
+    preparacao: {
+        type: String,
+        // required: true,
+    },
+    cozimento: {
+        type: String,
+        // required: true,
+    },
+    categorias: {
         type: [String],
     },
-    user:{
-       type: Schema.Types.ObjectId,
-       ref: User
-    }
-})
-
+    ingredientes: {
+        type: String,
+        // required: true,
+    },
+    modoPreparo: {
+        type: String,
+        // required: true,
+    },
+    foto: {
+        type: String,
+        // required: true,
+    },
+    linkVideo: {
+        type: String,
+        // required: true,
+    },
+});
 
 
 export default new model('Receita', ReceitaShema)

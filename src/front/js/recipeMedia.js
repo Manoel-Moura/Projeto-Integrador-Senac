@@ -3,7 +3,7 @@ function criarFormulario(titulo) {
 
   var form = document.createElement("div");
   form.className = "form_inicial";
-  form.onsubmit = function(e) {
+  form.onsubmit = function (e) {
     e.preventDefault();
     var inputs = form.querySelectorAll('input, textarea');
     for (var i = 0; i < inputs.length; i++) {
@@ -19,7 +19,7 @@ function criarFormulario(titulo) {
   // Define os campos do formulário
   var campos = ["titulo", "descricao", "porcoes", "preparacao", "cozimento"];
   var labels = ["Título:", "Descrição:", "Número de Porções:", "Tempo de Preparação:", "Tempo de Cozimento:"];
-  
+
   for (var i = 0; i < campos.length; i++) {
     var div = document.createElement("div");
     div.className = "itemForm";
@@ -38,6 +38,7 @@ function criarFormulario(titulo) {
       input = document.createElement("input");
       input.type = "text";
     }
+
     input.id = campos[i];
     input.name = campos[i];
 
@@ -56,7 +57,6 @@ function criarFormulario(titulo) {
 
 criarFormulario();
 
-
 var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
 
 var fileira = document.querySelector(".fileira");
@@ -69,9 +69,10 @@ for (var i = 0; i < categorias.length; i++) {
   var p = document.createElement("p");
 
   item.className = "item";
-  input.type = "checkbox"; 
+  input.type = "checkbox";
   input.id = categorias[i].toLowerCase().replace(/ /g, "");
-  input.name = "receita";
+  input.name = "categorias[]"; 
+  input.value = categorias[i]; 
   label.htmlFor = input.id;
   p.textContent = categorias[i];
 
@@ -81,6 +82,7 @@ for (var i = 0; i < categorias.length; i++) {
 
   fileira.appendChild(item);
 }
+
 
 
 // Função para verificar o tamanho do arquivo
@@ -129,7 +131,7 @@ function inicializarCropper(image) {
   });
 }
 
-// Função para carregar a imagem
+
 function carregarImagem(inputId, imageId) {
   var input = document.getElementById(inputId);
   var image = document.getElementById(imageId);
@@ -159,13 +161,13 @@ function carregarImagem(inputId, imageId) {
       window.cropper = inicializarCropper(newImage);
 
       // Mostrar o botão "Salvar" quando a imagem é carregada
-      
       document.getElementById('botaoSalvarEdicao').style.display = 'block';
-
     }
     reader.readAsDataURL(input.files[0]);
 
-    // Redefinir o valor do campo de arquivo para permitir que a mesma imagem seja recarregada
+    // Armazenar a imagem em uma variável global
+    window.foto = input.files[0];
+
     input.value = null;
   } else if (input.value) {
     var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
@@ -183,16 +185,18 @@ function carregarImagem(inputId, imageId) {
   }
 }
 
+
+
 // Função para salvar a edição
 function salvarEdicao() {
   if (window.cropper) {
 
-    window.cropper.getCroppedCanvas().toBlob(function(blob) {
-     
+    window.cropper.getCroppedCanvas().toBlob(function (blob) {
+
       var url = URL.createObjectURL(blob);
 
       var newImage = criarNovaImagem(url);
-      
+
       var mediaUploadArea = document.querySelector('.media-upload-area');
       var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
       if (existingImage) {
@@ -202,8 +206,10 @@ function salvarEdicao() {
       // Adicionar a nova imagem à área de upload de mídia
       mediaUploadArea.appendChild(newImage);
 
-      window.cropper.destroy();
-      window.cropper = null;
+      if (window.cropper) {
+        window.cropper.destroy();
+        window.cropper = null;
+      }
     });
   }
 }
@@ -229,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var loadButton = document.getElementById('botaoCarregarVideo');
   var videoContainer = document.getElementById('videoContainer');
-  var input = document.getElementById('recipeVideo');
+  var input = document.getElementById('linkVideo');
 
   videoContainer.style.display = 'none';
 
@@ -247,9 +253,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Função para carregar o vídeo
 function carregarVideo() {
-  var input = document.getElementById('recipeVideo');
+  var input = document.getElementById('linkVideo');
   var videoContainer = document.getElementById('videoContainer');
-  var videoImage = document.getElementById('recipeVideoImage');
+  var videoImage = document.getElementById('linkVideoImage');
   var cancelButton = document.getElementById('botaoCancelarVideo');
 
   //Apenas vídeos do youtube por enquanto
@@ -286,9 +292,9 @@ function getYouTubeID(url) {
 
 // Função para cancelar o vídeo e por outro no lugar
 function cancelarVideo() {
-  var input = document.getElementById('recipeVideo');
+  var input = document.getElementById('linkVideo');
   var videoContainer = document.getElementById('videoContainer');
-  var videoImage = document.getElementById('recipeVideoImage');
+  var videoImage = document.getElementById('linkVideoImage');
   var cancelButton = document.getElementById('botaoCancelarVideo');
 
   var existingIframe = videoContainer.querySelector('iframe');

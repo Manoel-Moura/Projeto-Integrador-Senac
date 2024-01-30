@@ -4,11 +4,9 @@ import bcrypt from 'bcryptjs';
 
 class crudUser {
 
-  
   async store(req, res) {
-
+    const { userId } = req.session;
     const senhaCadastroCriptografada = bcrypt.hashSync(req.body.senhaCadastro, 8);
-    const confirmarSenhaCadastroCriptografada = bcrypt.hashSync(req.body.confirmarSenhaCadastro, 8);
 
     try {
       const {
@@ -20,6 +18,10 @@ class crudUser {
         data,
         foto
       } = req.body;
+
+      if (senhaCadastro !== confirmarSenhaCadastro) {
+        return res.status(400).send('As senhas não correspondem');
+      }
 
       let usernameExists = await User.findOne({ username });
       if (usernameExists) {
@@ -40,33 +42,32 @@ class crudUser {
         username,
         email,
         senhaCadastro: senhaCadastroCriptografada,
-        confirmarSenhaCadastro: confirmarSenhaCadastroCriptografada,
         cpf,
         data,
         foto
       });
-      
 
-      return res.json(userCadastra);
+      return res.json({ userCadastra });
     } catch (error) {
       console.error(error);
       res.status(500).send('Ocorreu um erro ao tentar criar o usuário');
     }
   }
 
-
-
   async edit(req, res) {
 
     // Extract user ID from request parameters (more reliable than headers)
     const { id } = req.headers;
 
-
-
     const user = await User.findById(id);
 
     user.username = req.body.username;
     user.foto = req.body.foto;
+
+    if (req.body.senhaCadastro) {
+      const senhaCadastroCriptografada = bcrypt.hashSync(req.body.senhaCadastro, 8);
+      user.senhaCadastro = senhaCadastroCriptografada;
+    }
 
     // Salvando mudanças do usuario no BD
     await user.save();
@@ -107,8 +108,11 @@ class crudUser {
       return res.status(401).json({ error: 'Senha incorreta' });
     }
 
-    req.session.userId = user._id;
-    return res.json(user);
+    if (passwordIsValid) {
+      req.session.userId = user._id;
+      return res.json(user);
+    }
+
   }
 
   //Para ver se o usuario está logado
@@ -119,7 +123,7 @@ class crudUser {
       res.json({ loggedIn: false });
     }
   }
-  
+
 }
 
 export default new crudUser()

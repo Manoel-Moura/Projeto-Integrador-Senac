@@ -1,3 +1,4 @@
+
 // Função para validar os campos do formulário
 function validarFormulario() {
   var campos = {
@@ -6,8 +7,8 @@ function validarFormulario() {
     "porcoes": "Porções",
     "preparacao": "Preparação",
     "cozimento": "Cozimento",
-    "ingredientesInput": "Ingredientes",
-    "modoPreparoInput": "Modo de Preparo"
+    "ingredientes": "Ingredientes",
+    "modoPreparo": "Modo de Preparo"
   };
 
   for (var id in campos) {
@@ -40,33 +41,81 @@ function validarFormulario() {
 }
 
 
-function salvarReceita() {
-  if (validarFormulario()) {
+// Função para validar os campos do formulário
+function validarFormulario() {
+  var campos = {
+    "titulo": "Título",
+    "descricao": "Descrição",
+    "porcoes": "Porções",
+    "preparacao": "Preparação",
+    "cozimento": "Cozimento",
+    "ingredientes": "Ingredientes",
+    "modoPreparo": "Modo de Preparo"
+  };
 
-    var dadosDoFormulario = new FormData(document.getElementById('formulario_add_receita'));
-
-    var imagem = document.querySelector('.media-upload-area img:not(.media-icon img)');
-    if (imagem) {
-      dadosDoFormulario.append('imagem', imagem.files[0]);
+  for (var id in campos) {
+    var campo = document.getElementById(id);
+    if (!campo.value) {
+      alert('Por favor, preencha o campo ' + campos[id] + ' antes de enviar.');
+      return false;
     }
-
-    var linkDoYouTube = document.getElementById('recipeVideo').value;
-    if (linkDoYouTube) {
-      dadosDoFormulario.append('linkDoYouTube', linkDoYouTube);
-    }
-
-    fetch('/cadastroReceita', {
-      method: 'POST',
-      body: dadosDoFormulario
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch((error) => {
-      console.error('Erro:', error);
-    });
   }
+
+  // Verificar se uma imagem foi carregada
+  var imagem = document.querySelector('.media-upload-area img:not(.media-icon img)');
+  if (!imagem) {
+    alert('Por favor, carregue uma imagem antes de enviar.');
+    return false;
+  }
+
+  // Verificar se pelo menos uma categoria foi selecionada
+  var categorias = document.querySelectorAll('.fileira input[type="checkbox"]');
+  var categoriaSelecionada = Array.prototype.slice.call(categorias).some(function (checkbox) {
+    return checkbox.checked;
+  });
+  if (!categoriaSelecionada) {
+    alert('Por favor, selecione pelo menos uma categoria antes de enviar.');
+    return false;
+  }
+
+  return true;
+
 }
 
+function salvarReceita(event) {
+  if (validarFormulario()) {
+    var formulario = document.getElementById('formulario_add_receita');
+
+    var foto = window.foto;
+
+    if (foto) {
+      var receitaData = new FormData(formulario);
+
+      receitaData.set('foto', foto);
+
+      fetch('/cadastroReceita', {
+        method: 'POST',
+        body: receitaData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert('Receita salva com sucesso!');
+        window.location.href = './dashboard.html';
+      })
+      .catch(error => {
+        alert('Falha ao salvar a receita.');
+        console.error('Erro:', error);
+      });
+    } else {
+      console.error('Nenhuma imagem selecionada');
+    }
+  }
+}
 
 // Adicionar o evento de clique ao botão "Salvar"
 document.getElementById('salvar').addEventListener('click', function (e) {

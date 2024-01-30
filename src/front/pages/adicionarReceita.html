@@ -44,7 +44,7 @@
             Ingredientes
           </div>
           <div class="ingredientes">
-            <textarea id="ingredientesInput"
+            <textarea id="ingredientes" name="ingredientes"
               placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
           </div>
         </div>
@@ -55,7 +55,7 @@
             Modo de Preparo
           </div>
           <div class="modo_preparo">
-            <textarea id="modoPreparoInput"
+            <textarea id="modoPreparo" name="modoPreparo"
               placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
           </div>
         </div>
@@ -69,15 +69,15 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="mainPhotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
+                <img id="fotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
               </div>
-              <input type="file" id="mainPhoto" name="mainPhoto"
-                onchange="carregarImagem('mainPhoto', 'mainPhotoImage')" style="display: none;" />
-              <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
+              <input type="file" id="foto" name="foto"
+                onchange="carregarImagem('foto', 'fotoImage')" style="display: none;" />
+              <div id="fotoLoader" class="loader" style="display: none;"></div>
             </div>
             <p class="item-description">Tamanho máx.: 5MB</p>
             <div id="buttonContainer">
-              <button id="botaoCarregarImagem" onclick="document.getElementById('mainPhoto').click()">Carregar
+              <button id="botaoCarregarImagem" onclick="document.getElementById('foto').click()">Carregar
                 Imagem</button>
               <button id="botaoSalvarEdicao" onclick="salvarEdicao()" style="display: none;">Salvar</button>
 
@@ -92,11 +92,11 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="recipeVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
+                <img id="linkVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
               </div>
               <div id="videoContainer"></div>
-              <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
-              <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
+              <input type="url" id="linkVideo" name="linkVideo" placeholder=" Insira o link do vídeo aqui" />
+              <div id="linkVideoLoader" class="loader" style="display: none;"></div>
             </div>
             <p class="item-description">Apenas vídeos do Youtube</p>
             <div id="buttonContainer">
@@ -120,7 +120,7 @@
 
   <!--Rodapé-->
   <footer id="bottom-bar"></footer>
-  
+
   <script src="../js/verificarAddReceitas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
   <script src="../js/recipeMedia.js"></script>

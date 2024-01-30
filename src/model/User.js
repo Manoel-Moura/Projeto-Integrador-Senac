@@ -28,7 +28,7 @@ const UserSchema = new Schema({
         type: Date,
         required: true,
     },
-    foto: {
+    fotoUsuario: {
         type:String,
     }
 });

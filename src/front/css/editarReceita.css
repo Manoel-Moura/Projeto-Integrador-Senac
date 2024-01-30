@@ -166,8 +166,8 @@ body {
 }
 
 /* Relacionado a caixas de texto de modo de preparo e aos ingredientes */
-#ingredientesInput,
-#modoPreparoInput {
+#ingredientes,
+#modoPreparo {
   background-color: #c0c0c0;
   border-radius: 3mm;
   width: 100%;
@@ -246,7 +246,7 @@ body {
 }
 
 /* Relacionado a borda do campo da url em adicionar vídeo */
-#recipeVideo {
+#linkVideo {
   border-radius: 10px;
   border: 1px solid #676767;
 }
