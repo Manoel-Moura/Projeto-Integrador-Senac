@@ -64,19 +64,23 @@ body {
 }
 
 
-#foto-usuario{
+#foto-usuario {
   width: 90px;
   height: 90px;
-  background: url(../assets/media/images/dipper.jpg);
+  background: url(../assets/media/images/user.png);
   border-radius: 50%;
   background-position: center;
   background-size: cover;
+  border-color: #004384;
   display: flex;
   align-items: end;
 }
 
+#foto-usuario:hover{
+  transform: scale(1.1);
+}
 
-#icon-camera{
+#icon-camera {
   width: 50%;
   height: 50%;
 }
@@ -87,10 +91,11 @@ body {
   font-weight: 500;
   width: 250px;
 }
-.icon-label{
-display: flex;
-align-items: center;
-flex-grow: 1;
+
+.icon-label {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
 
@@ -115,4 +120,20 @@ flex-grow: 1;
   width: 18pt;
   height: 18pt;
 
+}
+
+#botao_salvarEdicao {
+  height: 53px;
+  max-width: 101px;
+  margin-bottom: 1em;
+  border-radius: 2mm;
+  color: white;
+  background-color: #4A90E2;
+  flex: 1 1 auto;
+  text-align: center;
+  border: none;
+}
+
+#botao_salvarEdicao:hover {
+  transform: scale(1.1);
 }

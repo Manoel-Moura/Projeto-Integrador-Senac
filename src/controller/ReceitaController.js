@@ -5,7 +5,7 @@ class cadastroReceita {
         const { userId } = req.session; // Obter o ID do usuário da sessão
 
         const { titulo, descricao, porcoes, preparacao, cozimento, categorias, ingredientes, modoPreparo, linkVideo } = req.body;
-        const foto = req.file ? req.file.path : null;
+        const foto = req.file ? req.file.filename : null;
 
         let receitaCadastra = await Receita.create({
             user: userId,
@@ -18,7 +18,8 @@ class cadastroReceita {
             ingredientes,
             modoPreparo,
             foto,
-            linkVideo
+            linkVideo,
+            curtidas: 0,
         });
 
         return res.json({ receitaCadastra });
@@ -29,6 +30,7 @@ class cadastroReceita {
         let receitas = await Receita.find()
         return res.json(receitas)
     }
+
 
     async showReceita(req, res) {
         const { id } = req.headers;
@@ -76,6 +78,30 @@ class cadastroReceita {
         const deleteReceita = await Receita.findByIdAndDelete(id);
         return res.json({ message: 'Receita deletada com sucesso!' });
 
+    }
+    
+
+    async createCard(req, res) {
+        let receitas = await Receita.find().populate('user');
+        
+        let cards = [];
+    
+        for (let receita of receitas) {
+            let user = receita.user;
+    
+            if (user) {
+                let card = {
+                    chef: user.username,
+                    receita: receita.titulo,
+                    curtidas: receita.curtidas, 
+                    fotoChef: '/uploads/' + user.fotoUsuario,
+                    fotoReceita: '/uploads/' + receita.foto,
+                };
+    
+                cards.push(card);
+            }
+        }
+        return res.json(cards);
     }
     
 }

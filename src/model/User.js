@@ -17,7 +17,6 @@ const UserSchema = new Schema({
     },
     confirmarSenhaCadastro: {
         type: String,
-        required: true,
     },
     cpf: {
         type: String,
@@ -29,8 +28,18 @@ const UserSchema = new Schema({
         required: true,
     },
     fotoUsuario: {
-        type:String,
+        type: String,
+    },
+    celular: {
+        type: String,
+    },
+    telefone: {
+        type: String,
+    },
+    genero: {
+        type: String,
     }
 });
+
 
 export default model('User', UserSchema);

@@ -93,6 +93,25 @@ fetch('/check-login')
 
       dashboardButton.appendChild(dashboardBtn);
       divBotoes.appendChild(dashboardButton);
+
+      // Fetch para puxar a foto do usuario
+      fetch('/getUserData')
+        .then(response => response.json())
+        .then(userData => {
+          if (userData.fotoUsuario) {
+            let userButton = document.createElement("button");
+            userButton.setAttribute("id", "userButton");
+            userButton.style.backgroundImage = 'url(/uploads/' + userData.fotoUsuario + ')';
+            divBotoes.appendChild(userButton);
+
+            userButton.addEventListener('click', function () {
+              window.location.href = './editarDadosPessoais.html';
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao buscar os dados do usuário:', error);
+        });
     } else {
       let loginButton = document.createElement("a");
       loginButton.setAttribute("href", "../pages/login.html");

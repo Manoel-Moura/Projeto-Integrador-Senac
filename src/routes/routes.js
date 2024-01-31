@@ -5,6 +5,10 @@ import multer from 'multer';
 import multerConfig from '../multerConfig';
 const upload = multer(multerConfig);
 
+const express = require('express');
+import path from 'path'
+
+
 const routes = new Router();
 
 
@@ -16,17 +20,27 @@ routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
 routes.put('/cadastroReceita', cadastroReceita.update);
 
 
+//Para atribuir os valores ao card
+routes.get('/createCard', cadastroReceita.createCard);
+
 
 
 //Rotas dos Usuarios
 routes.post('/cadastroUser', crudUser.store);
 routes.get('/cadastroUser', crudUser.show);
-routes.put('/cadastroUser', crudUser.edit);
+routes.put('/cadastroUserT', upload.single('fotoUsuario'), crudUser.edit);
 routes.delete('/cadastroUser', crudUser.delete);
 
-//Rota de login
+
+//Rota de login: usuario
 routes.post('/login', crudUser.login);
 routes.get('/check-login', crudUser.checkLogin);
+
+//Pegar os dados do usuario, individual
+routes.get('/getUserData', crudUser.getUserData);
+
+//Rota virtual para carregar as imagens, salvas pelo multer
+routes.use('/uploads', express.static(path.join(__dirname, '../front/assets/media/uploads')));
 
 
 module.exports = routes;

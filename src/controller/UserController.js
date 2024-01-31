@@ -16,7 +16,10 @@ class crudUser {
         confirmarSenhaCadastro,
         cpf,
         data,
-        foto
+        fotoUsuario,
+        celular,
+        telefone,
+        genero
       } = req.body;
 
       if (senhaCadastro !== confirmarSenhaCadastro) {
@@ -44,7 +47,10 @@ class crudUser {
         senhaCadastro: senhaCadastroCriptografada,
         cpf,
         data,
-        foto
+        fotoUsuario,
+        celular,
+        telefone,
+        genero
       });
 
       return res.json({ userCadastra });
@@ -55,27 +61,28 @@ class crudUser {
   }
 
   async edit(req, res) {
-
-    // Extract user ID from request parameters (more reliable than headers)
-    const { id } = req.headers;
-
-    const user = await User.findById(id);
-
-    user.username = req.body.username;
-    user.foto = req.body.foto;
-
-    if (req.body.senhaCadastro) {
-      const senhaCadastroCriptografada = bcrypt.hashSync(req.body.senhaCadastro, 8);
-      user.senhaCadastro = senhaCadastroCriptografada;
+    const { userId } = req.session;
+  
+    const user = await User.findById(userId);
+  
+    if (!user) {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-
-    // Salvando mudanças do usuario no BD
+  
+    user.username = req.body.username;
+    user.email = req.body.email;
+    user.data = req.body.data;
+    user.fotoUsuario = req.file ? req.file.filename : user.fotoUsuario;
+    user.celular = req.body.celular;
+    user.telefone = req.body.telefone;
+    user.genero = req.body.genero;
+  
     await user.save();
-
+  
     return res.json(user);
-
   }
-
+  
+  
   async show(req, res) { // GET
     let users = await User.find()
     return res.json(users)
@@ -122,6 +129,18 @@ class crudUser {
     } else {
       res.json({ loggedIn: false });
     }
+  }
+
+  //Puxar os dados do usuario, um GET pra usuarios(individual)
+  async getUserData(req, res) {
+
+    if (!req.session.userId) {
+      return res.status(401).send({ error: 'Usuário não autenticado' });
+    }
+    
+    const user = await User.findById(req.session.userId);
+    user.data = user.data.toISOString().split('T')[0];
+    res.send(user);
   }
 
 }
