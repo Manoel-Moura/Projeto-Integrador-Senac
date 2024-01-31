@@ -123,13 +123,12 @@ body {
 }
 
 #botao_salvarEdicao {
-  height: 53px;
-  max-width: 101px;
+  height: 61px;
+  max-width: 91px;
   margin-bottom: 1em;
   border-radius: 2mm;
   color: white;
   background-color: #4A90E2;
-  flex: 1 1 auto;
   text-align: center;
   border: none;
 }

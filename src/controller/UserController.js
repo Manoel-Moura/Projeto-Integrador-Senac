@@ -41,6 +41,7 @@ class crudUser {
         return res.status(400).send('Um usuário com este CPF já existe');
       }
 
+     
       let userCadastra = await User.create({
         username,
         email,
