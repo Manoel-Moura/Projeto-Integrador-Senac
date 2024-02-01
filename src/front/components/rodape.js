@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach((cardReceita) => {
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
-        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
+        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id);
         const card = newCard.createCard();
         fragment_card.append(card);
         addCard.append(fragment_card);
@@ -151,12 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 class Card {
-  constructor(chef, receita, curtidas, fotoChef, fotoReceita) {
+  constructor(chef, receita, curtidas, fotoChef, fotoReceita, id) {
     this.chef = chef;
     this.receita = receita;
     this.curtidas = curtidas;
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
+    this.id = id;
   }
 
   createCard() {
@@ -184,7 +185,8 @@ class Card {
     btnReceita.classList.add("btn-receita");
     btnReceita.textContent = this.receita;
     btnReceita.addEventListener('click', () => {
-      const caminhoPagina = '../pages/verReceitas.html'
+
+      const caminhoPagina = '../pages/verReceitas.html';
         window.location.href = caminhoPagina;
     });
     card.append(btnReceita);
@@ -208,7 +210,6 @@ class Card {
     //     // window.location.href = `${caminhoPagina}?id=${idReceita}`; // Utilizei window.location.href para redirecionar para a URL desejada
     //     window.location.href = caminhoPagina;
     //   });
-
     return card;
 
   }

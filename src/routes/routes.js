@@ -20,6 +20,7 @@ routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
 routes.put('/cadastroReceita', cadastroReceita.update);
 
 
+
 //Para atribuir os valores ao card
 routes.get('/createCard', cadastroReceita.createCard);
 

@@ -95,6 +95,7 @@ class cadastroReceita {
     
             if (user) {
                 let card = {
+                    id: receita._id,
                     chef: user.username,
                     receita: receita.titulo,
                     curtidas: receita.curtidas, 
