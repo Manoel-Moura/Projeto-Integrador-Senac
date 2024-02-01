@@ -14,23 +14,23 @@ function alternarVisibilidadeSenha(inputId, imgElementId) {
   }
 }
 
-function mostrarSenhaCadastro(inputId, imgElementId){
+function mostrarSenhaCadastro(inputId, imgElementId) {
   alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
-function mostrarSenhaCadastroConfirmar(inputId, imgElementId){
+function mostrarSenhaCadastroConfirmar(inputId, imgElementId) {
   alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
-function mostrarSenha(inputId, imgElementId){
+function mostrarSenha(inputId, imgElementId) {
   alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
-function mostrarSenhaConfirmar(inputId, imgElementId){
+function mostrarSenhaConfirmar(inputId, imgElementId) {
   alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
-function mostrarSenhaLogin(inputId, imgElementId){
+function mostrarSenhaLogin(inputId, imgElementId) {
   alternarVisibilidadeSenha(inputId, imgElementId);
 }
 
@@ -77,7 +77,7 @@ function criarListaRequisitos() {
 // Função para posicionar o balão acima da row-item
 function posicionarInfoBalloon(infoBalloon) {
   const rowItem = document.querySelector('.row-item');
-  
+
   if (rowItem) {
     const rect = rowItem.getBoundingClientRect();
     infoBalloon.style.position = 'absolute';
@@ -103,18 +103,18 @@ function adicionarEventosSenha(infoBalloon) {
   const novaSenha = document.getElementById('novaSenha');
   const confirmarSenha = document.getElementById('confirmarSenha');
   if (novaSenha && confirmarSenha) {
-    novaSenha.addEventListener('focus', function() {
+    novaSenha.addEventListener('focus', function () {
       infoBalloon.style.display = 'block';
     });
-    confirmarSenha.addEventListener('focus', function() {
+    confirmarSenha.addEventListener('focus', function () {
       infoBalloon.style.display = 'block';
     });
 
     // Esconde o balão quando o usuário desfoca dos campos de senha
-    novaSenha.addEventListener('blur', function() {
+    novaSenha.addEventListener('blur', function () {
       infoBalloon.style.display = 'none';
     });
-    confirmarSenha.addEventListener('blur', function() {
+    confirmarSenha.addEventListener('blur', function () {
       infoBalloon.style.display = 'none';
     });
 
@@ -196,7 +196,7 @@ document.getElementById('botaoSalvar').addEventListener('click', function (event
   // Verifique se ambos os campos de senha não estão vazios
   if (novaSenha.value === '' || confirmarSenha.value === '') {
     alert('Por favor, preencha ambos os campos de senha antes de salvar.');
-    event.preventDefault();  
+    event.preventDefault();
   }
 
   // Verifique se a senha atende a todos os requisitos
@@ -207,6 +207,38 @@ document.getElementById('botaoSalvar').addEventListener('click', function (event
 
   if (!todosOsRequisitosAtendidos) {
     alert('Sua senha não atende a todos os requisitos. Por favor, verifique os requisitos e tente novamente.');
-    event.preventDefault(); 
+    event.preventDefault();
   }
+});
+
+
+document.getElementById('recuperar-senha').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const novaSenha = document.getElementById('novaSenha').value;
+  const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+  if (novaSenha !== confirmarSenha) {
+    alert('As senhas não correspondem.');
+    return;
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+
+  fetch('/resetPassword', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token, newPassword: novaSenha }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert('Senha recuperada!');
+      window.location.href = './login.html';
+    })
+    .catch((error) => {
+      console.error('Erro:', error);
+    });
 });

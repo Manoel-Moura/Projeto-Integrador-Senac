@@ -72,7 +72,8 @@ function salvarDadosPessoais(event) {
     })
     .then(user => {
       if (user) {
-        console.log('Perfil atualizado com sucesso!');
+        alert('Perfil atualizado com sucesso!');
+        window.location.href = './editarDadosPessoais.html'; 
       }
     })
     .catch(error => console.error('Erro:', error));

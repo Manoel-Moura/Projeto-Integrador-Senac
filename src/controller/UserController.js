@@ -1,11 +1,14 @@
 import User from "../model/User";
 import bcrypt from 'bcryptjs';
 
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
+const crypto = require('crypto');
 
 class crudUser {
 
   async store(req, res) {
-    const { userId } = req.session;
+
     const senhaCadastroCriptografada = bcrypt.hashSync(req.body.senhaCadastro, 8);
 
     try {
@@ -41,7 +44,7 @@ class crudUser {
         return res.status(400).send('Um usuário com este CPF já existe');
       }
 
-     
+
       let userCadastra = await User.create({
         username,
         email,
@@ -63,13 +66,13 @@ class crudUser {
 
   async edit(req, res) {
     const { userId } = req.session;
-  
+
     const user = await User.findById(userId);
-  
+
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-  
+
     user.username = req.body.username;
     user.email = req.body.email;
     user.data = req.body.data;
@@ -77,13 +80,13 @@ class crudUser {
     user.celular = req.body.celular;
     user.telefone = req.body.telefone;
     user.genero = req.body.genero;
-  
+
     await user.save();
-  
+
     return res.json(user);
   }
-  
-  
+
+
   async show(req, res) { // GET
     let users = await User.find()
     return res.json(users)
@@ -138,12 +141,84 @@ class crudUser {
     if (!req.session.userId) {
       return res.status(401).send({ error: 'Usuário não autenticado' });
     }
-    
+
     const user = await User.findById(req.session.userId);
     user.data = user.data.toISOString().split('T')[0];
     res.send(user);
   }
 
+  
+  async requestPasswordReset(req, res) {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ error: 'Usuário não encontrado' });
+    }
+
+    const resetToken = {
+      value: crypto.randomBytes(20).toString('hex'),
+      createdAt: Date.now()
+    };
+
+    user.passwordResetToken = resetToken;
+    await user.save();
+
+    const now = Date.now();
+    const tokenAge = now - user.passwordResetToken.createdAt;
+    const tokenExpirationTime = 5 * 60 * 1000;
+
+    if (tokenAge > tokenExpirationTime) {
+      return res.status(400).json({ error: 'Token expirado' });
+    }
+
+    //Ethereal para testes
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      auth: {
+        user: 'rahsaan.kunze@ethereal.email',
+        pass: 'kvN7pZgxcfk9XbFdEm'
+      }
+    });
+
+    const mailOptions = {
+      from: 'contasenacintegrador@gmail.com',
+      to: email,
+      subject: 'Link de redefinição de senha',
+      text: `Você solicitou a redefinição de senha. Por favor, clique no seguinte link para redefinir sua senha: \n\n http://localhost:3333/pages/recuperarSenha.html?token=${resetToken.value}`
+    };
+
+    transporter.sendMail(mailOptions, (error, response) => {
+      if (error) {
+        console.log('Erro ao enviar e-mail', error);
+      } else {
+        console.log('E-mail enviado com sucesso');
+      }
+    });
+
+    return res.json({ message: 'Verifique seu e-mail para redefinir sua senha.' });
+  }
+
+  async resetPassword(req, res) {
+    const { token, newPassword } = req.body;
+  
+    const user = await User.findOne({ 'passwordResetToken.value': token });
+  
+    if (!user) {
+      return res.status(400).json({ error: 'Token inválido' });
+    }
+  
+    user.senhaCadastro = bcrypt.hashSync(newPassword, 8);
+    user.passwordResetToken = undefined;
+    await user.save();
+  
+    return res.json({ message: 'Senha redefinida com sucesso.' });
+  }
+  
+
+
 }
+
 
 export default new crudUser()

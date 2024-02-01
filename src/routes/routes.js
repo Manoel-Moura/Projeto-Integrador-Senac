@@ -36,11 +36,14 @@ routes.delete('/cadastroUser', crudUser.delete);
 routes.post('/login', crudUser.login);
 routes.get('/check-login', crudUser.checkLogin);
 
+//Rotas para recuperação de senha
+routes.post('/requestPasswordReset', crudUser.requestPasswordReset);
+routes.post('/resetPassword', crudUser.resetPassword);
+
 //Pegar os dados do usuario, individual
 routes.get('/getUserData', crudUser.getUserData);
 
 //Rota virtual para carregar as imagens, salvas pelo multer
 routes.use('/uploads', express.static(path.join(__dirname, '../front/assets/media/uploads')));
-
 
 module.exports = routes;

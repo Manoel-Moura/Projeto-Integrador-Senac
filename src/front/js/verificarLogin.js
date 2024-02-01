@@ -32,7 +32,6 @@ document.getElementById('bt-login').addEventListener('click', function(event) {
         if (data.error) {
             alert('Erro ao fazer login: ' + data.error);
         } else {
-            alert('Login bem-sucedido!');
             window.location.href = './dashboard.html'; 
         }
     })

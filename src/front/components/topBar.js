@@ -98,16 +98,20 @@ fetch('/check-login')
       fetch('/getUserData')
         .then(response => response.json())
         .then(userData => {
-          if (userData.fotoUsuario) {
-            let userButton = document.createElement("button");
-            userButton.setAttribute("id", "userButton");
-            userButton.style.backgroundImage = 'url(/uploads/' + userData.fotoUsuario + ')';
-            divBotoes.appendChild(userButton);
+          let userButton = document.createElement("button");
+          userButton.setAttribute("id", "userButton");
 
-            userButton.addEventListener('click', function () {
-              window.location.href = './editarDadosPessoais.html';
-            });
+          if (userData.fotoUsuario) {
+            userButton.style.backgroundImage = 'url(/uploads/' + userData.fotoUsuario + ')';
+          } else {
+            userButton.style.backgroundImage = 'url(../assets/media/images/user.png)';
           }
+
+          divBotoes.appendChild(userButton);
+
+          userButton.addEventListener('click', function () {
+            window.location.href = './editarDadosPessoais.html';
+          });
         })
         .catch(error => {
           console.error('Erro ao buscar os dados do usuário:', error);

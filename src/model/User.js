@@ -38,7 +38,11 @@ const UserSchema = new Schema({
     },
     genero: {
         type: String,
-    }
+    },
+    passwordResetToken: {
+        value: String,
+        createdAt: Date
+    },
 });
 
 
