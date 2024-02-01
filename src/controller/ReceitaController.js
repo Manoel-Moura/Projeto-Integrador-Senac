@@ -2,7 +2,11 @@ import Receita from "../model/Receita"
 
 class cadastroReceita {
     async store(req, res) { // Post
-        const { userId } = req.session; // Obter o ID do usuário da sessão
+        let { userId } = req.session; 
+        
+        if (!userId) {
+            userId = req.body.userId;
+        }
 
         const { titulo, descricao, porcoes, preparacao, cozimento, categorias, ingredientes, modoPreparo, linkVideo } = req.body;
         const foto = req.file ? req.file.filename : null;
