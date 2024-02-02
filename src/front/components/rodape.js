@@ -113,22 +113,52 @@ let listaCategorias = document.getElementById("lista-categorias");
 if (listaCategorias) {
   let fragmentCategorias = document.createDocumentFragment();
 
-  nomeCategoria = "Teste";
-
   function novaCategoria(nomeCategoria) {
     let categoria = document.createElement("button");
-    categoria.setAttribute("id", "categoria");
-
+    categoria.classList.add("categoria");
     categoria.append(nomeCategoria);
-
     fragmentCategorias.append(categoria);
-
     listaCategorias.append(fragmentCategorias);
   }
 
-  for (let i = 0; i < 20; i++) {
-    novaCategoria(nomeCategoria);
-  }
+  fetch('/criarCategoria')
+    .then(response => response.json())
+    .then(categorias => {
+      categorias.forEach(categoria => {
+        novaCategoria(categoria.nome);
+      });
+
+      setTimeout(function() {
+        let botoesCategoria = document.getElementsByClassName("categoria");
+        let categoriaAtual = null;
+
+        for (let i = 0; i < botoesCategoria.length; i++) {
+          botoesCategoria[i].addEventListener('click', function() {
+            let filter = this.textContent.toUpperCase();
+            let cards = document.getElementsByClassName('card');
+
+            if (categoriaAtual === filter) {
+              for (let j = 0; j < cards.length; j++) {
+                cards[j].style.display = "";
+              }
+              categoriaAtual = null;
+            } else {
+              // Caso contrário, aplique o filtro de categoria
+              for (let j = 0; j < cards.length; j++) {
+                let categorias = cards[j].dataset.categorias.toUpperCase().split(',');
+                if (categorias.includes(filter)) {
+                  cards[j].style.display = "";
+                } else {
+                  cards[j].style.display = "none";
+                }
+              }
+              categoriaAtual = filter;
+            }
+          });
+        }
+      }, 0);
+    })
+    .catch(error => console.error('Erro:', error));
 }
 
 
@@ -140,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach((cardReceita) => {
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
-        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id);
+        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id, cardReceita.categorias);
         const card = newCard.createCard();
         fragment_card.append(card);
         addCard.append(fragment_card);
@@ -151,18 +181,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 class Card {
-  constructor(chef, receita, curtidas, fotoChef, fotoReceita, id) {
+  constructor(chef, receita, curtidas, fotoChef, fotoReceita, id, categorias) {
     this.chef = chef;
     this.receita = receita;
     this.curtidas = curtidas;
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
     this.id = id;
+    this.categorias = categorias; // Adicione as categorias ao objeto card
   }
 
   createCard() {
     let card = document.createElement("div");
     card.classList.add("card");
+
+    card.dataset.categorias = this.categorias.join(',');
 
     let imgReceita = document.createElement("img");
     imgReceita.classList.add("div_img");
@@ -204,16 +237,15 @@ class Card {
     lbAvaliacao.textContent = "❤ " + this.curtidas;
     card.append(lbAvaliacao);
 
-    // card.addEventListener('click', (event) => {
+     // card.addEventListener('click', (event) => {
     //   const caminhoPagina = '../pages/verReceitas.html'
     //     // const idReceita = event.currentTarget.dataset.id; // Alterei para event.currentTarget.dataset.id para acessar o id armazenado no atributo de dados do elemento clicado
     //     // window.location.href = `${caminhoPagina}?id=${idReceita}`; // Utilizei window.location.href para redirecionar para a URL desejada
     //     window.location.href = caminhoPagina;
     //   });
+
     return card;
-
   }
-
 }
 
 //Vai ficar de quarentena por enquanto kkkk

@@ -82,11 +82,12 @@ function validarFormulario() {
 
 }
 
+
 function salvarReceita(event) {
   if (validarFormulario()) {
     var formulario = document.getElementById('formulario_add_receita');
 
-    var foto = window.foto;
+    var foto = arquivoImagem;
 
     if (foto) {
       var receitaData = new FormData(formulario);

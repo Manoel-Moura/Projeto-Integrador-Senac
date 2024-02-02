@@ -193,6 +193,7 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  
 }
 
 .card-trending {
@@ -207,9 +208,11 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
   justify-content: start;
   align-items: center;
   flex-shrink: 0;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
 }
 
 .card-trending:hover {
+  transform: scale(1.1);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 

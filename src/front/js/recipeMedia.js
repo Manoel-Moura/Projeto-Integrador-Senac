@@ -56,13 +56,9 @@ function criarFormulario(titulo) {
 
 
 criarFormulario();
-
-var categorias = ["Aperitivos", "Sopas", "Acompanhamentos", "Pratos principais", "Pães e produtos de panificação", "Salada e molhos para saladas", "Molhos e condimentos", "Sobremesas", "Lanches", "Bebidas", "Café da manhã", "Lanches noturnos", "Almoço", "Jantar", "Outros"];
-
 var fileira = document.querySelector(".fileira");
 
-for (var i = 0; i < categorias.length; i++) {
-
+function novaCategoria(nomeCategoria) {
   var item = document.createElement("div");
   var input = document.createElement("input");
   var label = document.createElement("label");
@@ -70,11 +66,11 @@ for (var i = 0; i < categorias.length; i++) {
 
   item.className = "item";
   input.type = "checkbox";
-  input.id = categorias[i].toLowerCase().replace(/ /g, "");
+  input.id = nomeCategoria.toLowerCase().replace(/ /g, "");
   input.name = "categorias[]"; 
-  input.value = categorias[i]; 
+  input.value = nomeCategoria; 
   label.htmlFor = input.id;
-  p.textContent = categorias[i];
+  p.textContent = nomeCategoria;
 
   item.appendChild(input);
   item.appendChild(label);
@@ -82,6 +78,17 @@ for (var i = 0; i < categorias.length; i++) {
 
   fileira.appendChild(item);
 }
+
+// Faz uma solicitação GET para a rota /categoria
+fetch('/criarCategoria')
+  .then(response => response.json())
+  .then(categorias => {
+    // Cria um item de categoria para cada categoria
+    categorias.forEach(categoria => {
+      novaCategoria(categoria.nome);
+    });
+  })
+  .catch(error => console.error('Erro:', error));
 
 
 
@@ -132,6 +139,10 @@ function inicializarCropper(image) {
 }
 
 
+var arquivoImagem; // Variável global para armazenar o arquivo de imagem
+var formatoImagem; // Variável global para armazenar o formato da imagem
+var nomeImagem; // Variável global para armazenar o nome da imagem
+
 function carregarImagem(inputId, imageId) {
   var input = document.getElementById(inputId);
   var image = document.getElementById(imageId);
@@ -165,8 +176,12 @@ function carregarImagem(inputId, imageId) {
     }
     reader.readAsDataURL(input.files[0]);
 
-    // Armazenar a imagem em uma variável global
-    window.foto = input.files[0];
+    // Armazenar o arquivo de imagem na variável global
+    arquivoImagem = input.files[0];
+    // Armazenar o formato da imagem na variável global
+    formatoImagem = input.files[0].type;
+    // Armazenar o nome da imagem na variável global
+    nomeImagem = input.files[0].name;
 
     input.value = null;
   } else if (input.value) {
@@ -185,23 +200,17 @@ function carregarImagem(inputId, imageId) {
   }
 }
 
-
-
-// Função para salvar a edição
 function salvarEdicao() {
+  var mediaUploadArea = document.querySelector('.media-upload-area');
+  var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
+  if (existingImage) {
+    existingImage.remove();
+  }
+
   if (window.cropper) {
-
     window.cropper.getCroppedCanvas().toBlob(function (blob) {
-
       var url = URL.createObjectURL(blob);
-
       var newImage = criarNovaImagem(url);
-
-      var mediaUploadArea = document.querySelector('.media-upload-area');
-      var existingImage = mediaUploadArea.querySelector('img:not(.media-icon img)');
-      if (existingImage) {
-        mediaUploadArea.removeChild(existingImage);
-      }
 
       // Adicionar a nova imagem à área de upload de mídia
       mediaUploadArea.appendChild(newImage);
@@ -210,9 +219,17 @@ function salvarEdicao() {
         window.cropper.destroy();
         window.cropper = null;
       }
+
+      // Criar um novo File com o blob da imagem recortada e o nome original da imagem
+      arquivoImagem = new File([blob], nomeImagem, { type: formatoImagem });
     });
   }
 }
+
+
+
+
+
 
 //Pro botão de carregar imagem
 document.addEventListener('DOMContentLoaded', function () {

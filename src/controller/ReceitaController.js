@@ -1,9 +1,13 @@
 import Receita from "../model/Receita"
 
+import fs from 'fs'; 
+import path from 'path';
+
 class cadastroReceita {
+    
     async store(req, res) { // Post
-        let { userId } = req.session; 
-        
+        let { userId } = req.session;
+
         if (!userId) {
             userId = req.body.userId;
         }
@@ -71,7 +75,6 @@ class cadastroReceita {
     }
 
 
-
     async delete(req, res) {
         const { id } = req.headers;
 
@@ -79,36 +82,46 @@ class cadastroReceita {
             return res.json({ error: 'ID é requisitos' });
         }
 
+        const receita = await Receita.findById(id);
+
+        if (receita.foto) {
+            const imagePath = path.resolve(__dirname, '..', 'front', 'assets', 'media', 'uploads', receita.foto);
+
+            if (fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath);
+            }
+        }
+
         const deleteReceita = await Receita.findByIdAndDelete(id);
         return res.json({ message: 'Receita deletada com sucesso!' });
-
     }
-    
+
 
     async createCard(req, res) {
         let receitas = await Receita.find().populate('user');
-        
+
         let cards = [];
-    
+
         for (let receita of receitas) {
             let user = receita.user;
-    
+
             if (user) {
                 let card = {
                     id: receita._id,
                     chef: user.username,
                     receita: receita.titulo,
-                    curtidas: receita.curtidas, 
+                    curtidas: receita.curtidas,
                     fotoChef: '/uploads/' + user.fotoUsuario,
                     fotoReceita: '/uploads/' + receita.foto,
+                    categorias: receita.categorias,
                 };
-    
+
                 cards.push(card);
             }
         }
         return res.json(cards);
     }
-    
+
 }
 
 export default new cadastroReceita()

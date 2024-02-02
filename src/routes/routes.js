@@ -1,6 +1,7 @@
 const {Router} = require('express');
 import cadastroReceita from "../controller/ReceitaController"
 import crudUser from "../controller/UserController"
+import CategoriaController from "../controller/CategoriaController"
 import multer from 'multer';
 import multerConfig from '../multerConfig';
 const upload = multer(multerConfig);
@@ -19,7 +20,11 @@ routes.delete('/cadastroReceita', cadastroReceita.delete);
 routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
 routes.put('/cadastroReceita', cadastroReceita.update);
 
-
+//Rotas relacionadas as categorias das receitas
+routes.post('/criarCategoria', CategoriaController.store);
+routes.get('/criarCategoria', CategoriaController.show);
+routes.put('/criarCategoria', CategoriaController.update);
+routes.delete('/criarCategoria', CategoriaController.delete);
 
 //Para atribuir os valores ao card
 routes.get('/createCard', cadastroReceita.createCard);

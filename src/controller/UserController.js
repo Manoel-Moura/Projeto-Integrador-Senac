@@ -1,8 +1,10 @@
 import User from "../model/User";
 import bcrypt from 'bcryptjs';
-
-import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import nodemailer from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
+
 const crypto = require('crypto');
 
 class crudUser {
@@ -64,6 +66,7 @@ class crudUser {
     }
   }
 
+
   async edit(req, res) {
     const { userId } = req.session;
 
@@ -93,18 +96,28 @@ class crudUser {
 
   }
 
+
   async delete(req, res) {
     const { id } = req.headers;
-
 
     if (!id) {
       return res.json({ error: 'ID é requisitos' });
     }
 
+    const user = await User.findById(id);
+
+    if (user.fotoUsuario) {
+      const imagePath = path.resolve(__dirname, '..', 'front', 'assets', 'media', 'uploads', user.fotoUsuario);
+
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+
     const deletedUser = await User.findByIdAndDelete(id);
     return res.json({ message: 'Usuario deletado com sucesso!' });
-
   }
+
 
   async login(req, res) {
     const { username, password } = req.body;
@@ -147,7 +160,7 @@ class crudUser {
     res.send(user);
   }
 
-  
+
   async requestPasswordReset(req, res) {
     const { email } = req.body;
     const user = await User.findOne({ email });
@@ -202,20 +215,20 @@ class crudUser {
 
   async resetPassword(req, res) {
     const { token, newPassword } = req.body;
-  
+
     const user = await User.findOne({ 'passwordResetToken.value': token });
-  
+
     if (!user) {
       return res.status(400).json({ error: 'Token inválido' });
     }
-  
+
     user.senhaCadastro = bcrypt.hashSync(newPassword, 8);
     user.passwordResetToken = undefined;
     await user.save();
-  
+
     return res.json({ message: 'Senha redefinida com sucesso.' });
   }
-  
+
 
 
 }
