@@ -270,6 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Função para carregar o vídeo
 function carregarVideo() {
+  event.preventDefault();
   var input = document.getElementById('linkVideo');
   var videoContainer = document.getElementById('videoContainer');
   var videoImage = document.getElementById('linkVideoImage');

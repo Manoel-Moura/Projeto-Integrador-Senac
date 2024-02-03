@@ -142,7 +142,7 @@ body {
   border: none;
   margin-right: 10px;
 }
-  
+
 /* Relacionado a mudar cor do quadrado quando selecionado */
 .item input[type="checkbox"]:checked+label {
   background-color: rgb(0, 102, 255);
@@ -166,19 +166,57 @@ body {
 }
 
 /* Relacionado a caixas de texto de modo de preparo e aos ingredientes */
-#ingredientes,
-#modoPreparo {
+.modo_preparosInput,
+.ingredientesInput {
   background-color: #c0c0c0;
-  border-radius: 3mm;
+  border-radius: 0mm;
   width: 100%;
-  height: 200px;
+  height: 40px;
   overflow: auto;
   outline: none;
+  border: none;
   padding: 5px;
   box-sizing: border-box;
   resize: none;
 }
 
+#unir_iconI,
+#unir_iconP {
+  position: relative;
+}
+
+#adicionar_etapa,
+#adicionar_ingrediente {
+  position: absolute;
+  display: flex;
+  border-color:#01468a;
+  border-radius: 4mm;
+  width: 28px;
+  height: 29px;
+  color:  #01468a;
+  align-items: center;
+  justify-content: center;
+  font-size: 20pt;
+  background-color: white;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.ingredientes #unir_iconI input:first-of-type,
+.modo_preparo #unir_iconP input:first-of-type {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.novoInput {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 
 /* Abaixo está relacionado aos componentes de adicionar foto e vídeo */
 

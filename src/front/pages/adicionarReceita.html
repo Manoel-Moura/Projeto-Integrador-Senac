@@ -44,8 +44,10 @@
             Ingredientes
           </div>
           <div class="ingredientes">
-            <textarea id="ingredientes" name="ingredientes"
-              placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+            <div id="unir_iconI">
+              <input class="ingredientesInput" type="text" name="ingredientes[]" placeholder="1. Introduzir o ingrediente">
+              <button id="adicionar_ingrediente">+</button>
+            </div>
           </div>
         </div>
 
@@ -55,10 +57,14 @@
             Modo de Preparo
           </div>
           <div class="modo_preparo">
-            <textarea id="modoPreparo" name="modoPreparo"
-              placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+            <div id="unir_iconP">
+              <input class="modo_preparosInput" type="text" name="modoPreparo[]"
+                placeholder="1. Introduzir a etapa de preparação">
+              <button id="adicionar_etapa">+</button>
+            </div>
           </div>
         </div>
+
 
         <!--Adicionar foto e vídeo da receita-->
         <div class="recipe-media-form">
@@ -71,8 +77,8 @@
               <div class="media-icon">
                 <img id="fotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
               </div>
-              <input type="file" id="foto" name="foto"
-                onchange="carregarImagem('foto', 'fotoImage')" style="display: none;" />
+              <input type="file" id="foto" name="foto" onchange="carregarImagem('foto', 'fotoImage')"
+                style="display: none;" />
               <div id="fotoLoader" class="loader" style="display: none;"></div>
             </div>
             <p class="item-description">Tamanho máx.: 5MB</p>
@@ -110,8 +116,8 @@
         <!--Botões de Salvar e Cancelar-->
         <div class="botoes_salvar_cancelar">
           <button class="botao" type="submit" id="salvar">Salvar</button>
-          <button class="botao" type="submit" id="cancelar">Cancelar</button>
-        </div>
+          <button class="botao" type="button" id="cancelar" onclick="location.href='../pages/dashboard.html'">Cancelar</button>
+
     </section>
     </form>
   </div>

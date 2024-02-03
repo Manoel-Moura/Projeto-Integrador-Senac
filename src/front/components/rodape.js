@@ -189,7 +189,7 @@ class Card {
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
     this.id = id;
-    this.categorias = categorias; // Adicione as categorias ao objeto card
+    this.categorias = categorias; 
   }
 
   createCard() {

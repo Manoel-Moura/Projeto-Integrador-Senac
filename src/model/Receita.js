@@ -27,10 +27,10 @@ const ReceitaShema = new Schema({
         type: [String],
     },
     ingredientes: {
-        type: String,
+        type: [String],
     },
     modoPreparo: {
-        type: String,
+        type: [String],
     },
     foto: {
         type: String,

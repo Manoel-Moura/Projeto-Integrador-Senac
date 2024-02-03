@@ -44,8 +44,10 @@
             Ingredientes
           </div>
           <div class="ingredientes">
-            <textarea id="ingredientesInput"
-              placeholder="Introduzir os ingredientes necessários para a preparação da receita"></textarea>
+            <div id="unir_iconI">
+              <input class="ingredientesInput" type="text" name="ingredientes[]" placeholder="1. Introduzir o ingrediente">
+              <button id="adicionar_ingrediente">+</button>
+            </div>
           </div>
         </div>
 
@@ -55,10 +57,14 @@
             Modo de Preparo
           </div>
           <div class="modo_preparo">
-            <textarea id="modoPreparoInput"
-              placeholder="Introduzir o modo de preparação necessários para a receita"></textarea>
+            <div id="unir_iconP">
+              <input class="modo_preparosInput" type="text" name="modoPreparo[]"
+                placeholder="1. Introduzir a etapa de preparação">
+              <button id="adicionar_etapa">+</button>
+            </div>
           </div>
         </div>
+
 
         <!--Adicionar foto e vídeo da receita-->
         <div class="recipe-media-form">
@@ -69,15 +75,15 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="mainPhotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
+                <img id="fotoImage" src="../assets/media/icons/photo_icon.svg" alt="Ícone de foto">
               </div>
-              <input type="file" id="mainPhoto" name="mainPhoto"
-                onchange="carregarImagem('mainPhoto', 'mainPhotoImage')" style="display: none;" />
-              <div id="mainPhotoLoader" class="loader" style="display: none;"></div>
+              <input type="file" id="foto" name="foto" onchange="carregarImagem('foto', 'fotoImage')"
+                style="display: none;" />
+              <div id="fotoLoader" class="loader" style="display: none;"></div>
             </div>
             <p class="item-description">Tamanho máx.: 5MB</p>
             <div id="buttonContainer">
-              <button id="botaoCarregarImagem" onclick="document.getElementById('mainPhoto').click()">Carregar
+              <button id="botaoCarregarImagem" onclick="document.getElementById('foto').click()">Carregar
                 Imagem</button>
               <button id="botaoSalvarEdicao" onclick="salvarEdicao()" style="display: none;">Salvar</button>
 
@@ -92,11 +98,11 @@
             </div>
             <div class="media-upload-area">
               <div class="media-icon">
-                <img id="recipeVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
+                <img id="linkVideoImage" src="../assets/media/icons/video_icon.svg" alt="Ícone de vídeo">
               </div>
               <div id="videoContainer"></div>
-              <input type="url" id="recipeVideo" name="recipeVideo" placeholder=" Insira o link do vídeo aqui" />
-              <div id="recipeVideoLoader" class="loader" style="display: none;"></div>
+              <input type="url" id="linkVideo" name="linkVideo" placeholder=" Insira o link do vídeo aqui" />
+              <div id="linkVideoLoader" class="loader" style="display: none;"></div>
             </div>
             <p class="item-description">Apenas vídeos do Youtube</p>
             <div id="buttonContainer">
@@ -110,8 +116,8 @@
         <!--Botões de Salvar e Cancelar-->
         <div class="botoes_salvar_cancelar">
           <button class="botao" type="submit" id="salvar">Salvar</button>
-          <button class="botao" type="submit" id="cancelar">Cancelar</button>
-        </div>
+          <button class="botao" type="button" id="cancelar" onclick="location.href='../pages/dashboard.html'">Cancelar</button>
+
     </section>
     </form>
   </div>
@@ -120,7 +126,7 @@
 
   <!--Rodapé-->
   <footer id="bottom-bar"></footer>
-  
+
   <script src="../js/verificarAddReceitas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
   <script src="../js/recipeMedia.js"></script>
