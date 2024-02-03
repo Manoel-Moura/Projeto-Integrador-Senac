@@ -408,11 +408,10 @@ a {
 }
 
 .categoria {
-  padding: 2mm;
-  padding-left: 4mm;
-  padding-right: 4mm;
-  margin-left: 3mm;
-  margin-right: 3mm;
+  padding: 2mm 4mm;
+  text-align: center;
+  text-wrap: nowrap;
+  margin: 0 3mm;
   color: #555555;
   background-color: white;
   font-size: 14pt;
@@ -428,6 +427,7 @@ a {
 .categoria:hover {
   transform: scale(0.8);
 }
+
 
 #userButton {
   margin-left: 11mm;
