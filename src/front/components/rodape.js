@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(cards => {
       let cont = 1;
       cards.forEach((cardReceita) => {
+        // console.log("cardReceitas "+JSON.stringify(cardReceita))
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
         const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id, cardReceita.categorias);
@@ -201,7 +202,7 @@ class Card {
     imgReceita.classList.add("div_img");
     imgReceita.src = this.fotoReceita;
     imgReceita.addEventListener('click', () => {
-      const caminhoPagina = '../pages/verReceitas.html'
+      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;;
         window.location.href = caminhoPagina;
     });
     card.append(imgReceita);
@@ -217,9 +218,8 @@ class Card {
     let btnReceita = document.createElement("button");
     btnReceita.classList.add("btn-receita");
     btnReceita.textContent = this.receita;
-    btnReceita.addEventListener('click', () => {
-
-      const caminhoPagina = '../pages/verReceitas.html';
+    imgReceita.addEventListener('click', () => {
+      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;;
         window.location.href = caminhoPagina;
     });
     card.append(btnReceita);

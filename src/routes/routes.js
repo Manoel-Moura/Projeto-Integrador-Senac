@@ -30,7 +30,6 @@ routes.delete('/criarCategoria', CategoriaController.delete);
 routes.get('/createCard', cadastroReceita.createCard);
 
 
-
 //Rotas dos Usuarios
 routes.post('/cadastroUser', crudUser.store);
 routes.get('/cadastroUser', crudUser.show);

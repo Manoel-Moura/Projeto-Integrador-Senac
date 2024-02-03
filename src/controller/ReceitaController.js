@@ -41,6 +41,7 @@ class cadastroReceita {
 
 
     async showReceita(req, res) {
+        // console.log(req.headers.id)
         const { id } = req.headers;
         if (!id) {
             return res.json({ error: 'ID é requisitos' });
@@ -96,6 +97,7 @@ class cadastroReceita {
         return res.json({ message: 'Receita deletada com sucesso!' });
     }
 
+ 
 
     async createCard(req, res) {
         let receitas = await Receita.find().populate('user');
@@ -115,7 +117,7 @@ class cadastroReceita {
                     fotoReceita: '/uploads/' + receita.foto,
                     categorias: receita.categorias,
                 };
-
+                
                 cards.push(card);
             }
         }
