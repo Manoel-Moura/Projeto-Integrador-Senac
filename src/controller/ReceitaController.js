@@ -46,8 +46,12 @@ class cadastroReceita {
         if (!id) {
             return res.json({ error: 'ID é requisitos' });
         }
-        let receitas = await Receita.findById(id)
-        return res.json(receitas)
+        // let receitas = await Receita.findById(id)
+        const receitaUser = await Receita.findById(id).populate('user');
+        // console.log(user)
+
+       
+        return res.json(receitaUser)
     }
 
 

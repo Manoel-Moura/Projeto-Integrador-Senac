@@ -1,5 +1,5 @@
-const queryString = window.location.search;
-console.log(queryString.slice(4));
+const queryString = window.location.search; // Recebe as informações do Headers, no caso: ?id:1232132
+console.log(queryString.slice(4)); // pega somente os números do id, ignorando as 4 primeiras casas (?id:)
 
 let idParam = {
   id: queryString.slice(4),
@@ -10,11 +10,11 @@ let data = {
   headers: idParam,
 };
 
-const receitas = [
+const receitas = [ // Receita de exemplo 
   {
     nome: "Ovo frito",
     descricao:
-      "O ovo frito é um prato simples, mas que pode ser uma obra-prima culinária. Para fazer um ovo frito perfeito, é preciso atenção aos detalhes e um pouco de prática. ",
+      "O ovo frito é um prato simples, mas que pode ser uma obra-prima culinária. Para fazer um ovo frito perfeito, é preciso atenção aos detalhes e um pouco de prática.",
     autor: "Manoel Moura",
     numero_porcoes: 2,
     rendimento: 1,
@@ -38,19 +38,27 @@ const receitas = [
   },
 ];
 
+let fotoUser;
+
 document.addEventListener("DOMContentLoaded", function () {
   fetch("/receitaUser", data)
     .then((response) => response.json())
     .then((receita) => {
-      console.log(JSON.stringify(receita));
+      console.log(JSON.stringify(receita.user.fotoUsuario));
       receitas[0].nome = receita.titulo;
-      receitas[0].descricao = receita.descricao;
+      //receitas[0].descricao = receita.descricao;
       receitas[0].numero_porcoes = receita.porcoes;
       receitas[0].tempo_preparo = receita.preparacao;
       receitas[0].tempo_cozimento = receita.cozimento;
       receitas[0].url.src = "../uploads/" + receita.foto;
+      fotoUser = receita.user.fotoUsuario;
+      receitas[0].autor = receita.user.username;
       //receitas[0].ingredientes = receita.ingredientes
       //receitas[0].modo_preparo = receita.modoPreparo
+      //  alert(fotoUser)
+      //================
+
+      //================
 
       // Criação da página com os dados atualizados
       let receitaElement = document.getElementById("corpo");
@@ -61,15 +69,91 @@ document.addEventListener("DOMContentLoaded", function () {
       div_receita.setAttribute("class", "destaque-receita");
 
       let div_descricao = document.createElement("div");
-      div_descricao.setAttribute("id", "descricao-receita");
+      div_descricao.setAttribute("id", "descricao-receita"); // Foco
 
       let nome_prato = document.createElement("label");
       nome_prato.setAttribute("id", "nome-prato");
       nome_prato.innerText = receitas[0].nome;
+      //=================================================================================
 
       let div_des = document.createElement("div");
       div_des.setAttribute("id", "descricao-chef");
-      div_des.innerHTML = "Descrição do chef: ";
+
+      let infoChef = document.createElement("div");
+      infoChef.setAttribute("id", "infochefe");
+
+      let fotoChef = document.createElement("img");
+      fotoChef.setAttribute("id", "fotochefe");
+      fotoChef.setAttribute("src", "../assets/media/uploads/" + fotoUser);
+      infoChef.appendChild(fotoChef);
+
+      let dadosChef = document.createElement("div");
+      dadosChef.setAttribute("id", "dadosChef");
+
+      let nomeChef = document.createElement("div");
+      nomeChef.setAttribute("id", "nomeChef");
+      nomeChef.innerHTML = receitas[0].autor;
+      //===========================================================
+
+      // Criando a div para os botões
+      let divBotoes = document.createElement("div");
+      divBotoes.setAttribute("class", "botoes-container");
+
+      let botaoCurtir = document.createElement("button");
+      botaoCurtir.setAttribute("id", "curtir");
+      let like = true;
+      botaoCurtir.addEventListener('click', () => {
+       if(like){
+        botaoCurtir.style.background = "url('../assets/media/icons/heart-solid.svg')";
+        like = false;
+       }else{
+        botaoCurtir.style.background = "url('../assets/media/icons/favorito.svg')";
+        like = true;
+       }
+      })
+
+      // Botão de favorito
+      let botaoFavorito = document.createElement("button");
+      botaoFavorito.setAttribute("id", "favorito");
+      let favorito = true;
+      botaoFavorito.addEventListener('click', () =>{
+        if(favorito){
+          botaoFavorito.style.background = "url('../assets/media/icons/save2.svg')";
+          favorito = false;
+         }else{
+          botaoFavorito.style.background = "url('../assets/media/icons/save.svg')";
+          favorito = true;
+         }
+      })
+      
+
+      // Botão de imprimir
+      let botaoImprimir = document.createElement("button");
+      botaoImprimir.setAttribute("id", "imprimir");
+
+      // Adicionando os botões à div
+      divBotoes.appendChild(botaoCurtir);
+      divBotoes.appendChild(botaoFavorito);
+      divBotoes.appendChild(botaoImprimir);
+      //=============================================================================
+
+      let contatoChef = document.createElement("div");
+      contatoChef.setAttribute("id", "contatochef");
+      contatoChef.innerText = "@Manoel Moura";
+
+      let div_dados_chef = document.createElement("div");
+      div_dados_chef.setAttribute("id", "div-dados-chef");
+
+      div_dados_chef.append(contatoChef);
+      div_dados_chef.append(divBotoes);
+
+      // Adicionando a div com os botões à lista_opcao ou outro elemento de sua escolha
+      dadosChef.appendChild(nomeChef);
+      dadosChef.appendChild(div_dados_chef);
+
+      infoChef.appendChild(dadosChef);
+
+      div_des.appendChild(infoChef);
 
       let descricao = document.createElement("div");
       descricao.setAttribute("id", "descricao");
@@ -225,3 +309,4 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Erro:", error));
 });
+
