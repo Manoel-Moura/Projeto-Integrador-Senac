@@ -165,17 +165,57 @@ class cadastroReceita {
     return res.json(cards);
   }
 
+  async favoritaReceita(req, res) {
+    try {
+      const { id } = req.body;
+      const { userId } = req.session; // Quem está favoritando
+      console.log("Receita: " + id + "\nUsuario: " + userId);
+  
+      // Verifica se o ID da receita é válido
+      if (!id) {
+        return res.status(400).json({ error: "ID da receita inválido." });
+      }
+  
+      // Verifica se o ID do usuário é válido
+      if (!userId) {
+        return res.status(400).json({ error: "ID do usuário inválido." });
+      }
+  
+      const receitaUser = await Receita.findById(id);
+  
+      if (!receitaUser) {
+        return res.status(404).json({ message: "Receita não encontrada!" });
+      }
+  
+  
+      const favoritos = receitaUser.favoritas || [];
+  
+      let index = favoritos.indexOf(userId); // Busca no array a posição que o id se encontra
+  // console.log('Estou aqui e o ID:' +userId)
+  if (index === -1 &&  userId != null) { // Se não achar o ID ele adiciona
+    receitaUser.favoritas.push(userId);
+        console.log('era para ter adicionado')
+      } else {
+        // Remove o ID do usuário da lista de favoritos
+        receitaUser.favoritas.splice(index, 1);
+      }
+  
+      // console.log(receitaUser);
+      await receitaUser.save();
+  
+      return res.json(receitaUser);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "Ocorreu um erro ao processar a solicitação." });
+    }
+  }
+  
+
   async curtidasReceita(req, res) {
     try {
       const { id } = req.body;
       const { userId } = req.session; // Quem está curtindo
-      console.log("Receita: " + id + "\nUsuario: " + userId);
-
-      // if (!userId) {
-      //   return res
-      //     .status(401)
-      //     .json({ message: "Usuário precisa estar logado para curtir!" });
-      // }
+      // console.log("Receita: " + id + "\nUsuario: " + userId);
 
       const receitaUser = await Receita.findById(id);
 
@@ -197,12 +237,12 @@ class cadastroReceita {
           buscar = receitaUser.curtidas.indexOf(userId);
         }
       }
-      console.log(receitaUser); // Ajustei o console.log para imprimir corretamente o objeto
+      // console.log(receitaUser);
       await receitaUser.save();
 
       return res.json(receitaUser);
     } catch (error) {
-      console.error(error); // Ajustei o console.error para imprimir o erro corretamente
+      console.error(error); 
       return res
         .status(500)
         .json({ error: "Ocorreu um erro ao processar a solicitação." });

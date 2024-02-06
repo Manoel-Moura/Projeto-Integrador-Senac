@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // console.log("cardReceitas "+JSON.stringify(cardReceita))
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
+        
         const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id, cardReceita.categorias);
         const card = newCard.createCard();
         fragment_card.append(card);
@@ -182,15 +183,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 class Card {
-  constructor(chef, receita, curtidas, fotoChef, fotoReceita, id, categorias) {
+  constructor(chef, receita, curtidas = [], fotoChef, fotoReceita, id, categorias) {
     this.chef = chef;
     this.receita = receita;
-    this.curtidas = curtidas;
+    this.curtidas = curtidas || [];
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
     this.id = id;
     this.categorias = categorias; 
   }
+  
 
   createCard() {
     let card = document.createElement("div");
@@ -234,7 +236,8 @@ class Card {
 
     let lbAvaliacao = document.createElement("label");
     lbAvaliacao.classList.add("lb-avaliacao");
-    lbAvaliacao.textContent = "❤ " + this.curtidas;
+    lbAvaliacao.textContent = "❤ " + this.curtidas.length;
+    console.log(this.curtidas)
     card.append(lbAvaliacao);
 
      // card.addEventListener('click', (event) => {

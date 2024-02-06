@@ -40,6 +40,9 @@ const ReceitaShema = new Schema({
     },
     curtidas:{
         type:[String],
+    },
+    favoritas:{
+        type:[String],
     }
 });
 
