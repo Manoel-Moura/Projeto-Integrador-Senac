@@ -19,6 +19,7 @@ routes.get('/receitaUser', cadastroReceita.showReceita);
 routes.delete('/cadastroReceita', cadastroReceita.delete);
 routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
 routes.put('/cadastroReceita', cadastroReceita.update);
+routes.post('/curtidasReceita', cadastroReceita.curtidasReceita);
 
 //Rotas relacionadas as categorias das receitas
 routes.post('/criarCategoria', CategoriaController.store);

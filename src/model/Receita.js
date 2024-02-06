@@ -39,7 +39,7 @@ const ReceitaShema = new Schema({
         type: String,
     },
     curtidas:{
-        type: Number,
+        type:[String],
     }
 });
 

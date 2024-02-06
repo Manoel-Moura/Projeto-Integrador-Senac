@@ -20,6 +20,6 @@
     "sucrase": "^3.35.0"
   },
   "scripts": {
-    "start": "sucrase-node src/server.js"
+    "start": "nodemon --exec sucrase-node src/server.js"
   }
 }

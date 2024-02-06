@@ -10,7 +10,8 @@ let data = {
   headers: idParam,
 };
 
-const receitas = [ // Receita de exemplo 
+const receitas = [
+  // Receita de exemplo
   {
     nome: "Ovo frito",
     descricao:
@@ -29,6 +30,7 @@ const receitas = [ // Receita de exemplo
       "Tampe a frigideira e deixe cozinhar por mais 1 minuto, ou até a gema ficar na consistência desejada.",
       "Sirva em seguida.",
     ],
+    curtidas: [],
     url: {
       // tipo: 'video',
       // src: "https://www.youtube.com/embed/69GdvCwsM0A?si=C8qJFIzUk8hFUW_M"
@@ -44,20 +46,21 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/receitaUser", data)
     .then((response) => response.json())
     .then((receita) => {
-      console.log(JSON.stringify(receita.user.fotoUsuario));
-      receitas[0].nome = receita.titulo;
-      //receitas[0].descricao = receita.descricao;
-      receitas[0].numero_porcoes = receita.porcoes;
-      receitas[0].tempo_preparo = receita.preparacao;
-      receitas[0].tempo_cozimento = receita.cozimento;
-      receitas[0].url.src = "../uploads/" + receita.foto;
-      fotoUser = receita.user.fotoUsuario;
-      receitas[0].autor = receita.user.username;
-      //receitas[0].ingredientes = receita.ingredientes
-      //receitas[0].modo_preparo = receita.modoPreparo
-      //  alert(fotoUser)
+      console.log(JSON.stringify(receita[0].user.fotoUsuario));
+      receitas[0].nome = receita[0].titulo;
+      receitas[0].descricao = receita[0].descricao;
+      receitas[0].numero_porcoes = receita[0].porcoes;
+      receitas[0].tempo_preparo = receita[0].preparacao;
+      receitas[0].tempo_cozimento = receita[0].cozimento;
+      receitas[0].url.src = "../uploads/" + receita[0].foto;
+      fotoUser = receita[0].user.fotoUsuario;
+      receitas[0].autor = receita[0].user.username;
+      receitas[0].ingredientes = receita[0].ingredientes;
+      receitas[0].modo_preparo = receita[0].modoPreparo;
+      receitas[0].curtidas = receita[0].curtidas;
       //================
-
+      let sessionID = receita[1].idsession || null
+      // alert(receita[1].idsession)
       //================
 
       // Criação da página com os dados atualizados
@@ -100,32 +103,68 @@ document.addEventListener("DOMContentLoaded", function () {
       divBotoes.setAttribute("class", "botoes-container");
 
       let botaoCurtir = document.createElement("button");
-      botaoCurtir.setAttribute("id", "curtir");
-      let like = true;
-      botaoCurtir.addEventListener('click', () => {
-       if(like){
+botaoCurtir.setAttribute("id", "curtir");
+let like = false;
+
+// Verifica se o usuário já curtiu a receita e define o ícone do botão de acordo
+receitas[0].curtidas.forEach((curtida) => {
+    if (curtida === sessionID) {
         botaoCurtir.style.background = "url('../assets/media/icons/heart-solid.svg')";
-        like = false;
-       }else{
-        botaoCurtir.style.background = "url('../assets/media/icons/favorito.svg')";
-        like = true;
-       }
-      })
+        like = true; // Define como verdadeiro se houver correspondência
+    }
+});
+
+// Adiciona o evento de clique ao botão de curtir
+botaoCurtir.addEventListener("click", () => {
+    if (sessionID != null) {
+        fetch("/curtidasReceita", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: queryString.slice(4) }), // Adicionando o corpo da requisição
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Erro na resposta do servidor");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            alert("Operação realizada com sucesso!");
+            // Inverte o estado do like após a operação ser realizada com sucesso
+            like = !like;
+            // Atualiza o ícone do botão de acordo com o estado atual do like
+            if (like) {
+                botaoCurtir.style.background = "url('../assets/media/icons/heart-solid.svg')";
+            } else {
+                botaoCurtir.style.background = "url('../assets/media/icons/favorito.svg')";
+            }
+        })
+        .catch((error) => {
+            console.error("Erro:", error);
+        });
+    } else {
+        alert('Precisa fazer login para curtir!');
+    }
+});
+  
 
       // Botão de favorito
       let botaoFavorito = document.createElement("button");
       botaoFavorito.setAttribute("id", "favorito");
       let favorito = true;
-      botaoFavorito.addEventListener('click', () =>{
-        if(favorito){
-          botaoFavorito.style.background = "url('../assets/media/icons/save2.svg')";
+      botaoFavorito.addEventListener("click", () => {
+        if (favorito) {
+          botaoFavorito.style.background =
+            "url('../assets/media/icons/save2.svg')";
           favorito = false;
-         }else{
-          botaoFavorito.style.background = "url('../assets/media/icons/save.svg')";
+        } else {
+          botaoFavorito.style.background =
+            "url('../assets/media/icons/save.svg')";
           favorito = true;
-         }
-      })
-      
+        }
+      });
 
       // Botão de imprimir
       let botaoImprimir = document.createElement("button");
@@ -309,4 +348,3 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Erro:", error));
 });
-
