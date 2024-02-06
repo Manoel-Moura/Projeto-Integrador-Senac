@@ -121,21 +121,21 @@ if (listaCategorias) {
     listaCategorias.append(fragmentCategorias);
   }
 
-  fetch('/criarCategoria')
-    .then(response => response.json())
-    .then(categorias => {
-      categorias.forEach(categoria => {
+  fetch("/criarCategoria")
+    .then((response) => response.json())
+    .then((categorias) => {
+      categorias.forEach((categoria) => {
         novaCategoria(categoria.nome);
       });
 
-      setTimeout(function() {
+      setTimeout(function () {
         let botoesCategoria = document.getElementsByClassName("categoria");
         let categoriaAtual = null;
 
         for (let i = 0; i < botoesCategoria.length; i++) {
-          botoesCategoria[i].addEventListener('click', function() {
+          botoesCategoria[i].addEventListener("click", function () {
             let filter = this.textContent.toUpperCase();
-            let cards = document.getElementsByClassName('card');
+            let cards = document.getElementsByClassName("card");
 
             if (categoriaAtual === filter) {
               for (let j = 0; j < cards.length; j++) {
@@ -145,7 +145,9 @@ if (listaCategorias) {
             } else {
               // Caso contrário, aplique o filtro de categoria
               for (let j = 0; j < cards.length; j++) {
-                let categorias = cards[j].dataset.categorias.toUpperCase().split(',');
+                let categorias = cards[j].dataset.categorias
+                  .toUpperCase()
+                  .split(",");
                 if (categorias.includes(filter)) {
                   cards[j].style.display = "";
                 } else {
@@ -158,89 +160,107 @@ if (listaCategorias) {
         }
       }, 0);
     })
-    .catch(error => console.error('Erro:', error));
+    .catch((error) => console.error("Erro:", error));
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  fetch('/createCard')
-    .then(response => response.json())
-    .then(cards => {
+  fetch("/createCard")
+    .then((response) => response.json())
+    .then((cards) => {
       let cont = 1;
       cards.forEach((cardReceita) => {
-        // console.log("cardReceitas "+JSON.stringify(cardReceita))
+        console.log("cardReceitas " + JSON.stringify(cardReceita));
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
-        
-        const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita, cardReceita.id, cardReceita.categorias);
+
+        const newCard = new Card(
+          cardReceita.chef,
+          cardReceita.receita,
+          cardReceita.curtidas,
+          cardReceita.fotoChef,
+          cardReceita.fotoReceita,
+          cardReceita.id,
+          cardReceita.categorias,
+          cardReceita.chefID
+        );
         const card = newCard.createCard();
         fragment_card.append(card);
         addCard.append(fragment_card);
       });
     })
-    .catch(error => console.error('Erro:', error));
+    .catch((error) => console.error("Erro:", error));
 });
 
-
 class Card {
-  constructor(chef, receita, curtidas = [], fotoChef, fotoReceita, id, categorias) {
+  constructor(
+    chef,
+    receita,
+    curtidas = [],
+    fotoChef,
+    fotoReceita,
+    id,
+    categorias,
+    chefID
+  ) {
     this.chef = chef;
     this.receita = receita;
     this.curtidas = curtidas || [];
     this.fotoChef = fotoChef;
     this.fotoReceita = fotoReceita;
     this.id = id;
-    this.categorias = categorias; 
+    this.categorias = categorias;
+    this.chefID = chefID;
   }
-  
 
   createCard() {
     let card = document.createElement("div");
     card.classList.add("card");
 
-    card.dataset.categorias = this.categorias.join(',');
+    card.dataset.categorias = this.categorias.join(",");
 
     let imgReceita = document.createElement("img");
     imgReceita.classList.add("div_img");
     imgReceita.src = this.fotoReceita;
-    imgReceita.addEventListener('click', () => {
-      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;;
-        window.location.href = caminhoPagina;
+    imgReceita.addEventListener("click", () => {
+      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;
+      window.location.href = caminhoPagina;
     });
     card.append(imgReceita);
 
     let imgChef = document.createElement("img");
     imgChef.classList.add("chef-avatar");
     imgChef.src = this.fotoChef;
-    imgChef.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+    imgChef.addEventListener("click", () => {
+      const caminhoPagina = `../pages/dashboard.html?id=${this.chefID}`;
+      window.location.href = caminhoPagina;
     });
     card.append(imgChef);
 
     let btnReceita = document.createElement("button");
     btnReceita.classList.add("btn-receita");
     btnReceita.textContent = this.receita;
-    imgReceita.addEventListener('click', () => {
-      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;;
-        window.location.href = caminhoPagina;
+    imgReceita.addEventListener("click", () => {
+      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;
+      window.location.href = caminhoPagina;
     });
     card.append(btnReceita);
 
     let lbChef = document.createElement("label");
     lbChef.classList.add("lb-chef");
     lbChef.textContent = this.chef;
-    lbChef.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+    lbChef.addEventListener("click", () => {
+      const caminhoPagina = `../pages/dashboard.html?id=${this.chefID}`;
+      window.location.href = caminhoPagina;
     });
     card.append(lbChef);
 
     let lbAvaliacao = document.createElement("label");
     lbAvaliacao.classList.add("lb-avaliacao");
     lbAvaliacao.textContent = "❤ " + this.curtidas.length;
-    console.log(this.curtidas)
+    console.log(this.curtidas);
     card.append(lbAvaliacao);
 
-     // card.addEventListener('click', (event) => {
+    // card.addEventListener('click', (event) => {
     //   const caminhoPagina = '../pages/verReceitas.html'
     //     // const idReceita = event.currentTarget.dataset.id; // Alterei para event.currentTarget.dataset.id para acessar o id armazenado no atributo de dados do elemento clicado
     //     // window.location.href = `${caminhoPagina}?id=${idReceita}`; // Utilizei window.location.href para redirecionar para a URL desejada

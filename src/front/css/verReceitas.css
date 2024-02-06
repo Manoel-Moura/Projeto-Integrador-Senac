@@ -191,7 +191,8 @@ body {
 
 #nomeChef{
   padding-left: 5px;
-  
+  display: flex;
+ font-size: 18px;
 
 }
 
@@ -200,6 +201,8 @@ body {
   padding: 2px;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: auto;
   /* background-color: red; */
   
 }
@@ -255,7 +258,7 @@ body {
 
 
 #contatochef{
-  font-size: 12pt;
+  font-size: 11pt;
   color: #000000;
 }
 

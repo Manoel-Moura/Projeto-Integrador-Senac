@@ -150,6 +150,7 @@ class cadastroReceita {
 
       if (user) {
         let card = {
+          chefID: user._id,
           id: receita._id,
           chef: user.username,
           receita: receita.titulo,

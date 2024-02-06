@@ -40,6 +40,7 @@ routes.post('/cadastroUser', crudUser.store);
 routes.get('/cadastroUser', crudUser.show);
 routes.put('/cadastroUserT', upload.single('fotoUsuario'), crudUser.edit);
 routes.delete('/cadastroUser', crudUser.delete);
+routes.get('/user', crudUser.getUserDataBody);
 
 
 //Rota de login: usuario

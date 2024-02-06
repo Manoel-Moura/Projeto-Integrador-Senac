@@ -1,5 +1,5 @@
 const queryString = window.location.search; // Recebe as informações do Headers, no caso: ?id:1232132
-console.log(queryString.slice(4)); // pega somente os números do id, ignorando as 4 primeiras casas (?id:)
+// console.log(queryString.slice(4)); // pega somente os números do id, ignorando as 4 primeiras casas (?id:)
 
 let idParam = {
   id: queryString.slice(4),
@@ -21,7 +21,6 @@ const receitas = [
     rendimento: 1,
     tempo_preparo: 5,
     tempo_cozimento: 2,
-    calorias: 750,
     ingredientes: ["ovo", "sal", "salcinha", "folha de alface"],
     modo_preparo: [
       "Aqueça o óleo ou a manteiga em uma frigideira antiaderente em fogo médio.",
@@ -89,6 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
       let fotoChef = document.createElement("img");
       fotoChef.setAttribute("id", "fotochefe");
       fotoChef.setAttribute("src", "../assets/media/uploads/" + fotoUser);
+      fotoChef.addEventListener("click",() =>{
+        const caminhoPagina = `../pages/dashboard.html?id=${receita[0].user._id}`;;
+        window.location.href = caminhoPagina;
+      }); 
       infoChef.appendChild(fotoChef);
 
       let dadosChef = document.createElement("div");
@@ -97,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
       let nomeChef = document.createElement("div");
       nomeChef.setAttribute("id", "nomeChef");
       nomeChef.innerHTML = receitas[0].autor;
+      nomeChef.addEventListener("click",() =>{
+        const caminhoPagina = `../pages/dashboard.html?id=${receita[0].user._id}`;;
+        window.location.href = caminhoPagina;
+      }); 
       //===========================================================
 
       // Criando a div para os botões
@@ -212,17 +219,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Função para imprimir a receita
-      // function imprimirReceita() {
-      //   let receitaParaImprimir = document.getElementById("corpo").innerHTML;
-      //   // let janelaDeImpressao = window.open('', '_blank');
-      //   // janelaDeImpressao.document.write('<html><head><title>Receita</title></head><body>');
-      //   // janelaDeImpressao.document.write('<h1>Receita</h1>');
-      //   // janelaDeImpressao.document.write(receitaParaImprimir);
-      //   // janelaDeImpressao.document.write('</body></html>');
-      //   // janelaDeImpressao.document.close();
-      //   // janelaDeImpressao.print();
-      //   window.print();
-      // }
+      function imprimirReceita() {
+        // let receitaParaImprimir = document.getElementById("corpo").innerHTML;
+        // alert(receitaParaImprimir)
+        // let janelaDeImpressao = window.open('', '_blank');
+        // janelaDeImpressao.document.write('<html><head><title>Receita</title></head><body>');
+        // janelaDeImpressao.document.write('<h1>Receita</h1>');
+        // janelaDeImpressao.document.write(receitaParaImprimir);
+        // janelaDeImpressao.document.write('</body></html>');
+        // janelaDeImpressao.document.close();
+        // janelaDeImpressao.print();
+        window.print();
+      }
 
       // Adicionando os botões à div
       divBotoes.appendChild(botaoCurtir);
@@ -291,11 +299,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let calorias = document.createElement("label");
       calorias.setAttribute("id", "valor-itens");
-      calorias.innerText = receitas[0].calorias;
+      calorias.innerText = receitas[0].curtidas.length;
 
       let label_calorias = document.createElement("label");
       label_calorias.setAttribute("id", "label-itens");
-      label_calorias.innerHTML = "Calorias";
+      label_calorias.innerHTML = "Curtidas";
 
       let colum_calorias = document.createElement("div");
       colum_calorias.setAttribute("id", "colum");

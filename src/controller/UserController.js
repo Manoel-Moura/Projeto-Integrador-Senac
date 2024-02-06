@@ -161,6 +161,20 @@ class crudUser {
   }
 
 
+
+  //Puxar os dados do usuario, um GET pra usuarios(individual)
+  async getUserDataBody(req, res) {
+    const { id } = req.headers;
+    if (!id) {
+      return res.status(401).send({ error: 'Usuário não autenticado' });
+    }
+
+    const user = await User.findById(id);
+    return res.send(user);
+  }
+
+
+
   async requestPasswordReset(req, res) {
     const { email } = req.body;
     const user = await User.findOne({ email });
