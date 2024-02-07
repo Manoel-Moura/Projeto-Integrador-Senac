@@ -142,7 +142,7 @@ class crudUser {
   //Para ver se o usuario está logado
   async checkLogin(req, res) {
     if (req.session && req.session.userId) {
-      res.json({ loggedIn: true });
+      res.json({ loggedIn: true , id: req.session.userId});
     } else {
       res.json({ loggedIn: false });
     }

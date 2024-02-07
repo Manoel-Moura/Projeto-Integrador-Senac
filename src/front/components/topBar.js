@@ -84,8 +84,9 @@ fetch('/check-login')
     }
 
     if (data.loggedIn) {
+      // alert(data.id)
       let dashboardButton = document.createElement("a");
-      dashboardButton.setAttribute("href", "./dashboard.html");
+      dashboardButton.setAttribute("href", `../pages/dashboard.html?id=${data.id}`);
 
       let dashboardBtn = document.createElement("button");
       dashboardBtn.textContent = "Dashboard";

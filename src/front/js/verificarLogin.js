@@ -32,7 +32,7 @@ document.getElementById('bt-login').addEventListener('click', function(event) {
         if (data.error) {
             alert('Erro ao fazer login: ' + data.error);
         } else {
-            window.location.href = './dashboard.html'; 
+            window.location.href = './home.html'; 
         }
     })
     .catch(error => {
