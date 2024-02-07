@@ -2,6 +2,8 @@ const express = require('express');
 const routes = require('./routes/routes.js');
 import mongoose from 'mongoose';
 import session from 'express-session';
+import fs from 'fs'; 
+import path from 'path';
 
 class App {
     constructor() {
@@ -11,7 +13,7 @@ class App {
         this.routes();
     };
     middlewares() {
-        this.server.use(express.static(__dirname + '/front'));
+        this.server.use('/assets', express.static(path.join(__dirname, 'front/assets')));
         this.server.use(express.json());
         this.server.use(session({
             secret: '2032030230203023023dlsldsmaklepqwkl123=-1231-=23', //Nada seguro isso kkkk

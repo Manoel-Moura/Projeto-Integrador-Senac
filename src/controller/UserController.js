@@ -139,10 +139,20 @@ class crudUser {
 
   }
 
+  async logout(req, res) {
+    req.session.destroy(function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect('/login');
+      }
+    });
+  }
+
   //Para ver se o usuario está logado
   async checkLogin(req, res) {
     if (req.session && req.session.userId) {
-      res.json({ loggedIn: true , id: req.session.userId});
+      res.json({ loggedIn: true, id: req.session.userId });
     } else {
       res.json({ loggedIn: false });
     }
@@ -174,7 +184,7 @@ class crudUser {
   }
 
 
-
+  
   async requestPasswordReset(req, res) {
     const { email } = req.body;
     const user = await User.findOne({ email });
@@ -183,8 +193,9 @@ class crudUser {
       return res.status(400).json({ error: 'Usuário não encontrado' });
     }
 
+    const token = crypto.randomBytes(20).toString('hex');
     const resetToken = {
-      value: crypto.randomBytes(20).toString('hex'),
+      value: crypto.createHash('sha256').update(token).digest('hex'),
       createdAt: Date.now()
     };
 
@@ -213,7 +224,7 @@ class crudUser {
       from: 'contasenacintegrador@gmail.com',
       to: email,
       subject: 'Link de redefinição de senha',
-      text: `Você solicitou a redefinição de senha. Por favor, clique no seguinte link para redefinir sua senha: \n\n http://localhost:3333/pages/recuperarSenha.html?token=${resetToken.value}`
+      text: `Você solicitou a redefinição de senha. Por favor, clique no seguinte link para redefinir sua senha: \n\n http://localhost:3333/recuperarSenha?token=${token}`
     };
 
     transporter.sendMail(mailOptions, (error, response) => {
@@ -230,8 +241,9 @@ class crudUser {
   async resetPassword(req, res) {
     const { token, newPassword } = req.body;
 
-    const user = await User.findOne({ 'passwordResetToken.value': token });
-
+    const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+    const user = await User.findOne({ 'passwordResetToken.value': hashedToken });
+    
     if (!user) {
       return res.status(400).json({ error: 'Token inválido' });
     }

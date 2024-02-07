@@ -178,7 +178,7 @@ function salvarReceita(event) {
         })
         .then(data => {
           alert('Receita salva com sucesso!');
-          window.location.href = './dashboard.html';
+          window.location.href = '/dashboard';
         })
         .catch(error => {
           alert('Falha ao salvar a receita.');

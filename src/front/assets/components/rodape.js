@@ -222,7 +222,7 @@ class Card {
     imgReceita.classList.add("div_img");
     imgReceita.src = this.fotoReceita;
     imgReceita.addEventListener("click", () => {
-      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;
+      const caminhoPagina = `/verReceitas?id=${this.id}`;
       window.location.href = caminhoPagina;
     });
     card.append(imgReceita);
@@ -231,7 +231,7 @@ class Card {
     imgChef.classList.add("chef-avatar");
     imgChef.src = this.fotoChef;
     imgChef.addEventListener("click", () => {
-      const caminhoPagina = `../pages/dashboard.html?id=${this.chefID}`;
+      const caminhoPagina = `/dashboard?id=${this.chefID}`;
       window.location.href = caminhoPagina;
     });
     card.append(imgChef);
@@ -240,7 +240,7 @@ class Card {
     btnReceita.classList.add("btn-receita");
     btnReceita.textContent = this.receita;
     imgReceita.addEventListener("click", () => {
-      const caminhoPagina = `../pages/verReceitas.html?id=${this.id}`;
+      const caminhoPagina = `/verReceitas?id=${this.id}`;
       window.location.href = caminhoPagina;
     });
     card.append(btnReceita);
@@ -249,7 +249,7 @@ class Card {
     lbChef.classList.add("lb-chef");
     lbChef.textContent = this.chef;
     lbChef.addEventListener("click", () => {
-      const caminhoPagina = `../pages/dashboard.html?id=${this.chefID}`;
+      const caminhoPagina = `/dashboard?id=${this.chefID}`;
       window.location.href = caminhoPagina;
     });
     card.append(lbChef);

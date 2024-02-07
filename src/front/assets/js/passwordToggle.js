@@ -236,7 +236,7 @@ document.getElementById('recuperar-senha').addEventListener('submit', function (
     .then(response => response.json())
     .then(data => {
       alert('Senha recuperada!');
-      window.location.href = './login.html';
+      window.location.href = '/login';
     })
     .catch((error) => {
       console.error('Erro:', error);

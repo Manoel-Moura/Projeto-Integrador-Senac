@@ -442,3 +442,17 @@ a {
 #userButton:hover{
   transform: scale(1.1);
 }
+
+
+#logoutBtn{
+  margin-left: 12mm;
+  border-radius: 6px;
+  width: 49px;
+  height: 49px;
+  border: none;
+  background-color: transparent;
+}
+
+#logoutBtn:hover{
+  background-color: #c84646;
+}

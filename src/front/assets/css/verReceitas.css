@@ -172,7 +172,7 @@ body {
 }
 
 #fotochefe{
-  /* background: url(../assets/media/images/chef.jpg); */
+  /* background: url(../media/images/chef.jpg); */
   height: 55px;
   width: 55px;
   border-radius: 50%;
@@ -212,7 +212,7 @@ body {
   width: 25px;
  
   border:  none;
-  background: url(../assets/media/icons/favorito.svg);
+  background: url(../media/icons/favorito.svg);
   background-position: center;
   background-size: cover; 
   background-repeat: no-repeat;
@@ -224,7 +224,7 @@ body {
   height: 25px;
   width: 25px;
   border: none;
-  background: url(../assets/media/icons/save.svg);
+  background: url(../media/icons/save.svg);
   background-position: center;
   background-size: cover; 
   background-repeat: no-repeat;
@@ -237,7 +237,7 @@ body {
   width: 30px;
   border-radius: 50%;
   border:  none;
-  background: url(../assets/media/icons/impresora.svg);
+  background: url(../media/icons/impresora.svg);
   background-position: center;
   background-size: cover; 
   background-repeat: no-repeat;

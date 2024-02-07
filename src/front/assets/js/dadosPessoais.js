@@ -51,6 +51,33 @@ window.onload = function () {
     .catch(error => console.error('Erro:', error));
 };
 
+document.getElementById('botao_enviarSenha').addEventListener('click', function() {
+  // Pegue o e-mail diretamente do campo de entrada
+  var email = document.querySelector('input[name="email"]').value;
+
+  // Solicite um token de redefinição de senha
+  fetch('/requestPasswordReset', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.message) {
+          alert(data.message);
+      } else {
+          console.error('Erro ao solicitar a redefinição de senha:', data.error);
+      }
+  })
+  .catch((error) => {
+      console.error('Erro:', error);
+  });
+});
+
+
+
 
 function salvarDadosPessoais(event) {
   event.preventDefault();
@@ -73,7 +100,7 @@ function salvarDadosPessoais(event) {
     .then(user => {
       if (user) {
         alert('Perfil atualizado com sucesso!');
-        window.location.href = './editarDadosPessoais.html'; 
+        window.location.href = '/editarDadosPessoais'; 
       }
     })
     .catch(error => console.error('Erro:', error));

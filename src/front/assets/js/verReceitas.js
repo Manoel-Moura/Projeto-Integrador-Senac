@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fotoChef.setAttribute("id", "fotochefe");
       fotoChef.setAttribute("src", "../assets/media/uploads/" + fotoUser);
       fotoChef.addEventListener("click",() =>{
-        const caminhoPagina = `../pages/dashboard.html?id=${receita[0].user._id}`;;
+        const caminhoPagina = `/dashboard?id=${receita[0].user._id}`;;
         window.location.href = caminhoPagina;
       }); 
       infoChef.appendChild(fotoChef);
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
       nomeChef.setAttribute("id", "nomeChef");
       nomeChef.innerHTML = receitas[0].autor;
       nomeChef.addEventListener("click",() =>{
-        const caminhoPagina = `../pages/dashboard.html?id=${receita[0].user._id}`;;
+        const caminhoPagina = `dashboard?id=${receita[0].user._id}`;;
         window.location.href = caminhoPagina;
       }); 
       //===========================================================

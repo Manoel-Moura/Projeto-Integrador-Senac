@@ -79,7 +79,7 @@ function enviarDadosFormulario() {
     })
     .then(data => {
         alert('Conta cadastrada com sucesso!');
-        window.location.href = './login.html'; 
+        window.location.href = '/login'; 
     })
     .catch(error => {
         console.error('Erro ao enviar requisição:', error);

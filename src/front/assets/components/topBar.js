@@ -57,9 +57,9 @@ divLogo.appendChild(buttonMenu);
 let botoesMenu = ["O Senac", "Início", "Chefes", "Sobre"];
 let paginasMenu = [
   "https://www.senac.br/",
-  "../pages/home.html",
-  "../pages/chefes.html",
-  "../pages/sobre.html",
+  "/home",
+  "/chefes",
+  "/sobre",
 ];
 
 let divBotoes = document.createElement("div");
@@ -86,7 +86,7 @@ fetch('/check-login')
     if (data.loggedIn) {
       // alert(data.id)
       let dashboardButton = document.createElement("a");
-      dashboardButton.setAttribute("href", `../pages/dashboard.html?id=${data.id}`);
+      dashboardButton.setAttribute("href", `/dashboard?id=${data.id}`);
 
       let dashboardBtn = document.createElement("button");
       dashboardBtn.textContent = "Dashboard";
@@ -111,15 +111,28 @@ fetch('/check-login')
           divBotoes.appendChild(userButton);
 
           userButton.addEventListener('click', function () {
-            window.location.href = './editarDadosPessoais.html';
+            window.location.href = '/editarDadosPessoais';
           });
+
+          let logoutButton = document.createElement("a");
+          logoutButton.setAttribute("href", "/logout");
+
+          let logoutBtn = document.createElement("button");
+          logoutBtn.setAttribute("id", "logoutBtn");
+
+          let logoutIcon = document.createElement("img");
+          logoutIcon.setAttribute("src", "../assets/media/images/logout.png"); // Corrigindo o caminho para o ícone de logout
+          logoutBtn.appendChild(logoutIcon);
+
+          logoutButton.appendChild(logoutBtn);
+          divBotoes.appendChild(logoutButton);
         })
         .catch(error => {
           console.error('Erro ao buscar os dados do usuário:', error);
         });
     } else {
       let loginButton = document.createElement("a");
-      loginButton.setAttribute("href", "../pages/login.html");
+      loginButton.setAttribute("href", "/login");
 
       let loginBtn = document.createElement("button");
       loginBtn.textContent = "Login";

@@ -19,7 +19,7 @@ document.getElementById('recuperarSenhaForm').addEventListener('submit', functio
     .then(response => response.json())
     .then(data => {
         alert('Email enviado!');
-        window.location.href = './login.html';
+        window.location.href = '/login';
     })
     .catch((error) => {
         console.error('Erro:', error);

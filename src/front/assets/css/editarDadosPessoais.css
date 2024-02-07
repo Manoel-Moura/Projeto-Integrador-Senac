@@ -67,7 +67,7 @@ body {
 #foto-usuario {
   width: 90px;
   height: 90px;
-  background: url(../assets/media/images/user.png);
+  background: url(../media/images/user.png);
   border-radius: 50%;
   background-position: center;
   background-size: cover;
@@ -135,4 +135,24 @@ body {
 
 #botao_salvarEdicao:hover {
   transform: scale(1.1);
+}
+
+.botao_enviarSenha{
+  height: 50px;
+  max-width: 112px;
+  border-radius: 2mm;
+  color: white;
+  background-color: #4A90E2;
+  text-align: center;
+  border: none;
+}
+
+.botao_enviarEmail{
+  height: 41px;
+  max-width: 91px;
+  border-radius: 2mm;
+  color: white;
+  background-color: #4A90E2;
+  text-align: center;
+  border: none;
 }

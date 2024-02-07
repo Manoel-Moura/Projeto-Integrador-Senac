@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar dados Pessoais</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/editarDadosPessoais.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/editarDadosPessoais.css">
 </head>
 
 <body>
@@ -52,8 +52,13 @@
                         <img src="../assets/media/icons/pen.svg" id="icon" alt="">
                     </div>
                     <div class="informacoes">
+                        <label for="nome" class="campoDados">Senha</label>
+                        <input type="password" class="inf-usuario" style="color: #7a7b7d;" name="password" placeholder="*********" readonly>
+                        <button type="button" id="botao_enviarSenha" class="botao_enviarSenha">Mudar a senha</button>
+                    </div>
+                    <div class="informacoes">
                         <label for="nome" class="campoDados">CPF</label>
-                        <input type="text" class="inf-usuario" name="cpf">
+                        <input type="text" class="inf-usuario" name="cpf" readonly>
                     </div>
 
                 </div>
@@ -65,9 +70,7 @@
                     </div>
                     <div class="informacoes">
                         <label for="nome" class="campoDados">Email</label>
-                        <input type="email" class="inf-usuario" name="email" onfocus="changeIcon(this)"
-                            onblur="resetIcon(this)">
-                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                        <input type="email" class="inf-usuario" name="email" readonly>
                     </div>
                     <div class="informacoes">
                         <label for="nome" class="campoDados">Celular</label>
@@ -90,8 +93,9 @@
     </div>
 
 </body>
-<script src="../js/dadosPessoais.js"></script>
-<script src="../components/topBar.js"></script>
-<script src="../components/rodape.js"></script>
+<script src="../assets/js/dadosPessoais.js"></script>
+<script src="../assets/components/topBar.js"></script>
+<script src="../assets/components/rodape.js"></script>
+
 
 </html>
