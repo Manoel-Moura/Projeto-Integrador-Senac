@@ -79,7 +79,7 @@ class crudUser {
   
     const usernameExists = await User.findOne({ username: req.body.username });
     if (usernameExists && String(usernameExists._id) !== String(userId)) {
-      return res.status(400).send('Um usuário com este nome de usuário já existe');
+      return res.status(409).send('Um usuário com este nome de usuário já existe');
     }
   
     user.username = req.body.username;
@@ -265,8 +265,6 @@ class crudUser {
   async rankingChefs(req, res) {
     try {
       const users = await User.find();
-      console.log(`Encontrados ${users.length} usuários`);
-
       const rankingChefs = await Promise.all(users.map(async (user) => {
         const receitas = await Receita.find({ user: user._id });
       

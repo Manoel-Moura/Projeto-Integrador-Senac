@@ -75,7 +75,6 @@ document.getElementById('botao_enviarSenha').addEventListener('click', function(
 
 
 
-
 function salvarDadosPessoais(event) {
   event.preventDefault();
 
@@ -90,7 +89,11 @@ function salvarDadosPessoais(event) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Erro na requisição');
+        if (response.status === 409) {
+          throw new Error('O nome de usuário já está em uso');
+        } else {
+          throw new Error('Erro na requisição');
+        }
       }
       return response.json();
     })
@@ -100,7 +103,10 @@ function salvarDadosPessoais(event) {
         window.location.href = '/editarDadosPessoais'; 
       }
     })
-    .catch(error => console.error('Erro:', error));
+    .catch(error => {
+      console.error('Erro:', error);
+      alert(error.message); 
+    });
 }
 
 document.getElementById('dados_pessoais').addEventListener('submit', salvarDadosPessoais);
