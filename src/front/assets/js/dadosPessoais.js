@@ -27,7 +27,6 @@ window.onload = function () {
 
       let dateObj = new Date(data.data);
 
-      //removerei todas essas conversões quando tivermos concluído o projeto.
       let ano = dateObj.getUTCFullYear();
       let mes = dateObj.getUTCMonth() + 1;
       let dia = dateObj.getUTCDate();
@@ -52,10 +51,8 @@ window.onload = function () {
 };
 
 document.getElementById('botao_enviarSenha').addEventListener('click', function() {
-  // Pegue o e-mail diretamente do campo de entrada
   var email = document.querySelector('input[name="email"]').value;
 
-  // Solicite um token de redefinição de senha
   fetch('/requestPasswordReset', {
       method: 'POST',
       headers: {

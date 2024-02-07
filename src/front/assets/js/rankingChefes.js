@@ -1,7 +1,7 @@
 class CardRanking {
-  constructor(chef, curtidas, fotoChef, medalha, ranking) {
+  constructor(chef, totalCurtidas, fotoChef, medalha, ranking) {
     this.chef = chef;
-    this.curtidas = curtidas;
+    this.totalCurtidas = totalCurtidas;
     this.fotoChef = fotoChef;
     this.medalha = medalha;
     this.ranking = ranking;
@@ -33,7 +33,7 @@ class CardRanking {
 
     let imgChef = document.createElement("img");
     imgChef.classList.add("chef-avatar-ranking");
-    imgChef.src = this.fotoChef;
+    imgChef.src =  "/uploads/" + this.fotoChef;
     card.append(imgChef);
 
     let lbChef = document.createElement("label");
@@ -43,8 +43,9 @@ class CardRanking {
 
     let lbLikes = document.createElement("label");
     lbLikes.classList.add("lb-likes-ranking");
-    lbLikes.textContent = "❤ " + this.curtidas;
+    lbLikes.textContent = "❤ " + this.totalCurtidas; 
     card.append(lbLikes);
+
 
     return card;
   }
@@ -54,9 +55,9 @@ class CardRanking {
 
 // Códigos abaixo para fazer o trend topics (kkkk) do ranking de chefes
 class CardTrending {
-  constructor(chef, posicoesSubiu, fotoChef, ranking) {
+  constructor(chef, totalCurtidas, fotoChef, ranking) {
     this.chef = chef;
-    this.posicoesSubiu = posicoesSubiu;
+    this.totalCurtidas = totalCurtidas;
     this.fotoChef = fotoChef;
     this.ranking = ranking;
   }
@@ -72,7 +73,7 @@ class CardTrending {
 
     let imgChef = document.createElement("img");
     imgChef.classList.add("chef-avatar-trending");
-    imgChef.src = this.fotoChef;
+    imgChef.src =  "/uploads/"  + this.fotoChef;
     card.append(imgChef);
 
     let lbChef = document.createElement("label");
@@ -82,7 +83,7 @@ class CardTrending {
 
     let lbPosicoesSubiu = document.createElement("label");
     lbPosicoesSubiu.classList.add("lb-posicoes-subiu");
-    lbPosicoesSubiu.textContent = "+ " + this.posicoesSubiu + " posições";
+    lbPosicoesSubiu.textContent = "+ " + this.totalCurtidas + " posições";
     card.append(lbPosicoesSubiu);
 
     return card;
@@ -90,19 +91,14 @@ class CardTrending {
 }
 
 //============================================================================================
-
-//                 ALERTA: TEMPORARIO!!!!!!!
-// Vai ficar assim até que a página de ver receitas esteja completo
-// Após isso criarei uma rota propria com lógicas diferentes para a ocasião de trend e ranking.
-
 //Codigos abaixo para puxar todos os dados para os cards.
-fetch('/createCard')
+fetch('/rankingChefs')
   .then(response => response.json())
   .then(data => {
     let cardsRanking = data;
 
     // Ordena o array de cards do maior para o menor número de curtidas
-    cardsRanking.sort((a, b) => b.curtidas - a.curtidas);
+    cardsRanking.sort((a, b) => b.totalCurtidas - a.totalCurtidas);
 
     // Atribui as medalhas com base na classificação
     for (let i = 0; i < cardsRanking.length; i++) {
@@ -121,25 +117,25 @@ fetch('/createCard')
     topCards.forEach((cardChef, index) => {
       const addCard = document.getElementById("top-3-container");
       const fragment_card = document.createDocumentFragment();
-      const newCard = new CardRanking(cardChef.chef, cardChef.curtidas, cardChef.fotoChef, cardChef.medalha, index + 1);
+      const newCard = new CardRanking(cardChef.chef, cardChef.totalCurtidas, cardChef.fotoChef, cardChef.medalha, index + 1);
       const card = newCard.createCardRanking();
       fragment_card.append(card);
       addCard.append(fragment_card);
     });
 
     // Ordenar o array de chefs por curtidas
-    let chefsOrdenados = cardsRanking.sort((a, b) => b.curtidas - a.curtidas);
+    let chefsOrdenados = cardsRanking.sort((a, b) => b.totalCurtidas - a.totalCurtidas);
 
     // Pra pegar os 5 chefs com mais curtidas
     let topChefs = chefsOrdenados.slice(0, 5);
 
     topChefs.forEach((chef, index) => {
-      let cardTrending = new CardTrending(chef.chef, chef.curtidas, chef.fotoChef, index + 1); // Adicione 'index + 1' aqui
+      let cardTrending = new CardTrending(chef.chef, chef.totalCurtidas, chef.fotoChef, index + 1); 
       let cardElement = cardTrending.createCardTrending();
       document.getElementById("trending-container").append(cardElement);
     });
 
-    
+
     // Relacionado ao ranking completo com todos os chefes
     let allCards = cardsRanking;
     let linhaAtual = null;
@@ -152,7 +148,7 @@ fetch('/createCard')
         document.getElementById("ranking-completo-container").append(linhaAtual);
       }
 
-      const newCard = new CardRanking(cardChef.chef, cardChef.curtidas, cardChef.fotoChef, null, index + 1); // Adicione 'index + 1' aqui
+      const newCard = new CardRanking(cardChef.chef, cardChef.totalCurtidas, cardChef.fotoChef, null, index + 1);
       const card = newCard.createCardRanking();
       linhaAtual.append(card);
 
@@ -166,5 +162,6 @@ fetch('/createCard')
     });
   })
   .catch(error => console.error('Erro:', error));
+
 
 

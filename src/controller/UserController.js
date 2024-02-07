@@ -4,6 +4,7 @@ import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import path from 'path';
+import Receita from "../model/Receita";
 
 const crypto = require('crypto');
 
@@ -69,25 +70,30 @@ class crudUser {
 
   async edit(req, res) {
     const { userId } = req.session;
-
+  
     const user = await User.findById(userId);
-
+  
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-
+  
+    const usernameExists = await User.findOne({ username: req.body.username });
+    if (usernameExists && String(usernameExists._id) !== String(userId)) {
+      return res.status(400).send('Um usuário com este nome de usuário já existe');
+    }
+  
     user.username = req.body.username;
-    user.email = req.body.email;
     user.data = req.body.data;
     user.fotoUsuario = req.file ? req.file.filename : user.fotoUsuario;
     user.celular = req.body.celular;
     user.telefone = req.body.telefone;
     user.genero = req.body.genero;
-
+  
     await user.save();
-
+  
     return res.json(user);
   }
+  
 
 
   async show(req, res) { // GET
@@ -184,7 +190,7 @@ class crudUser {
   }
 
 
-  
+
   async requestPasswordReset(req, res) {
     const { email } = req.body;
     const user = await User.findOne({ email });
@@ -243,7 +249,7 @@ class crudUser {
 
     const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
     const user = await User.findOne({ 'passwordResetToken.value': hashedToken });
-    
+
     if (!user) {
       return res.status(400).json({ error: 'Token inválido' });
     }
@@ -256,6 +262,28 @@ class crudUser {
   }
 
 
+  async rankingChefs(req, res) {
+    try {
+      const users = await User.find();
+      console.log(`Encontrados ${users.length} usuários`);
+
+      const rankingChefs = await Promise.all(users.map(async (user) => {
+        const receitas = await Receita.find({ user: user._id });
+      
+        let totalCurtidas = 0;
+        for (let receita of receitas) {
+          totalCurtidas += receita.curtidas.length; 
+        }
+
+        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas };
+      }));
+
+      return res.json(rankingChefs);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Erro ao buscar os dados dos usuários' });
+    }
+  }
 
 }
 

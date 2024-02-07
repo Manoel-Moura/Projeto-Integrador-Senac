@@ -83,4 +83,7 @@ routes.get('/dashboard', requireLogin, serveProtectedPage('../front/pages/dashbo
 routes.get('/editarDadosPessoais', requireLogin, serveProtectedPage('../front/pages/editarDadosPessoais.html'));
 
 
+routes.get('/rankingChefs', crudUser.rankingChefs);
+
+
 module.exports = routes;
