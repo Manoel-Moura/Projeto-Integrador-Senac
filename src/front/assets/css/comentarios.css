@@ -1,0 +1,151 @@
+#div-all-comentarios {
+    width: 80%;
+    height: 450px;
+    /* height: auto; */
+    /* max-height: 500px; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+    background-color: rgba(0, 0, 0, 0.541);
+    overflow-y: scroll;
+}
+
+#comentario{
+    min-height: 50%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    
+}
+
+#sub-comentario{
+    height: 60%;
+    width: 90%;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    
+}
+
+#fotoUser {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: contain;
+    /* Ajuste para preservar proporção */
+    background-repeat: no-repeat;
+    border: 2px white solid;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#div-comentario{
+    height: 100%;
+    width: calc(100% - 90px);
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* ========================================= */
+
+#info-comentario{
+    height: 15%;
+    width: 100%;
+    /* background-color: green; */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    font-weight: 700;
+  margin-top: 5px;
+}
+
+#text{
+    height: 65%;
+    width: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow-y: scroll;
+   text-align: justify;
+   /* border: 1px solid black; */
+   border-radius: 10px;
+}
+
+#botao-curtida{
+    height: 20%;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* ========================================================= */
+
+#user-name {
+    color: orangered;
+    /* width: 20%; */
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+#data-comentario{
+    color: black;
+    width: 20%;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+    font-size: 11pt;
+}
+
+.bnt-like-deslike {
+    height: 85%;
+    width: 40px;
+    /* background-color: rgb(161, 158, 158); */
+    border-radius: 5px;
+    background-size: 70%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}

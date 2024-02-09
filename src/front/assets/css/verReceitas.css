@@ -13,6 +13,10 @@ body {
 
 #contornoCorpo{
   background: #faf6f6;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+align-items: center;
   /* background: rgb(247,139,31);
 
   background: linear-gradient(0deg, rgba(247,139,31,1) 10%, rgba(253,158,45,0.7595413165266106) 100%); */

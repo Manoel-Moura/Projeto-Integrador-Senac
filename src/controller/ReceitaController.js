@@ -170,7 +170,7 @@ class cadastroReceita {
     try {
       const { id } = req.body;
       const { userId } = req.session; // Quem está favoritando
-      console.log("Receita: " + id + "\nUsuario: " + userId);
+      // console.log("Receita: " + id + "\nUsuario: " + userId);
   
       // Verifica se o ID da receita é válido
       if (!id) {
@@ -195,7 +195,7 @@ class cadastroReceita {
   // console.log('Estou aqui e o ID:' +userId)
   if (index === -1 &&  userId != null) { // Se não achar o ID ele adiciona
     receitaUser.favoritas.push(userId);
-        console.log('era para ter adicionado')
+        // console.log('era para ter adicionado')
       } else {
         // Remove o ID do usuário da lista de favoritos
         receitaUser.favoritas.splice(index, 1);
