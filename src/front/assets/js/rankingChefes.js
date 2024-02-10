@@ -55,9 +55,9 @@ class CardRanking {
 
 // Códigos abaixo para fazer o trend topics (kkkk) do ranking de chefes
 class CardTrending {
-  constructor(chef, totalCurtidas, fotoChef, ranking) {
+  constructor(chef, curtidasTrend, fotoChef, ranking) {
     this.chef = chef;
-    this.totalCurtidas = totalCurtidas;
+    this.curtidasTrend = curtidasTrend;
     this.fotoChef = fotoChef;
     this.ranking = ranking;
   }
@@ -83,7 +83,7 @@ class CardTrending {
 
     let lbPosicoesSubiu = document.createElement("label");
     lbPosicoesSubiu.classList.add("lb-posicoes-subiu");
-    lbPosicoesSubiu.textContent = "+ " + this.totalCurtidas + " posições";
+    lbPosicoesSubiu.textContent = "+ " + this.curtidasTrend + " posições";
     card.append(lbPosicoesSubiu);
 
     return card;
@@ -124,13 +124,13 @@ fetch('/rankingChefs')
     });
 
     // Ordenar o array de chefs por curtidas
-    let chefsOrdenados = cardsRanking.sort((a, b) => b.totalCurtidas - a.totalCurtidas);
+    let chefsOrdenados = cardsRanking.sort((a, b) => b.curtidasTrend - a.curtidasTrend);
 
-    // Pra pegar os 5 chefs com mais curtidas
-    let topChefs = chefsOrdenados.slice(0, 5);
+    // Pra pegar os 5 chefs com mais curtidas nas últimas 24 horas
+    let curtidasTrend = chefsOrdenados.slice(0, 5);
 
-    topChefs.forEach((chef, index) => {
-      let cardTrending = new CardTrending(chef.chef, chef.totalCurtidas, chef.fotoChef, index + 1); 
+    curtidasTrend.forEach((chef, index) => {
+      let cardTrending = new CardTrending(chef.chef, chef.curtidasTrend, chef.fotoChef, index + 1); 
       let cardElement = cardTrending.createCardTrending();
       document.getElementById("trending-container").append(cardElement);
     });

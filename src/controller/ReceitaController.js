@@ -1,7 +1,7 @@
-import Receita from "../model/Receita";
+import Receita from '../model/Receita';
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 class cadastroReceita {
   async store(req, res) {
@@ -53,11 +53,11 @@ class cadastroReceita {
     const { id } = req.headers;
 
     if (!id) {
-      return res.json({ error: "ID é requisitos" });
+      return res.json({ error: 'ID é requisitos' });
     }
 
     try {
-      const receitaUser = await Receita.findById(id).populate("user");
+      const receitaUser = await Receita.findById(id).populate('user');
 
       // Criando um objeto para armazenar a sessão
       const idSession = {
@@ -71,7 +71,7 @@ class cadastroReceita {
       return res.json(vetor);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Erro ao buscar receita" });
+      res.status(500).json({ error: 'Erro ao buscar receita' });
     }
   }
 
@@ -79,7 +79,7 @@ class cadastroReceita {
     // PUT
     const { id } = req.headers;
     if (!id) {
-      return res.status(400).json({ error: "ID é requisitos" });
+      return res.status(400).json({ error: 'ID é requisitos' });
     }
     const receita = await Receita.findById(id);
 
@@ -104,7 +104,6 @@ class cadastroReceita {
     receita.ingredientes = ingredientes;
     receita.modoPreparo = modoPreparo;
     receita.linkVideo = linkVideo;
-    
 
     await receita.save();
 
@@ -115,7 +114,7 @@ class cadastroReceita {
     const { id } = req.headers;
 
     if (!id) {
-      return res.json({ error: "ID é requisitos" });
+      return res.json({ error: 'ID é requisitos' });
     }
 
     const receita = await Receita.findById(id);
@@ -123,12 +122,12 @@ class cadastroReceita {
     if (receita.foto) {
       const imagePath = path.resolve(
         __dirname,
-        "..",
-        "front",
-        "assets",
-        "media",
-        "uploads",
-        receita.foto
+        '..',
+        'front',
+        'assets',
+        'media',
+        'uploads',
+        receita.foto,
       );
 
       if (fs.existsSync(imagePath)) {
@@ -137,11 +136,11 @@ class cadastroReceita {
     }
 
     const deleteReceita = await Receita.findByIdAndDelete(id);
-    return res.json({ message: "Receita deletada com sucesso!" });
+    return res.json({ message: 'Receita deletada com sucesso!' });
   }
 
   async createCard(req, res) {
-    let receitas = await Receita.find().populate("user");
+    let receitas = await Receita.find().populate('user');
 
     let cards = [];
 
@@ -155,8 +154,8 @@ class cadastroReceita {
           chef: user.username,
           receita: receita.titulo,
           curtidas: receita.curtidas,
-          fotoChef: "/uploads/" + user.fotoUsuario,
-          fotoReceita: "/uploads/" + receita.foto,
+          fotoChef: '/uploads/' + user.fotoUsuario,
+          fotoReceita: '/uploads/' + receita.foto,
           categorias: receita.categorias,
         };
 
@@ -171,46 +170,47 @@ class cadastroReceita {
       const { id } = req.body;
       const { userId } = req.session; // Quem está favoritando
       // console.log("Receita: " + id + "\nUsuario: " + userId);
-  
+
       // Verifica se o ID da receita é válido
       if (!id) {
-        return res.status(400).json({ error: "ID da receita inválido." });
+        return res.status(400).json({ error: 'ID da receita inválido.' });
       }
-  
+
       // Verifica se o ID do usuário é válido
       if (!userId) {
-        return res.status(400).json({ error: "ID do usuário inválido." });
+        return res.status(400).json({ error: 'ID do usuário inválido.' });
       }
-  
+
       const receitaUser = await Receita.findById(id);
-  
+
       if (!receitaUser) {
-        return res.status(404).json({ message: "Receita não encontrada!" });
+        return res.status(404).json({ message: 'Receita não encontrada!' });
       }
-  
-  
+
       const favoritos = receitaUser.favoritas || [];
-  
+
       let index = favoritos.indexOf(userId); // Busca no array a posição que o id se encontra
-  // console.log('Estou aqui e o ID:' +userId)
-  if (index === -1 &&  userId != null) { // Se não achar o ID ele adiciona
-    receitaUser.favoritas.push(userId);
+      // console.log('Estou aqui e o ID:' +userId)
+      if (index === -1 && userId != null) {
+        // Se não achar o ID ele adiciona
+        receitaUser.favoritas.push(userId);
         // console.log('era para ter adicionado')
       } else {
         // Remove o ID do usuário da lista de favoritos
         receitaUser.favoritas.splice(index, 1);
       }
-  
+
       // console.log(receitaUser);
       await receitaUser.save();
-  
+
       return res.json(receitaUser);
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ error: "Ocorreu um erro ao processar a solicitação." });
+      return res
+        .status(500)
+        .json({ error: 'Ocorreu um erro ao processar a solicitação.' });
     }
   }
-  
 
   async curtidasReceita(req, res) {
     try {
@@ -220,18 +220,16 @@ class cadastroReceita {
 
       const receitaUser = await Receita.findById(id);
 
-     
-
       if (!receitaUser) {
-        return res.status(404).json({ message: "Receita não encontrada!" });
+        return res.status(404).json({ message: 'Receita não encontrada!' });
       }
 
       const curtidas = receitaUser.curtidas;
 
       let buscar = curtidas.indexOf(userId); // Busca no array a posição que o id se encontra
       // receitaUser.curtidas.splice(0, 1);
-      if (buscar === -1 &&  userId != null) {
-        receitaUser.curtidas.push(userId);
+      if (buscar === -1 && userId != null) {
+        receitaUser.curtidas.push(userId.toString());
       } else {
         while (buscar >= 0) {
           receitaUser.curtidas.splice(buscar, 1);
@@ -243,12 +241,13 @@ class cadastroReceita {
 
       return res.json(receitaUser);
     } catch (error) {
-      console.error(error); 
+      console.error(error);
       return res
         .status(500)
-        .json({ error: "Ocorreu um erro ao processar a solicitação." });
+        .json({ error: 'Ocorreu um erro ao processar a solicitação.' });
     }
   }
+
 }
 
 export default new cadastroReceita();

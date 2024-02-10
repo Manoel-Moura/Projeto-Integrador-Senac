@@ -269,11 +269,20 @@ class crudUser {
         const receitas = await Receita.find({ user: user._id });
       
         let totalCurtidas = 0;
+        let curtidasTrend = 0;
+        const umMinuto = Date.now() - 60 * 1000; 
         for (let receita of receitas) {
           totalCurtidas += receita.curtidas.length; 
+
+    
+          for (let curtida of receita.curtidas) {
+            if (curtida.data >= umMinuto) {
+              curtidasTrend++;
+            }
+          }
         }
 
-        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas };
+        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend };
       }));
 
       return res.json(rankingChefs);
@@ -282,6 +291,7 @@ class crudUser {
       return res.status(500).json({ error: 'Erro ao buscar os dados dos usuários' });
     }
   }
+
 
 }
 

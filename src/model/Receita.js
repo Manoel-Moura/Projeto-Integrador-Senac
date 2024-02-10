@@ -38,12 +38,19 @@ const ReceitaShema = new Schema({
     linkVideo: {
         type: String,
     },
-    curtidas:{
-        type:[String],
-    },
+    curtidas: [{
+        usuario: {
+          type: String,
+        },
+        data: {
+          type: Date,
+          default: Date.now,
+        },
+      }],      
     favoritas:{
         type:[String],
-    }
+    },
+    
 });
 
 
