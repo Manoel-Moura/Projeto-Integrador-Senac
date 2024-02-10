@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
       let fotoChef = document.createElement("img");
       fotoChef.setAttribute("id", "fotochefe");
       fotoChef.setAttribute("src", "../assets/media/uploads/" + fotoUser);
-      fotoChef.addEventListener("click",() =>{
+      fotoChef.addEventListener("click", () => {
         const caminhoPagina = `/dashboard?id=${receita[0].user._id}`;;
         window.location.href = caminhoPagina;
-      }); 
+      });
       infoChef.appendChild(fotoChef);
 
       let dadosChef = document.createElement("div");
@@ -100,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
       let nomeChef = document.createElement("div");
       nomeChef.setAttribute("id", "nomeChef");
       nomeChef.innerHTML = receitas[0].autor;
-      nomeChef.addEventListener("click",() =>{
+      nomeChef.addEventListener("click", () => {
         const caminhoPagina = `dashboard?id=${receita[0].user._id}`;;
         window.location.href = caminhoPagina;
-      }); 
+      });
       //===========================================================
 
       // Criando a div para os botões
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Verifica se o usuário já curtiu a receita e define o ícone do botão de acordo
       receitas[0].curtidas.forEach((curtida) => {
-        if (curtida === sessionID) {
+        if (curtida.usuario === sessionID) {
           botaoCurtir.style.background =
             "url('../assets/media/icons/heart-solid.svg')";
           like = true; // Define como verdadeiro se houver correspondência

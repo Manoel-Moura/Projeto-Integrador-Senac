@@ -226,15 +226,12 @@ class cadastroReceita {
 
       const curtidas = receitaUser.curtidas;
 
-      let buscar = curtidas.indexOf(userId); // Busca no array a posição que o id se encontra
+      let buscar = curtidas.findIndex(curtida => curtida.usuario === userId); // Busca no array a posição que o id se encontra
       // receitaUser.curtidas.splice(0, 1);
       if (buscar === -1 && userId != null) {
-        receitaUser.curtidas.push(userId.toString());
-      } else {
-        while (buscar >= 0) {
-          receitaUser.curtidas.splice(buscar, 1);
-          buscar = receitaUser.curtidas.indexOf(userId);
-        }
+        receitaUser.curtidas.push({ usuario: userId.toString(), data: Date.now() });
+      } else if (buscar !== -1) {
+        receitaUser.curtidas.splice(buscar, 1);
       }
       // console.log(receitaUser);
       await receitaUser.save();
