@@ -200,7 +200,7 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 .card-trending {
   position: relative;
   width: 155px;
-  height: 181px;
+  height: 192px;
   border: none;
   border-radius: 5mm;
   margin: 10px;
@@ -299,7 +299,7 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 #btnTop10 {
   width: 106px;
   height: 57px;
-  margin-bottom: 30mm;
+  margin-bottom: 5mm;
   border: none;
   border-radius: 3mm;
   background-color: gold;
@@ -313,7 +313,7 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 #btnTop100 {
   width: 106px;
   height: 57px;
-  margin-bottom: 30mm;
+  margin-bottom: 5mm;
   border: none;
   border-radius: 3mm;
   background-color: #d7d7d7;
@@ -326,7 +326,7 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 
 #btnTop1000 {
   width: 106px;
-  margin-bottom: 30mm;
+  margin-bottom: 5mm;
   height: 57px;
   border: none;
   border-radius: 3mm;

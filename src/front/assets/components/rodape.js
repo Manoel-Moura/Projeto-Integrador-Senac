@@ -271,6 +271,28 @@ class Card {
   }
 }
 
+//Para fazer funcionar a barra de pesquisa da página home.html
+document.getElementById('barra-pesquisa').addEventListener('keyup', function (event) {
+  if (event.key === 'Enter') {
+    let input = document.getElementById('barra-pesquisa');
+    let filter = input.value.toUpperCase();
+    let cards = document.getElementsByClassName('card');
+
+    for (let i = 0; i < cards.length; i++) {
+      let btnReceita = cards[i].getElementsByClassName('btn-receita')[0];
+      let lbChef = cards[i].getElementsByClassName('lb-chef')[0];
+      let txtValueReceita = btnReceita.textContent || btnReceita.innerText;
+      let txtValueChef = lbChef.textContent || lbChef.innerText;
+      if (txtValueReceita.toUpperCase().indexOf(filter) > -1 || txtValueChef.toUpperCase().indexOf(filter) > -1) {
+        cards[i].style.display = "";
+      } else {
+        cards[i].style.display = "none";
+      }
+    }
+  }
+});
+
+
 //Vai ficar de quarentena por enquanto kkkk
 /*
 document.addEventListener("DOMContentLoaded", function () {

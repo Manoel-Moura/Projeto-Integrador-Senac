@@ -282,7 +282,7 @@ class crudUser {
           }
         }
 
-        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend };
+        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend, chefID: user._id  };
       }));
 
       return res.json(rankingChefs);
