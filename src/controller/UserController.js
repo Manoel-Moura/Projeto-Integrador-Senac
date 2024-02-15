@@ -222,7 +222,7 @@ class crudUser {
       port: 587,
       auth: {
       user: 'suporte_senac@apptop.com.br',
-    //    pass: '1Qazxsw@2' for security reasons this is not the real password 
+    //    pass: 'lIzqjY@4JVswQUk' for security reasons this is not the real password 
       }
     });
 
