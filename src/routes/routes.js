@@ -1,5 +1,5 @@
-const {Router} = require('express');
-const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken } = require('./config');
+const { Router } = require('express');
+const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha } = require('./config');
 
 import cadastroReceita from "../controller/ReceitaController"
 import crudUser from "../controller/UserController"
@@ -35,7 +35,7 @@ routes.get('/createCard', cadastroReceita.createCard);
 
 
 //Rotas dos Usuarios
-routes.post('/cadastroUser', crudUser.store);
+routes.post('/cadastroUser', validateCaptcha, crudUser.store);
 routes.get('/cadastroUser', crudUser.show);
 routes.put('/cadastroUserT', upload.single('fotoUsuario'), crudUser.edit);
 routes.delete('/cadastroUser', crudUser.delete);
@@ -43,13 +43,13 @@ routes.get('/user', crudUser.getUserDataBody);
 
 
 //Rota de login: usuario
-routes.post('/login', crudUser.login);
+routes.post('/login', validateCaptcha, crudUser.login);
 routes.get('/check-login', crudUser.checkLogin);
 routes.get('/logout', crudUser.logout);
 
 //Rotas para recuperação de senha
-routes.post('/requestPasswordReset', crudUser.requestPasswordReset);
-routes.post('/resetPassword', crudUser.resetPassword);
+routes.post('/requestPasswordReset', validateCaptcha, crudUser.requestPasswordReset);
+routes.post('/resetPassword', validateCaptcha, crudUser.resetPassword);
 
 //Pegar os dados do usuario, individual
 routes.get('/getUserData', crudUser.getUserData);

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import fs from 'fs'; 
 import path from 'path';
+const bodyParser = require('body-parser'); 
 
 class App {
     constructor() {
@@ -16,11 +17,15 @@ class App {
         this.server.use('/assets', express.static(path.join(__dirname, 'front/assets')));
         this.server.use(express.json());
         this.server.use(session({
-            secret: '2032030230203023023dlsldsmaklepqwkl123=-1231-=23', //Nada seguro isso kkkk
+            secret: '2032030230203023023dlsldsmaklepqwkl123=-1231-=23', 
             resave: false,
             saveUninitialized: true,
-            cookie: { secure: false }
-        }));
+            cookie: { 
+                secure: false,
+                maxAge: 15 * 60 * 1000 
+            }
+        }));        
+        this.server.use(bodyParser.urlencoded({ extended: true }));
         this.server.use(express.urlencoded({ extended: true }));
     };
     routes() {

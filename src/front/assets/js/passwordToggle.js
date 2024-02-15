@@ -211,27 +211,32 @@ document.getElementById('botaoSalvar').addEventListener('click', function (event
   }
 });
 
-
 document.getElementById('recuperar-senha').addEventListener('submit', function (event) {
   event.preventDefault();
 
   const novaSenha = document.getElementById('novaSenha').value;
   const confirmarSenha = document.getElementById('confirmarSenha').value;
+  const token = document.getElementById('cf-turnstile-response').value; 
 
   if (novaSenha !== confirmarSenha) {
     alert('As senhas não correspondem.');
     return;
   }
 
+  if (token === '') {
+    alert('Por favor, complete o captcha antes de enviar.');
+    return;
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get('token');
+  const resetToken = urlParams.get('token');
 
   fetch('/resetPassword', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token, newPassword: novaSenha }),
+    body: JSON.stringify({ token: resetToken, newPassword: novaSenha, 'cf-turnstile-response': token }), 
   })
     .then(response => response.json())
     .then(data => {
@@ -242,3 +247,14 @@ document.getElementById('recuperar-senha').addEventListener('submit', function (
       console.error('Erro:', error);
     });
 });
+
+
+window.javascriptCallback = function () {
+  turnstile.render('.cf-turnstile', {
+    sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
+    callback: function (token) {
+      document.getElementById('cf-turnstile-response').value = token;
+    },
+  });
+};
+

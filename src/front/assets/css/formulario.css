@@ -51,7 +51,7 @@
   }
   
   .label{
-    margin-bottom: 1mm;
+    margin-bottom: 3mm;
   }
 
   /* Imagem do Senac no formulário */
@@ -109,4 +109,10 @@
     background-color: #f9a94a;
   }
   
-  
+  .p1{
+    margin-bottom: 2mm;
+  }
+
+  .cf-turnstile{
+    margin-top:12mm;
+  }

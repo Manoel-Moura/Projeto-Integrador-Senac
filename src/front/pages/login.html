@@ -7,6 +7,8 @@
     <title>Culinaria Senac</title> <!-- Login -->
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+
 </head>
 
 <body>
@@ -42,6 +44,9 @@
                             class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
                             onclick="mostrarSenhaLogin('password','eye-open')" />
                     </div>
+                    
+                    <input type="hidden" id="cf-turnstile-response" name="cf-turnstile-response">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA" data-callback="javascriptCallback"></div>
                     <input id="bt-login" type="submit" value="Entrar">
 
                     <div id="tex2">

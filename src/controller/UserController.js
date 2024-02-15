@@ -216,18 +216,18 @@ class crudUser {
       return res.status(400).json({ error: 'Token expirado' });
     }
 
-    //Ethereal para testes
+    // Configurações do servidor de e-mail
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
+      host: 'h58.servidorhh.com',
       port: 587,
       auth: {
-        user: 'rahsaan.kunze@ethereal.email',
-        pass: 'kvN7pZgxcfk9XbFdEm'
+      user: 'suporte_senac@apptop.com.br',
+    //    pass: '1Qazxsw@2' for security reasons this is not the real password 
       }
     });
 
     const mailOptions = {
-      from: 'contasenacintegrador@gmail.com',
+      from: 'suporte_senac@apptop.com.br',
       to: email,
       subject: 'Link de redefinição de senha',
       text: `Você solicitou a redefinição de senha. Por favor, clique no seguinte link para redefinir sua senha: \n\n http://localhost:3333/recuperarSenha?token=${token}`

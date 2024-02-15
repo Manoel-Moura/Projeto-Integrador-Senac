@@ -48,7 +48,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 100mm;
-  height: 130mm;
+  height: 145mm;
   background-color: #ffffff;
   border-radius: 5mm;
   -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
@@ -161,4 +161,8 @@ h1 {
 
 #bt-login:hover {
   transform: scale(1.1);
+}
+
+.cf-turnstile{
+  margin-top:5mm;
 }

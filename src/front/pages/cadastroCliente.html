@@ -7,6 +7,7 @@
     <title>Cadastro Cliente</title>
     <link rel="stylesheet" href="../assets/css/cadastroCliente.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
 </head>
 
 <body>
@@ -55,6 +56,8 @@
                 <input id="data" type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
                     max="2030-12-31" required>
 
+                    <input type="hidden" id="cf-turnstile-response" name="cf-turnstile-response">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA" data-callback="javascriptCallback"></div>
 
                 <button id="bt-cadastro"> Cadraste-se</button>
 

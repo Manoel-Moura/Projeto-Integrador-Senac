@@ -1,18 +1,25 @@
-document.getElementById('bt-login').addEventListener('click', function(event) {
+document.getElementById('bt-login').addEventListener('click', function (event) {
     event.preventDefault();
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    var token = document.getElementById('cf-turnstile-response').value; 
 
-    if (username === '' || password === '') {
+    if (username === '' || password === '') { 
         alert('Por favor, preencha todos os campos antes de entrar.');
         return;
     }
 
-    var url = '/login'; 
+    if (token === '') { 
+        alert('Por favor, não se esqueça de completar o campo do captcha.');
+        return;
+    }
+
+    var url = '/login';
     var data = {
         username: username,
-        password: password
+        password: password,
+        'cf-turnstile-response': token 
     };
 
     fetch(url, {
@@ -22,21 +29,30 @@ document.getElementById('bt-login').addEventListener('click', function(event) {
         },
         body: JSON.stringify(data),
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.error) {
-            alert('Erro ao fazer login: ' + data.error);
-        } else {
-            window.location.href = '/home'; 
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao enviar requisição:', error);
-        alert('Ocorreu um erro ao tentar fazer login. Usuário ou senha incorretos.');
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                alert('Erro ao fazer login: ' + data.error);
+            } else {
+                window.location.href = '/home';
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao enviar requisição:', error);
+            alert('Ocorreu um erro ao tentar fazer login. Usuário ou senha incorretos.');
+        });
 });
+
+window.javascriptCallback = function () {
+    turnstile.render('.cf-turnstile', {
+        sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
+        callback: function (token) {
+            document.getElementById('cf-turnstile-response').value = token;
+        },
+    });
+};

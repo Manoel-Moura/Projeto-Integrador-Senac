@@ -43,16 +43,16 @@ function verificarCPF(cpf) {
     var soma = 0
     var resto
     for (var i = 1; i <= 9; i++)
-        soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i)
+        soma = soma + parseInt(cpf.substring(i - 1, i)) * (11 - i)
     resto = (soma * 10) % 11
-    if ((resto == 10) || (resto == 11))  resto = 0
-    if (resto != parseInt(cpf.substring(9, 10)) ) return false
+    if ((resto == 10) || (resto == 11)) resto = 0
+    if (resto != parseInt(cpf.substring(9, 10))) return false
     soma = 0
     for (var i = 1; i <= 10; i++)
-        soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i)
+        soma = soma + parseInt(cpf.substring(i - 1, i)) * (12 - i)
     resto = (soma * 10) % 11
-    if ((resto == 10) || (resto == 11))  resto = 0
-    if (resto != parseInt(cpf.substring(10, 11) ) ) return false
+    if ((resto == 10) || (resto == 11)) resto = 0
+    if (resto != parseInt(cpf.substring(10, 11))) return false
     return true
 }
 
@@ -83,8 +83,8 @@ function validarFormulario() {
 
 // Função para enviar os dados do formulário para o servidor usando fetch
 function enviarDadosFormulario() {
-    var url = '/cadastroUser';
     var formulario = document.getElementById('cardCadastro');
+    var token = document.getElementById('cf-turnstile-response').value; 
 
     var data = {
         username: formulario.elements.username.value,
@@ -92,33 +92,43 @@ function enviarDadosFormulario() {
         senhaCadastro: formulario.elements.senhaCadastro.value,
         confirmarSenhaCadastro: formulario.elements.confirmarSenhaCadastro.value,
         cpf: formulario.elements.cpf.value,
-        data: formulario.elements.data.value
+        data: formulario.elements.data.value,
+        'cf-turnstile-response': token 
     };
 
-    fetch(url, {
+    fetch('/cadastroUser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data),
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor');
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert('Conta cadastrada com sucesso!');
-        window.location.href = '/login'; 
-    })
-    .catch(error => {
-        console.error('Erro ao enviar requisição:', error);
-        alert('Ocorreu um erro ao tentar criar a conta');
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('Conta cadastrada com sucesso!');
+            window.location.href = '/login';
+        })
+        .catch(error => {
+            console.error('Erro ao enviar requisição:', error);
+            alert('Ocorreu um erro ao tentar criar a conta');
+        });
 }
 
 document.getElementById('cardCadastro').addEventListener('submit', function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
     validarFormulario();
 });
+
+window.javascriptCallback = function () {
+    turnstile.render('.cf-turnstile', {
+        sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
+        callback: function (token) {
+            document.getElementById('cf-turnstile-response').value = token;
+        },
+    });
+};
