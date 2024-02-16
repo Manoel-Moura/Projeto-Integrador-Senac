@@ -245,6 +245,55 @@ class cadastroReceita {
     }
   }
 
+  // async receitasUser(req, res) {
+  //   try {
+  //     const { id } = req.headers;
+  
+  //     if (!id) {
+  //       return res.status(400).json({ error: 'ID é um requisito' });
+  //     }
+  
+  //     // Buscando todas as receitas do usuário com o ID fornecido
+  //     const receitasUsuario = await Receita.find({ user: id });
+  
+  //     // Verificando se o usuário possui receitas
+  //     if (!receitasUsuario || receitasUsuario.length === 0) {
+  //       return res.status(404).json({ message: 'Nenhuma receita encontrada para este usuário' });
+  //     }
+
+
+  //   let cards = [];
+
+  //   for (let receita of receitasUsuario) {
+  //     let user = receita.user;
+
+  //     if (user) {
+  //       let card = {
+  //         chefID: user._id,
+  //         id: receita._id,
+  //         chef: user.username,
+  //         receita: receita.titulo,
+  //         curtidas: receita.curtidas,
+  //         fotoChef: '/uploads/' + user.fotoUsuario,
+  //         fotoReceita: '/uploads/' + receita.foto,
+  //         categorias: receita.categorias,
+  //       };
+
+  //       cards.push(card);
+  //     }
+  //   }
+  //   return res.json(cards);
+
+
+  
+  //     //return res.json(receitasUsuario);
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).json({ error: 'Erro ao buscar receitas do usuário' });
+  //   }
+  // }
+  
+
 }
 
 export default new cadastroReceita();

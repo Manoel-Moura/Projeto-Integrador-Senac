@@ -260,13 +260,6 @@ class Card {
     console.log(this.curtidas);
     card.append(lbAvaliacao);
 
-    // card.addEventListener('click', (event) => {
-    //   const caminhoPagina = '../pages/verReceitas.html'
-    //     // const idReceita = event.currentTarget.dataset.id; // Alterei para event.currentTarget.dataset.id para acessar o id armazenado no atributo de dados do elemento clicado
-    //     // window.location.href = `${caminhoPagina}?id=${idReceita}`; // Utilizei window.location.href para redirecionar para a URL desejada
-    //     window.location.href = caminhoPagina;
-    //   });
-
     return card;
   }
 }
@@ -342,3 +335,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 */
 //============================================================================================
+
+
