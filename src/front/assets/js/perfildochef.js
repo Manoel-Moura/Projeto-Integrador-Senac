@@ -74,3 +74,46 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error("Erro:", error));
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const queryString = window.location.search;
+  const chefId = queryString.slice(4);
+
+  fetch("/createCard")
+    .then((response) => response.json())
+    .then((cards) => {
+      displayLikedRecipes(cards, chefId);
+    })
+    .catch((error) => console.error("Erro:", error));
+});
+
+function displayLikedRecipes(cards, chefId) {
+  const receitaDestaque = document.getElementById("receitaDestaque");
+  let hasLikedRecipes = false;
+
+  cards.forEach((cardReceita) => {
+    // Verifica se o chef atual curtiu essa receita
+    const curtidas = cardReceita.curtidas.map(like => typeof like === 'string' ? like : (like.usuario ? like.usuario : ''));
+    if (curtidas.includes(chefId)) {
+      const newCard = new Card(
+        cardReceita.chef,
+        cardReceita.receita,
+        cardReceita.curtidas,
+        cardReceita.fotoChef,
+        cardReceita.fotoReceita,
+        cardReceita.id,
+        cardReceita.categorias,
+        cardReceita.chefID
+      );
+
+      const card = newCard.createCard();
+      receitaDestaque.appendChild(card);
+      hasLikedRecipes = true;
+    }
+  });
+
+  // Oculta a div receitaDestaque se não houver receitas curtidas
+  if (!hasLikedRecipes) {
+    const receitaDestaque = document.getElementById("cont");
+    receitaDestaque.style.display = "none";
+  }
+}
