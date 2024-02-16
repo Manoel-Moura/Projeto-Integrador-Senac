@@ -218,6 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
         imprimirReceita();
       });
 
+         // Botão de editar
+         let botaoEditar = document.createElement("button");
+         botaoEditar.setAttribute("id", "editar");
+         // Adiciona um evento de clique ao botão
+         botaoEditar.addEventListener("click", function () {
+           alert('editar Receita')
+         });
+
+
+
       // Função para imprimir a receita
       function imprimirReceita() {
         // let receitaParaImprimir = document.getElementById("corpo").innerHTML;
@@ -236,6 +246,16 @@ document.addEventListener("DOMContentLoaded", function () {
       divBotoes.appendChild(botaoCurtir);
       divBotoes.appendChild(botaoFavorito);
       divBotoes.appendChild(botaoImprimir);
+      divBotoes.appendChild(botaoEditar);
+
+      // Verifica se o usuário é o chef que criou a receita
+      if (sessionID != receita[0].user._id) {
+       // Se sim, adiciona o botão de editar
+       botaoEditar.style.display = "none";
+      }
+
+      //console.log(`Usuario Logado: ${sessionID}\nChef: ${receita[0].user._id}`)
+
       //=============================================================================
 
       let contatoChef = document.createElement("div");

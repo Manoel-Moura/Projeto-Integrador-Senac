@@ -249,6 +249,19 @@ align-items: center;
 
 }
 
+#editar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border:  none;
+  background: url(../media/icons/pen.svg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  display: flex;
+}
+
 
 #div-dados-chef{
   display: flex;
@@ -340,4 +353,10 @@ border-radius: 10px;
   border-radius: 50%; /* Circular images for visual appeal */
   margin: 10px;
   /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); Subtle shadow for images */
+}
+
+.botoes-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
