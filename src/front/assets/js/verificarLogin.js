@@ -1,11 +1,19 @@
 document.getElementById('bt-login').addEventListener('click', function (event) {
     event.preventDefault();
 
-    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var token = document.getElementById('cf-turnstile-response').value; 
 
-    if (username === '' || password === '') { 
+    var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, insira um email válido.');
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        return;
+    }
+
+    if (email === '' || password === '') { 
         alert('Por favor, preencha todos os campos antes de entrar.');
         return;
     }
@@ -17,7 +25,7 @@ document.getElementById('bt-login').addEventListener('click', function (event) {
 
     var url = '/login';
     var data = {
-        username: username,
+        email: email,
         password: password,
         'cf-turnstile-response': token 
     };
@@ -44,7 +52,7 @@ document.getElementById('bt-login').addEventListener('click', function (event) {
         })
         .catch(error => {
             console.error('Erro ao enviar requisição:', error);
-            alert('Ocorreu um erro ao tentar fazer login. Usuário ou senha incorretos.');
+            alert('Ocorreu um erro ao tentar fazer login. Email ou senha incorretos.');
         });
 });
 
