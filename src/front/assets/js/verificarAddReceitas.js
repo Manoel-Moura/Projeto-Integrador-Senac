@@ -100,6 +100,10 @@ document.querySelectorAll('.modo_preparo input').forEach(function (input) {
   });
 });
 
+function isValidYouTubeURL(url) {
+  var pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+  return pattern.test(url);
+}
 
 function validarFormulario() {
   var campos = {
@@ -107,7 +111,6 @@ function validarFormulario() {
     "descricao": "Descrição",
     "porcoes": "Porções",
     "preparacao": "Preparação",
-    "cozimento": "Cozimento"
   };
 
   for (var id in campos) {
@@ -136,9 +139,29 @@ function validarFormulario() {
     return false;
   }
 
+  var ingredientes = document.querySelectorAll('.ingredientesInput');
+  ingredientes.forEach(function(input) {
+    if (!input.value) {
+      input.parentNode.remove();
+    }
+  });
+
+  var etapas = document.querySelectorAll('.modo_preparosInput');
+  etapas.forEach(function(input) {
+    if (!input.value) {
+      input.parentNode.remove();
+    }
+  });
+
   var imagem = document.querySelector('.media-upload-area img:not(.media-icon img)');
-  if (!imagem) {
+  if (imagem && !imagem.src) {
     alert('Por favor, carregue uma imagem antes de enviar.');
+    return false;
+  }
+
+  var linkVideo = document.getElementById('linkVideo');
+  if (linkVideo.value && !isValidYouTubeURL(linkVideo.value)) {
+    alert('Por favor, insira uma URL de vídeo do YouTube válida ou deixe o campo em branco.');
     return false;
   }
 
@@ -161,36 +184,46 @@ function salvarReceita(event) {
 
     var foto = arquivoImagem;
 
-    if (foto) {
-      var receitaData = new FormData(formulario);
-
-      receitaData.set('foto', foto);
-
-      fetch('/cadastroReceita', {
-        method: 'POST',
-        body: receitaData
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Erro na requisição');
-          }
-          return response.json();
-        })
-        .then(data => {
-          alert('Receita salva com sucesso!');
-          window.location.href = '/dashboard';
-        })
-        .catch(error => {
-          alert('Falha ao salvar a receita.');
-          console.error('Erro:', error);
-        });
-    } else {
-      console.error('Nenhuma imagem selecionada');
+    if (!foto) {
+      alert('Por favor, carregue uma imagem antes de enviar.');
+      return;
     }
+
+    var linkVideo = document.getElementById('linkVideo');
+    if (linkVideo.value && !isValidYouTubeURL(linkVideo.value)) {
+      alert('Por favor, insira uma URL de vídeo do YouTube válida ou deixe o campo em branco.');
+      return;
+    }
+
+    var receitaData = new FormData(formulario);
+
+    receitaData.set('foto', foto);
+
+    fetch('/cadastroReceita', {
+      method: 'POST',
+      body: receitaData
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert('Receita salva com sucesso!');
+        window.location.href = '/home';
+      })
+      .catch(error => {
+        alert('Falha ao salvar a receita.');
+        console.error('Erro:', error);
+      });
   }
 }
 
-document.getElementById('salvar').addEventListener('click', function (e) {
-  e.preventDefault();
-  salvarReceita();
-});
+
+if (document.querySelector('.titulo_adicionar_receita')) {
+  document.getElementById('salvar').addEventListener('click', function (e) {
+    e.preventDefault();
+    salvarReceita();
+  });
+}

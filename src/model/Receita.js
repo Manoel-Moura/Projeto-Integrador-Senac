@@ -18,10 +18,7 @@ const ReceitaShema = new Schema({
         type: Number,
     },
     preparacao: {
-        type: String,
-    },
-    cozimento: {
-        type: String,
+        type: Number,
     },
     categorias: {
         type: [String],

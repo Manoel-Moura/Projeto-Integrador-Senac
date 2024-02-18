@@ -17,8 +17,8 @@ function criarFormulario(titulo) {
   };
 
   // Define os campos do formulário
-  var campos = ["titulo", "descricao", "porcoes", "preparacao", "cozimento"];
-  var labels = ["Título:", "Descrição:", "Número de Porções:", "Tempo de Preparação:", "Tempo de Cozimento:"];
+  var campos = ["titulo", "descricao", "porcoes", "preparacao"];
+  var labels = ["Título:", "Descrição:", "Número de Porções:", "Tempo de Preparação:"];
 
   for (var i = 0; i < campos.length; i++) {
     var div = document.createElement("div");
@@ -31,7 +31,7 @@ function criarFormulario(titulo) {
     var input;
     if (campos[i] === "descricao") {
       input = document.createElement("textarea");
-    } else if (campos[i] === "porcoes") {
+    } else if (campos[i] === "porcoes" || campos[i] === "preparacao") {
       input = document.createElement("input");
       input.type = "number";
     } else {
@@ -42,7 +42,7 @@ function criarFormulario(titulo) {
     input.id = campos[i];
     input.name = campos[i];
 
-    if (campos[i] === "preparacao" || campos[i] === "cozimento") {
+    if (campos[i] === "preparacao") {
       input.placeholder = "Especifique em minutos";
     }
 
@@ -67,8 +67,8 @@ function novaCategoria(nomeCategoria) {
   item.className = "item";
   input.type = "checkbox";
   input.id = nomeCategoria.toLowerCase().replace(/ /g, "");
-  input.name = "categorias[]"; 
-  input.value = nomeCategoria; 
+  input.name = "categorias[]";
+  input.value = nomeCategoria;
   label.htmlFor = input.id;
   p.textContent = nomeCategoria;
 
@@ -155,6 +155,14 @@ function carregarImagem(inputId, imageId) {
 
   if (input.files && input.files[0]) {
     if (!checarTamanhoArquivo(input.files[0])) {
+      return;
+    }
+
+    var file = input.files[0];
+    var fileType = file["type"];
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/bmp", "image/webp", "image/svg+xml", "image/x-icon"];
+    if (!validImageTypes.includes(fileType)) {
+      alert('Por favor, carregue um arquivo de imagem.');
       return;
     }
 
@@ -248,25 +256,36 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function isValidYouTubeURL(url) {
+  var pattern = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/;
+  return pattern.test(url);
+}
+
 //Mensagem de erro caso o campo de url esteja vazio.
 document.addEventListener('DOMContentLoaded', function () {
   var loadButton = document.getElementById('botaoCarregarVideo');
   var videoContainer = document.getElementById('videoContainer');
   var input = document.getElementById('linkVideo');
+  var cancelButton = document.getElementById('botaoCancelarVideo');
 
   videoContainer.style.display = 'none';
 
   loadButton.addEventListener('click', function () {
-    // Verifica se o campo de URL está vazio
-    if (!input.value) {
-      alert('Por favor, insira uma URL de vídeo antes de tentar carregar.');
+    // Verifica se o campo de URL está vazio ou se a URL é inválida
+    if (!input.value || !isValidYouTubeURL(input.value)) {
+      alert('Por favor, insira uma URL de vídeo válida antes de tentar carregar.');
       return;
     }
     event.preventDefault();
+    carregarVideo(); 
     videoContainer.style.display = 'block';
   });
-});
 
+  cancelButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    cancelarVideo();
+  });
+});
 
 // Função para carregar o vídeo
 function carregarVideo() {
@@ -300,7 +319,12 @@ function carregarVideo() {
 
 //Por enquanto apenas aceitando vídeos do youtube, mas tarde vejo se adiciono outras plataformas
 function getYouTubeID(url) {
-  var video_id = url.split('v=')[1];
+  var video_id;
+  if (url.includes('youtu.be')) {
+    video_id = url.split('youtu.be/')[1];
+  } else {
+    video_id = url.split('v=')[1];
+  }
   var ampersandPosition = video_id.indexOf('&');
   if (ampersandPosition != -1) {
     video_id = video_id.substring(0, ampersandPosition);

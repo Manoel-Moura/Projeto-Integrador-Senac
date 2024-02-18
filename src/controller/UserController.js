@@ -54,7 +54,7 @@ class crudUser {
         senhaCadastro: senhaCadastroCriptografada,
         cpf,
         data,
-        fotoUsuario,
+        fotoUsuario: 'user.png',
         celular,
         telefone,
         genero
@@ -70,30 +70,30 @@ class crudUser {
 
   async edit(req, res) {
     const { userId } = req.session;
-  
+
     const user = await User.findById(userId);
-  
+
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-  
+
     const usernameExists = await User.findOne({ username: req.body.username });
     if (usernameExists && String(usernameExists._id) !== String(userId)) {
       return res.status(409).send('Um usuário com este nome de usuário já existe');
     }
-  
+
     user.username = req.body.username;
     user.data = req.body.data;
     user.fotoUsuario = req.file ? req.file.filename : user.fotoUsuario;
     user.celular = req.body.celular;
     user.telefone = req.body.telefone;
     user.genero = req.body.genero;
-  
+
     await user.save();
-  
+
     return res.json(user);
   }
-  
+
 
 
   async show(req, res) { // GET
@@ -105,25 +105,25 @@ class crudUser {
 
   async delete(req, res) {
     const { id } = req.headers;
-
+  
     if (!id) {
       return res.json({ error: 'ID é requisitos' });
     }
-
+  
     const user = await User.findById(id);
-
-    if (user.fotoUsuario) {
+  
+    if (user.fotoUsuario && user.fotoUsuario !== 'user.png') {
       const imagePath = path.resolve(__dirname, '..', 'front', 'assets', 'media', 'uploads', user.fotoUsuario);
-
+  
       if (fs.existsSync(imagePath)) {
         fs.unlinkSync(imagePath);
       }
     }
-
+  
     const deletedUser = await User.findByIdAndDelete(id);
     return res.json({ message: 'Usuario deletado com sucesso!' });
   }
-
+  
 
   async login(req, res) {
     const { email, password } = req.body;
@@ -221,8 +221,8 @@ class crudUser {
       host: 'h58.servidorhh.com',
       port: 587,
       auth: {
-      user: 'suporte_senac@apptop.com.br',
-    //    pass: 'lIzqjY@4JVswQUk' for security reasons this is not the real password 
+        user: 'suporte_senac@apptop.com.br',
+        //    pass: 'lIzqjY@4JVswQUk' for security reasons this is not the real password 
       }
     });
 
@@ -267,24 +267,23 @@ class crudUser {
       const users = await User.find();
       const rankingChefs = await Promise.all(users.map(async (user) => {
         const receitas = await Receita.find({ user: user._id });
-      
+  
         let totalCurtidas = 0;
         let curtidasTrend = 0;
-        const umMinuto = Date.now() - 60 * 1000; 
+        const seteDias = Date.now() - 7 * 24 * 60 * 60 * 1000; 
         for (let receita of receitas) {
-          totalCurtidas += receita.curtidas.length; 
-
-    
+          totalCurtidas += receita.curtidas.length;
+  
           for (let curtida of receita.curtidas) {
-            if (curtida.data >= umMinuto) {
+            if (curtida.data >= seteDias) {
               curtidasTrend++;
             }
           }
         }
-
-        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend, chefID: user._id  };
+  
+        return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend, chefID: user._id };
       }));
-
+  
       return res.json(rankingChefs);
     } catch (error) {
       console.error(error);

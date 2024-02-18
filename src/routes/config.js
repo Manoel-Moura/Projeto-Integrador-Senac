@@ -1,6 +1,8 @@
 import path from 'path'
 const axios = require('axios');
 const qs = require('querystring');
+import Receita from '../model/Receita';
+
 
 function requireLogin(req, res, next) {
   if (req.session && req.session.userId) {
@@ -79,5 +81,23 @@ async function validateCaptcha(request, response, next) {
   }
 }
 
+async function verifyRecipeOwner(req, res, next) {
+  let { userId } = req.session;
+  const id = req.query.id; 
 
-module.exports = { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha };
+  try {
+    const receita = await Receita.findOne({ _id: id, user: userId });
+
+    if (!receita) {
+      return res.redirect('/home');
+    }
+
+    next();
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send('Ocorreu um erro ao verificar a propriedade da receita');
+  }
+}
+
+
+module.exports = { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner };

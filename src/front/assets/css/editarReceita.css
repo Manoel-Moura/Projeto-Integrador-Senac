@@ -36,6 +36,13 @@ body {
 .titulo_editar_receita {
   color: #01468a;
   margin-bottom: 1em;
+  margin-left: 130mm
+}
+
+/* Título do formulário */
+.titulo_adicionar_receita {
+  color: #01468a;
+  margin-bottom: 1em;
 }
 
 /* Relacionado a forma de organização do fundo do formulário */
@@ -489,5 +496,56 @@ body {
   #cancelar {
     width: 100%;
     margin-right: 0;
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.titulo_container, .botao_container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.botao_deletar {
+  margin-left: 101mm;
+}
+
+
+#deleteButton {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../media/images/Lixeira_Fechada.png");
+  background-size: cover;
+  background-size: 46px;
+  background-repeat: no-repeat; 
+  background-position: center; 
+  border-radius: 3mm;
+  background-color: white;
+  border: 1px solid #ff0000c2;
+  color:  red;
+  width: 178px;
+  /* max-width: 101px; */
+  height: 67px;
+}
+
+#deleteButton:hover {
+  background-image: url("../media/images/Lixeira_Aberta.png");
+  background-position: center; 
+}
+
+@media (max-width: 600px) {
+  .titulo_editar_receita {
+    margin-left: 10%; 
+  }
+
+  .botao_deletar {
+    margin-left: 10%; 
   }
 }

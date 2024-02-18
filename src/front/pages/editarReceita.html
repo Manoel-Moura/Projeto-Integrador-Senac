@@ -20,8 +20,13 @@
     <!--Componentes referente a página de adicionar receitas e editar receitas-->
     <section class="row">
 
-      <!--Titulo do formulário inicial-->
-      <h1 class="titulo_editar_receita">Editar Receita</h1>
+      <div class="box">
+        <div class="titulo_container">
+          <!--Titulo do formulário inicial-->
+          <h1 class="titulo_editar_receita">Editar Receita</h1>
+        </div>
+        <button class="botao_deletar" id="deleteButton"></button>
+      </div>
 
       <form id="formulario_add_receita">
         <!--Formulário inicial onde se pede os dados básicos da receita-->
@@ -45,7 +50,8 @@
           </div>
           <div class="ingredientes">
             <div id="unir_iconI">
-              <input class="ingredientesInput" type="text" name="ingredientes[]" placeholder="1. Introduzir o ingrediente">
+              <input class="ingredientesInput" type="text" name="ingredientes[]"
+                placeholder="1. Introduzir o ingrediente">
               <button id="adicionar_ingrediente">+</button>
             </div>
           </div>
@@ -116,10 +122,11 @@
         <!--Botões de Salvar e Cancelar-->
         <div class="botoes_salvar_cancelar">
           <button class="botao" type="submit" id="salvar">Salvar</button>
-          <button class="botao" type="button" id="cancelar" onclick="location.href='/dashboard'">Cancelar</button>
-
-    </section>
-    </form>
+          <button class="botao" type="button" id="cancelar" onclick="location.href='/home'">Cancelar</button>
+        </div>
+  </div>
+  </section>
+  </form>
   </div>
   </div>
 
@@ -127,6 +134,7 @@
   <!--Rodapé-->
   <footer id="bottom-bar"></footer>
 
+  <script src="../assets/js/verificarEditReceitas.js"></script>
   <script src="../assets/js/verificarAddReceitas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
   <script src="../assets/js/recipeMedia.js"></script>

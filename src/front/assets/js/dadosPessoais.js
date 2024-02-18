@@ -74,12 +74,43 @@ document.getElementById('botao_enviarSenha').addEventListener('click', function(
 });
 
 
+function formatarTelefone(numero) {
+  var numeroFormatado = numero.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+  return numeroFormatado;
+}
+
+function validarTelefone(numero) {
+  var regex = /^\(\d{2}\) \d{4}-\d{4}$/;
+  return regex.test(numero);
+}
+
+function formatarEmTempoReal() {
+  var telefone = this.value;
+  var telefoneFormatado = formatarTelefone(telefone);
+  this.value = telefoneFormatado;
+}
+
+var campoCelular = document.querySelector('input[name="celular"]');
+var campoTelefone = document.querySelector('input[name="telefone"]');
+campoCelular.addEventListener('keyup', formatarEmTempoReal);
+campoTelefone.addEventListener('keyup', formatarEmTempoReal);
+
+
 
 function salvarDadosPessoais(event) {
   event.preventDefault();
 
   var formulario = document.getElementById('dados_pessoais');
   var formData = new FormData(formulario);
+
+  var telefone = formData.get('celular');
+  var telefoneFormatado = formatarTelefone(telefone);
+  if (!validarTelefone(telefoneFormatado)) {
+    alert("Número de telefone inválido.");
+    return;
+  }
+
+  formData.set('celular', telefoneFormatado);
 
   formData.delete('cpf');
 

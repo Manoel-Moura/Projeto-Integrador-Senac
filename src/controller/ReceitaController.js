@@ -17,7 +17,6 @@ class cadastroReceita {
       descricao,
       porcoes,
       preparacao,
-      cozimento,
       categorias,
       ingredientes,
       modoPreparo,
@@ -31,7 +30,6 @@ class cadastroReceita {
       descricao,
       porcoes,
       preparacao,
-      cozimento,
       categorias,
       ingredientes,
       modoPreparo,
@@ -44,9 +42,9 @@ class cadastroReceita {
   }
 
   async show(req, res) {
-    // GET all recipes
-    let receitas = await Receita.find();
-    return res.json(receitas);
+    const { id } = req.params;
+    let receita = await Receita.findById(id);
+    return res.json(receita);
   }
 
   async showReceita(req, res) {
@@ -77,33 +75,42 @@ class cadastroReceita {
 
   async update(req, res) {
     // PUT
-    const { id } = req.headers;
+    let { userId } = req.session;
+    const { id } = req.params;
+
     if (!id) {
       return res.status(400).json({ error: 'ID é requisitos' });
     }
-    const receita = await Receita.findById(id);
 
     const {
       titulo,
       descricao,
       porcoes,
       preparacao,
-      cozimento,
       categorias,
       ingredientes,
       modoPreparo,
       linkVideo,
     } = req.body;
 
+    const receita = await Receita.findOne({ _id: id, user: userId });
+
+    if (!receita) {
+      return res.status(403).json({ error: 'Você não tem permissão para editar esta receita' });
+    }
+
     receita.titulo = titulo;
     receita.descricao = descricao;
     receita.porcoes = porcoes;
     receita.preparacao = preparacao;
-    receita.cozimento = cozimento;
     receita.categorias = categorias;
     receita.ingredientes = ingredientes;
     receita.modoPreparo = modoPreparo;
     receita.linkVideo = linkVideo;
+
+    if (req.file) {
+      receita.foto = req.file.filename;
+    }
 
     await receita.save();
 
@@ -111,14 +118,14 @@ class cadastroReceita {
   }
 
   async delete(req, res) {
-    const { id } = req.headers;
-
+    const { id } = req.body;
+  
     if (!id) {
       return res.json({ error: 'ID é requisitos' });
     }
-
+  
     const receita = await Receita.findById(id);
-
+  
     if (receita.foto) {
       const imagePath = path.resolve(
         __dirname,
@@ -129,16 +136,16 @@ class cadastroReceita {
         'uploads',
         receita.foto,
       );
-
+  
       if (fs.existsSync(imagePath)) {
         fs.unlinkSync(imagePath);
       }
     }
-
+  
     const deleteReceita = await Receita.findByIdAndDelete(id);
     return res.json({ message: 'Receita deletada com sucesso!' });
   }
-
+  
   async createCard(req, res) {
     let receitas = await Receita.find().populate('user');
 
@@ -248,14 +255,14 @@ class cadastroReceita {
   // async receitasUser(req, res) {
   //   try {
   //     const { id } = req.headers;
-  
+
   //     if (!id) {
   //       return res.status(400).json({ error: 'ID é um requisito' });
   //     }
-  
+
   //     // Buscando todas as receitas do usuário com o ID fornecido
   //     const receitasUsuario = await Receita.find({ user: id });
-  
+
   //     // Verificando se o usuário possui receitas
   //     if (!receitasUsuario || receitasUsuario.length === 0) {
   //       return res.status(404).json({ message: 'Nenhuma receita encontrada para este usuário' });
@@ -285,14 +292,14 @@ class cadastroReceita {
   //   return res.json(cards);
 
 
-  
+
   //     //return res.json(receitasUsuario);
   //   } catch (error) {
   //     console.error(error);
   //     res.status(500).json({ error: 'Erro ao buscar receitas do usuário' });
   //   }
   // }
-  
+
 
 }
 

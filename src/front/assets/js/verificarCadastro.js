@@ -20,6 +20,19 @@ function verificarConfirmacao(confirmacaoSenha) {
     return senha === confirmacaoSenha;
 }
 
+document.getElementById('cpf').addEventListener('input', function (event) {
+    formatarCPF(event.target);
+  });
+
+  function formatarCPF(input) {
+    var cpf = input.value;
+    cpf = cpf.replace(/\D/g, ''); 
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+    input.value = cpf;
+  }
+  
 // Verificar se o CPF é válido
 function verificarCPF(cpf) {
     if (typeof cpf !== 'string') return false
@@ -57,16 +70,28 @@ function verificarCPF(cpf) {
 }
 
 
-// Verificar se a data é válida
 function verificarData(data) {
     var re = /^\d{4}-\d{2}-\d{2}$/;
-    return re.test(data) && !isNaN(Date.parse(data));
+    if (!re.test(data) || isNaN(Date.parse(data))) {
+        return false;
+    }
+
+    var dataNascimento = new Date(data);
+    var dataAtual = new Date();
+    var idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
+    var m = dataAtual.getMonth() - dataNascimento.getMonth();
+
+    if (m < 0 || (m === 0 && dataAtual.getDate() < dataNascimento.getDate())) {
+        idade--;
+    }
+
+    return idade >= 13; 
 }
 
 // Função para validar o formulário
 function validarFormulario() {
     var campos = ['username', 'email', 'senhaCadastro', 'confirmarSenhaCadastro', 'cpf', 'data'];
-    var mensagens = ['Por favor, preencha todos os campos obrigatórios.', 'Por favor, insira um email válido.', 'A senha deve ter pelo menos 8 caracteres.', 'As senhas não coincidem.', 'Por favor, insira um CPF válido.', 'Por favor, insira uma data válida.'];
+    var mensagens = ['Por favor, preencha todos os campos obrigatórios.', 'Por favor, insira um email válido.', 'A senha deve ter pelo menos 8 caracteres.', 'As senhas não coincidem.', 'Por favor, insira um CPF válido.', 'Por favor, insira uma data válida. Apenas maiores de 13 anos podem se cadastrar! '];
     var validacoes = [verificarPreenchido, verificarEmail, verificarSenha, verificarConfirmacao, verificarCPF, verificarData];
 
     for (var i = 0; i < campos.length; i++) {

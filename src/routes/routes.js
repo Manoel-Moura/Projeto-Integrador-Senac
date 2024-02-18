@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha } = require('./config');
+const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner } = require('./config');
 
 import cadastroReceita from "../controller/ReceitaController"
 import crudUser from "../controller/UserController"
@@ -13,11 +13,13 @@ const express = require('express');
 const routes = new Router();
 
 // Rotas das receitas
-routes.get('/cadastroReceita', cadastroReceita.show);
+routes.get('/cadastroReceita/:id', cadastroReceita.show);
 routes.get('/receitaUser', cadastroReceita.showReceita);
-routes.delete('/cadastroReceita', cadastroReceita.delete);
+routes.delete('/deletarReceita', cadastroReceita.delete);
 routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
-routes.put('/cadastroReceita', cadastroReceita.update);
+routes.put('/editarReceitas/:id', upload.single('foto'), cadastroReceita.update);
+
+
 // routes.get('/receitasUser', cadastroReceita.receitasUser);
 
 
@@ -79,7 +81,7 @@ routes.get('/verReceitas', servePage('../front/pages/verReceitas.html'));
 
 //Só para usuários logados
 routes.get('/adicionarReceita', requireLogin, serveProtectedPage('../front/pages/adicionarReceita.html'));
-routes.get('/editarReceita', requireLogin, serveProtectedPage('../front/pages/editarReceita.html'));
+routes.get('/editarReceita', requireLogin, verifyRecipeOwner, serveProtectedPage('../front/pages/editarReceita.html'));
 routes.get('/dashboard', requireLogin, serveProtectedPage('../front/pages/dashboard.html'));
 routes.get('/editarDadosPessoais', requireLogin, serveProtectedPage('../front/pages/editarDadosPessoais.html'));
 

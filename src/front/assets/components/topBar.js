@@ -104,8 +104,6 @@ fetch('/check-login')
 
           if (userData.fotoUsuario) {
             userButton.style.backgroundImage = 'url(/uploads/' + userData.fotoUsuario + ')';
-          } else {
-            userButton.style.backgroundImage = 'url(../assets/media/images/user.png)';
           }
 
           divBotoes.appendChild(userButton);
