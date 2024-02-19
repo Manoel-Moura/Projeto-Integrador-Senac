@@ -77,7 +77,7 @@ body {
   align-items: end;
 }
 
-#foto-usuario:hover{
+#foto-usuario:hover {
   transform: scale(1.1);
 }
 
@@ -138,7 +138,7 @@ body {
   transform: scale(1.1);
 }
 
-.botao_enviarSenha{
+.botao_enviarSenha {
   height: 50px;
   max-width: 112px;
   border-radius: 2mm;
@@ -148,7 +148,7 @@ body {
   border: none;
 }
 
-.botao_enviarEmail{
+.botao_enviarEmail {
   height: 41px;
   max-width: 91px;
   border-radius: 2mm;
@@ -156,4 +156,9 @@ body {
   background-color: #4A90E2;
   text-align: center;
   border: none;
+}
+
+.inf-usuario:focus {
+  border: 2px solid #4A90E2;
+  outline: none;
 }

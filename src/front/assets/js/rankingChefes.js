@@ -186,6 +186,11 @@ document.getElementById('barra-pesquisa').addEventListener('keyup', function (ev
     document.getElementById('trending').style.display = '';
     document.getElementById('btnMostrarOpcoes').style.display = '';
 
+    let linhas = document.getElementsByClassName('linha-divisoria-ranking');
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+
     for (let i = 0; i < cards.length; i++) {
       cards[i].style.display = "";
     }
@@ -198,6 +203,11 @@ document.getElementById('barra-pesquisa').addEventListener('keyup', function (ev
       } else {
         cards[i].style.display = "none";
       }
+    }
+
+    let linhas = document.getElementsByClassName('linha-divisoria-ranking');
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = "none";
     }
 
     document.getElementById('top-3').style.display = 'none';
