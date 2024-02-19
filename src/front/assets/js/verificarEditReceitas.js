@@ -130,3 +130,20 @@ document.getElementById('deleteButton').addEventListener('click', function() {
     });
   }
 });
+
+
+var animation = bodymovin.loadAnimation({
+  container: document.getElementById('deleteButton'), // the dom element that will contain the animation
+  renderer: 'svg',
+  loop: true,
+  autoplay: false,
+  path: '../assets/media/images/icon_lixeira.json' // the path to the animation json
+});
+
+document.getElementById('deleteButton').addEventListener("mouseover", function() {
+  animation.play();
+});
+
+document.getElementById('deleteButton').addEventListener("mouseout", function() {
+  animation.stop();
+});
