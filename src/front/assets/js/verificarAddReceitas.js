@@ -178,16 +178,12 @@ function validarFormulario() {
 }
 
 
+
 function salvarReceita(event) {
   if (validarFormulario()) {
     var formulario = document.getElementById('formulario_add_receita');
 
     var foto = arquivoImagem;
-
-    if (!foto) {
-      alert('Por favor, carregue uma imagem antes de enviar.');
-      return;
-    }
 
     var linkVideo = document.getElementById('linkVideo');
     if (linkVideo.value && !isValidYouTubeURL(linkVideo.value)) {
@@ -195,35 +191,36 @@ function salvarReceita(event) {
       return;
     }
 
-    var receitaData = new FormData(formulario);
+    if (foto) {
+      var receitaData = new FormData(formulario);
 
-    receitaData.set('foto', foto);
+      receitaData.set('foto', foto);
 
-    fetch('/cadastroReceita', {
-      method: 'POST',
-      body: receitaData
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erro na requisição');
-        }
-        return response.json();
+      fetch('/cadastroReceita', {
+        method: 'POST',
+        body: receitaData
       })
-      .then(data => {
-        alert('Receita salva com sucesso!');
-        window.location.href = '/home';
-      })
-      .catch(error => {
-        alert('Falha ao salvar a receita.');
-        console.error('Erro:', error);
-      });
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro na requisição');
+          }
+          return response.json();
+        })
+        .then(data => {
+          alert('Receita salva com sucesso!');
+          window.location.href = '/dashboard';
+        })
+        .catch(error => {
+          alert('Falha ao salvar a receita.');
+          console.error('Erro:', error);
+        });
+    } else {
+      console.error('Nenhuma imagem selecionada');
+    }
   }
 }
 
-
-if (document.querySelector('.titulo_adicionar_receita')) {
-  document.getElementById('salvar').addEventListener('click', function (e) {
-    e.preventDefault();
-    salvarReceita();
-  });
-}
+document.getElementById('salvar').addEventListener('click', function (e) {
+  e.preventDefault();
+  salvarReceita();
+});

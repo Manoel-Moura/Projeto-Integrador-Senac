@@ -95,9 +95,7 @@ class cadastroReceita {
 
     const receita = await Receita.findOne({ _id: id, user: userId });
 
-    if (!receita) {
-      return res.status(403).json({ error: 'Você não tem permissão para editar esta receita' });
-    }
+   
 
     receita.titulo = titulo;
     receita.descricao = descricao;

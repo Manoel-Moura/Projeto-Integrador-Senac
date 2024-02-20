@@ -72,9 +72,7 @@ async function validateCaptcha(request, response, next) {
 
     if (outcome.success) {
       next(); 
-    } else {
-      response.status(403).send('Captcha validation failed');
-    }
+    } 
   } catch (error) {
     console.error(error); 
     response.status(500).send('An error occurred while validating the captcha');
