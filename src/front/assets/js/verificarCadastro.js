@@ -149,7 +149,7 @@ document.getElementById('cardCadastro').addEventListener('submit', function (eve
     validarFormulario();
 });
 
-window.javascriptCallback = function () {
+window.onload = function() {
     turnstile.render('.cf-turnstile', {
         sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
         callback: function (token) {

@@ -28,7 +28,7 @@ document.getElementById('recuperarSenhaForm').addEventListener('submit', functio
 });
 
 
-window.javascriptCallback = function () {
+window.onload = function() {
     turnstile.render('.cf-turnstile', {
         sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
         callback: function (token) {
