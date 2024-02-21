@@ -100,6 +100,10 @@ function displayLikedRecipes(cards, chefId) {
   let hasLikedRecipes = false;
 
   cards.forEach((cardReceita) => {
+    if(queryString.slice(4) == cardReceita.sessionUser){
+      const addReceita = document.getElementById("box-one");
+         addReceita.style.display = "flex";
+   }
     // Verifica se o chef atual curtiu essa receita
     const curtidas = cardReceita.curtidas.map(like => typeof like === 'string' ? like : (like.usuario ? like.usuario : ''));
     if (curtidas.includes(chefId)) {
@@ -118,10 +122,7 @@ function displayLikedRecipes(cards, chefId) {
       receitaDestaque.appendChild(card);
       hasLikedRecipes = true;
     }
-    if(queryString.slice(4) != cardReceita.sessionUser){
-       const addReceita = document.getElementById("box-one");
-          addReceita.style.display = "none";
-    }
+ 
     // console.log(`Dono: ${queryString.slice(4)}`);
     // console.log(`User: ${cardReceita.sessionUser}`);
   });

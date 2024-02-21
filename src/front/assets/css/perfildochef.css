@@ -173,7 +173,7 @@
 }
 
 #box-one{
-  display: flex;
+  display: none;
   border-radius: 3mm;
   border: 1px solid #ff9800c2;
   margin-left: 22px;
