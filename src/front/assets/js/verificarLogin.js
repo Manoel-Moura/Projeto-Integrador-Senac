@@ -56,11 +56,13 @@ document.getElementById('bt-login').addEventListener('click', function (event) {
         });
 });
 
-window.onload = function() {
+window.javascriptCallback = function () {
     turnstile.render('.cf-turnstile', {
-        sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
-        callback: function (token) {
-            document.getElementById('cf-turnstile-response').value = token;
-        },
+      sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
+      callback: function (token) {
+        document.getElementById('cf-turnstile-response').value = token;
+      },
     });
-};
+  };
+  
+  
