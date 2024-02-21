@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((cards) => {
       let cont = 1;
       cards.forEach((cardReceita) => {
-        console.log("cardReceitas " + JSON.stringify(cardReceita));
+        // console.log("cardReceitas " + JSON.stringify(cardReceita));
         const addCard = document.getElementById("rowCard");
         const fragment_card = document.createDocumentFragment();
 
@@ -257,7 +257,7 @@ class Card {
     let lbAvaliacao = document.createElement("label");
     lbAvaliacao.classList.add("lb-avaliacao");
     lbAvaliacao.textContent = "❤ " + this.curtidas.length;
-    console.log(this.curtidas);
+    // console.log(this.curtidas);
     card.append(lbAvaliacao);
 
     return card;

@@ -1,5 +1,6 @@
+
 const queryString = window.location.search; // Recebe as informações do Headers, no caso: ?id:1232132
-console.log("Id chef: " + queryString.slice(4)); // pega somente os números do id, ignorando as 4 primeiras casas (?id:)
+// console.log("Id chef: " + queryString.slice(4)); // pega somente os números do id, ignorando as 4 primeiras casas (?id:)
 
 fetch("/user", {
   method: "GET",
@@ -16,7 +17,7 @@ fetch("/user", {
     return response.json();
   })
   .then((dadosDoChef) => {
-    console.log(dadosDoChef);
+    // console.log(dadosDoChef);
 
     let nomeChef = document.getElementById("nome-chef");
     nomeChef.innerText = dadosDoChef.username;
@@ -27,7 +28,7 @@ fetch("/user", {
     fotoChef.style.backgroundSize = "cover";
     fotoChef.style.backgroundPosition = "center";
     fotoChef.style.backgroundRepeat = "no-repeat";
-    console.log(nomeChef);
+    // console.log(nomeChef);
   });
 ;
 
@@ -44,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
       let recipeCount = 0;
 
       cards.forEach((cardReceita) => {
+
+
+        
         // Verifica se o ID do chef associado à receita corresponde ao ID do chef atual
         if (cardReceita.chefID === chefId) {
           const newCard = new Card(
@@ -56,11 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
             cardReceita.categorias,
             cardReceita.chefID
           );
-
+          
           const card = newCard.createCard();
           fragment_card.append(card);
           recipeCount++;
         }
+
+     
+  
+        
       });
 
       addCard.append(fragment_card);
@@ -69,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (recipeCount === 0) {
         const divCont2 = document.getElementById("cont2");
         divCont2.style.display = "none";
+
       }
     })
     .catch((error) => console.error("Erro:", error));
@@ -109,6 +118,12 @@ function displayLikedRecipes(cards, chefId) {
       receitaDestaque.appendChild(card);
       hasLikedRecipes = true;
     }
+    if(queryString.slice(4) != cardReceita.sessionUser){
+       const addReceita = document.getElementById("box-one");
+          addReceita.style.display = "none";
+    }
+    // console.log(`Dono: ${queryString.slice(4)}`);
+    // console.log(`User: ${cardReceita.sessionUser}`);
   });
 
   // Oculta a div receitaDestaque se não houver receitas curtidas
@@ -116,4 +131,5 @@ function displayLikedRecipes(cards, chefId) {
     const receitaDestaque = document.getElementById("cont");
     receitaDestaque.style.display = "none";
   }
+ 
 }

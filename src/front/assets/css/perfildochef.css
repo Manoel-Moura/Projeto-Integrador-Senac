@@ -172,7 +172,7 @@
   overflow: hidden;
 }
 
-.box-one{
+#box-one{
   display: flex;
   border-radius: 3mm;
   border: 1px solid #ff9800c2;

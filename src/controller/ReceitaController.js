@@ -145,6 +145,7 @@ class cadastroReceita {
   }
   
   async createCard(req, res) {
+    const { userId } = req.session;
     let receitas = await Receita.find().populate('user');
 
     let cards = [];
@@ -162,6 +163,7 @@ class cadastroReceita {
           fotoChef: '/uploads/' + user.fotoUsuario,
           fotoReceita: '/uploads/' + receita.foto,
           categorias: receita.categorias,
+          sessionUser: userId,
         };
 
         cards.push(card);
