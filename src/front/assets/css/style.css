@@ -9,7 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Sanchez;
-  font-size: 16pt;
+  font-size: 13pt;
 }
 
 
@@ -376,9 +376,10 @@ a {
   transition: 1s linear;
 }
 
-.lb-receita:hover{
+.long-text:hover{
   transform: translateX(calc(-100% + 100px));
 }
+
 
 .lb-chef {
   font-size: 11pt;

@@ -238,10 +238,21 @@ class Card {
 
     let btnReceita = document.createElement("button");
     btnReceita.classList.add("btn-receita");
+
     let lbBtnReceita = document.createElement("label");
     lbBtnReceita.classList.add("lb-receita");
     lbBtnReceita.textContent = this.receita;
+
+    if (this.receita.length > 12) {
+      lbBtnReceita.classList.add("long-text");
+
+      let animationDuration = this.receita.length * 0.1;
+      lbBtnReceita.style.transition = animationDuration + "s linear";
+    }
+
     btnReceita.appendChild(lbBtnReceita);
+    card.append(btnReceita);
+
     imgReceita.addEventListener("click", () => {
       const caminhoPagina = `/verReceitas?id=${this.id}`;
       window.location.href = caminhoPagina;
