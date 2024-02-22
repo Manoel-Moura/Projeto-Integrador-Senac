@@ -238,7 +238,10 @@ class Card {
 
     let btnReceita = document.createElement("button");
     btnReceita.classList.add("btn-receita");
-    btnReceita.textContent = this.receita;
+    let lbBtnReceita = document.createElement("label");
+    lbBtnReceita.classList.add("lb-receita");
+    lbBtnReceita.textContent = this.receita;
+    btnReceita.appendChild(lbBtnReceita);
     imgReceita.addEventListener("click", () => {
       const caminhoPagina = `/verReceitas?id=${this.id}`;
       window.location.href = caminhoPagina;

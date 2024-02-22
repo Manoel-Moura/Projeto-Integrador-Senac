@@ -99,14 +99,14 @@
     margin-right: 17mm;
     border: none;
     border-radius: 17px;
-    background-color: #fccb81;
-    color: #000000;
+    background-color: #01468a;
+    color: white;
     align-self: flex-end;
   }
   
   /* Hover do botão salvar */
-  #botaoS:hover {
-    background-color: #f9a94a;
+  #botao-enviar:hover {
+    background-color: #f78b1f;;
   }
   
   .p1{

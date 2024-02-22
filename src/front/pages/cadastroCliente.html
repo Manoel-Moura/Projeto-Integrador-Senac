@@ -1,69 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro Cliente</title>
-    <link rel="stylesheet" href="../assets/css/cadastroCliente.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-</head>
+    <link rel="stylesheet" href="../assets/css/cadastroCliente.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+      defer
+    ></script>
+  </head>
 
-<body>
-    <div id="topo"> </div>
+  <body>
+    <div id="topo"></div>
 
     <div id="containerResponsivo">
-        <div id="colum">
-            <form id="cardCadastro">
+      <div id="colum">
+        <form id="cardCadastro">
+          <h1>Crie seu cadastro</h1>
 
-                <h1>Crie seu cadastro</h1>
+          <label class="label" for="username">
+            Nome
+            <p>*</p>
+          </label>
+          <input
+            class="caixaTexto"
+            id="username"
+            type="text"
+            name="username"
+            required
+          />
 
-                <label class="label" for="username"> Nome <p>*</p> </label>
-                <input class="caixaTexto" id="username" type="text" name="username" required>
+          <label class="label" for="email">
+            Email
+            <p>*</p>
+          </label>
+          <input
+            class="caixaTexto"
+            id="email"
+            type="text"
+            name="email"
+            required
+          />
 
-                <label class="label" for="email"> Email <p>*</p> </label>
-                <input class="caixaTexto" id="email" type="text" name="email" required>
+          <label class="label" for="senhaCadastro">
+            Senha
+            <p>*</p>
+          </label>
+          <div class="campo-senha">
+            <input
+              class="caixaTexto"
+              id="senhaCadastro"
+              type="password"
+              name="senhaCadastro"
+              required
+            />
+            <img
+              id="eye-close-senhaCadastro"
+              src="../assets/media/images/icon-eye-close.svg"
+              class="alternar-visibilidade-senha"
+              alt="Alternar Visibilidade da Senha"
+              onclick="mostrarSenhaCadastro('senhaCadastro','eye-close-senhaCadastro')"
+            />
+            <img
+              id="eye-open-senhaCadastro"
+              src="../assets/media/images/icon-eye-open.svg"
+              class="alternar-visibilidade-senha hidden"
+              alt="Alternar Visibilidade da Senha"
+              onclick="mostrarSenhaCadastro('senhaCadastro','eye-open-senhaCadastro')"
+            />
+          </div>
 
+          <label class="label" for="confirmarSenhaCadastro">
+            Confirme a senha
+            <p>*</p>
+          </label>
+          <div class="campo-senha">
+            <input
+              class="caixaTexto"
+              id="confirmarSenhaCadastro"
+              type="password"
+              name="confirmarSenhaCadastro"
+            />
+            <img
+              id="eye-close-confirmarSenhaCadastro"
+              src="../assets/media/images/icon-eye-close.svg"
+              class="alternar-visibilidade-senha"
+              alt="Alternar Visibilidade da Senha"
+              onclick="mostrarSenhaCadastroConfirmar('confirmarSenhaCadastro','eye-close-confirmarSenhaCadastro')"
+            />
+            <img
+              id="eye-open-confirmarSenhaCadastro"
+              src="../assets/media/images/icon-eye-open.svg"
+              class="alternar-visibilidade-senha hidden"
+              alt="Alternar Visibilidade da Senha"
+              onclick="mostrarSenhaCadastroConfirmar('confirmarSenhaCadastro','eye-open-confirmarSenhaCadastro')"
+            />
+          </div>
 
-                <label class="label" for="senhaCadastro"> Senha <p>*</p> </label>
-                <div class="campo-senha">
-                    <input class="caixaTexto" id="senhaCadastro" type="password" name="senhaCadastro" required>
-                    <img id="eye-close-senhaCadastro" src="../assets/media/images/icon-eye-close.svg"
-                        class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
-                        onclick="mostrarSenhaCadastro('senhaCadastro','eye-close-senhaCadastro')" />
-                    <img id="eye-open-senhaCadastro" src="../assets/media/images/icon-eye-open.svg"
-                        class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
-                        onclick="mostrarSenhaCadastro('senhaCadastro','eye-open-senhaCadastro')" />
-                </div>
-                
-                <label class="label" for="confirmarSenhaCadastro"> Confirme a senha <p>*</p> </label>
-                <div class="campo-senha">
-                    <input class="caixaTexto" id="confirmarSenhaCadastro" type="password" name="confirmarSenhaCadastro">
-                    <img id="eye-close-confirmarSenhaCadastro" src="../assets/media/images/icon-eye-close.svg"
-                        class="alternar-visibilidade-senha" alt="Alternar Visibilidade da Senha"
-                        onclick="mostrarSenhaCadastroConfirmar('confirmarSenhaCadastro','eye-close-confirmarSenhaCadastro')" />
-                    <img id="eye-open-confirmarSenhaCadastro" src="../assets/media/images/icon-eye-open.svg"
-                        class="alternar-visibilidade-senha hidden" alt="Alternar Visibilidade da Senha"
-                        onclick="mostrarSenhaCadastroConfirmar('confirmarSenhaCadastro','eye-open-confirmarSenhaCadastro')" />
-                </div>
+          <label class="label" for="cpf">
+            CPF
+            <p>*</p>
+          </label>
+          <input
+            class="caixaTexto"
+            id="cpf"
+            type="text"
+            name="cpf"
+            pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"
+            title="Digite um CPF no formato: xxx.xxx.xxx-xx"
+            required
+          />
 
-                <label class="label" for="cpf"> CPF <p>*</p> </label>
-                <input class="caixaTexto" id="cpf" type="text" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"
-                    title="Digite um CPF no formato: xxx.xxx.xxx-xx" required>
+          <label class="label" for="data">
+            Data
+            <p>*</p>
+          </label>
+          <input
+            id="data"
+            type="date"
+            name="data"
+            placeholder="dd-mm-yyyy"
+            value=""
+            min="1997-01-01"
+            max="2030-12-31"
+            required
+          />
 
-                <label class="label" for="data"> Data <p>*</p> </label>
-                <input id="data" type="date" name="data" placeholder="dd-mm-yyyy" value="" min="1997-01-01"
-                    max="2030-12-31" required>
+          <input
+            type="hidden"
+            id="cf-turnstile-response"
+            name="cf-turnstile-response"
+          />
+          <div
+            class="cf-turnstile"
+            data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA"
+            data-callback="javascriptCallback"
+          ></div>
 
-                    <input type="hidden" id="cf-turnstile-response" name="cf-turnstile-response">
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA" data-callback="javascriptCallback"></div>
-
-                <button id="bt-cadastro"> Cadraste-se</button>
-
-            </form>
-        </div>
-
+          <button id="bt-cadastro">Cadastre-se</button>
+        </form>
+      </div>
     </div>
 
     <div id="bottom-bar"></div>
@@ -71,6 +149,5 @@
     <script src="../assets/js/verificarCadastro.js"></script>
     <script src="../assets/components/topBar.js"></script>
     <script src="../assets/components/rodape.js"></script>
-</body>
-
+  </body>
 </html>

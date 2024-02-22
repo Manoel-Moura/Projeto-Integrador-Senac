@@ -1,12 +1,17 @@
 /* CSS do Topbar */
+@font-face {
+  font-family: Sanchez;
+  src:  url('../media/fonts/Sanchez-Regular.ttf');
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Sanchez;
   font-size: 16pt;
 }
+
 
 html,
 body {
@@ -362,6 +367,17 @@ a {
   overflow: hidden; /* Adicionado para cortar conteúdo que ultrapassa o tamanho máximo */
   text-overflow: ellipsis; /* Adicionado para exibir reticências (...) quando o texto ultrapassa o tamanho máximo */
   white-space: nowrap; /* Adicionado para garantir que o texto não quebre em várias linhas */
+
+}
+
+.lb-receita{
+  padding: 10px;
+  transform: translateX(0%);
+  transition: 1s linear;
+}
+
+.lb-receita:hover{
+  transform: translateX(calc(-100% + 100px));
 }
 
 .lb-chef {
@@ -386,7 +402,7 @@ a {
   max-height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   overflow: auto;

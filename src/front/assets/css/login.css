@@ -48,7 +48,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 100mm;
-  height: 145mm;
+  height: 150mm;
   background-color: #ffffff;
   border-radius: 5mm;
   -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
@@ -70,8 +70,14 @@ h1 {
   padding-left: 5mm;
   height: 8mm;
   width: 60mm;
+  border: 1px solid black;
   background-color: rgba(255, 255, 255, 0.37);
   font-weight: 500;
+}
+
+.caixaTexto:focus {
+  outline: none;
+  border: 2px solid #01468a;
 }
 
 .campo-senha {
@@ -95,7 +101,7 @@ h1 {
 .label {
   display: flex;
   align-self: flex-start;
-  margin-left: 17mm;
+  margin-left: 20mm;
   margin-bottom: 2mm;
   margin-top: 3mm;
   color: #01468a;
@@ -154,12 +160,16 @@ h1 {
 #bt-login {
   border-radius: 8px;
   margin-top: 8mm;
-  height: 8mm;
-  width: 20mm;
-  background-color: #ffffff;
+  height: 10mm;
+  width: 24mm;
+  color: white;
+  border: none;
+  background-color: #01468a;
 }
 
+
 #bt-login:hover {
+  background-color: #f78b1f;
   transform: scale(1.1);
 }
 
