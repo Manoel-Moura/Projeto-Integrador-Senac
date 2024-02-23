@@ -119,6 +119,10 @@ if (listaCategorias) {
     categoria.append(nomeCategoria);
     fragmentCategorias.append(categoria);
     listaCategorias.append(fragmentCategorias);
+
+    document.querySelector('.categoria').addEventListener('click', function() {
+      this.classList.add('categoria_selecionada');
+    });
   }
 
   fetch("/criarCategoria")
@@ -243,7 +247,7 @@ class Card {
     lbBtnReceita.classList.add("lb-receita");
     lbBtnReceita.textContent = this.receita;
 
-    if (this.receita.length > 12) {
+    if (this.receita.length > 15) {
       lbBtnReceita.classList.add("long-text");
 
       let animationDuration = this.receita.length * 0.1;
