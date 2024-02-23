@@ -25,13 +25,7 @@
   align-items: center;
 }
 
-#bntPerfil{
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  align-items: center;
-  /* background-color: pink; */
-}
+
 
 #barra-pesquisa {
   border-top-left-radius: 10mm;

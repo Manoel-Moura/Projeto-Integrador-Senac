@@ -143,7 +143,16 @@ a {
 #div-user-menu{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  
+}
+
+#bntPerfil{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 #bt-menu-response {
