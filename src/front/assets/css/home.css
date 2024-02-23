@@ -25,17 +25,25 @@
   align-items: center;
 }
 
+#bntPerfil{
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  /* background-color: pink; */
+}
+
 #barra-pesquisa {
-  border-top-right-radius: 10mm;
-  border-bottom-right-radius: 10mm;
+  border-top-left-radius: 10mm;
+  border-bottom-left-radius: 10mm;
   padding-left: 5mm;
   padding-right: 5mm;
   height: 15mm;
   width: 40%;
-  background-color: rgba(255, 255, 255, 0.527);
+  background-color: rgba(255, 255, 255, 0.800);
   font-weight: 500;
   border-color: transparent;
-  color: white;
+  color:#01468a;
   font-weight: 700;
   outline: none;
   /* -webkit-box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); 
@@ -61,10 +69,10 @@ box-shadow: -5px 0px 8px 2px rgba(0,0,0,0.65); */
 #bnt-pesquisa {
   height: 15mm;
   width: 6%;
-  border-bottom-left-radius: 10mm;
-  border-top-left-radius: 10mm;
+  border-bottom-right-radius: 10mm;
+  border-top-right-radius: 10mm;
   border-color: transparent;
-  background-color: rgba(255, 255, 255, 0.527);
+  background-color: rgba(255, 255, 255, 0.800);
   background-image: url(../media/icons/lupa.svg);
   background-size: 25px;
   background-position: center;
@@ -137,12 +145,21 @@ box-shadow: 5px 0px 8px 2px rgba(0,0,0,0.65); */
 
 #lista-categorias {
   width: 100%;
-  height: 110px;
+  /* height: 110px; Mantém a altura fixa */
+  padding: 20px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
+#lista-categorias::-webkit-scrollbar {
+  display: none;
+}
+
+#lista-categorias {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

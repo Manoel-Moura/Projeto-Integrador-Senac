@@ -65,6 +65,9 @@ let paginasMenu = [
 let divBotoes = document.createElement("div");
 divBotoes.setAttribute("id", "menubutton");
 
+let divUserMenu =  document.createElement("div");
+divUserMenu.setAttribute("id", "div-user-menu");
+
 // Remove o botão de login caso o usuario esteja logado e altera para o de dashboard.
 fetch('/check-login')
   .then(response => response.json())
@@ -106,7 +109,7 @@ fetch('/check-login')
             userButton.style.backgroundImage = 'url(/uploads/' + userData.fotoUsuario + ')';
           }
 
-          divBotoes.appendChild(userButton);
+          divUserMenu.appendChild(userButton);
 
           userButton.addEventListener('click', function () {
             window.location.href = '/editarDadosPessoais';
@@ -123,7 +126,8 @@ fetch('/check-login')
           logoutBtn.appendChild(logoutIcon);
 
           logoutButton.appendChild(logoutBtn);
-          divBotoes.appendChild(logoutButton);
+          divUserMenu.appendChild(logoutButton);
+          
         })
         .catch(error => {
           console.error('Erro ao buscar os dados do usuário:', error);
@@ -188,10 +192,21 @@ for (let i = 0; i < imgContato.length; i++) {
   contatos.appendChild(rede);
 }
 
+
+let bntPerf = document.createElement('div');
+
+// Definir o atributo id para o elemento div criado
+bntPerf.setAttribute("id", "bntPerfil");
+
+// Adicionar outros elementos (divBotoes e divUserMenu) ao elemento div
+bntPerf.appendChild(divBotoes);
+bntPerf.appendChild(divUserMenu);
+
 // Adicionando a logo à TopBar
 topBar.appendChild(divLogo);
 // Adicionando os botões do menu à TopBar
-topBar.appendChild(divBotoes);
+// topBar.appendChild(divBotoes);
+topBar.appendChild(bntPerf);
 // Adicionando os contatos à TopBar
 topBar.appendChild(contatos);
 
