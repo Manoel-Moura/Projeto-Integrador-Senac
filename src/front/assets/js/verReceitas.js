@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       receitas[0].favoritas = receita[0].favoritas;
       let sessionID = receita[1].idsession || null;
       // alert(receita[1].idsession)
+      // alert(receita[0].user.telefone);
       //================
 
       // Criação da página com os dados atualizados
@@ -259,15 +260,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
       //=============================================================================
 
-      let contatoChef = document.createElement("div");
+      let contatoChef = document.createElement("a");
       contatoChef.setAttribute("id", "contatochef");
-      contatoChef.innerText = "@Manoel Moura";
+      contatoChef.setAttribute("href", " https://www.instagram.com/" + receita[0].user.telefone);
+      contatoChef.setAttribute("target", "_blank");
+      
+     
 
       let div_dados_chef = document.createElement("div");
       div_dados_chef.setAttribute("id", "div-dados-chef");
 
       div_dados_chef.append(contatoChef);
       div_dados_chef.append(divBotoes);
+
+      if(receita[0].user.telefone ===  'undefined'){
+        contatoChef.style.display = "none";
+        div_dados_chef.style.justifyContent = "end";
+      }
+      else{
+        contatoChef.innerText = "@"+ receita[0].user.telefone
+       
+      }
 
       // Adicionando a div com os botões à lista_opcao ou outro elemento de sua escolha
       dadosChef.appendChild(nomeChef);

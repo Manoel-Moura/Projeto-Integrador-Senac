@@ -164,6 +164,7 @@ class cadastroReceita {
           fotoReceita: '/uploads/' + receita.foto,
           categorias: receita.categorias,
           sessionUser: userId,
+          favoritas: receita.favoritas,
         };
 
         cards.push(card);

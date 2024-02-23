@@ -103,9 +103,13 @@ function displayLikedRecipes(cards, chefId) {
     if(queryString.slice(4) == cardReceita.sessionUser){
       const addReceita = document.getElementById("box-one");
          addReceita.style.display = "flex";
+     
+   }else{
+    const lab = document.getElementById("lb-receitasChef");
+    lab.innerText = "Receitas do chef:";
    }
     // Verifica se o chef atual curtiu essa receita
-    const curtidas = cardReceita.curtidas.map(like => typeof like === 'string' ? like : (like.usuario ? like.usuario : ''));
+    const curtidas = cardReceita.favoritas.map(like => typeof like === 'string' ? like : (like.usuario ? like.usuario : ''));
     if (curtidas.includes(chefId)) {
       const newCard = new Card(
         cardReceita.chef,

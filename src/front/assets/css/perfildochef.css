@@ -55,7 +55,7 @@
 
 #cont{
   height: auto;
-  width: auto;
+  max-width: 80%;
   padding: 10px;
   margin-top: 20px;
   background-color: #f78b1f;
@@ -67,24 +67,47 @@
 }
 
 #receitaDestaque{
+  max-height: 50vh;
   padding-left: 15px;
   padding-right: 10px;
-  min-width: calc(210px *5);
+  width: 100%;
   background-color: #f78b1f;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   /* border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px; */
-  justify-content: center;
+  justify-content: space-around;
+  overflow: auto;
 }
+
+#rowCardChef {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding: 40px;
+  padding-top: 0px;
+}
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #968e8e5b;
+  border-radius: 5px;
+}
+
 
 #lb-recomendacao{
   padding-left: 20px;
-  width: auto;
+  max-width: 70%;
   height: auto;
   background-color: #f78b1f;
-  min-width: calc(210px *5);
   /* border-top-right-radius: 60px;
   border-top-left-radius: 60px; */
   color: white;
@@ -116,7 +139,7 @@
 
 #cont2{
   height: auto;
-  max-width: 70%;
+  max-width: 80%;
   padding: 10px;
   margin-top: 20px;
   background-color: #FAF6F6;
