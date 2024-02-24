@@ -281,7 +281,7 @@ function imprimirReceitaEditada() {
             display: flex;
             flex-direction: column;
           }
-          #text{
+          .text{
             text-align: justify;
           }
         </style>
@@ -305,19 +305,19 @@ function imprimirReceitaEditada() {
          
           <!-- Descrição do chef -->
           <h3>Descrição:</h3>
-          <p id="text">${receitas[0].descricao}</p>
+          <p class="text">${receitas[0].descricao}</p>
           
          
           
           <!-- Ingredientes -->
           <h3>Ingredientes:</h3>
-          <ul>
+          <ul  class="text">
             ${receitas[0].ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join('')}
           </ul>
           
           <!-- Modo de preparo -->
           <h3>Modo de preparo:</h3>
-          <ol>
+          <ol  class="text">
             ${receitas[0].modo_preparo.map(passo => `<li>${passo}</li>`).join('')}
           </ol>
         </div>
