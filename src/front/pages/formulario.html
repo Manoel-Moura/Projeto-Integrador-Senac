@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="../assets/css/formulario.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+</head>
+
+<body>
+    <!--div do topo da página-->
+    <div id="topo"> </div>
+
+    <div id="containerResponsivo">
+        <!--Formulário de recuperar senha-->
+        <div class="row">
+            <form id="recuperarSenhaForm" class="row-item" action="">
+                <img id="logoPrincipal" src="../assets/media/images/Senac_logo.jpg" alt="Logo do Senac" />
+                <h2>Precisamos verificar sua identidade</h2>
+                <p class="p1">Por favor, insira seu email abaixo para que possamos enviar um link de recuperação de senha.</p>
+                <div class="input-group">
+                    <label class="label" for="email">Digite o seu Email <span class="red">*</span></label>
+                    <div class="campo-email">
+                        <input class="caixaTexto" id="email" type="text">
+                    </div>
+
+                    <input type="hidden" id="cf-turnstile-response" name="cf-turnstile-response">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA" data-callback="javascriptCallback"></div>
+
+                <input id="botao-enviar" type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+    <div id="bottom-bar"></div>
+    </div>
+
+    <script src="../assets/js/verificarForm.js"></script>
+    <script src="../assets/components/topBar.js"></script>
+    <script src="../assets/components/rodape.js"></script>
+</body>
+
+</html>

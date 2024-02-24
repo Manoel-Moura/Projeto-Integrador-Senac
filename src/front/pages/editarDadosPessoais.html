@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar dados Pessoais</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/editarDadosPessoais.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="topo"> </div>
+        <form id="dados_pessoais">
+            <div id="coluna">
+                <div id="info-pessoais">
+                    <div class="icon-label">
+                        <img src="../assets/media/icons/form.svg" style="width: 40px; margin-right: 15px;" alt="">
+                        <label for="" style="font-weight: 700;">Informações pessoais </label>
+                    </div>
+                    <div class="informacoes">
+                        <label for="Foto do perfil" style="display: flex; align-items: end;" class="campoDados">Foto do
+                            perfil</label>
+                        <label for="Foto do perfil" style="display: flex; align-items: end;" id="ft-perfil">Adicione um
+                            foto
+                            de perfil</label>
+
+                        <div id="foto-usuario" onclick="document.getElementById('fotoUsuario').click();">
+                            <input type="file" id="fotoUsuario" name="fotoUsuario" style="display: none;"
+                                onchange="previewImage(event)">
+                        </div>
+
+
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Nome</label>
+                        <input type="text" class="inf-usuario" name="username" onfocus="changeIcon(this)"
+                            onblur="resetIcon(this)">
+                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Data de nascimento</label>
+                        <input type="date" class="inf-usuario" style="color: #7a7b7d;" name="data">
+
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Gênero</label>
+                        <input type="text" class="inf-usuario" name="genero" onfocus="changeIcon(this)"
+                            onblur="resetIcon(this)">
+                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Senha</label>
+                        <input type="password" class="inf-usuario" style="color: #7a7b7d;" name="password" placeholder="*********" readonly>
+                        <button type="button" id="botao_enviarSenha" class="botao_enviarSenha">Mudar a senha</button>
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">CPF</label>
+                        <input type="text" class="inf-usuario" name="cpf" readonly>
+                    </div>
+
+                </div>
+                <div id="info-contato">
+                    <div class="icon-label">
+                        <img src="../assets/media/icons/contact calendar_.svg" style="width: 40px; margin-right: 15px;"
+                            alt="">
+                        <label for="" style="font-weight: 700;">Informações de contato </label>
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Email</label>
+                        <input type="email" class="inf-usuario" name="email" readonly>
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Celular</label>
+                        <input type="text" class="inf-usuario" name="celular" onfocus="changeIcon(this)"
+                            onblur="resetIcon(this)">
+                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                    </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Instagram</label>
+                        <input type="text" class="inf-usuario" name="telefone" onfocus="changeIcon(this)"
+                            onblur="resetIcon(this)">
+                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                    </div>
+                </div>
+                <button id="botao_salvarEdicao" type="submit">Salvar Edição</button>
+            </div>
+        </form>
+
+        <div id="bottom-bar"></div>
+    </div>
+
+</body>
+<script src="../assets/js/dadosPessoais.js"></script>
+<script src="../assets/components/topBar.js"></script>
+<script src="../assets/components/rodape.js"></script>
+
+
+</html>

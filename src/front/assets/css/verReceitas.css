@@ -1,0 +1,366 @@
+/* https://www.receiteria.com.br/receita/tender-ao-molho-de-laranja/ */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#contornoCorpo{
+  background: #faf6f6;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+align-items: center;
+  /* background: rgb(247,139,31);
+
+  background: linear-gradient(0deg, rgba(247,139,31,1) 10%, rgba(253,158,45,0.7595413165266106) 100%); */
+
+}
+#container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(
+    100vh - 115px - 100px
+  ); /* Largura da pagina menos o tamanho do topo e do rodapé*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.destaque-receita {
+  width: 80%;
+  max-height: 450px;
+  min-height: 350px;
+  background-color: rgb(252, 252, 255);
+  display: flex;
+  flex-direction: row;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+#descricao-receita {
+  width: 50%;
+  /* border: 1px black solid; */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* background-color: red; */
+}
+
+/* Ajustando para imagem ou vídeo: */
+#img-receita,
+#video-receita {
+  width: 50%;
+  max-height: 450px; /* Garantindo que o elemento ocupe toda a altura disponível */
+ min-height: 350px;
+  object-fit: cover; /* Ajustando imagem ou vídeo dentro do espaço disponível */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#nome-prato {
+  color: rgb(0, 0, 0);
+  font-family: europa-boldregular, sans-serif;
+  font-weight: 700;
+  font-size: 30pt;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 120px;
+  overflow-y: scroll;
+  align-items: center;
+  text-align: center;
+  color: #f78b1f;
+}
+
+#logo-receita {
+  width: 140px;
+  height: 80px;
+  background: url(../media/images/senac_logo.svg.png);
+  background-position: center;
+  background-size: contain; /* Ajuste para preservar proporção */
+  background-repeat: no-repeat;
+  border: none;
+}
+
+#lista-descricao {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  max-width: 550px;
+  height: 80px;
+  /* background-color: rgb(233, 190, 190); */
+  justify-content: space-around;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 10px;
+  background-color: #f78b1f;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#valor-itens {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+#label-itens {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: 12pt;
+  display: flex;
+}
+
+#colum {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* border: 1px solid black; */
+  padding: 5px;
+}
+
+
+#descricao {
+  padding: 10px;
+  height: 160px;
+  text-align: center;
+  overflow-y: scroll; /* Mantém a barra de rolagem vertical */
+  overflow-x: hidden; /* Oculta a barra de rolagem horizontal */
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  /* text-align: center; */
+  text-align: justify;
+  text-justify: inter-word;
+  color: black;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+
+#descricao-chef {
+  padding: 10px;
+  width: 90%;
+  height: max-content;
+  border-radius: 20px;
+  color: #ff8000;
+  background: #fff4ed;
+  /* -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.274);
+    box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);   */
+}
+
+#fotochefe{
+  /* background: url(../media/images/chef.jpg); */
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  border: 2px solid #ff8000;
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  
+}
+
+#dadosChef{
+  height: 100%;
+  width: calc(100% - 55px);
+
+}
+
+#nomeChef{
+  padding-left: 5px;
+  display: flex;
+ font-size: 18px;
+
+}
+
+#infochefe{
+  height: 60px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: auto;
+  /* background-color: red; */
+  
+}
+
+#curtir{
+  height: 25px;
+  width: 25px;
+ 
+  border:  none;
+  background: url(../media/icons/favorito.svg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin-left: 5px;
+
+}
+
+#favorito {
+  height: 25px;
+  width: 25px;
+  border: none;
+  background: url(../media/icons/save.svg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+
+#imprimir{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border:  none;
+  background: url(../media/icons/impresora.svg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin-left: 10px;
+
+}
+
+#editar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border:  none;
+  background: url(../media/icons/pen.svg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  display: flex;
+}
+
+
+#div-dados-chef{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-style: italic;
+  padding-right: 15px;
+  padding-left: 5px;
+  /* background-color: #f5e6e6; */
+}
+
+
+#contatochef{
+  font-size: 11pt;
+  color: #000000;
+}
+
+#label-ingredientes {
+  background-color: white;
+  font-weight: 700;
+  padding: 15px;
+  padding-bottom: 0px;
+  /* margin: 15px;
+  margin-right: 0px;
+  margin-bottom: 0px; */
+}
+
+#ingrediente {
+  
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-weight: 700;
+  text-align: justify;
+}
+
+#lista-ingredientes {
+  width: 100%;
+  height: 60vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  overflow: scroll;
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15); Add subtle shadow for depth */
+border-radius: 10px;
+}
+
+/* Shared styles for both sections */
+#modo-preparo,
+#ingredientes {
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 15px; /* Slightly increased for a smoother look */
+  padding: 30px; /* Increased for better readability */
+  margin-bottom: 30px; /* Increased for better visual separation */
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); Enhanced for more depth */
+}
+
+#modo-preparo {
+  width: 60%;
+  background-color: linear-gradient(to right, #f5e6e6, #f8e0e0); /* Added gradient */
+  color: #000000;
+  background-image: url("path/to/subtle-food-pattern.png"); /* Subtle pattern overlay */
+  background-size: 30px 30px; /* Adjust pattern size as needed */
+}
+
+#ingredientes {
+  width: 35%;
+  background-color: linear-gradient(to right, #e6f5f5, #e0f8f8); /* Added gradient */
+  color: #000000;
+  
+  
+}
+
+#ingredientes-receita {
+  width: 80%;
+  background-color: rgb(252, 252, 255);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.5); /* Enhanced for more depth */
+  border-radius: 30px; /* Increased for a more rounded look */
+}
+
+#ingredientes-receita img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Circular images for visual appeal */
+  margin: 10px;
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); Subtle shadow for images */
+}
+
+.botoes-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

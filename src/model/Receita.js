@@ -1,0 +1,54 @@
+// Modelo do Banco de dados
+
+import { Schema, model } from "mongoose";
+import User from "../model/User";
+
+const ReceitaShema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    titulo: {
+        type: String,
+    },
+    descricao: {
+        type: String,
+    },
+    porcoes: {
+        type: Number,
+    },
+    preparacao: {
+        type: Number,
+    },
+    categorias: {
+        type: [String],
+    },
+    ingredientes: {
+        type: [String],
+    },
+    modoPreparo: {
+        type: [String],
+    },
+    foto: {
+        type: String,
+    },
+    linkVideo: {
+        type: String,
+    },
+    curtidas: [{
+        usuario: {
+          type: String,
+        },
+        data: {
+          type: Date,
+          default: Date.now,
+        },
+      }],      
+    favoritas:{
+        type:[String],
+    },
+    
+});
+
+
+export default new model('Receita', ReceitaShema)
