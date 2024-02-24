@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
       botaoImprimir.setAttribute("id", "imprimir");
       // Adiciona um evento de clique ao botão
       botaoImprimir.addEventListener("click", function () {
-        imprimirReceita();
+        imprimirReceitaEditada();
       });
 
       // Botão de editar
@@ -230,19 +230,106 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-      // Função para imprimir a receita
-      function imprimirReceita() {
-        // let receitaParaImprimir = document.getElementById("corpo").innerHTML;
-        // alert(receitaParaImprimir)
-        // let janelaDeImpressao = window.open('', '_blank');
-        // janelaDeImpressao.document.write('<html><head><title>Receita</title></head><body>');
-        // janelaDeImpressao.document.write('<h1>Receita</h1>');
-        // janelaDeImpressao.document.write(receitaParaImprimir);
-        // janelaDeImpressao.document.write('</body></html>');
-        // janelaDeImpressao.document.close();
-        // janelaDeImpressao.print();
-        window.print();
-      }
+     // Função para imprimir a receita
+function imprimirReceitaEditada() {
+  // Cria um novo documento HTML temporário
+  let newWindow = window.open('', '_blank');
+  
+  // Constrói o layout da receita dentro do novo documento HTML
+  newWindow.document.write(`
+    <html>
+      <head>
+        <title>Receita</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+          }
+          .receita {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+          }
+          #foto {
+            height: 300px;
+            width: 300px;
+            border-radius: 5%;
+            margin-bottom: 20px;
+          }
+          h2, h3 {
+            margin-top: 0;
+          }
+          ul, ol {
+            padding-left: 20px;
+          }
+          li {
+            margin-bottom: 5px;
+          }
+          #topo{
+            display: flex;
+            flex-direction: row;
+            flex-wrap:  nowrap;
+            text-wrap: wrap;
+            margin-bottom: 3mm;
+          }
+          #dados{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+          }
+          #text{
+            text-align: justify;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="receita">
+
+        <div id="topo">
+          <!-- Foto da receita -->
+          <img src="${receitas[0].url.src}" id="foto" alt="Foto da Receita">
+          
+          <div id="dados">
+          <!-- Nome do prato -->
+          <h2></br>${receitas[0].nome}</h2>
+          <!-- Tempo de preparo -->
+          <p><strong>Autor:</strong> ${receitas[0].autor} minutos</p>
+          <p><strong>Tempo de preparo:</strong> ${receitas[0].tempo_preparo} minutos</p>
+          <p><strong>Numero de porções:</strong> ${receitas[0].numero_porcoes} minutos</p>
+          </div>
+          </div>
+         
+          <!-- Descrição do chef -->
+          <h3>Descrição:</h3>
+          <p id="text">${receitas[0].descricao}</p>
+          
+         
+          
+          <!-- Ingredientes -->
+          <h3>Ingredientes:</h3>
+          <ul>
+            ${receitas[0].ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join('')}
+          </ul>
+          
+          <!-- Modo de preparo -->
+          <h3>Modo de preparo:</h3>
+          <ol>
+            ${receitas[0].modo_preparo.map(passo => `<li>${passo}</li>`).join('')}
+          </ol>
+        </div>
+      </body>
+    </html>
+  `);
+
+  
+  // Imprime o novo documento HTML
+  newWindow.document.close(); // Fecha o documento antes de imprimir
+  newWindow.print(); // Imprime o documento
+}
 
       // Adicionando os botões à div
       divBotoes.appendChild(botaoCurtir);
