@@ -303,6 +303,10 @@ document.getElementById('barra-pesquisa').addEventListener('keyup', function (ev
   }
 });
 
+document.getElementById('bnt-pesquisa').addEventListener('click', function() {
+  document.getElementById('barra-pesquisa').focus();
+});
+
 
 //Vai ficar de quarentena por enquanto kkkk
 /*

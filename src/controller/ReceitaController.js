@@ -47,6 +47,13 @@ class cadastroReceita {
     return res.json(receita);
   }
 
+  async showAll(req, res) { // GET
+    let receitas = await Receita.find()
+    return res.json(receitas)
+
+  }
+
+
   async showReceita(req, res) {
     const { id } = req.headers;
 
