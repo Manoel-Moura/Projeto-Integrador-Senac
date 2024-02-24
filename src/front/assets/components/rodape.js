@@ -107,7 +107,6 @@ barra_bottom.append(rodape_div);
 // Adicionando o fragmento de documento ao elemento com ID "bottom-bar" no HTML
 bottom_bar.append(barra_bottom);
 //============================================================================================
-
 let listaCategorias = document.getElementById("lista-categorias");
 
 if (listaCategorias) {
@@ -120,9 +119,24 @@ if (listaCategorias) {
     fragmentCategorias.append(categoria);
     listaCategorias.append(fragmentCategorias);
 
-    document.querySelector('.categoria').addEventListener('click', function() {
-      this.classList.add('categoria_selecionada');
+    categoria.addEventListener('click', function() {
+      if (this.style.backgroundColor === 'orange') {
+        this.style.backgroundColor = ''; 
+      } else {
+
+        removerSelecao(this);
+        this.style.backgroundColor = 'orange';
+      }
     });
+  }
+
+  function removerSelecao(botaoClicado) {
+    let botoesCategoria = document.getElementsByClassName("categoria");
+    for (let i = 0; i < botoesCategoria.length; i++) {
+      if (botoesCategoria[i] !== botaoClicado) {
+        botoesCategoria[i].style.backgroundColor = ''; 
+      }
+    }
   }
 
   fetch("/criarCategoria")
@@ -147,7 +161,6 @@ if (listaCategorias) {
               }
               categoriaAtual = null;
             } else {
-              // Caso contrário, aplique o filtro de categoria
               for (let j = 0; j < cards.length; j++) {
                 let categorias = cards[j].dataset.categorias
                   .toUpperCase()
@@ -308,54 +321,6 @@ document.getElementById('bnt-pesquisa').addEventListener('click', function() {
 });
 
 
-//Vai ficar de quarentena por enquanto kkkk
-/*
-document.addEventListener("DOMContentLoaded", function () {
-        let cont = 1;
-        cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
-          const addCard = document.getElementById("rowCard");
-          const fragment_card = document.createDocumentFragment();
-          const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
-          const card = newCard.createCard();
-          fragment_card.append(card);
-          addCard.append(fragment_card);
-
-
-        });
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        let cont = 1;
-        cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
-          if (cardReceita.favorite && cont <= 5 && cardReceita.chef != "Manoel Moura") {
-            const receitaDestaque = document.getElementById("receitaDestaque");
-            const fragmentDestaque = document.createDocumentFragment();
-            const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
-            const card = newCard.createCard();
-            fragmentDestaque.append(card);
-            receitaDestaque.append(fragmentDestaque);
-            cont++;
-          }
-
-        });
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        cards.forEach((cardReceita) => { // Adiciona os Cards a tela de inicio
-          const addCard = document.getElementById("rowCardChef");
-          if (cardReceita.chef != "Manoel Moura") {
-            const fragment_card = document.createDocumentFragment();
-            const newCard = new Card(cardReceita.chef, cardReceita.receita, cardReceita.curtidas, cardReceita.fotoChef, cardReceita.fotoReceita);
-            const card = newCard.createCard();
-            fragment_card.append(card);
-            addCard.append(fragment_card);
-
-
-          }
-
-        });
-      });
-*/
 //============================================================================================
 
 

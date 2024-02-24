@@ -22,38 +22,43 @@ document.getElementById('bt-login').addEventListener('click', function (event) {
         alert('Por favor, não se esqueça de completar o campo do captcha.');
         return;
     }
-
-    var url = '/login';
     var data = {
         email: email,
         password: password,
         'cf-turnstile-response': token 
     };
 
-    fetch(url, {
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data),
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na resposta do servidor');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.error) {
-                alert('Erro ao fazer login: ' + data.error);
-            } else {
-                window.location.href = '/home';
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao enviar requisição:', error);
-            alert('Ocorreu um erro ao tentar fazer login. Email ou senha incorretos.');
-        });
+    .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na resposta do servidor');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.error) {
+          throw new Error('Erro ao fazer login: ' + data.error);
+        } else {
+          window.location.href = '/home';
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao enviar requisição:', error);
+        alert('Ocorreu um erro ao tentar fazer login. Por favor, tente novamente.');
+
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('cf-turnstile-response').value = '';
+        window.javascriptCallback();
+    });
+    
+      
 });
 
 window.javascriptCallback = function () {

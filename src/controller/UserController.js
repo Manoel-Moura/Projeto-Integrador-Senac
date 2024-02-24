@@ -82,6 +82,14 @@ class crudUser {
       return res.status(409).send('Um usuário com este nome de usuário já existe');
     }
 
+    if (req.file && user.fotoUsuario && user.fotoUsuario !== 'user.png') {
+      const oldImagePath = path.resolve(__dirname, '..', 'front', 'assets', 'media', 'uploads', user.fotoUsuario);
+
+      if (fs.existsSync(oldImagePath)) {
+        fs.unlinkSync(oldImagePath);
+      }
+    }
+
     user.username = req.body.username;
     user.data = req.body.data;
     user.fotoUsuario = req.file ? req.file.filename : user.fotoUsuario;
@@ -104,26 +112,53 @@ class crudUser {
 
 
   async delete(req, res) {
-    const { id } = req.headers;
-  
+    const { id } = req.body;
+
     if (!id) {
       return res.json({ error: 'ID é requisitos' });
     }
-  
+
     const user = await User.findById(id);
-  
+
     if (user.fotoUsuario && user.fotoUsuario !== 'user.png') {
       const imagePath = path.resolve(__dirname, '..', 'front', 'assets', 'media', 'uploads', user.fotoUsuario);
-  
+
       if (fs.existsSync(imagePath)) {
         fs.unlinkSync(imagePath);
       }
     }
-  
+
+    const receitas = await Receita.find({ user: id });
+    for (let receita of receitas) {
+      if (receita.foto) {
+        const imagePath = path.resolve(
+          __dirname,
+          '..',
+          'front',
+          'assets',
+          'media',
+          'uploads',
+          receita.foto,
+        );
+
+        if (fs.existsSync(imagePath)) {
+          fs.unlinkSync(imagePath);
+        }
+      }
+
+      await Receita.findByIdAndDelete(receita._id);
+    }
+
     const deletedUser = await User.findByIdAndDelete(id);
-    return res.json({ message: 'Usuario deletado com sucesso!' });
+    req.session.destroy(function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        return res.json({ message: 'Usuario e suas receitas foram deletados com sucesso!' });
+      }
+    });
   }
-  
+
 
   async login(req, res) {
     const { email, password } = req.body;
@@ -222,7 +257,7 @@ class crudUser {
       port: 587,
       auth: {
         user: 'suporte_senac@apptop.com.br',
-        //    pass: 'lIzqjY@4JVswQUk' for security reasons this is not the real password 
+        pass: '1Qazxsw@2'
       }
     });
 
@@ -230,7 +265,108 @@ class crudUser {
       from: 'suporte_senac@apptop.com.br',
       to: email,
       subject: 'Link de redefinição de senha',
-      text: `Você solicitou a redefinição de senha. Por favor, clique no seguinte link para redefinir sua senha: \n\n http://localhost:3333/recuperarSenha?token=${token}`
+      html: `
+      <!DOCTYPE html>
+      <html lang="pt-BR">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Redefinição de Senha - Senac </title>
+          <style>
+              * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+              }
+              body {
+                  font-family: sans-serif;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  color: #333;
+                  background-color: #f7f7f7;
+              }
+              .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  background-color: #fff;
+                  border-radius: 10px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              }
+              .header {
+                  text-align: center;
+                  margin-bottom: 20px;
+              }
+              .logo {
+                  max-width: 150px;
+                  margin: 0 auto;
+              }
+              .titulo {
+                  font-size: 24px;
+                  font-weight: bold;
+                  color: #01468a;
+                  margin-top: 10px;
+              }
+              .conteudo {
+                  line-height: 1.8;
+              }
+              .texto {
+                  margin-bottom: 20px;
+              }
+              .link {
+                  color: #01468a;
+                  font-weight: bold;
+                  text-decoration: none;
+              }
+              .assinatura {
+                  text-align: center;
+                  margin-top: 20px;
+              }
+              .rodape {
+                  font-size: 12px;
+                  color: #999;
+                  margin-top: 10px;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <div class="header">
+              <img src="cid:logo@senac.com" alt="Logo do Senac" class="logo">
+              <h1 class="titulo">Redefinição de Senha</h1>
+              </div>
+              <div class="conteudo">
+                  <p class="texto">
+                      Olá! Você solicitou a redefinição de senha para sua conta no site de receitas do Senac.
+                  </p>
+                  <p class="texto">
+                      Para redefinir sua senha, clique no link abaixo:
+                  </p>
+                  <p>
+                      <a href="http://localhost:3333/recuperarSenha?token=${token}" class="link">Redefinir Senha</a>
+                  </p>
+                  <p class="texto">
+                      Este link é válido durante os próximos 5 minutos. Se você não o utilizar nesse período, será necessário solicitar uma nova redefinição de senha.
+                  </p>
+              </div>
+              <div class="assinatura">
+                  <p>Atenciosamente,</p>
+                  <p>Equipe Senac</p>
+              </div>
+              <div class="rodape">
+                  &copy; Senac - Todos os direitos reservados.
+              </div>
+          </div>
+      </body>
+      </html>      
+      `,
+      attachments: [
+        {
+          filename: 'Senac_logo.jpg',
+          path: './src/front/assets/media/images/Senac_logo.jpg',
+          cid: 'logo@senac.com'
+        }
+      ]
     };
 
     transporter.sendMail(mailOptions, (error, response) => {
@@ -267,23 +403,23 @@ class crudUser {
       const users = await User.find();
       const rankingChefs = await Promise.all(users.map(async (user) => {
         const receitas = await Receita.find({ user: user._id });
-  
+
         let totalCurtidas = 0;
         let curtidasTrend = 0;
-        const seteDias = Date.now() - 7 * 24 * 60 * 60 * 1000; 
+        const seteDias = Date.now() - 7 * 24 * 60 * 60 * 1000;
         for (let receita of receitas) {
           totalCurtidas += receita.curtidas.length;
-  
+
           for (let curtida of receita.curtidas) {
             if (curtida.data >= seteDias) {
               curtidasTrend++;
             }
           }
         }
-  
+
         return { chef: user.username, fotoChef: user.fotoUsuario, totalCurtidas, curtidasTrend, chefID: user._id };
       }));
-  
+
       return res.json(rankingChefs);
     } catch (error) {
       console.error(error);

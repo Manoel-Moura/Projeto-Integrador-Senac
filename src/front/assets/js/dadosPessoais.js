@@ -1,12 +1,19 @@
-//Para exibir a imagem carregada temporariamente
 function previewImage(event) {
   if (event.target.files && event.target.files[0]) {
+    var file = event.target.files[0];
+    var fileType = file["type"];
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/bmp", "image/webp", "image/svg+xml", "image/x-icon"];
+    if (!validImageTypes.includes(fileType)) {
+      alert('Por favor, carregue um arquivo de imagem.');
+      return;
+    }
+
     var reader = new FileReader();
     reader.onload = function () {
       var output = document.getElementById('foto-usuario');
       output.style.backgroundImage = 'url(' + reader.result + ')';
     };
-    reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(file);
   }
 }
 
@@ -50,29 +57,28 @@ window.onload = function () {
     .catch(error => console.error('Erro:', error));
 };
 
-document.getElementById('botao_enviarSenha').addEventListener('click', function() {
+document.getElementById('botao_enviarSenha').addEventListener('click', function () {
   var email = document.querySelector('input[name="email"]').value;
 
   fetch('/requestPasswordReset', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
   })
-  .then(response => response.json())
-  .then(data => {
+    .then(response => response.json())
+    .then(data => {
       if (data.message) {
-          alert(data.message);
+        alert(data.message);
       } else {
-          console.error('Erro ao solicitar a redefinição de senha:', data.error);
+        console.error('Erro ao solicitar a redefinição de senha:', data.error);
       }
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
       console.error('Erro:', error);
-  });
+    });
 });
-
 
 function formatarTelefone(numero) {
   var numeroFormatado = numero.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
@@ -91,10 +97,7 @@ function formatarEmTempoReal() {
 }
 
 var campoCelular = document.querySelector('input[name="celular"]');
-var campoTelefone = document.querySelector('input[name="telefone"]');
 campoCelular.addEventListener('keyup', formatarEmTempoReal);
-campoTelefone.addEventListener('keyup', formatarEmTempoReal);
-
 
 
 function salvarDadosPessoais(event) {
@@ -103,6 +106,16 @@ function salvarDadosPessoais(event) {
   var formulario = document.getElementById('dados_pessoais');
   var formData = new FormData(formulario);
 
+  var file = formData.get('fotoUsuario');
+  if (file && file.size > 0) {
+    var fileType = file["type"];
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/bmp", "image/webp", "image/svg+xml", "image/x-icon"];
+    if (!validImageTypes.includes(fileType)) {
+      alert('Por favor, carregue um arquivo de imagem.');
+      return;
+    }
+  }
+  
   var telefone = formData.get('celular');
   var telefoneFormatado = formatarTelefone(telefone);
   if (!validarTelefone(telefoneFormatado)) {
@@ -131,13 +144,57 @@ function salvarDadosPessoais(event) {
     .then(user => {
       if (user) {
         alert('Perfil atualizado com sucesso!');
-        window.location.href = '/editarDadosPessoais'; 
+        window.location.href = '/editarDadosPessoais';
       }
     })
     .catch(error => {
       console.error('Erro:', error);
-      alert(error.message); 
+      alert(error.message);
     });
 }
 
 document.getElementById('dados_pessoais').addEventListener('submit', salvarDadosPessoais);
+
+document.getElementById('excluirConta').addEventListener('click', function () {
+  fetch('/getUserData')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      confirmarExclusao(data._id); 
+    })
+    .catch(error => console.error('Erro:', error));
+});
+
+function confirmarExclusao(userId) {
+  var confirmacao = confirm("Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.");
+  if (confirmacao) {
+    fetch('/cadastroUser', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: userId }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message) {
+          alert(data.message);
+          window.location.href = '/login';
+        } else {
+          console.error('Erro ao excluir a conta:', data.error);
+        }
+      })
+      .catch((error) => {
+        console.error('Erro:', error);
+      });
+  }
+}
+
+var icons = document.querySelectorAll('.icon');
+
+icons.forEach(function(icon) {
+  icon.addEventListener('click', function() {
+    icon.previousElementSibling.focus();
+  });
+});
+

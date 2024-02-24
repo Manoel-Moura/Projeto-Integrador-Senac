@@ -38,7 +38,7 @@
                         <label for="nome" class="campoDados">Nome</label>
                         <input type="text" class="inf-usuario" name="username" onfocus="changeIcon(this)"
                             onblur="resetIcon(this)">
-                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                        <img src="../assets/media/icons/pen.svg" class="icon" alt="">
                     </div>
                     <div class="informacoes">
                         <label for="nome" class="campoDados">Data de nascimento</label>
@@ -49,7 +49,7 @@
                         <label for="nome" class="campoDados">Gênero</label>
                         <input type="text" class="inf-usuario" name="genero" onfocus="changeIcon(this)"
                             onblur="resetIcon(this)">
-                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                        <img src="../assets/media/icons/pen.svg" class="icon" alt="">
                     </div>
                     <div class="informacoes">
                         <label for="nome" class="campoDados">Senha</label>
@@ -76,14 +76,19 @@
                         <label for="nome" class="campoDados">Celular</label>
                         <input type="text" class="inf-usuario" name="celular" onfocus="changeIcon(this)"
                             onblur="resetIcon(this)">
-                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                        <img src="../assets/media/icons/pen.svg" class="icon" alt="">
                     </div>
                     <div class="informacoes">
                         <label for="nome" class="campoDados">Instagram</label>
                         <input type="text" class="inf-usuario" name="telefone" onfocus="changeIcon(this)"
                             onblur="resetIcon(this)">
-                        <img src="../assets/media/icons/pen.svg" id="icon" alt="">
+                        <img src="../assets/media/icons/pen.svg" class="icon" alt="">
                     </div>
+                    <div class="informacoes">
+                        <label for="nome" class="campoDados">Deseja excluir sua conta?</label>
+                        <input type="text" class="inf-usuario" style="color: #7a7b7d;" name="deletar_conta" placeholder="Suas informações e receitas serão excluidas" readonly>
+                        <button type="button" id="excluirConta" onclick="confirmarExclusao()">Excluir conta</button>
+                    </div>                    
                 </div>
                 <button id="botao_salvarEdicao" type="submit">Salvar Edição</button>
             </div>

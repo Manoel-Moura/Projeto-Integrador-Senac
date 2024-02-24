@@ -38,7 +38,7 @@ class cadastroReceita {
       curtidas: [],
     });
 
-    return res.json({ receitaCadastra });
+    return res.json({ receitaCadastra, userId });
   }
 
   async show(req, res) {

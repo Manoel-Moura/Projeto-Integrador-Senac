@@ -87,6 +87,12 @@ body {
   font-size: 1em;
 }
 
+.itemForm input[type="text"]:focus,
+.itemForm textarea:focus {
+  outline: none;
+  border: 2px solid #01468a;
+}
+
 /* Relacionado as caixas de texto onde o usuário vai digitar o número de porções */
 .itemForm input[type="number"],
 .itemForm textarea {
@@ -99,6 +105,11 @@ body {
   font-size: 1em;
 }
 
+.itemForm input[type="number"]:focus,
+.itemForm textarea:focus {
+  outline: none;
+  border: 2px solid #01468a;
+}
 
 /* Relacionado a caixa de texto "Descrição" */
 .itemForm textarea {
@@ -187,6 +198,12 @@ body {
   resize: none;
 }
 
+.modo_preparosInput:focus,
+.ingredientesInput:focus {
+  outline: none;
+  border: 2px solid #01468a;
+}
+
 #unir_iconI,
 #unir_iconP {
   position: relative;
@@ -196,11 +213,11 @@ body {
 #adicionar_ingrediente {
   position: absolute;
   display: flex;
-  border-color:#01468a;
+  border-color: #01468a;
   border-radius: 4mm;
   width: 28px;
   height: 29px;
-  color:  #01468a;
+  color: #01468a;
   align-items: center;
   justify-content: center;
   font-size: 20pt;
@@ -401,57 +418,52 @@ body {
 
 @media screen and (max-width: 600px) {
   .row {
-    padding: 0.5em;
-  }
-
-  .form_inicial {
-    width: 90%;
-  }
-
-  .itemForm label {
-    margin-right: 15px;
-  }
-
-  .itemForm input[type="number"] {
-    margin-right: 35mm;
-  }
-
-  .titulo_ingredientes,
-  .titulo_modo_preparo {
-    margin-right: 105mm;
-  }
-
-  .colunas {
-    padding-left: 7.5%;
-    padding-right: 6%;
-  }
-
-  .item {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .titulo_modo_preparo {
-    margin-right: 99mm;
-  }
-}
-
-@media (max-width: 600px) {
-  .form_inicial {
     padding: 1em;
+  }
+
+  .form_inicial,
+  .itemForm,
+  .form-item,
+  .media-upload-area {
+    width: 100%;
   }
 
   .itemForm {
     flex-direction: column;
+  }
+
+  .itemForm label,
+  .titulo_ingredientes,
+  .titulo_modo_preparo {
+    margin-right: 0;
+  }
+
+  .colunas {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .item,
+  #salvar,
+  #cancelar {
+    width: 100%;
+  }
+
+  .botao_deletar {
     margin-left: 0;
   }
 
-  .itemForm label {
-    margin-right: 0;
+  .titulo_editar_receita {
+    margin-left: 0;
   }
 }
 
+@media screen and (min-width: 18em) {
+  .media-upload-area {
+    width: 100%;
+    height: auto;
+  }
+}
 
 @media screen and (min-width: 18em) {
   .media-upload-area {
@@ -474,6 +486,12 @@ body {
   }
 }
 
+@media (max-width: 900px) and (min-width: 600px) {
+  .form-item {
+    width: calc(100% - 1rem);
+    margin-right: 0;
+  }
+}
 
 @media (max-width: 900px) and (min-width: 600px) {
   .form-item {
@@ -506,7 +524,8 @@ body {
 }
 
 
-.titulo_container, .botao_container {
+.titulo_container,
+.botao_container {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -518,7 +537,7 @@ body {
 
 
 #deleteButton {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 3mm;
@@ -532,14 +551,13 @@ body {
 
 @media (max-width: 600px) {
   .titulo_editar_receita {
-    margin-left: 10%; 
+    margin-left: 10%;
   }
 
   .botao_deletar {
-    margin-left: 10%; 
+    margin-left: 10%;
   }
 }
-
 
 #deleteButton svg {
   width: 90% !important;

@@ -225,6 +225,6 @@
   height: 80px;
 }
 
-.box-one:hover{
+#box-one:hover{
   transform: scale(1.1);
 }

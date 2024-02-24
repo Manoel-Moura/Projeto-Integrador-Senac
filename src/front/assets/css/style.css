@@ -470,6 +470,9 @@ a {
 }
 
 
+.categoria_selecionada {
+  background-color: orange;
+}
 
 
 #userButton {

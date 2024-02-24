@@ -208,7 +208,7 @@ function salvarReceita(event) {
         })
         .then(data => {
           alert('Receita salva com sucesso!');
-          window.location.href = '/dashboard';
+          window.location.href = '/dashboard?id=' + data.userId;
         })
         .catch(error => {
           alert('Falha ao salvar a receita.');

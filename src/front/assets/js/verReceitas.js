@@ -297,9 +297,9 @@ function imprimirReceitaEditada() {
           <!-- Nome do prato -->
           <h2></br>${receitas[0].nome}</h2>
           <!-- Tempo de preparo -->
-          <p><strong>Autor:</strong> ${receitas[0].autor} minutos</p>
+          <p><strong>Autor:</strong> ${receitas[0].autor}</p>
           <p><strong>Tempo de preparo:</strong> ${receitas[0].tempo_preparo} minutos</p>
-          <p><strong>Numero de porções:</strong> ${receitas[0].numero_porcoes} minutos</p>
+          <p><strong>Numero de porções:</strong> ${receitas[0].numero_porcoes}</p>
           </div>
           </div>
          

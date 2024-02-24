@@ -82,7 +82,7 @@ routes.get('/verReceitas', servePage('../front/pages/verReceitas.html'));
 //Só para usuários logados
 routes.get('/adicionarReceita', requireLogin, serveProtectedPage('../front/pages/adicionarReceita.html'));
 routes.get('/editarReceita', requireLogin, verifyRecipeOwner, serveProtectedPage('../front/pages/editarReceita.html'));
-routes.get('/dashboard', requireLogin, serveProtectedPage('../front/pages/dashboard.html'));
+routes.get('/dashboard', servePage('../front/pages/dashboard.html'));
 routes.get('/editarDadosPessoais', requireLogin, serveProtectedPage('../front/pages/editarDadosPessoais.html'));
 
 
