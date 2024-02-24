@@ -18,7 +18,7 @@ routes.get('/receitaUser', cadastroReceita.showReceita);
 routes.delete('/deletarReceita', cadastroReceita.delete);
 routes.post('/cadastroReceita', upload.single('foto'), cadastroReceita.store);
 routes.put('/editarReceitas/:id', upload.single('foto'), cadastroReceita.update);
-
+routes.get('/mostrarReceita', cadastroReceita.showAll)
 
 // routes.get('/receitasUser', cadastroReceita.receitasUser);
 
