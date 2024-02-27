@@ -173,6 +173,10 @@ body {
   border: none;
 }
 
+#excluirConta:hover{
+  transform: scale(1.1);
+}
+
 @media only screen and (max-width: 600px) {
   .container, #coluna, #info-pessoais, #info-contato {
       width: 100%;

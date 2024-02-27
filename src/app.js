@@ -22,7 +22,7 @@ class App {
             saveUninitialized: true,
             cookie: { 
                 secure: false,
-                maxAge: 15 * 60 * 1000 
+                maxAge: 30 * 60 * 1000 
             }
         }));        
         this.server.use(bodyParser.urlencoded({ extended: true }));
