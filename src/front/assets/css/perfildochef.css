@@ -19,6 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 #nome-chef{
@@ -33,6 +35,8 @@
   font-size: 20pt;
   font-weight: 700;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #foto-chef{
@@ -47,7 +51,7 @@
   background-repeat: no-repeat;
 }
 #containerResponsivo{
-  background-color: white;
+  background-color:  #8ca0b1;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -65,6 +69,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #receitaDestaque{
@@ -80,8 +86,20 @@
   border-bottom-right-radius: 20px; */
   justify-content: space-around;
   overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+#cont-chef{
+  height: 80%;
+  width: 70%;
+ background-color: #ffffff;
+ margin-top: 40px;
+ margin-bottom: 40px;
+ border-radius: 30px;
+ -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+ box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+}
 #rowCardChef {
   width: 100%;
   max-height: 100vh;
@@ -149,6 +167,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
@@ -194,6 +214,8 @@
   gap: 1rem;
   position: relative;
   overflow: hidden;
+  margin-left: 100px;
+
 }
 
 #box-one{
