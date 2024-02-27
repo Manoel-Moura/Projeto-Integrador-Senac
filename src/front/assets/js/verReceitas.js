@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 botaoCurtir.style.background =
                   "url('../assets/media/icons/favorito.svg')";
               }
+              window.location.reload(true);
             })
             .catch((error) => {
               console.error("Erro:", error);
@@ -159,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           alert("Precisa fazer login para curtir!");
         }
+        
       });
 
       // Botão de favorito
@@ -209,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           alert("Precisa fazer login para favoritar!");
         }
+   
       });
 
       // Botão de imprimir
@@ -409,7 +412,7 @@ function imprimirReceitaEditada() {
 
       let nPorcoes = document.createElement("label");
       nPorcoes.setAttribute("id", "valor-itens");
-      nPorcoes.innerText = receitas[0].rendimento;
+      nPorcoes.innerText = receitas[0].numero_porcoes;
 
       let label_nPorcoes = document.createElement("label");
       label_nPorcoes.setAttribute("id", "label-itens");
