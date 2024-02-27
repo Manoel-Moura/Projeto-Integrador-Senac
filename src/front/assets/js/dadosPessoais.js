@@ -105,10 +105,10 @@ function salvarDadosPessoais(event) {
 
   var telefone = formData.get('celular');
   var telefoneFormatado = formatarTelefone(telefone);
-  if (!validarTelefone(telefoneFormatado)) {
-    alert("Número de telefone inválido.");
-    return;
-  }
+  // if (!validarTelefone(telefoneFormatado)) {
+  //   alert("Número de telefone inválido.");
+  //   return;
+  // }
 
   formData.set('celular', telefoneFormatado);
 
