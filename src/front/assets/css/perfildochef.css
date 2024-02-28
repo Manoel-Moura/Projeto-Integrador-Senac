@@ -84,7 +84,7 @@
   flex-wrap: wrap;
   /* border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px; */
-  justify-content: space-around;
+  justify-content: center;
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
