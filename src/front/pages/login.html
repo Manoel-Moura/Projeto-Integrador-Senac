@@ -1,66 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Culinaria Senac</title>
+    <!-- Login -->
+    <link rel="stylesheet" href="../assets/css/login.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+      defer
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Culinaria Senac</title>
-  <!-- Login -->
-  <link rel="stylesheet" href="../assets/css/login.css" />
-  <link rel="stylesheet" href="../assets/css/style.css" />
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-</head>
+  <body>
+    <div id="container">
+      <div id="topo"></div>
 
-<body>
-  <div id="container">
-    <div id="topo"></div>
+      <div id="containerResponsivo">
+        <div class="row">
+          <form class="row-item" action="">
+            <img
+              id="logoPrincipal"
+              src="../assets/media/images/Senac_logo.jpg"
+              alt="imagem não encontrada"
+            />
 
-    <div id="containerResponsivo">
-      <div class="row">
-        <form class="row-item" action="">
-          <img id="logoPrincipal" src="../assets/media/images/Senac_logo.jpg" alt="imagem não encontrada" />
+            <div id="tex1">
+              <img id="icon" src="../assets/media/images/icon.png" alt="" />
+              <h3 class="tex">Faça</h3>
+              <h3 id="login">Login</h3>
+              <h3 class="tex">na sua conta</h3>
+            </div>
 
-          <div id="tex1">
-            <img id="icon" src="../assets/media/images/icon.png" alt="" />
-            <h3 class="tex">Faça</h3>
-            <h3 id="login">Login</h3>
-            <h3 class="tex">na sua conta</h3>
-          </div>
+            <label class="label" for="email"> Darling </label>
+            <input
+              class="caixaTexto"
+              id="email"
+              type="text"
+              name="email"
+              required
+            />
 
-          <label class="label" for="email"> Email </label>
-          <input class="caixaTexto" id="email" type="text" name="email" required />
+            <label class="label" for="password"> Senha: </label>
+            <div class="campo-senha">
+              <input
+                class="caixaTexto"
+                id="password"
+                type="password"
+                name="password"
+                required
+              />
+              <img
+                id="eye-close"
+                src="../assets/media/images/icon-eye-close.svg"
+                class="alternar-visibilidade-senha"
+                alt="Alternar Visibilidade da Senha"
+                onclick="mostrarSenhaLogin('password','eye-close')"
+              />
+              <img
+                id="eye-open"
+                src="../assets/media/images/icon-eye-open.svg"
+                class="alternar-visibilidade-senha hidden"
+                alt="Alternar Visibilidade da Senha"
+                onclick="mostrarSenhaLogin('password','eye-open')"
+              />
+            </div>
 
-          <label class="label" for="password"> Senha: </label>
-          <div class="campo-senha">
-            <input class="caixaTexto" id="password" type="password" name="password" required />
-            <img id="eye-close" src="../assets/media/images/icon-eye-close.svg" class="alternar-visibilidade-senha"
-              alt="Alternar Visibilidade da Senha" onclick="mostrarSenhaLogin('password','eye-close')" />
-            <img id="eye-open" src="../assets/media/images/icon-eye-open.svg" class="alternar-visibilidade-senha hidden"
-              alt="Alternar Visibilidade da Senha" onclick="mostrarSenhaLogin('password','eye-open')" />
-          </div>
+            <input
+              type="hidden"
+              id="cf-turnstile-response"
+              name="cf-turnstile-response"
+            />
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA"
+              data-callback="javascriptCallback"
+            ></div>
+            <input id="bt-login" type="submit" value="Entrar" />
 
-          <input type="hidden" id="cf-turnstile-response" name="cf-turnstile-response" />
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAARzTbUy-vCJHVFA" data-callback="javascriptCallback"></div>
-          <input id="bt-login" type="submit" value="Entrar" />
-
-          <div id="tex2">
-            <a href="/formulario">
-              <h3 class="textoCadastro">Esqueci minha senha</h3>
-            </a>
-            <a href="/cadastroCliente">
-              <h3 class="textoCadastro">Não possuo cadastro ainda</h3>
-            </a>
-          </div>
-        </form>
+            <div id="tex2">
+              <a href="/formulario">
+                <h3 class="textoCadastro">Esqueci minha senha</h3>
+              </a>
+              <a href="/cadastroCliente">
+                <h3 class="textoCadastro">Não possuo cadastro ainda</h3>
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
+      <div id="bottom-bar"></div>
     </div>
-    <div id="bottom-bar"></div>
-  </div>
 
-  <script src="../assets/js/passwordToggle.js"></script>
-  <script src="../assets/js/verificarLogin.js"></script>
-  <script src="../assets/components/topBar.js"></script>
-  <script src="../assets/components/rodape.js"></script>
-</body>
-
+    <script src="../assets/js/passwordToggle.js"></script>
+    <script src="../assets/js/verificarLogin.js"></script>
+    <script src="../assets/components/topBar.js"></script>
+    <script src="../assets/components/rodape.js"></script>
+  </body>
 </html>
