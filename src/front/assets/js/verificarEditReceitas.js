@@ -107,18 +107,30 @@ function isValidYouTubeURL(url) {
 
 function validarFormulario() {
   var campos = {
-    "titulo": "Título",
-    "descricao": "Descrição",
-    "porcoes": "Porções",
-    "preparacao": "Preparação",
+    "titulo": "Por favor, insira o título da receita.",
+    "descricao": "Por favor, insira uma descrição para a receita.",
+    "porcoes": "Por favor, insira o número de porções que a receita rende.",
+    "preparacao": "Por favor, insira o tempo de preparação da receita.",
   };
 
   for (var id in campos) {
     var campo = document.getElementById(id);
     if (!campo.value) {
-      alert('Por favor, preencha o campo ' + campos[id] + ' antes de enviar.');
+      alert(campos[id]);
       return false;
     }
+  }
+
+  var porcoes = document.getElementById('porcoes');
+  if (!porcoes.value || !/^\d+$/.test(porcoes.value)) {
+    alert('Por favor, insira um número válido de porções.');
+    return false;
+  }
+
+  var preparacao = document.getElementById('preparacao');
+  if (!preparacao.value || !/^\d+$/.test(preparacao.value)) {
+    alert('Por favor, insira um tempo de preparação válido.');
+    return false;
   }
 
   var ingredientes = document.querySelectorAll('.ingredientesInput');
@@ -276,14 +288,20 @@ document.querySelector('#salvar').addEventListener('click', function (e) {
       method: 'PUT',
       body: receitaData, 
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(data => {
+            throw new Error('Erro ao atualizar a receita: ' + data.error);
+          });
+        }
+        return response.json();
+      })
       .then(data => {
         window.location.href = `/verReceitas?id=${idDaReceita}`;
       })
       .catch((error) => {
         console.error('Erro:', error);
-        window.location.href = '/home';
-
+        alert(error.message);
       });
   } else {
     console.error('Nenhuma imagem selecionada');

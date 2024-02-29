@@ -107,20 +107,32 @@ function isValidYouTubeURL(url) {
 
 function validarFormulario() {
   var campos = {
-    "titulo": "Título",
-    "descricao": "Descrição",
-    "porcoes": "Porções",
-    "preparacao": "Preparação",
+    "titulo": "Por favor, insira o título da receita.",
+    "descricao": "Por favor, insira uma descrição para a receita.",
+    "porcoes": "Por favor, insira o número de porções que a receita rende.",
+    "preparacao": "Por favor, insira o tempo de preparação da receita.",
   };
 
   for (var id in campos) {
     var campo = document.getElementById(id);
     if (!campo.value) {
-      alert('Por favor, preencha o campo ' + campos[id] + ' antes de enviar.');
+      alert(campos[id]);
       return false;
     }
   }
 
+  var porcoes = document.getElementById('porcoes');
+  if (!porcoes.value || !/^\d+$/.test(porcoes.value)) {
+    alert('Por favor, insira um número válido de porções.');
+    return false;
+  }
+
+  var preparacao = document.getElementById('preparacao');
+  if (!preparacao.value || !/^\d+$/.test(preparacao.value)) {
+    alert('Por favor, insira um tempo de preparação válido.');
+    return false;
+  }
+  
   var ingredientes = document.querySelectorAll('.ingredientesInput');
   var ingredientePreenchido = Array.prototype.slice.call(ingredientes).some(function (input) {
     return input.value;
@@ -140,14 +152,14 @@ function validarFormulario() {
   }
 
   var ingredientes = document.querySelectorAll('.ingredientesInput');
-  ingredientes.forEach(function(input) {
+  ingredientes.forEach(function (input) {
     if (!input.value) {
       input.parentNode.remove();
     }
   });
 
   var etapas = document.querySelectorAll('.modo_preparosInput');
-  etapas.forEach(function(input) {
+  etapas.forEach(function (input) {
     if (!input.value) {
       input.parentNode.remove();
     }

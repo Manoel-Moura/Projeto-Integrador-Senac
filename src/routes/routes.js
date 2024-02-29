@@ -38,7 +38,7 @@ routes.get('/createCard', cadastroReceita.createCard);
 
 
 //Rotas dos Usuarios
-routes.post('/cadastroUser', validateCaptcha, crudUser.store);
+routes.post('/cadastroUser', upload.none(), validateCaptcha, crudUser.store);
 routes.get('/cadastroUser', crudUser.show);
 routes.put('/cadastroUserT', upload.single('fotoUsuario'), crudUser.edit);
 routes.delete('/cadastroUser', crudUser.delete);

@@ -24,21 +24,46 @@ class cadastroReceita {
     } = req.body;
     const foto = req.file ? req.file.filename : null;
 
-    let receitaCadastra = await Receita.create({
-      user: userId,
-      titulo,
-      descricao,
-      porcoes,
-      preparacao,
-      categorias,
-      ingredientes,
-      modoPreparo,
-      foto,
-      linkVideo,
-      curtidas: [],
-    });
+    const campos = {
+      titulo: 'Por favor, preencha o campo título.',
+      descricao: 'Por favor, preencha o campo descrição.',
+      porcoes: 'Por favor, insira um número válido de porções.',
+      preparacao: 'Por favor, insira um tempo de preparação válido.',
+      categorias: 'Por favor, preencha o campo categorias.',
+      ingredientes: 'Por favor, preencha o campo ingredientes.',
+      modoPreparo: 'Por favor, preencha o campo modo de preparo.',
+    };
+  
+    for (let campo in campos) {
+      if (!req.body[campo] || (campo === 'porcoes' || campo === 'preparacao') && (!Number.isInteger(Number(req.body[campo])) || req.body[campo] < 1)) {
+        return res.status(400).json({ error: campos[campo] });
+      }
+    }
 
-    return res.json({ receitaCadastra, userId });
+    if (!foto) {
+      return res.status(400).json({ error: 'Por favor, carregue uma foto.' });
+    }
+
+    try {
+      let receitaCadastra = await Receita.create({
+        user: userId,
+        titulo,
+        descricao,
+        porcoes,
+        preparacao,
+        categorias,
+        ingredientes,
+        modoPreparo,
+        foto,
+        linkVideo,
+        curtidas: [],
+      });
+
+      return res.json({ receitaCadastra, userId });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Ocorreu um erro ao tentar criar a receita.' });
+    }
   }
 
   async show(req, res) {
@@ -100,9 +125,27 @@ class cadastroReceita {
       linkVideo,
     } = req.body;
 
+    const campos = {
+      titulo: 'Por favor, preencha o campo título.',
+      descricao: 'Por favor, preencha o campo descrição.',
+      porcoes: 'Por favor, insira um número válido de porções.',
+      preparacao: 'Por favor, insira um tempo de preparação válido.',
+      categorias: 'Por favor, preencha o campo categorias.',
+      ingredientes: 'Por favor, preencha o campo ingredientes.',
+      modoPreparo: 'Por favor, preencha o campo modo de preparo.',
+    };
+
+    for (let campo in campos) {
+      if (!req.body[campo] || (campo === 'porcoes' || campo === 'preparacao') && (!Number.isInteger(Number(req.body[campo])) || req.body[campo] < 1)) {
+        return res.status(400).json({ error: campos[campo] });
+      }
+    }
+    
     const receita = await Receita.findOne({ _id: id, user: userId });
 
-   
+    if (!receita) {
+      return res.status(404).json({ error: 'Receita não encontrada' });
+    }
 
     receita.titulo = titulo;
     receita.descricao = descricao;
@@ -124,13 +167,13 @@ class cadastroReceita {
 
   async delete(req, res) {
     const { id } = req.body;
-  
+
     if (!id) {
       return res.json({ error: 'ID é requisitos' });
     }
-  
+
     const receita = await Receita.findById(id);
-  
+
     if (receita.foto) {
       const imagePath = path.resolve(
         __dirname,
@@ -141,16 +184,16 @@ class cadastroReceita {
         'uploads',
         receita.foto,
       );
-  
+
       if (fs.existsSync(imagePath)) {
         fs.unlinkSync(imagePath);
       }
     }
-  
+
     const deleteReceita = await Receita.findByIdAndDelete(id);
     return res.json({ message: 'Receita deletada com sucesso!' });
   }
-  
+
   async createCard(req, res) {
     const { userId } = req.session;
     let receitas = await Receita.find().populate('user');

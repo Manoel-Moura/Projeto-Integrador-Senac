@@ -22,17 +22,17 @@ function verificarConfirmacao(confirmacaoSenha) {
 
 document.getElementById('cpf').addEventListener('input', function (event) {
     formatarCPF(event.target);
-  });
+});
 
-  function formatarCPF(input) {
+function formatarCPF(input) {
     var cpf = input.value;
-    cpf = cpf.replace(/\D/g, ''); 
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+    cpf = cpf.replace(/\D/g, '');
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     input.value = cpf;
-  }
-  
+}
+
 // Verificar se o CPF é válido
 function verificarCPF(cpf) {
     if (typeof cpf !== 'string') return false
@@ -85,7 +85,7 @@ function verificarData(data) {
         idade--;
     }
 
-    return idade >= 13; 
+    return idade >= 13;
 }
 
 // Função para validar o formulário
@@ -109,28 +109,18 @@ function validarFormulario() {
 // Função para enviar os dados do formulário para o servidor usando fetch
 function enviarDadosFormulario() {
     var formulario = document.getElementById('cardCadastro');
-    var token = document.getElementById('cf-turnstile-response').value; 
 
-    var data = {
-        username: formulario.elements.username.value,
-        email: formulario.elements.email.value,
-        senhaCadastro: formulario.elements.senhaCadastro.value,
-        confirmarSenhaCadastro: formulario.elements.confirmarSenhaCadastro.value,
-        cpf: formulario.elements.cpf.value,
-        data: formulario.elements.data.value,
-        'cf-turnstile-response': token 
-    };
+    var data = new FormData(formulario);
 
     fetch('/cadastroUser', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
+        body: data,
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Erro na resposta do servidor');
+                return response.json().then(data => {
+                    throw new Error('Erro ao fazer cadastro: ' + data.error);
+                });
             }
             return response.json();
         })
@@ -140,7 +130,9 @@ function enviarDadosFormulario() {
         })
         .catch(error => {
             console.error('Erro ao enviar requisição:', error);
-            alert('Ocorreu um erro ao tentar criar a conta');
+            alert(error.message);
+            formulario.reset();
+            window.javascriptCallback();
         });
 }
 
@@ -149,11 +141,11 @@ document.getElementById('cardCadastro').addEventListener('submit', function (eve
     validarFormulario();
 });
 
-window.onload = function() {
+window.javascriptCallback = function () {
     turnstile.render('.cf-turnstile', {
-        sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
-        callback: function (token) {
-            document.getElementById('cf-turnstile-response').value = token;
-        },
+      sitekey: '0x4AAAAAAARzTbUy-vCJHVFA',
+      callback: function (token) {
+        document.getElementById('cf-turnstile-response').value = token;
+      },
     });
-};
+  };
