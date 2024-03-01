@@ -1,5 +1,10 @@
+const http = require('http');
 const app = require('./app');
 
-app.listen(80);
+const PORT = 80;
 
-console.log('Servidor em Execução!');
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
+  console.log(`Servidor em execução na porta ${PORT}`);
+});
