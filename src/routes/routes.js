@@ -70,6 +70,7 @@ routes.get('/formulario', redirectIfLoggedIn, servePage('../front/pages/formular
 routes.get('/recuperarSenha', requireResetToken, servePage('../front/pages/recuperarSenha.html'));
 
 // Para usuarios não logados
+routes.get('/', servePage('../front/pages/home.html'));
 routes.get('/cadastroCliente', servePage('../front/pages/cadastroCliente.html'));
 routes.get('/chefes', servePage('../front/pages/chefes.html'));
 routes.get('/formulario', servePage('../front/pages/formulario.html'));
