@@ -35,7 +35,7 @@ routes.delete('/criarCategoria', CategoriaController.delete);
 
 //Para atribuir os valores ao card
 routes.get('/createCard', cadastroReceita.createCard);
-
+routes.get('/createCardTest', cadastroReceita.createCardTest);
 
 //Rotas dos Usuarios
 routes.post('/cadastroUser', upload.none(), validateCaptcha, crudUser.store);
@@ -71,6 +71,7 @@ routes.get('/recuperarSenha', requireResetToken, servePage('../front/pages/recup
 
 // Para usuarios não logados
 routes.get('/', servePage('../front/pages/home.html')); 
+routes.get('/testeRotas', servePage('../front/pages/teste.html'));
 routes.get('/cadastroCliente', servePage('../front/pages/cadastroCliente.html'));
 routes.get('/chefes', servePage('../front/pages/chefes.html'));
 routes.get('/formulario', servePage('../front/pages/formulario.html'));

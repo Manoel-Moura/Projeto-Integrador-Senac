@@ -33,7 +33,7 @@ class cadastroReceita {
       ingredientes: 'Por favor, preencha o campo ingredientes.',
       modoPreparo: 'Por favor, preencha o campo modo de preparo.',
     };
-  
+
     for (let campo in campos) {
       if (!req.body[campo] || (campo === 'porcoes' || campo === 'preparacao') && (!Number.isInteger(Number(req.body[campo])) || req.body[campo] < 1)) {
         return res.status(400).json({ error: campos[campo] });
@@ -140,7 +140,7 @@ class cadastroReceita {
         return res.status(400).json({ error: campos[campo] });
       }
     }
-    
+
     const receita = await Receita.findOne({ _id: id, user: userId });
 
     if (!receita) {
@@ -197,6 +197,36 @@ class cadastroReceita {
   async createCard(req, res) {
     const { userId } = req.session;
     let receitas = await Receita.find().populate('user');
+
+    let cards = [];
+
+    for (let receita of receitas) {
+      let user = receita.user;
+
+      if (user) {
+        let card = {
+          chefID: user._id,
+          id: receita._id,
+          chef: user.username,
+          receita: receita.titulo,
+          curtidas: receita.curtidas,
+          fotoChef: '/uploads/' + user.fotoUsuario,
+          fotoReceita: '/uploads/' + receita.foto,
+          categorias: receita.categorias,
+          sessionUser: userId,
+          favoritas: receita.favoritas,
+        };
+
+        cards.push(card);
+      }
+    }
+    return res.json(cards);
+  }
+
+  async createCardTest(req, res) {
+    const { userId } = req.session;
+    const limit = req.query.qntCards || 1;
+    let receitas = await Receita.find().limit(limit).populate('user');
 
     let cards = [];
 

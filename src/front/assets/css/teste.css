@@ -1,0 +1,49 @@
+#campos {
+    display: flex;
+    width: 358px;
+    height: 215px;
+    background-color: white;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 3mm;
+}
+
+#req,
+#qntCards {
+    width: 311px;
+    height: 34px;
+    border-radius: 3mm;
+    border: 1px solid black;
+}
+
+#req {
+    margin-left: 3mm;
+}
+
+#qntCards {
+    margin-left: 3mm;
+    margin-top: 2mm;
+}
+
+#req:focus,
+#qntCards:focus {
+    outline: none;
+    border: 2px solid #01468a;
+}
+
+#submit {
+    border-radius: 3mm;
+    margin-top: 3mm;
+    margin-right: 3mm;
+    align-self: flex-end;
+    width: 67px;
+    border: 1px solid black;
+    height: 35px;
+    background-color: #01468a;
+    color: white;
+}
+
+#submit:hover {
+    transform: scale(1.1);
+}
