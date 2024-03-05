@@ -348,7 +348,7 @@ class crudUser {
                       Para redefinir sua senha, clique no link abaixo:
                   </p>
                   <p>
-                      <a href="http://localhost:3333/recuperarSenha?token=${token}" class="link">Redefinir Senha</a>
+                      <a href="http://3.145.132.216/recuperarSenha?token=${token}" class="link">Redefinir Senha</a>
                   </p>
                   <p class="texto">
                       Este link é válido durante os próximos 5 minutos. Se você não o utilizar nesse período, será necessário solicitar uma nova redefinição de senha.
