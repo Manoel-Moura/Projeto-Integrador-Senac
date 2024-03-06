@@ -1,32 +1,33 @@
-var reqNumber = 0;
-var camposDiv = document.querySelector('.camposReq');
+let reqNumber = 0;
+const camposDiv = document.querySelector('.camposReq');
 
-document.getElementById('submit').addEventListener('click', async function(event) {
+document.getElementById('myForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    var rota = document.getElementById('req').value;
-    var qntCards = document.getElementById('qntCards').value;
-    var totalTime = 0;
+    const rota = document.getElementById('req').value;
+    const qntCards = document.getElementById('qntCards').value || 1;
+    let totalTime = 0;
 
-    var avgLabel = document.createElement('label');
-    avgLabel.textContent = "Tempo médio:";
-    avgLabel.className = "label";
-
-    var avgInput = document.createElement('input');
+    const avgLabel = document.createElement('label');
+    const avgInput = document.createElement('input');
     avgInput.type = "text";
     avgInput.className = "reqs";
     avgInput.name = "reqs";
     avgInput.readOnly = true;
 
-    camposDiv.appendChild(avgLabel);
-    camposDiv.appendChild(avgInput);
+    if (rota === '/createCardTest') {
+        avgLabel.textContent = "Tempo médio:";
+        avgLabel.className = "label";
+        camposDiv.prepend(avgInput);
+        camposDiv.prepend(avgLabel);
+    }
 
     for (let i = 0; i < qntCards; i++) {
         reqNumber++;
-        var newLabel = document.createElement('label');
-        newLabel.textContent = "Requisição " + reqNumber + "°:";
+        const newLabel = document.createElement('label');
+        newLabel.textContent = `Requisição ${reqNumber}°:`;
         newLabel.className = "label";
 
-        var newInput = document.createElement('input');
+        const newInput = document.createElement('input');
         newInput.type = "text";
         newInput.className = "reqs";
         newInput.name = "reqs";
@@ -35,26 +36,30 @@ document.getElementById('submit').addEventListener('click', async function(event
         camposDiv.appendChild(newLabel);
         camposDiv.appendChild(newInput);
 
-        var t0 = performance.now();
+        const t0 = performance.now();
 
-        await fetch(rota + '?qntCards=1', {
+        await fetch(`${rota}${rota === '/createCardTest' ? '?qntCards=1' : ''}`, {
             method: 'GET',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
         })
             .then(response => response.text())
             .then(data => {
-                var t1 = performance.now();
-                var timeTaken = t1 - t0;
+                const t1 = performance.now();
+                const timeTaken = t1 - t0;
                 totalTime += timeTaken;
-                newInput.value = timeTaken + " milissegundos.";
+                newInput.value = `${timeTaken} milissegundos.`;
+                // newInput.value = `${timeTaken.toFixed(5)} milissegundos.`;
             })
             .catch((error) => {
                 console.error('Erro:', error);
             });
     }
 
-    var avgTime = totalTime / qntCards;
-    avgInput.value = avgTime + " milissegundos.";
+    if (rota === '/createCardTest') {
+        const avgTime = totalTime / qntCards;
+        avgInput.value = `${avgTime} milissegundos.`;
+        // avgInput.value = `${avgTime.toFixed(5)} milissegundos.`;
+    }
 });

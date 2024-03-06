@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../assets/css/login.css" />
     <link rel="stylesheet" href="../assets/css/teste.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
 </head>
 
 <body>
@@ -17,14 +16,16 @@
 
         <div id="containerResponsivo">
             <div class="rowTest">
-                <div class="campos">
-                    <input class="input" type="text" id="req" name="req" placeholder="Digite a rota que deseja testar">
-                    <input class="input" type="text" id="qntCards" name="req"placeholder="Digite a qnt. de cards que deseja">
-                    <button id="submit">Enviar</button>
-                </div>
+                <form id="myForm">
+                    <div class="campos">
+                        <input class="input" type="text" id="req" name="req"placeholder="Digite a rota que deseja testar">
+                        <input class="input" type="text" id="qntCards" name="req"placeholder="Digite a qnt. de cards que deseja">
+                        <button id="submit">Enviar</button>
+                    </div>
+                </form>
 
                 <div class="camposReq">
-                    
+
                 </div>
 
             </div>

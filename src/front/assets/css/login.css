@@ -98,9 +98,10 @@ h1 {
 }
 
 
-.labels {
+.label {
   display: flex;
-  margin-left: 4mm;
+  align-self: flex-start;
+  margin-left: 20mm;
   margin-bottom: 2mm;
   margin-top: 3mm;
   color: #01468a;
@@ -172,6 +173,6 @@ h1 {
   transform: scale(1.1);
 }
 
-.cf-turnstile{
-  margin-top:5mm;
+.cf-turnstile {
+  margin-top: 5mm;
 }
