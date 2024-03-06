@@ -1,4 +1,21 @@
-#campos {
+.rowTest {
+    padding-top: 5mm;
+    padding-bottom: 5mm;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #01468a;
+    width: 100%;
+    min-height: 100vh;
+    background: url(../media/images/backgroud-login.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.campos {
     display: flex;
     width: 358px;
     height: 215px;
@@ -7,6 +24,41 @@
     align-content: center;
     justify-content: center;
     border-radius: 3mm;
+    margin-bottom: 10mm;
+}
+
+
+
+.camposReq {
+    display: flex;
+    width: 358px;
+    height: 215px;
+    background-color: white;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 3mm;
+    margin-bottom: 10mm;
+}
+
+.reqs {
+    width: 311px;
+    height: 34px;
+    border-radius: 3mm;
+    border: 1px solid black;
+}
+
+.reqs{
+    margin-left: 3mm;
+}
+
+.label{
+    display: flex;
+    margin-left: 4mm;
+    margin-bottom: 2mm;
+    margin-top: 3mm;
+    color: #01468a;
+    font-size: 12pt;
 }
 
 #req,

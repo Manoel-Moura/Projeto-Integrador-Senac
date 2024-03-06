@@ -226,32 +226,32 @@ class cadastroReceita {
   async createCardTest(req, res) {
     const { userId } = req.session;
     const limit = req.query.qntCards || 1;
-    let receitas = await Receita.find().limit(limit).populate('user');
+    let receitas = await Receita.find().populate('user');
 
-    let cards = [];
+    for (let i = 0; i < limit; i++) {
+      for (let receita of receitas) {
+        let user = receita.user;
 
-    for (let receita of receitas) {
-      let user = receita.user;
+        if (user) {
+          let card = {
+            chefID: user._id,
+            id: receita._id,
+            chef: user.username,
+            receita: receita.titulo,
+            curtidas: receita.curtidas,
+            fotoChef: '/uploads/' + user.fotoUsuario,
+            fotoReceita: '/uploads/' + receita.foto,
+            categorias: receita.categorias,
+            sessionUser: userId,
+            favoritas: receita.favoritas,
+          };
 
-      if (user) {
-        let card = {
-          chefID: user._id,
-          id: receita._id,
-          chef: user.username,
-          receita: receita.titulo,
-          curtidas: receita.curtidas,
-          fotoChef: '/uploads/' + user.fotoUsuario,
-          fotoReceita: '/uploads/' + receita.foto,
-          categorias: receita.categorias,
-          sessionUser: userId,
-          favoritas: receita.favoritas,
-        };
-
-        cards.push(card);
+          return res.json(card);
+        }
       }
     }
-    return res.json(cards);
-  }
+}
+
 
   async favoritaReceita(req, res) {
     try {

@@ -98,10 +98,9 @@ h1 {
 }
 
 
-.label {
+.labels {
   display: flex;
-  align-self: flex-start;
-  margin-left: 20mm;
+  margin-left: 4mm;
   margin-bottom: 2mm;
   margin-top: 3mm;
   color: #01468a;
