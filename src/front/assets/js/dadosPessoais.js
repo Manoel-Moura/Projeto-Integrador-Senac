@@ -60,7 +60,7 @@ window.onload = function () {
 document.getElementById('botao_enviarSenha').addEventListener('click', function () {
   var email = document.querySelector('input[name="email"]').value;
 
-  fetch('/requestPasswordReset', {
+  fetch('/solicitarRedefinicaoSenha', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

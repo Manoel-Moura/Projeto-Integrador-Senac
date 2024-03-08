@@ -52,6 +52,7 @@ routes.get('/logout', crudUser.logout);
 
 //Rotas para recuperação de senha
 routes.post('/requestPasswordReset', validateCaptcha, crudUser.requestPasswordReset);
+routes.post('/solicitarRedefinicaoSenha', crudUser.requestPasswordReset);
 routes.post('/resetPassword', validateCaptcha, crudUser.resetPassword);
 
 //Pegar os dados do usuario, individual

@@ -148,6 +148,10 @@ body {
   border: none;
 }
 
+.botao_enviarSenha:hover{
+  transform: scale(1.1);
+}
+
 .botao_enviarEmail {
   height: 41px;
   max-width: 91px;
