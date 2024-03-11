@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let label_igredientes = document.createElement("label");
       label_igredientes.setAttribute("id", "label-itens");
-      label_igredientes.innerText = "Igredientes";
+      label_igredientes.innerText = "Ingredientes";
 
       let colum_ingredientes = document.createElement("div");
       colum_ingredientes.setAttribute("id", "colum");
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let label_ingredientes = document.createElement("label");
       label_ingredientes.setAttribute("id", "label-ingredientes");
-      label_ingredientes.innerHTML = "ingredientes: ";
+      label_ingredientes.innerHTML = "Ingredientes: ";
 
       let lista_ingredientes = document.createElement("div");
       lista_ingredientes.setAttribute("id", "lista-ingredientes");
