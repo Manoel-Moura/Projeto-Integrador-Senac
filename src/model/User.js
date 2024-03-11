@@ -43,6 +43,10 @@ const UserSchema = new Schema({
         value: String,
         createdAt: Date
     },
+    moderador: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 

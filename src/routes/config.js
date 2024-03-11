@@ -2,7 +2,7 @@ import path from 'path'
 const axios = require('axios');
 const qs = require('querystring');
 import Receita from '../model/Receita';
-
+import User from '../model/User';
 
 function requireLogin(req, res, next) {
   if (req.session && req.session.userId) {
@@ -97,5 +97,17 @@ async function verifyRecipeOwner(req, res, next) {
   }
 }
 
+async function requireMod(req, res, next) {
+  if (req.session && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user && user.moderador) {
+      next(); 
+    } else {
+      res.redirect('/home');
+    }
+  } else {
+    res.status(401).send('Por favor, faça login para acessar esta rota.');
+  }
+}
 
-module.exports = { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner };
+module.exports = { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner, requireMod };

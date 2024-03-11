@@ -4,6 +4,7 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 16pt;
 }
+
 #container {
   width: 100%;
   height: 100%;
@@ -23,8 +24,8 @@
   border-top-right-radius: 30px;
 }
 
-#nome-chef{
-  background-color:#00366A;
+#nome-chef {
+  background-color: #00366A;
   padding: 15px;
   padding-left: 40px;
   padding-right: 35px;
@@ -39,7 +40,7 @@
   margin-right: auto;
 }
 
-#foto-chef{
+#foto-chef {
   height: 9.5rem;
   width: 9.5rem;
   margin-top: calc(310px);
@@ -50,15 +51,16 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-#containerResponsivo{
-  background-color:  #ffffff;
+
+#containerResponsivo {
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   flex-direction: column;
-  
+
 }
 
-#cont{
+#cont {
   height: auto;
   max-width: 80%;
   padding: 10px;
@@ -73,7 +75,7 @@
   margin-right: auto;
 }
 
-#receitaDestaque{
+#receitaDestaque {
   max-height: 50vh;
   padding-left: 15px;
   padding-right: 10px;
@@ -90,16 +92,17 @@
   margin-right: auto;
 }
 
-#cont-chef{
+#cont-chef {
   height: 80%;
   width: 70%;
- background-color: #ffffff;
- margin-top: 40px;
- margin-bottom: 40px;
- border-radius: 30px;
- -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
- box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+  background-color: #ffffff;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.53);
 }
+
 #rowCardChef {
   width: 100%;
   max-height: 100vh;
@@ -112,17 +115,19 @@
   padding: 40px;
   padding-top: 0px;
 }
+
 ::-webkit-scrollbar {
   background-color: #ffffff;
   width: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #968e8e5b;
   border-radius: 5px;
 }
 
 
-#lb-recomendacao{
+#lb-recomendacao {
   padding-left: 20px;
   max-width: 70%;
   height: auto;
@@ -132,7 +137,7 @@
   color: white;
   font-size: 20pt;
   font-weight: 700;
-  
+
 }
 
 #rowCardChef {
@@ -147,16 +152,18 @@
   padding: 40px;
   padding-top: 0px;
 }
+
 ::-webkit-scrollbar {
   background-color: #ffffff;
   width: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #968e8e5b;
   border-radius: 5px;
 }
 
-#cont2{
+#cont2 {
   height: auto;
   max-width: 80%;
   padding: 10px;
@@ -169,10 +176,10 @@
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
-  
+
 }
 
-#lb-receitasChef{
+#lb-receitasChef {
   padding-left: 20px;
   width: auto;
   height: auto;
@@ -184,17 +191,17 @@
   font-weight: 700;
   display: flex;
   flex-wrap: wrap;
-  
+
 }
 
-.list-style{
+.list-style {
   width: 100%;
   display: flex;
   justify-content: space-around;
- 
+
 }
 
-#cont3{
+#cont3 {
   max-width: 79%;
   padding: 10px;
   padding-left: 50px;
@@ -204,7 +211,8 @@
   overflow: scroll;
 }
 
-#addRecipe{
+#addRecipe,
+#mod_site {
   display: flex;
   height: 115px;
   width: 62%;
@@ -218,10 +226,9 @@
 
 }
 
-#box-one{
+#box-one {
   display: none;
   border-radius: 3mm;
-  border: 1px solid #ff9800c2;
   margin-left: 22px;
   height: 98px;
   width: 243px;
@@ -231,23 +238,44 @@
   overflow: hidden;
 }
 
+#box-mod{
+  display: none;
+  border-radius: 3mm;
+  margin-left: 22px;
+  height: 98px;
+  width: 243px;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#box-one {
+  border: 1px solid #ff9800c2;
+}
+
+#box-mod {
+  border: 1px solid #00366A;
+}
 
 
-.adicionarNovaReceita{
+.adicionarNovaReceita,
+.moderarSite {
   height: 66px;
   width: 118px;
   border: none;
   border-radius: 17px;
   background-color: transparent;
   color: #00366A;
-  align-self: flex-end;
 }
 
-.addRecipe{
+.addRecipe,
+.modSite {
   width: 90px;
   height: 80px;
 }
 
-#box-one:hover{
+#box-one:hover,
+#box-mod:hover {
   transform: scale(1.1);
 }

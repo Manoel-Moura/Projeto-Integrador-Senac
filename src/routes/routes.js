@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner } = require('./config');
+const { requireLogin, serveProtectedPage, servePage, redirectIfLoggedIn, requireResetToken, validateCaptcha, verifyRecipeOwner, requireMod } = require('./config');
 
 import cadastroReceita from "../controller/ReceitaController"
 import crudUser from "../controller/UserController"
@@ -54,6 +54,8 @@ routes.get('/user', crudUser.getUserDataBody);
 routes.post('/login', validateCaptcha, crudUser.login);
 routes.get('/check-login', crudUser.checkLogin);
 routes.get('/logout', crudUser.logout);
+routes.get('/check-moderador', crudUser.checkModerador);
+routes.put('/user/:id/tornar-moderador', crudUser.tornarModerador);
 
 //Rotas para recuperação de senha
 routes.post('/requestPasswordReset', validateCaptcha, crudUser.requestPasswordReset);
@@ -93,7 +95,7 @@ routes.get('/editarReceita', requireLogin, verifyRecipeOwner, serveProtectedPage
 routes.get('/dashboard', servePage('../front/pages/dashboard.html'));
 routes.get('/editarDadosPessoais', requireLogin, serveProtectedPage('../front/pages/editarDadosPessoais.html'));
 
-routes.get('/mod', servePage('../front/pages/mods.html'));
+routes.get('/mod', requireLogin, requireMod, serveProtectedPage('../front/pages/mods.html'));
 routes.get('/aviso', servePage('../front/pages/aviso.html'));
 
 routes.get('/rankingChefs', crudUser.rankingChefs);

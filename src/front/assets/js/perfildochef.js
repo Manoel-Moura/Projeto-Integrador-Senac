@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach((cardReceita) => {
 
 
-        
+
         // Verifica se o ID do chef associado à receita corresponde ao ID do chef atual
         if (cardReceita.chefID === chefId) {
           const newCard = new Card(
@@ -60,15 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
             cardReceita.categorias,
             cardReceita.chefID
           );
-          
+
           const card = newCard.createCard();
           fragment_card.append(card);
           recipeCount++;
         }
 
-     
-  
-        
+
+
+
       });
 
       addCard.append(fragment_card);
@@ -100,14 +100,13 @@ function displayLikedRecipes(cards, chefId) {
   let hasLikedRecipes = false;
 
   cards.forEach((cardReceita) => {
-    if(queryString.slice(4) == cardReceita.sessionUser){
+    if (queryString.slice(4) == cardReceita.sessionUser) {
       const addReceita = document.getElementById("box-one");
-         addReceita.style.display = "flex";
-     
-   }else{
-    const lab = document.getElementById("lb-receitasChef");
-    lab.innerText = "Receitas do chef:";
-   }
+      addReceita.style.display = "flex";
+    } else {
+      const lab = document.getElementById("lb-receitasChef");
+      lab.innerText = "Receitas do chef:";
+    }
     // Verifica se o chef atual curtiu essa receita
     const curtidas = cardReceita.favoritas.map(like => typeof like === 'string' ? like : (like.usuario ? like.usuario : ''));
     if (curtidas.includes(chefId)) {
@@ -126,7 +125,7 @@ function displayLikedRecipes(cards, chefId) {
       receitaDestaque.appendChild(card);
       hasLikedRecipes = true;
     }
- 
+
     // console.log(`Dono: ${queryString.slice(4)}`);
     // console.log(`User: ${cardReceita.sessionUser}`);
   });
@@ -136,5 +135,15 @@ function displayLikedRecipes(cards, chefId) {
     const receitaDestaque = document.getElementById("cont");
     receitaDestaque.style.display = "none";
   }
- 
+
 }
+
+
+fetch('/check-moderador')
+  .then(response => response.json())
+  .then(data => {
+    if (data.moderador) {
+      const addMod = document.getElementById("box-mod");
+      addMod.style.display = "flex";
+    }
+  });

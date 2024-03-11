@@ -432,6 +432,37 @@ class crudUser {
     }
   }
 
+  async checkModerador(req, res) {
+    if (req.session && req.session.userId) {
+      // Buscar o usuário no banco de dados
+      const user = await User.findById(req.session.userId);
+      if (user && user.moderador) {
+        res.json({ moderador: true, id: req.session.userId });
+      } else {
+        res.json({ moderador: false });
+      }
+    } else {
+      res.json({ loggedIn: false });
+    }
+  }
+  
+  async tornarModerador(req, res) {
+    try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json({ error: 'Usuário não encontrado' });
+      }
+  
+      user.moderador = true;
+      await user.save();
+  
+      res.json({ message: 'Usuário atualizado para moderador' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao atualizar o usuário' });
+    }
+  }
+  
 
 }
 
