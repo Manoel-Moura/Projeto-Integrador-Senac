@@ -506,3 +506,84 @@ a {
  
 }
 
+#moderation {
+  padding-top: 10mm;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #01468a;
+  width: 100%;
+  min-height: 100vh;
+  background: url(../media/images/backgroud-login.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 10mm;
+}
+
+.report{
+  display: flex;
+  position: fixed;
+  top: 200px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  width: 388px;
+  border-radius: 3mm;
+  height: 250px;
+  border: 1px solid #01468a;
+  flex-direction: column;
+}
+
+.btn-cancel{
+ align-self: flex-end;
+ margin-top: 3mm;
+ margin-right: 3mm;
+ width: 30px;
+ height: 30px;
+ justify-self: flex-end;
+ color: white;
+ border: 1px solid red;
+ background-color: red;
+}
+
+.label-report{
+  color: #01468a;
+  margin-left:5mm;
+  margin-bottom: 3mm;
+}
+
+.msg-warning{
+  width: 344px;
+  height: 186px;
+  resize: none;
+  color: #01468a;
+  padding: 1mm;
+  border: 1px solid black;
+  align-self: center;
+  resize: none;
+  border-radius: 3mm;
+}
+
+.msg-warning:focus{
+  outline: none;
+  border: 1px solid #01468a;
+}
+
+.btn-confirm{
+  margin-left: 3mm;
+  width: 97px;
+  margin-top: 3mm;
+  border-radius: 3mm;
+  height: 54px;
+  margin-bottom: 1mm;
+  color: white;
+  border: 1px solid #01468a;
+  background-color: #01468a;
+}
+
+.btn-cancel:hover,
+.btn-confirm:hover{
+  transform: scale(1.1);
+}

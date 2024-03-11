@@ -266,6 +266,19 @@ align-items: center;
   display: flex;
 }
 
+#denunciar{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border:  none;
+    background: url(../media/icons/warning.svg);
+    background-position: center;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    display: flex;
+}
+
 
 #div-dados-chef{
   display: flex;

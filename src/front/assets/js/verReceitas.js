@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           alert("Precisa fazer login para curtir!");
         }
-        
+
       });
 
       // Botão de favorito
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           alert("Precisa fazer login para favoritar!");
         }
-   
+
       });
 
       // Botão de imprimir
@@ -220,6 +220,51 @@ document.addEventListener("DOMContentLoaded", function () {
       // Adiciona um evento de clique ao botão
       botaoImprimir.addEventListener("click", function () {
         imprimirReceitaEditada();
+      });
+
+      // Botão de denunciar
+      let botaoDenunciar = document.createElement("button");
+      botaoDenunciar.setAttribute("id", "denunciar");
+
+      document.body.appendChild(botaoDenunciar);
+
+      let botaoDenunciarSelected = document.querySelector('#denunciar');
+      let div = document.createElement('div');
+      div.className = 'report';
+      div.style.visibility = 'hidden';
+
+      let btnCancel = document.createElement('button');
+      btnCancel.className = 'btn-cancel';
+      btnCancel.textContent = 'X';
+      div.appendChild(btnCancel);
+
+      let label = document.createElement('label');
+      label.className = 'label-report';
+      label.setAttribute('for', 'msg-warning');
+      label.textContent = 'Informe o motivo da denuncia';
+      div.appendChild(label);
+
+      let textarea = document.createElement('textarea');
+      textarea.className = 'msg-warning';
+      div.appendChild(textarea);
+
+      let btnConfirm = document.createElement('button');
+      btnConfirm.className = 'btn-confirm';
+      btnConfirm.textContent = 'Confirmar';
+      div.appendChild(btnConfirm);
+
+      document.body.appendChild(div);
+
+      botaoDenunciarSelected.addEventListener('click', function () {
+        if (div.style.visibility === 'hidden') {
+          div.style.visibility = 'visible';
+        }
+      });
+
+      btnCancel.addEventListener('click', function () {
+        if (div.style.visibility === 'visible') {
+          div.style.visibility = 'hidden';
+        }
       });
 
       // Botão de editar
@@ -231,15 +276,42 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = `/editarReceita?id=${idDaReceita}`;
       });
 
+      btnConfirm.addEventListener('click', function () {
+        let comentario = textarea.value;
+        let idDaReceita = window.location.search.split('=')[1];
+        
+        let dadosDenuncia = {
+          userId: receita[0].user._id,
+          receitaId: idDaReceita,
+          comentario: comentario
+        };
+
+        fetch('/denunciarReceita', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dadosDenuncia),
+        })
+          .then(response => response.json())
+          .then(data => {
+            alert('Receita denunciada com sucesso.');
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+
+        div.style.visibility = 'hidden';
+      });
 
 
-     // Função para imprimir a receita
-function imprimirReceitaEditada() {
-  // Cria um novo documento HTML temporário
-  let newWindow = window.open('', '_blank');
-  
-  // Constrói o layout da receita dentro do novo documento HTML
-  newWindow.document.write(`
+      // Função para imprimir a receita
+      function imprimirReceitaEditada() {
+        // Cria um novo documento HTML temporário
+        let newWindow = window.open('', '_blank');
+
+        // Constrói o layout da receita dentro do novo documento HTML
+        newWindow.document.write(`
     <html>
       <head>
         <title>Receita</title>
@@ -328,16 +400,17 @@ function imprimirReceitaEditada() {
     </html>
   `);
 
-  
-  // Imprime o novo documento HTML
-  newWindow.document.close(); // Fecha o documento antes de imprimir
-  newWindow.print(); // Imprime o documento
-}
+
+        // Imprime o novo documento HTML
+        newWindow.document.close(); // Fecha o documento antes de imprimir
+        newWindow.print(); // Imprime o documento
+      }
 
       // Adicionando os botões à div
       divBotoes.appendChild(botaoCurtir);
       divBotoes.appendChild(botaoFavorito);
       divBotoes.appendChild(botaoImprimir);
+      divBotoes.appendChild(botaoDenunciar);
       divBotoes.appendChild(botaoEditar);
 
       // Verifica se o usuário é o chef que criou a receita
@@ -354,8 +427,8 @@ function imprimirReceitaEditada() {
       contatoChef.setAttribute("id", "contatochef");
       contatoChef.setAttribute("href", " https://www.instagram.com/" + receita[0].user.telefone);
       contatoChef.setAttribute("target", "_blank");
-      
-     
+
+
 
       let div_dados_chef = document.createElement("div");
       div_dados_chef.setAttribute("id", "div-dados-chef");
@@ -363,13 +436,13 @@ function imprimirReceitaEditada() {
       div_dados_chef.append(contatoChef);
       div_dados_chef.append(divBotoes);
 
-      if(receita[0].user.telefone ===  'undefined'){
+      if (receita[0].user.telefone === 'undefined') {
         contatoChef.style.display = "none";
         div_dados_chef.style.justifyContent = "end";
       }
-      else{
-        contatoChef.innerText = "@"+ receita[0].user.telefone
-       
+      else {
+        contatoChef.innerText = "@" + receita[0].user.telefone
+
       }
 
       // Adicionando a div com os botões à lista_opcao ou outro elemento de sua escolha

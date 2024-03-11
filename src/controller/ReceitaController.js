@@ -386,6 +386,75 @@ class cadastroReceita {
   // }
 
 
+  async denunciar(req, res) {
+    const { userId, receitaId, comentario } = req.body;
+  
+    try {
+      const receita = await Receita.findById(receitaId);
+  
+      if (!receita) {
+        return res.status(404).json({ error: 'Receita não encontrada' });
+      }
+
+      receita.denunciada.push({ userId, comentario });
+  
+      await receita.save();
+  
+      res.status(200).json({ message: 'Denúncia registrada com sucesso.' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Ocorreu um erro ao registrar a denúncia.' });
+    }
+  }
+
+  async showDenuncias(req, res) {
+    try {
+      const receitasDenunciadas = await Receita.find({ 'denunciada.0': { $exists: true } }).populate('user');
+      
+      let receitasFormatadas = [];
+      receitasDenunciadas.forEach(receita => {
+        receita.denunciada.forEach(denuncia => {
+          let novaReceita = {
+            chefID: receita.user._id,
+            id: receita._id,
+            chef: receita.user.username,
+            receita: receita.titulo,
+            curtidas: receita.curtidas,
+            fotoChef: '/uploads/' + receita.user.fotoUsuario,
+            fotoReceita: '/uploads/' + receita.foto,
+            categorias: receita.categorias,
+            favoritas: receita.favoritas,
+            denunciada: [denuncia] 
+          };
+          receitasFormatadas.push(novaReceita);
+        });
+      });
+  
+      return res.json(receitasFormatadas);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar as receitas denunciadas.' });
+    }
+  }
+  
+  
+  
+  async limparDenuncias(req, res) {
+    try {
+      let receita = await Receita.findById(req.params.id);
+      if (receita) {
+        receita.denunciada = [];
+        await receita.save();
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ success: false, message: 'Receita não encontrada' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Ocorreu um erro no servidor' });
+    }
+  }
+  
 }
 
 export default new cadastroReceita();

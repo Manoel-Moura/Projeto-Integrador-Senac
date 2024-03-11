@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moderador</title>
+  <link rel="stylesheet" href="../assets/css/login.css" />
+  <link rel="stylesheet" href="../assets/css/teste.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/mod.css" />
+</head>
+
+<body>
+  <div id="container">
+    <div id="topo"></div>
+
+    <div id="containerResponsivo">
+      <div id="moderation">
+        <div id="controller">
+          <h1 class="titulo_painel-controller">Painel de Moderação</h1>
+          <div class="mod_choice">
+            <label class=" label" for="id_delete-recipe">Excluir receita: </label>
+            <input class="mod_input" type="text" name="id_delete-recipe" placeholder="ID da receita" />
+            <button class="botao_mod" name="confirm_delete-recipe">Deletar receita</button>
+          </div>
+
+          <div class="mod_choice">
+            <label class="label_controller" for="id_delete-user">Deletar usuário: </label>
+            <input class="mod_input" type="text" name="id_delete-user" placeholder="ID do usuário" />
+            <button class="botao_mod" name="confirm_delete-user">Deletar usuário</button>
+          </div>
+
+          <div class="mod_choice">
+            <label class="label_controller" for="id_ban-user">Banir usuário: </label>
+            <input class="mod_input" type="text" name="id_ban-user" placeholder="ID do usuário" />
+            <input class="mod_input" type="text" name="time_ban-user" placeholder="Tempo de banimento" />
+            <input class="mod_input-large" type="text" name="reason_ban-user" placeholder="Motivo do banimento" />
+            <button class="botao_mod" name="confirm_ban-user">Banir usuário</button>
+          </div>
+
+        </div>
+        <div id="moderation-content">
+          <h1 class="titulo_painel-controller">Receitas denunciadas</h1>
+
+        
+
+        </div>
+      </div>
+      <div id="bottom-bar"></div>
+    </div>
+
+    <script src="../assets/js/mod.js"></script>
+    <script src="../assets/components/topBar.js"></script>
+    <script src="../assets/components/rodape.js"></script>
+</body>
+
+</html>

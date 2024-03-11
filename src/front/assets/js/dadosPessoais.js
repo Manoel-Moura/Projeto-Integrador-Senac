@@ -44,10 +44,10 @@ window.onload = function () {
       document.querySelector('input[name="username"]').value = data.username;
       document.querySelector('input[name="email"]').value = data.email;
       document.querySelector('input[name="data"]').value = dataFormatada;
-      document.querySelector('input[name="genero"]').value = data.genero;
+      document.querySelector('input[name="genero"]').value = data.genero || 'Insira o seu gênero';
       document.querySelector('input[name="cpf"]').value = data.cpf;
-      document.querySelector('input[name="celular"]').value = data.celular;
-      document.querySelector('input[name="telefone"]').value = data.telefone;
+      document.querySelector('input[name="celular"]').value = data.celular || 'Insira o número de celular';
+      document.querySelector('input[name="telefone"]').value = data.telefone || 'Insira o nome de usuário do instagram';
 
       if (data.fotoUsuario) {
         document.getElementById('foto-usuario').style.backgroundImage = 'url(/uploads/' + data.fotoUsuario + ')';

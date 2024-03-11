@@ -53,7 +53,14 @@ const ReceitaShema = new Schema({
     favoritas: {
         type: [String],
     },
-
+    denunciada: [{
+        userId: {
+          type: String,
+        },
+        comentario: {
+          type: String,
+        },
+      }],
 });
 
 

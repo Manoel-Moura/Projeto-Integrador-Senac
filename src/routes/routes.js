@@ -37,6 +37,11 @@ routes.delete('/criarCategoria', CategoriaController.delete);
 routes.get('/createCard', cadastroReceita.createCard);
 routes.get('/createCardTest', cadastroReceita.createCardTest);
 
+routes.post('/denunciarReceita', cadastroReceita.denunciar);
+routes.get('/showDenuncias', cadastroReceita.showDenuncias);
+routes.put('/limparDenuncias/:id', cadastroReceita.limparDenuncias);
+
+
 //Rotas dos Usuarios
 routes.post('/cadastroUser', upload.none(), validateCaptcha, crudUser.store);
 routes.get('/cadastroUser', crudUser.show);
@@ -88,6 +93,8 @@ routes.get('/editarReceita', requireLogin, verifyRecipeOwner, serveProtectedPage
 routes.get('/dashboard', servePage('../front/pages/dashboard.html'));
 routes.get('/editarDadosPessoais', requireLogin, serveProtectedPage('../front/pages/editarDadosPessoais.html'));
 
+routes.get('/mod', servePage('../front/pages/mods.html'));
+routes.get('/aviso', servePage('../front/pages/aviso.html'));
 
 routes.get('/rankingChefs', crudUser.rankingChefs);
 
