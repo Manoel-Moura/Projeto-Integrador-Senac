@@ -5,7 +5,7 @@ class CardRanking {
     this.fotoChef = fotoChef;
     this.medalha = medalha;
     this.ranking = ranking;
-    this.chefID = chefID; 
+    this.chefID = chefID;
   }
 
   createCardRanking() {
@@ -66,7 +66,7 @@ class CardTrending {
     this.curtidasTrend = curtidasTrend;
     this.fotoChef = fotoChef;
     this.ranking = ranking;
-    this.chefID = chefID; 
+    this.chefID = chefID;
   }
 
   createCardTrending() {
@@ -135,8 +135,11 @@ fetch('/rankingChefs')
       addCard.append(fragment_card);
     });
 
-    // Ordenar o array de chefs por curtidas
-    let chefsOrdenados = cardsRanking.sort((a, b) => b.curtidasTrend - a.curtidasTrend);
+    // Cria uma cópia do array original
+    let cardsRankingCopy = [...cardsRanking];
+
+    // Ordena a cópia do array por curtidas
+    let chefsOrdenados = cardsRankingCopy.sort((a, b) => b.curtidasTrend - a.curtidasTrend);
 
     // Pra pegar os 5 chefs com mais curtidas nas últimas x horas
     let curtidasTrend = chefsOrdenados.slice(0, 5);
